@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-05-01 Wed 03:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ppls lec04 w2b</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sheng li" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ppls lec04 w2b</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3d077a6">1. Recap</a></li>
+<li><a href="#orgef0eb37">2. Enter the main meat of this course</a></li>
+<li><a href="#org13f03d7">3. Next</a></li>
+<li><a href="#org5e5d9f4">4. shared variable programming</a></li>
+<li><a href="#org5bb4c28">5. shared variable synchronization</a></li>
+<li><a href="#org593c445">6. critical sections</a>
+<ul>
+<li><a href="#org9817e6a">6.1. important properties</a></li>
+<li><a href="#orgcbe0923">6.2. critical sections and locks</a></li>
+<li><a href="#org59633e1">6.3. implementing locks</a></li>
+<li><a href="#org2641a96">6.4. <b>wrong</b> implementation of critical section using locking</a></li>
+<li><a href="#org1545df9">6.5. low-level perspective: atomic instruction</a></li>
+<li><a href="#orgb77487c">6.6. solution: implementing locks using TS</a>
+<ul>
+<li><a href="#orge85f3db">6.6.1. version 1</a></li>
+<li><a href="#org448622d">6.6.2. version 2: refinement, efficiency improvement</a></li>
+<li><a href="#orgd364765">6.6.3. version 3: concise form of version 2 (the same as version 2)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org62ddc84">7. Note: Why is consistency model important? p50</a></li>
+<li><a href="#org95760b9">8. Reading:</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3d077a6" class="outline-2">
+<h2 id="org3d077a6"><span class="section-number-2">1</span> Recap</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>sync</li>
+<li>load balancing</li>
+<li>data sharing</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgef0eb37" class="outline-2">
+<h2 id="orgef0eb37"><span class="section-number-2">2</span> Enter the main meat of this course</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>how to design programming languages, libraries, operations to help us express those kinds of patterns of parallelism and concurrency, in a conceptually simple way for programmers, without throwing away too much performance.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org13f03d7" class="outline-2">
+<h2 id="org13f03d7"><span class="section-number-2">3</span> Next</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>In the next few weeks, we will look at shared variable side of programming space. We will look at: 
+<ul class="org-ul">
+<li>some operations</li>
+<li>some concepts</li>
+<li>some programming mechanisms</li>
+</ul></li>
+<li>We are gonna do that in 2 phases: 
+<ol class="org-ol">
+<li>lock, semaphore, barrier, etc.
+<ul class="org-ul">
+<li>principles, idea, how to implement</li>
+</ul></li>
+<li>how these things are embedded in languages, particularly in Java and in Pthreads library.</li>
+</ol></li>
+<li>The reason why we separate these 2 phases is that the way these things are captured in Java or Pthreads is a bit odd and confusing. So it is a good idea to look at these principles first.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5e5d9f4" class="outline-2">
+<h2 id="org5e5d9f4"><span class="section-number-2">4</span> shared variable programming</h2>
+</div>
+<div id="outline-container-org5bb4c28" class="outline-2">
+<h2 id="org5bb4c28"><span class="section-number-2">5</span> shared variable synchronization</h2>
+<div class="outline-text-2" id="text-5">
+<ol class="org-ol">
+<li>mutual exclusion: prevent concurrency for some period.</li>
+<li>condition synchronization: we want some ordering. delay some action until some condition.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org593c445" class="outline-2">
+<h2 id="org593c445"><span class="section-number-2">6</span> critical sections</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>NOTE: atomicity is equivalent to critical section. 
+<ul class="org-ul">
+<li>In this context (p45), atomicity is a bit of overkill. Atomicity is a stronger requirement.</li>
+<li>The difference is that if we make it atomic, no one can see it as intermediate states.</li>
+</ul></li>
+</ul>
+<pre class="example">
+co [i = 1 to n] {
+  while (something) {
+    critical section;      ## one thread at a time
+    non-critical section;
+  }
+}
+</pre>
+</div>
+<div id="outline-container-org9817e6a" class="outline-3">
+<h3 id="org9817e6a"><span class="section-number-3">6.1</span> important properties</h3>
+<div class="outline-text-3" id="text-6-1">
+<ol class="org-ol">
+<li>mutual exclusion</li>
+<li>absence of deadlock (or livelock)</li>
+<li>absence of unnecessary delay</li>
+<li>eventual entry (or no starvation)</li>
+</ol>
+
+<ul class="org-ul">
+<li>Remarks: the fist three are always essential. eventual entry may note matter in some performance parallel programs, as long as we are making progress elsewhere.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcbe0923" class="outline-3">
+<h3 id="orgcbe0923"><span class="section-number-3">6.2</span> critical sections and locks</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>locking and unlocking</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org59633e1" class="outline-3">
+<h3 id="org59633e1"><span class="section-number-3">6.3</span> implementing locks</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>A simple approach is to implement each lock with <b>a shared boolean variable</b>. 
+<ul class="org-ul">
+<li>lock = false when it is free.</li>
+</ul></li>
+</ul>
+<pre class="example">
+lock_t l = false;
+co [i = 1 to n] {
+  while (something) {
+    &lt; await (!l) l = true; &gt; ## we need this await statement 
+                             ## to guarantee only one winner enter c.s.
+    critical section;
+    l = false;
+    non-critical section;
+  }
+}
+</pre>
+<ul class="org-ul">
+<li>(recall that our model assumes that the <code>l = false;</code> write is already atomic.)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2641a96" class="outline-3">
+<h3 id="org2641a96"><span class="section-number-3">6.4</span> <b>wrong</b> implementation of critical section using locking</h3>
+<div class="outline-text-3" id="text-6-4">
+<pre class="example">
+while (l);
+l = true;
+l = false;
+</pre>
+<ul class="org-ul">
+<li>2 threads can enter the critical section at the same time.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1545df9" class="outline-3">
+<h3 id="org1545df9"><span class="section-number-3">6.5</span> low-level perspective: atomic instruction</h3>
+<div class="outline-text-3" id="text-6-5">
+<ul class="org-ul">
+<li>There are many possibilities, including 
+<ul class="org-ul">
+<li>fetch-and-add,</li>
+<li>test-and-set (TS),</li>
+<li>load-linked,</li>
+<li>store-test and set instruction</li>
+</ul></li>
+<li>NOTE: we think of TS as a call-by-reference function. But it is a single machine instruction in reality.</li>
+</ul>
+<pre class="example">
+bool TS (bool v) {
+  &lt; bool initial = v;
+    v = true;
+    return initial; &gt;
+}
+</pre>
+<ul class="org-ul">
+<li>The <b>key feature</b> is that this happens or at least, appears to happen atomically.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb77487c" class="outline-3">
+<h3 id="orgb77487c"><span class="section-number-3">6.6</span> solution: implementing locks using TS</h3>
+<div class="outline-text-3" id="text-6-6">
+</div>
+<div id="outline-container-orge85f3db" class="outline-4">
+<h4 id="orge85f3db"><span class="section-number-4">6.6.1</span> version 1</h4>
+<div class="outline-text-4" id="text-6-6-1">
+<pre class="example">
+lock_t l = false;
+co [i = 1 to n] {
+  while (something) {
+    while (TS(1));  ## i.e. spin
+    critical section;
+    non-critical section;
+  }
+}
+</pre>
+<ul class="org-ul">
+<li>All cache coherence systems see it as a write. We don't want many writes to shared variables.</li>
+<li>Simple spin locks don't make good use of the cache. TSs play havoc with contention and coherence performance.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org448622d" class="outline-4">
+<h4 id="org448622d"><span class="section-number-4">6.6.2</span> version 2: refinement, efficiency improvement</h4>
+<div class="outline-text-4" id="text-6-6-2">
+<ul class="org-ul">
+<li><b>test-and-set</b></li>
+<li>only try when you might have a chance</li>
+</ul>
+<pre class="example">
+lock_t l = false;
+co [i = 1 to n] {
+  while (something) {
+    do {
+      while (l);      ## spin until lock seems free, read only
+    } while (TS(l));  ## actual atomic locking
+    critical section;
+    l = false;
+    non-critical section;
+  }
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-orgd364765" class="outline-4">
+<h4 id="orgd364765"><span class="section-number-4">6.6.3</span> version 3: concise form of version 2 (the same as version 2)</h4>
+<div class="outline-text-4" id="text-6-6-3">
+<ul class="org-ul">
+<li><b><span class="underline">test-and</span>-test-and-set</b></li>
+</ul>
+<pre class="example">
+lock_t l = false;
+co [i = 1 to n] {
+  while (something) {
+    while (l || TS(l)); 
+    critical section;
+    l = false;
+    non-critical section;
+  }
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org62ddc84" class="outline-2">
+<h2 id="org62ddc84"><span class="section-number-2">7</span> Note: Why is consistency model important? p50</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>This might fail id the model is more relaxed than SC.</li>
+<li>If writes in the c.s. and <code>l = false;</code> in the exit protocol are re-ordered.</li>
+<li><span class="underline">We will see how Pthreads get around of that.</span></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org95760b9" class="outline-2">
+<h2 id="org95760b9"><span class="section-number-2">8</span> Reading:</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>J. Mellor-Crummey and M. Scott, Algorithms for scalable synchronization on shared-memory multiprocessors</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

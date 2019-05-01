@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-05-01 Wed 03:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>sp lec17 w11b software protection</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sheng li" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">sp lec17 w11b software protection</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org1495f84">1. <span class="done DONE">DONE</span> watch recording before <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-03-29 Fri 11:27&gt;</span></span></a></li>
+<li><a href="#org0616bc1">2. man at the end attacks (MATE)</a>
+<ul>
+<li><a href="#org73c8f01">2.1. inside vs. outside threats</a></li>
+<li><a href="#org8948614">2.2. MATE and R-MATE</a></li>
+<li><a href="#org3e0a806">2.3. MATE attack scenarios</a></li>
+<li><a href="#orgff3c20a">2.4. R-MATE attack scenarios</a></li>
+</ul>
+</li>
+<li><a href="#org0b1d531">3. code signing</a></li>
+<li><a href="#orgba0b3cd">4. program obfuscation</a>
+<ul>
+<li><a href="#org6dacd89">4.1. obfuscating compilation</a></li>
+<li><a href="#org0a6c4f0">4.2. practical obfuscation</a></li>
+<li><a href="#org586eb03">4.3. obfuscation in theory</a></li>
+<li><a href="#org18da2de">4.4. power of obfuscation</a></li>
+<li><a href="#org8d072db">4.5. <span class="todo TODO">TODO</span> impossibility of (general) obfuscation (read at leisure)</a></li>
+</ul>
+</li>
+<li><a href="#org143e485">5. tamperproofing</a>
+<ul>
+<li><a href="#orgd641702">5.1. software tamperproofing</a></li>
+<li><a href="#orgf1c16d8">5.2. techniques</a>
+<ul>
+<li><a href="#org5f1c9b4">5.2.1. pervasive hashing</a></li>
+<li><a href="#orge5280c6">5.2.2. watermarking</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1495f84" class="outline-2">
+<h2 id="org1495f84"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> watch recording before <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-03-29 Fri 11:27&gt;</span></span></h2>
+<div class="outline-text-2" id="text-1">
+</div>
+</div>
+<div id="outline-container-org0616bc1" class="outline-2">
+<h2 id="org0616bc1"><span class="section-number-2">2</span> man at the end attacks (MATE)</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org73c8f01" class="outline-3">
+<h3 id="org73c8f01"><span class="section-number-3">2.1</span> inside vs. outside threats</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>inside: security perimeter</li>
+<li>outside: exploit digital assets</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8948614" class="outline-3">
+<h3 id="org8948614"><span class="section-number-3">2.2</span> MATE and R-MATE</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>MATE attacks: occur where an adversary has physical access to a device and compromises it by inspecting, reverse or tampering with its hardware or software</li>
+<li>remote MATE attacks: occur in distributed systems where untrusted clients are in frequent communication with trusted server over a network, and where a malicious user can get an advantage by compromising an untrusted device. e.g. blockchain</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3e0a806" class="outline-3">
+<h3 id="org3e0a806"><span class="section-number-3">2.3</span> MATE attack scenarios</h3>
+<div class="outline-text-3" id="text-2-3">
+<ol class="org-ol">
+<li>software piracy</li>
+<li>license check removal
+<ul class="org-ul">
+<li>defence: make program tamperproof</li>
+</ul></li>
+<li>malicious reverse engineering
+<ul class="org-ul">
+<li>attack: "code lifting", i.e. copy program into attacker's own program</li>
+<li>defence: obfuscate code to make reverse engineering difficult</li>
+</ul></li>
+<li>digital rights management (DRM) key extraction</li>
+<li>protocol discovery</li>
+<li>violation of export/supply chain controls</li>
+</ol>
+
+<ul class="org-ul">
+<li>Mostly, these attach non-availability where there is an attempt to deny access to an asset.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgff3c20a" class="outline-3">
+<h3 id="orgff3c20a"><span class="section-number-3">2.4</span> R-MATE attack scenarios</h3>
+<div class="outline-text-3" id="text-2-4">
+<ol class="org-ol">
+<li>Cheating in networked computer games
+<ul class="org-ul">
+<li>Bob reuses cashed data</li>
+<li>defence: replay-resilient protocol (key defence), tamperproofing</li>
+</ul></li>
+<li>assessing or altering distributed medical records
+<ul class="org-ul">
+<li>e.g. Alice collects data from a wireless sensor network.</li>
+<li>Bob interferes with some of the sensors.</li>
+<li>Bob can swap data or mess up sensors' reading.
+<ul class="org-ul">
+<li>hacking smart meters to disrupt supply</li>
+</ul></li>
+<li>defence: anomaly detection, remote attestation, machine learning, more fuzzy type techniques</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org0b1d531" class="outline-2">
+<h2 id="org0b1d531"><span class="section-number-2">3</span> code signing</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>verify if it comes from trusted</li>
+<li>integrity and authenticity, not confidentiality</li>
+<li>trusted platform
+<ul class="org-ul">
+<li>tamperproof</li>
+<li>reverse engineering: encryption -&gt; confidentiality, attacker cannot see code
+<ul class="org-ul">
+<li>stop people from looking the code</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgba0b3cd" class="outline-2">
+<h2 id="orgba0b3cd"><span class="section-number-2">4</span> program obfuscation</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>write code in a difficult way to understand</li>
+<li>there are many contests, like international obfuscated c code contest</li>
+</ul>
+</div>
+<div id="outline-container-org6dacd89" class="outline-3">
+<h3 id="org6dacd89"><span class="section-number-3">4.1</span> obfuscating compilation</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>transform a program p into a functionally equivalent program p'</li>
+<li>properties of a obfuscating compiler
+<ul class="org-ul">
+<li>make it hard to reverse from p' to p</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0a6c4f0" class="outline-3">
+<h3 id="org0a6c4f0"><span class="section-number-3">4.2</span> practical obfuscation</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>obfuscating techniques
+<ol class="org-ol">
+<li>rename identifiers: sensible names -&gt; confusing names</li>
+<li>equivalent expressions, arithmetic transformation, e.g. bit shift multiply. but compiler may optimise it.</li>
+<li>reorder, duplicate, add dummies -&gt; make it hard to understand and might disorder reverse engineering. again, compiler</li>
+<li>flatten control flow. e.g.
+<ul class="org-ul">
+<li>unroll loop</li>
+<li>conditional -&gt; jump table</li>
+<li>again, compiler</li>
+</ul></li>
+<li>merge and split functions. inline, outline</li>
+<li>introduce pointer aliases. add concurrency. (more advanced)
+<ul class="org-ul">
+<li>race condition</li>
+</ul></li>
+<li>opaque predicates</li>
+<li>custom abstract machine</li>
+</ol></li>
+</ul>
+
+<ul class="org-ul">
+<li>when use these tools, examine how rigorous they are</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org586eb03" class="outline-3">
+<h3 id="org586eb03"><span class="section-number-3">4.3</span> obfuscation in theory</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>black box input-output behaviour</li>
+<li><b>virtual black-box security</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org18da2de" class="outline-3">
+<h3 id="org18da2de"><span class="section-number-3">4.4</span> power of obfuscation</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>powerful building block for cryptographic primitives</li>
+<li>symmetric and asymmetric crypto</li>
+<li>homographic encryption
+-cloud computing: enable without sharing my data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8d072db" class="outline-3">
+<h3 id="org8d072db"><span class="section-number-3">4.5</span> <span class="todo TODO">TODO</span> impossibility of (general) obfuscation (read at leisure)</h3>
+</div>
+</div>
+<div id="outline-container-org143e485" class="outline-2">
+<h2 id="org143e485"><span class="section-number-2">5</span> tamperproofing</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgd641702" class="outline-3">
+<h3 id="orgd641702"><span class="section-number-3">5.1</span> software tamperproofing</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>code signing only works at the start, downloading</li>
+<li>code checking</li>
+<li>result checking</li>
+<li>environment checking</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf1c16d8" class="outline-3">
+<h3 id="orgf1c16d8"><span class="section-number-3">5.2</span> techniques</h3>
+<div class="outline-text-3" id="text-5-2">
+</div>
+<div id="outline-container-org5f1c9b4" class="outline-4">
+<h4 id="org5f1c9b4"><span class="section-number-4">5.2.1</span> pervasive hashing</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<ul class="org-ul">
+<li>used by skype</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge5280c6" class="outline-4">
+<h4 id="orge5280c6"><span class="section-number-4">5.2.2</span> watermarking</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<ul class="org-ul">
+<li>hide identity information in digital images</li>
+</ul>
+</div>
+<ol class="org-ol">
+<li><a id="org32f43d1"></a>software watermarking<br />
+<div class="outline-text-5" id="text-5-2-2-1">
+<ul class="org-ul">
+<li>watermarking embedded machine</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

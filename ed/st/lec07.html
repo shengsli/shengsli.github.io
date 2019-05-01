@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-05-01 Wed 03:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ST lec07 w4a Structural Testing Part 1</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Sheng Li" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ST lec07 w4a Structural Testing Part 1</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org977a58d">1. Learning objectives</a></li>
+<li><a href="#org8a069ac">2. Structural testing</a>
+<ul>
+<li><a href="#orgaf987c9">2.1. Why structural testing?</a></li>
+<li><a href="#org3f63327">2.2. No guarantees</a></li>
+<li><a href="#org127b9d3">2.3. in practice</a></li>
+</ul>
+</li>
+<li><a href="#orgbf7c37d">3. Statement testing/coverage</a></li>
+<li><a href="#orge9cde74">4. Branch testing/coverage</a></li>
+<li><a href="#org8e0a7ee">5. Condition testing</a></li>
+<li><a href="#org8c1565b">6. Example: <code>SparseMatrix</code></a></li>
+<li><a href="#org9ad376f">7. Example: <code>max3</code></a>
+<ul>
+<li><a href="#orgc7989bf">7.1. statement coverage</a></li>
+<li><a href="#org8899658">7.2. branch coverage</a></li>
+</ul>
+</li>
+<li><a href="#org51aae9c">8. Example:</a>
+<ul>
+<li><a href="#org62f0019">8.1. condition coverage</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org977a58d" class="outline-2">
+<h2 id="org977a58d"><span class="section-number-2">1</span> Learning objectives</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>structural testing complements functional testing.
+<ul class="org-ul">
+<li>structural testing (white-box, code-based or glass-box testing)</li>
+<li>functional testing (black-box testing)</li>
+</ul></li>
+<li>structural testing techniques: adequacy, coverage</li>
+<li>common structural criteria</li>
+<li>practical uses and limitations of structual testing</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8a069ac" class="outline-2">
+<h2 id="org8a069ac"><span class="section-number-2">2</span> Structural testing</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgaf987c9" class="outline-3">
+<h3 id="orgaf987c9"><span class="section-number-3">2.1</span> Why structural testing?</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Specification might bot be complete.</li>
+<li>Specification does not specify the implementation.</li>
+<li>ensure no part of program is not tested.</li>
+<li>structural elements: e.g. loops</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3f63327" class="outline-3">
+<h3 id="org3f63327"><span class="section-number-3">2.2</span> No guarantees</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>execute all control flow elements does not guarantee finding all faults.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org127b9d3" class="outline-3">
+<h3 id="org127b9d3"><span class="section-number-3">2.3</span> in practice</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>automated mean to test</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbf7c37d" class="outline-2">
+<h2 id="orgbf7c37d"><span class="section-number-2">3</span> Statement testing/coverage</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-java">  <span style="color: #7fffd4;">int</span> <span style="color: #98fb98;">foo</span>(<span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">x</span>, <span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">y</span>)
+  {
+    <span style="color: #7fffd4;">int</span> = 0;
+    <span style="color: #ffffff;">if</span> (x &gt; y)
+    a = x - y;
+    <span style="color: #ffffff;">else</span>
+    a = y - x;
+    <span style="color: #ffffff;">return</span> a;
+  }
+</pre>
+</div>
+<ul class="org-ul">
+<li>statement, block and node coverage are the same.</li>
+<li>coverage \(\neq\) size</li>
+<li>long test is not easy to debug</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge9cde74" class="outline-2">
+<h2 id="orge9cde74"><span class="section-number-2">4</span> Branch testing/coverage</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>ST require most nodes are covered.</li>
+<li>BT requires most edges are covered.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8e0a7ee" class="outline-2">
+<h2 id="org8e0a7ee"><span class="section-number-2">5</span> Condition testing</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>e.g. <code>&amp;&amp;</code> <code>||</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8c1565b" class="outline-2">
+<h2 id="org8c1565b"><span class="section-number-2">6</span> Example: <code>SparseMatrix</code></h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-java">
+</pre>
+</div>
+<ul class="org-ul">
+<li>sparse matrix
+<ul class="org-ul">
+<li>input: sparse matrix</li>
+<li>expected: sparse</li>
+</ul></li>
+<li>non-sparse matrix
+<ul class="org-ul">
+<li>input: non-sparse matrix</li>
+<li>expected: non-sparse</li>
+</ul></li>
+<li><code>count &lt; size/2</code></li>
+<li><code>count = size/2</code></li>
+<li><code>count &gt; size/2</code></li>
+<li><code>if (a[i][j] == 0)</code></li>
+<li>integer overflow: <code>count++</code></li>
+<li>notes: test every statement in the program</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9ad376f" class="outline-2">
+<h2 id="org9ad376f"><span class="section-number-2">7</span> Example: <code>max3</code></h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgc7989bf" class="outline-3">
+<h3 id="orgc7989bf"><span class="section-number-3">7.1</span> statement coverage</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>\(T_0 = {1,2}\) node 2,3</li>
+<li>\(T_1 = {1,3,8}\) node 2,4,5,6,7,8,10</li>
+<li>statement coverage does not care edges</li>
+<li>statement coverage is the easiest criteria to achieve. need something more vigorious!</li>
+<li>\(cov = \frac{\#visited\ nodes}{\#total\ nodes}\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8899658" class="outline-3">
+<h3 id="org8899658"><span class="section-number-3">7.2</span> branch coverage</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>label all edges with true or false</li>
+<li>\(cov = \frac{\#covered\ branches}{\#branches \times 2}\)</li>
+<li>\(T_2={8,1,2}\) max is the first element.</li>
+<li>notes: 
+<ul class="org-ul">
+<li>visiting all edges means visiting all nodes.</li>
+<li>Or, \(100% branch coverage => 100% statement coverage\)</li>
+<li>either do branch coverage ot statement coverage</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org51aae9c" class="outline-2">
+<h2 id="org51aae9c"><span class="section-number-2">8</span> Example:</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>look up all courses</li>
+<li>return pass or fail</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java">  <span style="color: #ffffff;">if</span> (exam_mark &lt; 35 || cousework &lt; 40)
+      label - fail
+  <span style="color: #ffffff;">else</span>
+      label = pass
+</pre>
+</div>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">exam<sub>mark</sub></th>
+<th scope="col" class="org-right">coursework</th>
+<th scope="col" class="org-left">label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">34</td>
+<td class="org-right">38</td>
+<td class="org-left">fail</td>
+</tr>
+
+<tr>
+<td class="org-right">32</td>
+<td class="org-right">69</td>
+<td class="org-left">pass</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org62f0019" class="outline-3">
+<h3 id="org62f0019"><span class="section-number-3">8.1</span> condition coverage</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>simple condition</li>
+<li>complex condition: break into atomic conditions</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">exam&lt;35</th>
+<th scope="col" class="org-left">cw&lt;40</th>
+<th scope="col" class="org-left">expect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+e.g. <code>a &amp;&amp; b || c</code>
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">a</th>
+<th scope="col" class="org-left">b</th>
+<th scope="col" class="org-left">c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+<ul class="org-ul">
+<li>notes: 
+<ul class="org-ul">
+<li>\(100% branch coverage !=> 100% condition coverage\)</li>
+<li>\(100% condition coverage !=> 100% branch coverage\)</li>
+</ul></li>
+<li>complex condition coverage is vigorious but not feasible.</li>
+<li>compound condition is not practical.</li>
+<li>\(cov = \frac{\# truth values taken by all basic conditions}{\#basic\ conditions \times 2}\)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

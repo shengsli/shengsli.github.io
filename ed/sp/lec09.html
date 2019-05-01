@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-05-01 Wed 03:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>sp lec09 secure development</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sheng li" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">sp lec09 secure development</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga326e29">1. this lecture</a></li>
+<li><a href="#orgb5651f0">2. recap</a></li>
+<li><a href="#orgced82ac">3. a building security in process</a></li>
+<li><a href="#orgfe539d1">4. three pillars</a>
+<ul>
+<li><a href="#org34fe699">4.1. </a></li>
+<li><a href="#org3e04d7c">4.2. software security touchpoint</a></li>
+<li><a href="#org07d2716">4.3. knowledge</a></li>
+</ul>
+</li>
+<li><a href="#orgd995d3f">5. security activities during development</a></li>
+<li><a href="#orgc331964">6. 7 touchpoint activity areas</a></li>
+<li><a href="#org1cd972f">7. touchpoints in the software development lifecycle</a></li>
+<li><a href="#org1b584c1">8. code review</a>
+<ul>
+<li><a href="#orgd4d264b">8.1. code review types</a></li>
+<li><a href="#orga4d7fa3">8.2. architectural risk analysis</a></li>
+</ul>
+</li>
+<li><a href="#org5319a83">9. risk analysis in general</a></li>
+<li><a href="#orgbadce4e">10. common steps in risk analysis</a></li>
+<li><a href="#org1c886f6">11. security design guideline</a></li>
+<li><a href="#org40bd1a9">12. MS STRIDE approach</a>
+<ul>
+<li><a href="#orgcc5d68c">12.1. how stride actually work?</a></li>
+</ul>
+</li>
+<li><a href="#org7bb37a8">13. pentest</a></li>
+<li><a href="#org16f15dc">14. security testing</a></li>
+<li><a href="#orgfc757fe">15. a strategy for security testing</a></li>
+<li><a href="#org927151b">16. automating security tests</a></li>
+<li><a href="#orge94c85f">17. abuse cases</a></li>
+<li><a href="#org9cfbbe5">18. security requirements</a></li>
+<li><a href="#orgc6735cc">19. </a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga326e29" class="outline-2">
+<h2 id="orga326e29"><span class="section-number-2">1</span> this lecture</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>recap</li>
+<li>methodologies</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb5651f0" class="outline-2">
+<h2 id="orgb5651f0"><span class="section-number-2">2</span> recap</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>classic vulnerabilities
+<ul class="org-ul">
+<li>stack overflow</li>
+<li>sqli</li>
+<li>race cond</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgced82ac" class="outline-2">
+<h2 id="orgced82ac"><span class="section-number-2">3</span> a building security in process</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>gary mcgraw introduce secure programming life cycle</li>
+<li>MS has one cycle that is very similar to his</li>
+<li>how to apply to
+<ul class="org-ul">
+<li>agile</li>
+<li>waterflow</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfe539d1" class="outline-2">
+<h2 id="orgfe539d1"><span class="section-number-2">4</span> three pillars</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org34fe699" class="outline-3">
+<h3 id="org34fe699"><span class="section-number-3">4.1</span> </h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>budget and time -&gt; decide where to allocate resources for security</li>
+<li>calculate</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3e04d7c" class="outline-3">
+<h3 id="org3e04d7c"><span class="section-number-3">4.2</span> software security touchpoint</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>lesson: adding security to the end is a bad idea.
+<ul class="org-ul">
+<li>thinking about security in development</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org07d2716" class="outline-3">
+<h3 id="org07d2716"><span class="section-number-3">4.3</span> knowledge</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>work in software industry</li>
+<li>companies build up some knowledge that can be practically applied to security</li>
+<li>practice guide
+<ul class="org-ul">
+<li>things to do and not to do</li>
+<li>recommendations</li>
+<li>applicable guideline</li>
+</ul></li>
+<li>learn from past mistakes
+<ul class="org-ul">
+<li>how to respond to exploits and attacks</li>
+<li>e.g. autonomous cars: keep control of cars
+<ul class="org-ul">
+<li>connected vehicle-to-vehicle -&gt; network/remote attack</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd995d3f" class="outline-2">
+<h2 id="orgd995d3f"><span class="section-number-2">5</span> security activities during development</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc331964" class="outline-2">
+<h2 id="orgc331964"><span class="section-number-2">6</span> 7 touchpoint activity areas</h2>
+<div class="outline-text-2" id="text-6">
+<ol class="org-ol">
+<li></li>
+
+<li></li>
+
+<li></li>
+
+<li></li>
+
+<li></li>
+
+<li>pentest</li>
+<li>security ops
+<ul class="org-ul">
+<li>web browsing in military or university: restrict configuration if we need to think about environment</li>
+</ul></li>
+</ol>
+
+<ul class="org-ul">
+<li>remarks: stop adding more features</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1cd972f" class="outline-2">
+<h2 id="org1cd972f"><span class="section-number-2">7</span> touchpoints in the software development lifecycle</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>apprecriate the importance of such high-level guideline for software develpoment</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1b584c1" class="outline-2">
+<h2 id="org1b584c1"><span class="section-number-2">8</span> code review</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>fix earlier is cheaper</li>
+<li>economical view: ship product first, fix later</li>
+</ul>
+</div>
+<div id="outline-container-orgd4d264b" class="outline-3">
+<h3 id="orgd4d264b"><span class="section-number-3">8.1</span> code review types</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>manual code review
+<ul class="org-ul">
+<li>google</li>
+</ul></li>
+<li>automatic static analysis
+<ul class="org-ul">
+<li>scanning</li>
+<li>version control</li>
+<li>may need human configuration, interpretation
+<ul class="org-ul">
+<li>e.g. human knowledge, like understand buffer overflow</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga4d7fa3" class="outline-3">
+<h3 id="orga4d7fa3"><span class="section-number-3">8.2</span> architectural risk analysis</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>no machine-readable design, e.g. uml diagram</li>
+<li>risk = prob * impact</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org5319a83" class="outline-2">
+<h2 id="org5319a83"><span class="section-number-2">9</span> risk analysis in general</h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li>financial loss oriented</li>
+<li>mathematical</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbadce4e" class="outline-2">
+<h2 id="orgbadce4e"><span class="section-number-2">10</span> common steps in risk analysis</h2>
+<div class="outline-text-2" id="text-10">
+<ol class="org-ol">
+<li>study the system
+<ul class="org-ul">
+<li>what can be wrong?</li>
+</ul></li>
+<li>checklist of attacker types</li>
+<li>list vulnerabilities</li>
+<li>&#x2026;</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org1c886f6" class="outline-2">
+<h2 id="org1c886f6"><span class="section-number-2">11</span> security design guideline</h2>
+<div class="outline-text-2" id="text-11">
+<ol class="org-ol">
+<li>economy of mechanism</li>
+</ol>
+
+<ul class="org-ul">
+<li>remarks: spend some time review some of guidelines and apply to systems/projects i am developing</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org40bd1a9" class="outline-2">
+<h2 id="org40bd1a9"><span class="section-number-2">12</span> MS STRIDE approach</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li></li>
+
+<li></li>
+
+<li>repudiation</li>
+</ul>
+</div>
+<div id="outline-container-orgcc5d68c" class="outline-3">
+<h3 id="orgcc5d68c"><span class="section-number-3">12.1</span> how stride actually work?</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org7bb37a8" class="outline-2">
+<h2 id="org7bb37a8"><span class="section-number-2">13</span> pentest</h2>
+<div class="outline-text-2" id="text-13">
+<ul class="org-ul">
+<li>benefit: find real problem</li>
+<li>drawback: no accurate sense of coverage</li>
+<li>remarks: testing only shows presense</li>
+<li>bad use of pentest: 
+<ul class="org-ul">
+<li>black-box testing</li>
+</ul></li>
+<li>good use of pentest:
+<ul class="org-ul">
+<li>automatic fault-injection with fuzzing tools (very powerful tool used now)</li>
+<li>metric-driven: 
+<ul class="org-ul">
+<li>regression tests</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org16f15dc" class="outline-2">
+<h2 id="org16f15dc"><span class="section-number-2">14</span> security testing</h2>
+<div class="outline-text-2" id="text-14">
+<ul class="org-ul">
+<li>design test cases for particular abuse cases</li>
+</ul>
+<p>
+#caption: trasitional testing vs security testing
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">traditional testing</th>
+<th scope="col" class="org-left">security testing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">security is  non-functional property</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">we define what won't go wrong</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgfc757fe" class="outline-2">
+<h2 id="orgfc757fe"><span class="section-number-2">15</span> a strategy for security testing</h2>
+<div class="outline-text-2" id="text-15">
+<ol class="org-ol">
+<li></li>
+
+<li></li>
+
+<li>work through attack patterns</li>
+<li>security design errors</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org927151b" class="outline-2">
+<h2 id="org927151b"><span class="section-number-2">16</span> automating security tests</h2>
+<div class="outline-text-2" id="text-16">
+</div>
+</div>
+<div id="outline-container-orge94c85f" class="outline-2">
+<h2 id="orge94c85f"><span class="section-number-2">17</span> abuse cases</h2>
+<div class="outline-text-2" id="text-17">
+</div>
+</div>
+<div id="outline-container-org9cfbbe5" class="outline-2">
+<h2 id="org9cfbbe5"><span class="section-number-2">18</span> security requirements</h2>
+<div class="outline-text-2" id="text-18">
+<ul class="org-ul">
+<li>traditionally, separate role</li>
+<li>not just deploy software, but consider the system overall</li>
+<li>combine infosecs and devs</li>
+<li>rise of devops</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc6735cc" class="outline-2">
+<h2 id="orgc6735cc"><span class="section-number-2">19</span> </h2>
+</div>
+</div>
+</body>
+</html>

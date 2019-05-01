@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-05-01 Wed 03:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>sp lec10 w7b web application security i</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sheng li" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">sp lec10 w7b web application security i</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd636f77">1. owasp</a></li>
+<li><a href="#orgfd3060f">2. changes</a></li>
+<li><a href="#orgb3260e3">3. roadmap</a></li>
+<li><a href="#orge1f48ff">4. http</a>
+<ul>
+<li><a href="#org9beb01f">4.1. http get</a></li>
+<li><a href="#org2728ae8">4.2. http response</a></li>
+</ul>
+</li>
+<li><a href="#orgba5899c">5. client != browser</a></li>
+<li><a href="#org0a07a36">6. referer header</a></li>
+<li><a href="#org08b1b7b">7. inputs via get request</a></li>
+<li><a href="#org8bf758b">8. post request</a></li>
+<li><a href="#orgb99e4b9">9. get vs post</a></li>
+<li><a href="#orgb680278">10. authentication</a></li>
+<li><a href="#org7d1cb2d">11. is application vulnerable?</a></li>
+<li><a href="#org0043384">12. modern passwd recommendations</a></li>
+<li><a href="#orga8f7ec6">13. outlook for web authentication/identity</a></li>
+<li><a href="#orgecbbc2e">14. cookies</a></li>
+<li><a href="#org9362c8d">15. cookies and the law</a></li>
+<li><a href="#org635b6c4">16. cookies in http headers</a></li>
+<li><a href="#orgbed3608">17. secsure cookie</a>
+<ul>
+<li><a href="#org6deb45f">17.1. expiry date</a></li>
+<li><a href="#org36775f4">17.2. removing cookies</a></li>
+</ul>
+</li>
+<li><a href="#org75c9424">18. session hijacking</a></li>
+<li><a href="#org5a40726">19. session hijacking defenses</a></li>
+<li><a href="#org3a83e25">20. </a></li>
+<li><a href="#orgfa8a6d3">21. session management</a></li>
+</ul>
+</div>
+</div>
+<ul class="org-ul">
+<li>the most important area in security alongside mobile</li>
+<li>often relate to e-commerce</li>
+</ul>
+
+<div id="outline-container-orgd636f77" class="outline-2">
+<h2 id="orgd636f77"><span class="section-number-2">1</span> owasp</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>well known by owasp top 10</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfd3060f" class="outline-2">
+<h2 id="orgfd3060f"><span class="section-number-2">2</span> changes</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>interactions btw client and server</li>
+<li>issues:
+<ul class="org-ul">
+<li>xml handling</li>
+<li>logging: log what could go wrong</li>
+</ul></li>
+<li>csrf</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb3260e3" class="outline-2">
+<h2 id="orgb3260e3"><span class="section-number-2">3</span> roadmap</h2>
+</div>
+<div id="outline-container-orge1f48ff" class="outline-2">
+<h2 id="orge1f48ff"><span class="section-number-2">4</span> http</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>why run things over https?
+<ul class="org-ul">
+<li>port 80 for https</li>
+<li>web traffic is allowed by firewall in most cases</li>
+</ul></li>
+<li>stateless design -&gt; problems with cookies</li>
+<li>web pages get more complicated</li>
+<li>keep connection open and allow interaction</li>
+</ul>
+</div>
+<div id="outline-container-org9beb01f" class="outline-3">
+<h3 id="org9beb01f"><span class="section-number-3">4.1</span> http get</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>do not track ???</li>
+<li>no cache</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2728ae8" class="outline-3">
+<h3 id="org2728ae8"><span class="section-number-3">4.2</span> http response</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>set-cookie</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgba5899c" class="outline-2">
+<h2 id="orgba5899c"><span class="section-number-2">5</span> client != browser</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-shell">da: 
+</pre>
+</div>
+<ul class="org-ul">
+<li>client security doesn't exist</li>
+<li>url</li>
+<li>post form content</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0a07a36" class="outline-2">
+<h2 id="org0a07a36"><span class="section-number-2">6</span> referer header</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>security issues with headers?
+<ul class="org-ul">
+<li>many plug-ins give a insight of security issues</li>
+<li>spoofing</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org08b1b7b" class="outline-2">
+<h2 id="org08b1b7b"><span class="section-number-2">7</span> inputs via get request</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>injection</li>
+<li>sensitive data passed via get request</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8bf758b" class="outline-2">
+<h2 id="org8bf758b"><span class="section-number-2">8</span> post request</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>contents are not encrypted</li>
+<li>https using stl?</li>
+<li>logging applications generally not log post data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb99e4b9" class="outline-2">
+<h2 id="orgb99e4b9"><span class="section-number-2">9</span> get vs post</h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li>get:</li>
+<li>post:</li>
+<li>which to use? sensitive data or large data use post</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb680278" class="outline-2">
+<h2 id="orgb680278"><span class="section-number-2">10</span> authentication</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li>location: somewhere you are</li>
+<li>time</li>
+<li>read more by searching multi factor authentication</li>
+<li>machine to machine authentication
+<ul class="org-ul">
+<li>cryptography: public-key or symmetric etc.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7d1cb2d" class="outline-2">
+<h2 id="org7d1cb2d"><span class="section-number-2">11</span> is application vulnerable?</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li>weak passwd</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0043384" class="outline-2">
+<h2 id="org0043384"><span class="section-number-2">12</span> modern passwd recommendations</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li>avoid passwd</li>
+<li>not require rotation ???</li>
+<li>guideline</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga8f7ec6" class="outline-2">
+<h2 id="orga8f7ec6"><span class="section-number-2">13</span> outlook for web authentication/identity</h2>
+<div class="outline-text-2" id="text-13">
+<ul class="org-ul">
+<li>oauth , openid, &#x2026;</li>
+<li>fido, initiative to replace passwd</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgecbbc2e" class="outline-2">
+<h2 id="orgecbbc2e"><span class="section-number-2">14</span> cookies</h2>
+<div class="outline-text-2" id="text-14">
+<ul class="org-ul">
+<li>some useful functions:
+<ul class="org-ul">
+<li>user logged in: session</li>
+</ul></li>
+<li>less desirable use:
+<ul class="org-ul">
+<li>advertising network tracking ids</li>
+<li>may shared btw websites</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9362c8d" class="outline-2">
+<h2 id="org9362c8d"><span class="section-number-2">15</span> cookies and the law</h2>
+</div>
+<div id="outline-container-org635b6c4" class="outline-2">
+<h2 id="org635b6c4"><span class="section-number-2">16</span> cookies in http headers</h2>
+<div class="outline-text-2" id="text-16">
+<ul class="org-ul">
+<li>rfc6265</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbed3608" class="outline-2">
+<h2 id="orgbed3608"><span class="section-number-2">17</span> secsure cookie</h2>
+<div class="outline-text-2" id="text-17">
+<ul class="org-ul">
+<li>limit the scope of the cookie to secure channels</li>
+</ul>
+</div>
+<div id="outline-container-org6deb45f" class="outline-3">
+<h3 id="org6deb45f"><span class="section-number-3">17.1</span> expiry date</h3>
+<div class="outline-text-3" id="text-17-1">
+<ul class="org-ul">
+<li>we cannot trust browser</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org36775f4" class="outline-3">
+<h3 id="org36775f4"><span class="section-number-3">17.2</span> removing cookies</h3>
+</div>
+</div>
+<div id="outline-container-org75c9424" class="outline-2">
+<h2 id="org75c9424"><span class="section-number-2">18</span> session hijacking</h2>
+<div class="outline-text-2" id="text-18">
+<ul class="org-ul">
+<li>session identifier identifies device and user</li>
+<li>possible theft mechanisms:
+<ul class="org-ul">
+<li>xss: sniffing, interception</li>
+<li></li>
+
+<li>session fixation: e.g. add items to shopping cart -&gt; login -&gt; still keep items</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5a40726" class="outline-2">
+<h2 id="org5a40726"><span class="section-number-2">19</span> session hijacking defenses</h2>
+<div class="outline-text-2" id="text-19">
+<ul class="org-ul">
+<li></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3a83e25" class="outline-2">
+<h2 id="org3a83e25"><span class="section-number-2">20</span> </h2>
+<div class="outline-text-2" id="text-20">
+<ul class="org-ul">
+<li>always use things that most people believe that is secure
+<ul class="org-ul">
+<li>very risky to do in your own way</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfa8a6d3" class="outline-2">
+<h2 id="orgfa8a6d3"><span class="section-number-2">21</span> session management</h2>
+<div class="outline-text-2" id="text-21">
+<ul class="org-ul">
+<li>alternative: use post instead of cookies, still problematic</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

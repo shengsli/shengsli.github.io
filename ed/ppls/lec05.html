@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-05-01 Wed 03:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ppls lec05 w3a Lamport's Bakery Algorithm</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sheng li" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ppls lec05 w3a Lamport's Bakery Algorithm</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc952bd5">1. Today's lecture</a></li>
+<li><a href="#org1e99117">2. Lamport's Bakery Algorithm</a></li>
+<li><a href="#org981628a">3. version 1 (correct)</a></li>
+<li><a href="#org08ed2f0">4. version 2 (wrong)</a></li>
+<li><a href="#orgd43df67">5. version 3: fix 1st problem</a>
+<ul>
+<li><a href="#org271e7e4">5.1. gist of it</a></li>
+<li><a href="#org8a91ee5">5.2. fixed code</a></li>
+<li><a href="#orgb4c92c0">5.3. how version 3 behave? 62</a></li>
+</ul>
+</li>
+<li><a href="#org1410be1">6. version 4: fix 2nd problem</a>
+<ul>
+<li><a href="#orgc4a0f56">6.1. code</a></li>
+</ul>
+</li>
+<li><a href="#orgaa9a517">7. preview: barrier (next lecture)</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc952bd5" class="outline-2">
+<h2 id="orgc952bd5"><span class="section-number-2">1</span> Today's lecture</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>last lecture covers spin lock, test and set</li>
+<li>we will continue to look at critical section</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1e99117" class="outline-2">
+<h2 id="org1e99117"><span class="section-number-2">2</span> Lamport's Bakery Algorithm</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Lamport showed how to implement critical sections using only simple atomic read and simple atomic write (i.e. <b>no need for atomic read-modify-write</b>).</li>
+<li>The idea is based around Bakery queuing or a ticket machine.</li>
+<li><b>IMPORTANT NOTE</b>: the algorithm assumes <b>sequential memory consistency</b>.</li>
+<li>unlike spin lock versions, it <b>guarantees eventual entry</b>.</li>
+</ul>
+<pre class="example">
+       1                                   n
+	  +---+---+---+---+---+---+---+---+---+---+
+ turn |0  |0  |17 |0  |0  |0  |0  |0  |18 |19 |
+	  +---+---+---+---+---+---+---+---+---+---+
+</pre>
+<ul class="org-ul">
+<li>find the biggest ticket, add one to it, and that's your turn/ticket.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org981628a" class="outline-2">
+<h2 id="org981628a"><span class="section-number-2">3</span> version 1 (correct)</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><p>
+It is cheating as it has a big c.s and await.
+</p>
+<pre class="example">
+int turn[n] = [0,0,...,0];
+co [i=1 to n]
+  while (true) {
+    &lt; turn[i] = max (turn[1..n]) + 1; &gt;           ## a big atomic section
+    for (j = 1 to n except i) {
+      &lt; await (turn[j]==0 or turn[i]&lt;turn[j]; &gt;   ## wait until my turn is better than yours
+    }
+    critical section;
+    turn[i] = 0;
+    non-critical section;
+    }
+  }
+}
+</pre></li>
+<li>not efficient bc. it has a massive atomic section.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org08ed2f0" class="outline-2">
+<h2 id="org08ed2f0"><span class="section-number-2">4</span> version 2 (wrong)</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>throw away the big atomic c.s.</li>
+<li><p>
+turn await into a while loop
+</p>
+<pre class="example">
+int turn[n] = [0,0,...,0];
+co [i=1 to n] {
+  while (true) {
+    turn[i] = max (tun[1..n]) + 1;
+  }
+  for (j = 1 to n except i) {
+    while (turn[j]!=0 and (turn[i]&gt;turn[j])) skip; ## wait until my turn is better than yours
+  }
+}
+</pre></li>
+<li>2 problems:
+<ol class="org-ol">
+<li>claim lower turn</li>
+<li>duplicate turn</li>
+</ol></li>
+<li>a concrete example when this version could go wrong: overtake p59</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd43df67" class="outline-2">
+<h2 id="orgd43df67"><span class="section-number-2">5</span> version 3: fix 1st problem</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>1st problem arises from the overlapping of taking tickets and checking turns</li>
+<li>We will not properly prove it but will give you a convincing argument to it.</li>
+</ul>
+</div>
+<div id="outline-container-org271e7e4" class="outline-3">
+<h3 id="org271e7e4"><span class="section-number-3">5.1</span> gist of it</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>1 is pseudo turn, artificially low turn. 1 indicates that a thread is in the process of setting its turn/is attempting to get a turn.</li>
+<li>NOTICE: no thread will ever have a real turn value of 1.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8a91ee5" class="outline-3">
+<h3 id="org8a91ee5"><span class="section-number-3">5.2</span> fixed code</h3>
+<div class="outline-text-3" id="text-5-2">
+<pre class="example">
+int turn[n] = [0,0,...,0]
+co [i=1 to n] {
+  while (true) {
+    turn[i] = 1; turn[i] = max (turn[1..n]) + 1;
+    for (j = 1 to n except i) {
+      while ( turn[j]!=0 and turn[i] &gt; turn[j] ) skip;
+    }
+    critical section;
+    turn[i] = 0;
+    non-critical section;
+  }
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-orgb4c92c0" class="outline-3">
+<h3 id="orgb4c92c0"><span class="section-number-3">5.3</span> how version 3 behave? 62</h3>
+</div>
+</div>
+<div id="outline-container-org1410be1" class="outline-2">
+<h2 id="org1410be1"><span class="section-number-2">6</span> version 4: fix 2nd problem</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>2nd problem (duplicate turn) occurs when threads end up choosing the same turn (because choosing is no longer atomic).</li>
+<li>how to deal with it? This one is easier. We simply need a artificial and systematic way of deciding which of two equal turns will be treated as though it were smaller than the other.</li>
+<li>We do this by using the thread ids (which are definitely distinct).</li>
+</ul>
+</div>
+<div id="outline-container-orgc4a0f56" class="outline-3">
+<h3 id="orgc4a0f56"><span class="section-number-3">6.1</span> code</h3>
+<div class="outline-text-3" id="text-6-1">
+<pre class="example">
+int turn[n] = [0,0,...,0]
+co [i=1 to n] {
+  while (true) {
+    turn[i] = 1; turn[i] = max (turn[1..n]) + 1;
+    for (j = 1 to n except i) {
+      while ( turn[j]!=0 and (turn[i],i) &gt; (turn[j],j) ) skip;
+    }
+    critical section;
+    turn[i] = 0;
+    non-critical section;
+  }
+}
+</pre>
+
+<ul class="org-ul">
+<li>fairness: 
+<ul class="org-ul">
+<li>locking version does not guarantee fairness.</li>
+<li>this version does guarantee fairness.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaa9a517" class="outline-2">
+<h2 id="orgaa9a517"><span class="section-number-2">7</span> preview: barrier (next lecture)</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>We will see 3-4 implementations of barriers with different properties. 
+<ol class="org-ol">
+<li>centralised implementations: based around counting
+<ul class="org-ul">
+<li>challenge: how to reset the barrier</li>
+<li>counting based barriers have a potential issue: have a critical section which is adding one to a counter.</li>
+</ul></li>
+<li>decentralised implementations: pairwise synchronization</li>
+</ol></li>
+<li>We will all do that in the shared memory context.</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

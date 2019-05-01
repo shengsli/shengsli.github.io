@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-05-01 Wed 03:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Database Management Systems sec9.5 Files of Records p324-326 notes</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Sheng Li" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Database Management Systems sec9.5 Files of Records p324-326 notes</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org83643a0">1. Jargon</a></li>
+<li><a href="#orgd20317d">2. Context</a></li>
+<li><a href="#org5a05b8a">3. Implementing Heap Files</a>
+<ul>
+<li><a href="#orgb752208">3.1. Implementation 1: Linked List of Pages</a>
+<ul>
+<li><a href="#org8b704d3">3.1.1. how to implement?</a></li>
+<li><a href="#orgb9098ee">3.1.2. how it works?</a></li>
+</ul>
+</li>
+<li><a href="#org4ca6ffd">3.2. Implementation 2: Directory of Pages </a>
+<ul>
+<li><a href="#orgcb6f65f">3.2.1. extract from lec03 p9</a></li>
+<li><a href="#org1f078c5">3.2.2. </a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org83643a0" class="outline-2">
+<h2 id="org83643a0"><span class="section-number-2">1</span> Jargon</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>DBMS stores a database as one or more files on disk.</li>
+<li>a file is (either a collection of records or) a collection of pages.</li>
+<li>pages contain records</li>
+<li>a heap file is an <b>unordered collection of pages</b> where <b>records are stored in no particular order</b>.
+<ul class="org-ul">
+<li>2 implementation: linked list, page directory</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd20317d" class="outline-2">
+<h2 id="orgd20317d"><span class="section-number-2">2</span> Context</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>pages stored on disk -&gt; cache pages into main memory</li>
+<li>records are stored in pages</li>
+<li>pages are organized into logical collections or <i>files</i></li>
+<li>notes: 
+<ul class="org-ul">
+<li>a collection of records is not limited to the contents of a single page</li>
+<li>a file can span several pages</li>
+</ul></li>
+<li>In this section, we consider <b>how a collection of pages can be organized as a file</b>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5a05b8a" class="outline-2">
+<h2 id="org5a05b8a"><span class="section-number-2">3</span> Implementing Heap Files</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>a heap file is an unordered set of records.</li>
+<li>data in pages of a heal file is not ordered.</li>
+<li>every record in the file has a unique <code>rid</code>.</li>
+<li>every page in a file is of the same size.</li>
+<li>operations:
+<ul class="org-ul">
+<li><code>create(file)</code></li>
+<li><code>destory(file)</code></li>
+<li><code>insert(record)</code></li>
+<li><code>delete(rid)</code></li>
+<li><code>get(rid)</code></li>
+<li><code>scan()</code> all records</li>
+</ul></li>
+<li>requirements:</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> requirements</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">functions</th>
+<th scope="col" class="org-left">requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">scans</td>
+<td class="org-left">keep track of pages in each heap file</td>
+</tr>
+
+<tr>
+<td class="org-left">efficient insert</td>
+<td class="org-left">keep track of pages that contain free space</td>
+</tr>
+</tbody>
+</table>
+<ul class="org-ul">
+<li>2 alternative ways: 
+<ul class="org-ul">
+<li>pages must hold 2 pointers which are page ids for file-level bookkeeping in addition to data.</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgb752208" class="outline-3">
+<h3 id="orgb752208"><span class="section-number-3">3.1</span> Implementation 1: Linked List of Pages</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-org8b704d3" class="outline-4">
+<h4 id="org8b704d3"><span class="section-number-4">3.1.1</span> how to implement?</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<ul class="org-ul">
+<li>maintain a heap file as a doubly linked list of pages</li>
+<li>DBMS can remember there 1st page is located
+<ul class="org-ul">
+<li>by maintaining a table containing pairs of <code>&lt;heap_file_name,page_laddr&gt;</code></li>
+</ul></li>
+<li>header page: 1st page of the file</li>
+<li>maintain information of empty slots created by deletion -&gt; 2 distinct parts:
+<ul class="org-ul">
+<li>how to keep track of free space within a page?
+<ul class="org-ul">
+<li>ans: <a href="dms9.6.html">DMS sec9.6</a></li>
+</ul></li>
+<li>how to keep track of pages that have some free space?
+<ul class="org-ul">
+<li>ans: maintain a doubly linked list of pages with free space</li>
+<li>and a doubly linked list with full space</li>
+</ul></li>
+</ul></li>
+<li>remarks: each pointer is really a page id.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb9098ee" class="outline-4">
+<h4 id="orgb9098ee"><span class="section-number-4">3.1.2</span> how it works?</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<ul class="org-ul">
+<li>require a new page: 
+<ul class="org-ul">
+<li>make a request to disk space manager</li>
+<li>add to the list of pages in the file</li>
+</ul></li>
+<li>delete a page: 
+<ul class="org-ul">
+<li>remove the page from the list</li>
+<li>disk space manager deallocate it</li>
+</ul></li>
+<li>remarks: 
+<ul class="org-ul">
+<li>this scheme can be easily generalize to allocate or deallocate a sequence of several pages</li>
+<li>disadvantages: 
+<ul class="org-ul">
+<li>virtually all pages in a file will be on the free list <b>if records are of variable length</b>.
+<ul class="org-ul">
+<li>because it is likely that ever page has a leas a few free bytes.</li>
+</ul></li>
+<li>to insert a typical record, we must retrieve and examine several pages on the free list before we find one with enough free space.</li>
+</ul></li>
+<li><a href="#org4116043">directory-based heap file</a> addresses disadvantages.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4ca6ffd" class="outline-3">
+<h3 id="org4ca6ffd"><span class="section-number-3">3.2</span> Implementation 2: Directory of Pages <a id="org4116043"></a></h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-orgcb6f65f" class="outline-4">
+<h4 id="orgcb6f65f"><span class="section-number-4">3.2.1</span> extract from <a href="lec03.html">lec03</a> p9</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<ul class="org-ul">
+<li>DBMS maintains special pages (directory of pages) that tracks the location of data pages in the database file.</li>
+<li>each directory entry identifies a page</li>
+<li>the directory records free space per page
+<ul class="org-ul">
+<li>efficient free space search</li>
+<li>granularity as trade-off space vs. accuracy</li>
+<li>disadvantages: hosting the directory introduces memory overhead</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1f078c5" class="outline-4">
+<h4 id="org1f078c5"><span class="section-number-4">3.2.2</span> </h4>
+<div class="outline-text-4" id="text-3-2-2">
+<ul class="org-ul">
+<li>maintain a directory of pages</li>
+<li>DBMS must remember where 1st directory page of each heap file is located</li>
+<li>the directory itself is a collection of pages and is shown as a linked list.</li>
+<li>each directory entry identifies a page (or a sequence of pages) in the heap file.</li>
+<li>as the heap file grows or shrinks, # of entries in the directories grows or shrinks correspondingly.</li>
+<li>remarks: 
+<ul class="org-ul">
+<li>each directory entry is quite small cf. a typical page.</li>
+<li>the size of directory is likely to be very small cf. the size of the heap file.</li>
+</ul></li>
+<li>free space can be managed by 
+<ul class="org-ul">
+<li>maintaining <b>a bit per entry</b>, indicating whether the page has any free space</li>
+<li>or <b>a count per entry</b>, indicating the <b>amount</b> of free space.</li>
+</ul></li>
+<li>if the file contains variable-length records, 
+<ul class="org-ul">
+<li>we can examine the <b>free space count</b> for an entry to determine if the record fits on the page pointed to by the entry.</li>
+</ul></li>
+<li>since several entries fit on a directory page, we can <b>efficiently search for a data page with enough space</b> to hold a record to be inserted.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-05-01 Wed 03:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ADBS lec07 w4a External Sorting &amp; Aggregation</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Sheng Li" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ADBS lec07 w4a External Sorting &amp; Aggregation</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf889b3c">1. Focus of this lecture:</a></li>
+<li><a href="#org3d0e1e8">2. Query plans and operators</a></li>
+<li><a href="#orgbe05e6c">3. Why do we need sorting?</a></li>
+<li><a href="#orgac042f6">4. Sorting</a></li>
+<li><a href="#org499ddab">5. Sorting algorithm</a>
+<ul>
+<li><a href="#org4e1b8ea">5.1. external sorting</a></li>
+<li><a href="#org8a0b7b6">5.2. 2-way external merge sort (B=3 buffer pages) p9</a></li>
+<li><a href="#orgfdc3218">5.3. External merge sort (\(B>3\) bufer pages)</a></li>
+<li><a href="#orgecd187c">5.4. I/O for external merge sort</a></li>
+<li><a href="#org6cffe6a">5.5. Double buffering</a></li>
+</ul>
+</li>
+<li><a href="#org6fcbb22">6. Textbook: Database Management Systems, chapter 10, p360</a>
+<ul>
+<li><a href="#org2f7ac0c">6.1. This chapter consider 2 index data structures: ISAM and B+ trees, based on tree organization.</a></li>
+<li><a href="#org6ac1948">6.2. What is bulk-loading?</a></li>
+<li><a href="#orga3a718e">6.3. Bulk-loading algorithm</a></li>
+</ul>
+</li>
+<li><a href="#org953b1d0">7. Textbook: Database Management Systems, chapter 13, external sorting, p421</a>
+<ul>
+<li><a href="#org538162d">7.1. blocked I/O p430</a></li>
+</ul>
+</li>
+<li><a href="#org8c0a3b8">8. Useful links:</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf889b3c" class="outline-2">
+<h2 id="orgf889b3c"><span class="section-number-2">1</span> Focus of this lecture:</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>implementation of one of the most basic and important operators: <b>sort</b></li>
+<li>implementation of (grouped by) <b>aggregation</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3d0e1e8" class="outline-2">
+<h2 id="org3d0e1e8"><span class="section-number-2">2</span> Query plans and operators</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>DBMSs do not execute a query as a large monolithic black but rather provide specifised rountines, the <b>query operators</b></li>
+<li><b>query plan</b> = network of operators able to evaluate a query</li>
+<li>each operator is carefully implemented to perform well for a specific task</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbe05e6c" class="outline-2">
+<h2 id="orgbe05e6c"><span class="section-number-2">3</span> Why do we need sorting?</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><code>ORDER BY</code></li>
+<li><code>DISTINCT</code></li>
+<li><code>WHERE R.B = S.B</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgac042f6" class="outline-2">
+<h2 id="orgac042f6"><span class="section-number-2">4</span> Sorting</h2>
+</div>
+<div id="outline-container-org499ddab" class="outline-2">
+<h2 id="org499ddab"><span class="section-number-2">5</span> Sorting algorithm</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>if data fits in memory, use standard a sorting algoorithm, like quick-sort</li>
+<li>otherwise, write data out to disk, e.g. external sorting</li>
+</ul>
+</div>
+<div id="outline-container-org4e1b8ea" class="outline-3">
+<h3 id="org4e1b8ea"><span class="section-number-3">5.1</span> external sorting</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>how to sort a file of records whose size exceeds the available main memory space?
+divide and conquer:
+<ul class="org-ul">
+<li>sort chunks of data that fit in memory</li>
+<li>write back sorted chunks to disk</li>
+<li>combined sorted chunks into a single large file</li>
+</ul></li>
+<li>approach the task in two phases:
+<ol class="org-ol">
+<li>sort a file of arbitrary size is possible using only 3 buffer pages</li>
+<li>refine this algorithm to make effective use of larger buffer sizes</li>
+</ol></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8a0b7b6" class="outline-3">
+<h3 id="org8a0b7b6"><span class="section-number-3">5.2</span> 2-way external merge sort (B=3 buffer pages) p9</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Context:
+<ul class="org-ul">
+<li>files are broken into N pages.</li>
+<li>DBMS has a finite number of B fixed-size buffer pages.</li>
+</ul></li>
+<li>2 phases:
+<ul class="org-ul">
+<li>pass #0:
+<ul class="org-ul">
+<li>read a page into memory, sort it, and write it back to disk (uses 1 buffer page)</li>
+<li>each sorted set od pages is called a <b>run</b></li>
+</ul></li>
+<li>pass #1, #2, &#x2026;
+<ul class="org-ul">
+<li>recursively merge pairs of runs into twice as long (uses 3 buffer pages)</li>
+</ul></li>
+</ul></li>
+<li>\(\#passes = 1 + log_2 N\)</li>
+<li>total I/O cost \(=2N\cdot \#passes\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfdc3218" class="outline-3">
+<h3 id="orgfdc3218"><span class="section-number-3">5.3</span> External merge sort (\(B>3\) bufer pages)</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>how to effectively use full buffer space during in-memory sort?
+<ul class="org-ul">
+<li>reduce # of initial runs by using the full buffer space during in-memory sort</li>
+<li>reduce # of passes by merging B-1 runs at a time</li>
+</ul></li>
+<li>2 phases:
+<ul class="org-ul">
+<li>pass #0:
+<ul class="org-ul">
+<li>use B buffer pages</li>
+<li>produce N/B sorted runs of size B</li>
+</ul></li>
+<li>pass #1, #2, &#x2026;
+<ul class="org-ul">
+<li>merge B-1 runs (i.e. multi-way merge)</li>
+</ul></li>
+</ul></li>
+<li>\(\#passes = 1 + log_{B-1}{(N/B)}\)</li>
+<li>total I/O cost \(=2N\cdot \#passes\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgecd187c" class="outline-3">
+<h3 id="orgecd187c"><span class="section-number-3">5.4</span> I/O for external merge sort</h3>
+</div>
+<div id="outline-container-org6cffe6a" class="outline-3">
+<h3 id="org6cffe6a"><span class="section-number-3">5.5</span> Double buffering</h3>
+</div>
+</div>
+<div id="outline-container-org6fcbb22" class="outline-2">
+<h2 id="org6fcbb22"><span class="section-number-2">6</span> Textbook: Database Management Systems, chapter 10, p360</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org2f7ac0c" class="outline-3">
+<h3 id="org2f7ac0c"><span class="section-number-3">6.1</span> This chapter consider 2 index data structures: ISAM and B+ trees, based on tree organization.</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>efficient supprt for: 
+<ul class="org-ul">
+<li>range search</li>
+<li>insert</li>
+<li>delete</li>
+</ul></li>
+<li>support but not efficient: 
+<ul class="org-ul">
+<li>equality selection, due to hash-based indexes (discussed in chapter 11)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6ac1948" class="outline-3">
+<h3 id="org6ac1948"><span class="section-number-3">6.2</span> What is bulk-loading?</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Entries are added to a B+ tree in two ways. 
+<ol class="org-ol">
+<li>a collection of data records with a B+ tree index on it
+<ul class="org-ul">
+<li>add a record to the collection</li>
+</ul></li>
+<li>a collection of data records for which we want to create a B+ tree index on some key fields
+<ul class="org-ul">
+<li>start with an empty tree and insert an entry for each data record, one at a time</li>
+</ul></li>
+</ol></li>
+<li>This approach is expensive because each entry requires us to start from the root and go down to the appropriate leaf page. Even though the index-level pages are likely to stay in the appropriate leaf page.</li>
+<li>For this reason, many systems provide a buil-loading utility for creating a B+ tree index on an existing collection on an existing collection of data records. 
+<ol class="org-ol">
+<li>sort data entries k* to be inserted into the (to be created) B+ tree according to saerch key k.</li>
+<li>if the entries are key-pointer pairs, sorting them does not mean soring the data records that ar epointd to.</li>
+</ol></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga3a718e" class="outline-3">
+<h3 id="orga3a718e"><span class="section-number-3">6.3</span> Bulk-loading algorithm</h3>
+</div>
+</div>
+<div id="outline-container-org953b1d0" class="outline-2">
+<h2 id="org953b1d0"><span class="section-number-2">7</span> Textbook: Database Management Systems, chapter 13, external sorting, p421</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org538162d" class="outline-3">
+<h3 id="org538162d"><span class="section-number-3">7.1</span> blocked I/O p430</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>page I/O is taken as cost metric</li>
+<li>the goal is to minimize # of passes because each page is read/written in each pass. 
+<ul class="org-ul">
+<li>maximize fanin during merging</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org8c0a3b8" class="outline-2">
+<h2 id="org8c0a3b8"><span class="section-number-2">8</span> Useful links:</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li><a href="https://www.javatpoint.com/b-plus-tree">B+ tree tutorial</a></li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

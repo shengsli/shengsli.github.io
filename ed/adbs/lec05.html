@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-05-01 Wed 03:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ADBS lec05 w3a Tree-Structured Indexing</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Sheng Li" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ADBS lec05 w3a Tree-Structured Indexing</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org18b21cb">1. Sorted files and binary search</a></li>
+<li><a href="#orgca8cc5b">2. Tree-Structured Indexing p4</a>
+<ul>
+<li><a href="#org469f7bc">2.1. ISAM: Indexed Sequential Access Method p6</a></li>
+<li><a href="#org943d820">2.2. Comments on ISAM p11</a></li>
+<li><a href="#org3a1d12b">2.3. ISAM vs. Binary seach p12</a></li>
+<li><a href="#orgfaac664">2.4. B+ Tree (most widely used index) p13</a>
+<ul>
+<li><a href="#orge1ee78d">2.4.1. Examples p14</a></li>
+<li><a href="#org6d3d9cf">2.4.2. Optimizations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org18b21cb" class="outline-2">
+<h2 id="org18b21cb"><span class="section-number-2">1</span> Sorted files and binary search</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><p>
+Range query:
+</p>
+<div class="org-src-container">
+<pre class="src src-sql:">  SELECT * FROM Customer 
+   WHERE zipcode BETWEEN 8800 AND 8999
+</pre>
+</div>
+<ul class="org-ul">
+<li>search phase: <b>binary search</b> find the <b>first qualifying record</b> \(\Rightarrow O(log_2 N)\), N records</li>
+<li>scan phase: <b>sequential access</b></li>
+</ul></li>
+<li>Disadvantages: 
+<ul class="org-ul">
+<li>additional disk I/O</li>
+<li>Binary search jumps left or right. Unpredictable jumps is bad for page prefetching.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgca8cc5b" class="outline-2">
+<h2 id="orgca8cc5b"><span class="section-number-2">2</span> Tree-Structured Indexing p4</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>2 index structures:
+<ul class="org-ul">
+<li>ISAM (indexed sequential access method): <b>static</b> structure</li>
+<li>B+ tree: <b>dynamic</b> structure</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-org469f7bc" class="outline-3">
+<h3 id="org469f7bc"><span class="section-number-3">2.1</span> ISAM: Indexed Sequential Access Method p6</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>non-leaf pages: 
+<ul class="org-ul">
+<li>A non-leaf page has multiple index entries.</li>
+<li>An index entry is &lt;search key value, page ID&gt;.</li>
+<li>Non-leaf pages only direct searches.</li>
+</ul></li>
+<li>leaf pages: 
+<ul class="org-ul">
+<li>contain index data entries k*. A data entry is &lt;k, rid&gt;.</li>
+<li>primary pages</li>
+<li>overflow pages: unordered</li>
+</ul></li>
+<li>Leaf pages allocated sequentially
+<ul class="org-ul">
+<li>search: start at root, use key comparisons to go to leaf</li>
+<li>insert:</li>
+<li>delete</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org943d820" class="outline-3">
+<h3 id="org943d820"><span class="section-number-3">2.2</span> Comments on ISAM p11</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>non-leaf levels are not affected by inserts/deletes
+<ul class="org-ul">
+<li><b>need not be locked</b> during concurrent index accesses</li>
+<li>locking can be a bottleneck in dynamic tree indexes (particularly near the root)</li>
+</ul></li>
+<li>ISAM may <b>lose balance</b> after heavy updating
+<ul class="org-ul">
+<li>create long chains of overflow pages</li>
+<li>search performance can degrade over time</li>
+<li><b>leaving free space ~20%</b> during index creation partially reduces this problem</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3a1d12b" class="outline-3">
+<h3 id="org3a1d12b"><span class="section-number-3">2.3</span> ISAM vs. Binary seach p12</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>N = # pages in the data file (search space)</li>
+<li>\(F = \frac{max\ \# childern}{index node}\), \(F = 1000\) typically</li>
+</ul>
+<blockquote>
+<p>
+The <b>average</b> number of children for a <b>non-leaf node</b> is called the <b>fanout</b> of the tree. 
+If every non-leaf node has n children, a tree of height h has \(n^h\) leaf pages. In practice, nodes do not have the same number of children, but using the average value F for n, we still get a good approximation to the number of leaf pages, \(F^h\). (textbook)
+</p>
+</blockquote>
+<ul class="org-ul">
+<li>After s steps down the tree, search space is reduced to \(N/F^s\)
+<ul class="org-ul">
+<li>how many steps? \(s = log_F N, F = 1000 typically\)</li>
+<li>\(s = log_F N << log_2 N\)</li>
+<li>ISAM is much more efficient than binary search</li>
+</ul></li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">search</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">binary</td>
+<td class="org-left">\(log_2 N\)</td>
+</tr>
+
+<tr>
+<td class="org-left">ISAM</td>
+<td class="org-left">\(log_F N\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgfaac664" class="outline-3">
+<h3 id="orgfaac664"><span class="section-number-3">2.4</span> B+ Tree (most widely used index) p13</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>no overflow chains</li>
+<li>remain balanced i.e. every leaf is at same depth</li>
+<li>search performance <b>only</b> dependent on the height
+<ul class="org-ul">
+<li>height rarely exceeds 3 due to high fanout</li>
+</ul></li>
+<li>efficient insert/delete procedures
+<ul class="org-ul">
+<li>data file grow/shrink dynamically, non-leaf nodes are modified</li>
+</ul></li>
+<li>each node (except the root) has a <b>minimum occupancy</b> of 50%
+<ul class="org-ul">
+<li>each non-root node contains <b>\(d \leq m \leq 2d\)</b> entries, d is the <b>order</b> of the tree</li>
+</ul></li>
+<li>leaf pages are doubly linked</li>
+<li>side notes:
+
+<ul class="org-ul">
+<li>internal nodes aka index nodes</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orge1ee78d" class="outline-4">
+<h4 id="orge1ee78d"><span class="section-number-4">2.4.1</span> Examples p14</h4>
+<div class="outline-text-4" id="text-2-4-1">
+</div>
+<ol class="org-ol">
+<li><a id="org13fd66f"></a>calculation<br />
+<div class="outline-text-5" id="text-2-4-1-1">
+<ul class="org-ul">
+<li>Given
+<ul class="org-ul">
+<li>height h</li>
+<li>order d</li>
+<li>fill-factor</li>
+</ul></li>
+<li>F = 2*d*fill-factor</li>
+<li>capacity of B+ tree with height h = \(F^h\)</li>
+<li>buffer pool</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">level</th>
+<th scope="col" class="org-left">#page</th>
+<th scope="col" class="org-left">size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">1</td>
+<td class="org-left">8KB</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">\(F\)</td>
+<td class="org-left">1MB</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">\(F^2\)</td>
+<td class="org-left">138MB</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li><a id="orgcdb6975"></a>insert p16<br />
+<ol class="org-ol">
+<li><a id="org10c7646"></a>no redistribution strategy<br />
+<div class="outline-text-6" id="text-2-4-1-2-1">
+<ol class="org-ol">
+<li>find leaf node L</li>
+<li>put data entry into L in sorted order</li>
+<li>if L has enough space, done</li>
+<li>else split L into L and L2
+<ul class="org-ul">
+<li>redistribute entries evenly, <b>copy up</b> middle key</li>
+<li>insert index entry pointing to L2 into parent of L</li>
+</ul></li>
+<li>split inner node, redistribute entries evenly, <b>push up</b> middle key</li>
+</ol>
+</div>
+</li>
+<li><a id="org6c52370"></a>redistribution strategy<br /></li>
+</ol>
+</li>
+<li><a id="org21c5cb5"></a>delete p20<br />
+<div class="outline-text-5" id="text-2-4-1-3">
+<ol class="org-ol">
+<li>find leaf nodelse e L</li>
+<li>remove the entry</li>
+<li>if L is at least half-full, done</li>
+<li>if L has only d-1 entries
+<ul class="org-ul">
+<li>redistribute, <b>push through</b></li>
+<li>or merge L, <b>pull down</b></li>
+</ul></li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org6d3d9cf" class="outline-4">
+<h4 id="org6d3d9cf"><span class="section-number-4">2.4.2</span> Optimizations</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<ul class="org-ul">
+<li>prefix compression</li>
+<li>suffix truncation</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
