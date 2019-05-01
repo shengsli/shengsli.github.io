@@ -3,30 +3,23 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-01 Wed 03:06 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>st lec03 w2a functional testing</title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="sheng li" />
+<!-- 2019-05-01 Wed 21:53 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="sheng li" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
+  .title  { text-align: center; }
   .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
+  .done   { color: green; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -53,111 +46,27 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara { display: inline; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -177,7 +86,6 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
@@ -186,7 +94,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -235,176 +143,224 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org986612a">1. functional testing</a></li>
-<li><a href="#orgd8fed0f">2. systematic vs random testing</a></li>
-<li><a href="#orgd8a3dce">3. why not random?</a></li>
-<li><a href="#orgae678ba">4. consider the purpose of testing</a></li>
-<li><a href="#orgc7f5449">5. partition principle</a></li>
-<li><a href="#orgf08dded">6. functional testing: exploiting the specification</a></li>
-<li><a href="#orgdaf9f73">7. why functional testing? more on p10</a></li>
-<li><a href="#org08b0cd1">8. early functional test design</a></li>
-<li><a href="#org1fa61cf">9. functional vs. structural</a>
+<li><a href="#sec-1">1. functional testing</a></li>
+<li><a href="#sec-2">2. systematic vs random testing</a></li>
+<li><a href="#sec-3">3. why not random?</a></li>
+<li><a href="#sec-4">4. consider the purpose of testing</a></li>
+<li><a href="#sec-5">5. partition principle</a></li>
+<li><a href="#sec-6">6. functional testing: exploiting the specification</a></li>
+<li><a href="#sec-7">7. why functional testing? more on p10</a></li>
+<li><a href="#sec-8">8. early functional test design</a></li>
+<li><a href="#sec-9">9. functional vs. structural</a>
 <ul>
-<li><a href="#org6773c06">9.1. </a></li>
-<li><a href="#orgbba632a">9.2. granularity levels</a></li>
+<li><a href="#sec-9-1">9.1. </a></li>
+<li><a href="#sec-9-2">9.2. granularity levels</a></li>
 </ul>
 </li>
-<li><a href="#org7d85d7a">10. steps: from spec to test cases</a></li>
-<li><a href="#org9a79bff">11. summary</a></li>
+<li><a href="#sec-10">10. steps: from spec to test cases</a></li>
+<li><a href="#sec-11">11. summary</a></li>
 </ul>
 </div>
 </div>
 <ul class="org-ul">
-<li>go back to objectives later</li>
+<li>go back to objectives later
+</li>
 </ul>
-<div id="outline-container-org986612a" class="outline-2">
-<h2 id="org986612a"><span class="section-number-2">1</span> functional testing</h2>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> functional testing</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li>functional testing derives test cases from program specifications</li>
+<li>functional testing derives test cases from program specifications
+</li>
 <li>aka:
 <ul class="org-ul">
-<li>specification-based testing (from specifications)</li>
-<li>black-box testing (no view of the code)</li>
-</ul></li>
-<li>functional specification = description of intended program behaviour (formal or informal)</li>
+<li>specification-based testing (from specifications)
+</li>
+<li>black-box testing (no view of the code)
+</li>
+</ul>
+</li>
+<li>functional specification = description of intended program behaviour (formal or informal)
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd8fed0f" class="outline-2">
-<h2 id="orgd8fed0f"><span class="section-number-2">2</span> systematic vs random testing</h2>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> systematic vs random testing</h2>
 <div class="outline-text-2" id="text-2">
 <ol class="org-ol">
 <li>random (uniform):
 <ul class="org-ul">
-<li>pick possible inputs uniformly</li>
+<li>pick possible inputs uniformly
+</li>
 <li>avoid designer bias
 <ul class="org-ul">
-<li>the test designer can make the same logical mistakes.</li>
-</ul></li>
-<li>treats all inputs equally valuable</li>
-</ul></li>
+<li>the test designer can make the same logical mistakes. 
+</li>
+</ul>
+</li>
+<li>treats all inputs equally valuable
+</li>
+</ul>
+</li>
 <li>systematic (non-uniform):
 <ul class="org-ul">
-<li>try to select inputs that are especially valuable</li>
-<li>usually by choosing representatives of classes (that are apt to fail often or note at all).</li>
-</ul></li>
-<li><b>functional testing is systematic testing.</b></li>
+<li>try to select inputs that are especially valuable
+</li>
+<li>usually by choosing representatives of classes (that are apt to fail often or note at all).
+</li>
+</ul>
+</li>
+<li><b>functional testing is systematic testing.</b>
+</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgd8a3dce" class="outline-2">
-<h2 id="orgd8a3dce"><span class="section-number-2">3</span> why not random?</h2>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> why not random?</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
-<li>non-uniform distribution of faults</li>
+<li>non-uniform distribution of faults
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgae678ba" class="outline-2">
-<h2 id="orgae678ba"><span class="section-number-2">4</span> consider the purpose of testing</h2>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> consider the purpose of testing</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
-<li>look systematically/non-uniformly</li>
+<li>look systematically/non-uniformly
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc7f5449" class="outline-2">
-<h2 id="orgc7f5449"><span class="section-number-2">5</span> partition principle</h2>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> partition principle</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
-<li>samples that are more likely to include special or <b>trouble-prone</b> regions of the input space</li>
-<li>quasi- partition testing: separate the input space into classes whose union is the entire space</li>
-<li>desirable case: each fault leads to failures that are dense in some class of inputs</li>
+<li>samples that are more likely to include special or <b>trouble-prone</b> regions of the input space
+</li>
+<li>quasi- partition testing: separate the input space into classes whose union is the entire space
+</li>
+<li>desirable case: each fault leads to failures that are dense in some class of inputs
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf08dded" class="outline-2">
-<h2 id="orgf08dded"><span class="section-number-2">6</span> functional testing: exploiting the specification</h2>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> functional testing: exploiting the specification</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
-<li>functional testing uses the specification to partition the input space</li>
-<li>test each <b>category</b>. and <b>boundaries</b> between categories</li>
+<li>functional testing uses the specification to partition the input space
+</li>
+<li>test each <b>category</b>. and <b>boundaries</b> between categories
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdaf9f73" class="outline-2">
-<h2 id="orgdaf9f73"><span class="section-number-2">7</span> why functional testing? more on p10</h2>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> why functional testing? more on p10</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
-<li>the baseline for designing test cases</li>
-<li>timely</li>
-<li>effective</li>
-<li>widely applicable</li>
-<li>economical</li>
+<li>the baseline for designing test cases
+</li>
+<li>timely
+</li>
+<li>effective
+</li>
+<li>widely applicable
+</li>
+<li>economical
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org08b0cd1" class="outline-2">
-<h2 id="org08b0cd1"><span class="section-number-2">8</span> early functional test design</h2>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> early functional test design</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li>program code is not necessary
 <ul class="org-ul">
-<li>a description of intended behaviour is nedded</li>
-</ul></li>
+<li>a description of intended behaviour is nedded
+</li>
+</ul>
+</li>
 <li>early functional test design has side benefits
 <ul class="org-ul">
-<li>reveal ambiguities and inconsistency in spec</li>
-</ul></li>
+<li>reveal ambiguities and inconsistency in spec
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org1fa61cf" class="outline-2">
-<h2 id="org1fa61cf"><span class="section-number-2">9</span> functional vs. structural</h2>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> functional vs. structural</h2>
 <div class="outline-text-2" id="text-9">
-</div>
-<div id="outline-container-org6773c06" class="outline-3">
-<h3 id="org6773c06"><span class="section-number-3">9.1</span> </h3>
+</div><div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> </h3>
 <div class="outline-text-3" id="text-9-1">
 <ul class="org-ul">
-<li>functional</li>
-<li>structural</li>
-<li>fault-based</li>
-<li>model-based</li>
-<li>functional testing is best for missing logic faults</li>
-<li>structural testing never focus on code that is not there</li>
+<li>functional
+</li>
+<li>structural
+</li>
+<li>fault-based
+</li>
+<li>model-based
+</li>
+<li>functional testing is best for missing logic faults
+</li>
+<li>structural testing never focus on code that is not there
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbba632a" class="outline-3">
-<h3 id="orgbba632a"><span class="section-number-3">9.2</span> granularity levels</h3>
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> granularity levels</h3>
 <div class="outline-text-3" id="text-9-2">
 <ul class="org-ul">
 <li>functional test applies at all granularity levels
 <ul class="org-ul">
-<li>unit: module interface</li>
-<li>integration: api or subsystem</li>
-<li>system: system requirements</li>
-<li>regression: system requirements + bug history</li>
-</ul></li>
-<li>structural test applies to unit and integration</li>
+<li>unit: module interface
+</li>
+<li>integration: api or subsystem
+</li>
+<li>system: system requirements
+</li>
+<li>regression: system requirements + bug history
+</li>
+</ul>
+</li>
+<li>structural test applies to unit and integration
+</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org7d85d7a" class="outline-2">
-<h2 id="org7d85d7a"><span class="section-number-2">10</span> steps: from spec to test cases</h2>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> steps: from spec to test cases</h2>
 <div class="outline-text-2" id="text-10">
 <ol class="org-ol">
-<li>decompose the spec, break it into testable features</li>
-<li>select representatives</li>
-<li>form test specifications = representative values or model behaviours</li>
-<li>produce and execute actual tests</li>
+<li>decompose the spec, break it into testable features
+</li>
+<li>select representatives
+</li>
+<li>form test specifications = representative values or model behaviours
+</li>
+<li>produce and execute actual tests
+</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org9a79bff" class="outline-2">
-<h2 id="org9a79bff"><span class="section-number-2">11</span> summary</h2>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> summary</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
-<li>functional testing: generation of test cases from specifications is valuable and flexible approach to software testing</li>
-<li>systematic testing is intentionally non-uniform to address special cases, error conditions, etc.</li>
+<li>functional testing: generation of test cases from specifications is valuable and flexible approach to software testing
+</li>
+<li>systematic testing is intentionally non-uniform to address special cases, error conditions, etc.
+</li>
 </ul>
 </div>
 </div>

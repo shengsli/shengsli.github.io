@@ -3,30 +3,23 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-01 Wed 03:07 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>interface design</title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="sheng li" />
+<!-- 2019-05-01 Wed 21:53 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="sheng li" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
+  .title  { text-align: center; }
   .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
+  .done   { color: green; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -53,111 +46,27 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara { display: inline; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -177,16 +86,15 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet"                            type="text/css"                            href="https://shengsli.github.io/css/wheatgrass.css">
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -235,31 +143,30 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org73695c2">1. UML</a>
+<li><a href="#sec-1">1. UML</a>
 <ul>
-<li><a href="#orgd7a8921">1.1. my stencil skeleton</a></li>
-<li><a href="#org27cc69d">1.2. antonio's map skeleton</a></li>
-<li><a href="#org4dffd87">1.3. skepu2 mapoverlap</a></li>
+<li><a href="#sec-1-1">1.1. my stencil skeleton</a></li>
+<li><a href="#sec-1-2">1.2. antonio's map skeleton</a></li>
+<li><a href="#sec-1-3">1.3. skepu2 mapoverlap</a></li>
 </ul>
 </li>
-<li><a href="#org5c8f0b7">2. skeleton usage</a>
+<li><a href="#sec-2">2. skeleton usage</a>
 <ul>
-<li><a href="#org98730db">2.1. initialization: instantiate an object by call <code>Stencil()</code> (same name)</a></li>
-<li><a href="#org81c87da">2.2. execution: call fucntor</a></li>
+<li><a href="#sec-2-1">2.1. initialization: instantiate an object by call <code>Stencil()</code> (same name)</a></li>
+<li><a href="#sec-2-2">2.2. execution: call fucntor</a></li>
 </ul>
 </li>
-<li><a href="#org8852fd5">3. skepu2 intro</a></li>
-<li><a href="#org9308f30">4. skepu2 stencil interface design</a></li>
+<li><a href="#sec-3">3. skepu2 intro</a></li>
+<li><a href="#sec-4">4. skepu2 stencil interface design</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org73695c2" class="outline-2">
-<h2 id="org73695c2"><span class="section-number-2">1</span> UML</h2>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> UML</h2>
 <div class="outline-text-2" id="text-1">
-</div>
-<div id="outline-container-orgd7a8921" class="outline-3">
-<h3 id="orgd7a8921"><span class="section-number-3">1.1</span> my stencil skeleton</h3>
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> my stencil skeleton</h3>
 <div class="outline-text-3" id="text-1-1">
 
 <div class="figure">
@@ -269,8 +176,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org27cc69d" class="outline-3">
-<h3 id="org27cc69d"><span class="section-number-3">1.2</span> antonio's map skeleton</h3>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> antonio's map skeleton</h3>
 <div class="outline-text-3" id="text-1-2">
 
 <div class="figure">
@@ -280,8 +187,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org4dffd87" class="outline-3">
-<h3 id="org4dffd87"><span class="section-number-3">1.3</span> skepu2 mapoverlap</h3>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> skepu2 mapoverlap</h3>
 <div class="outline-text-3" id="text-1-3">
 
 <div class="figure">
@@ -292,59 +199,69 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org5c8f0b7" class="outline-2">
-<h2 id="org5c8f0b7"><span class="section-number-2">2</span> skeleton usage</h2>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> skeleton usage</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li>two stages: initialization, execution</li>
+<li>two stages: initialization, execution
+</li>
 </ul>
 </div>
-<div id="outline-container-org98730db" class="outline-3">
-<h3 id="org98730db"><span class="section-number-3">2.1</span> initialization: instantiate an object by call <code>Stencil()</code> (same name)</h3>
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> initialization: instantiate an object by call <code>Stencil()</code> (same name)</h3>
 </div>
-<div id="outline-container-org81c87da" class="outline-3">
-<h3 id="org81c87da"><span class="section-number-3">2.2</span> execution: call fucntor</h3>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> execution: call fucntor</h3>
 </div>
 </div>
-<div id="outline-container-org8852fd5" class="outline-2">
-<h2 id="org8852fd5"><span class="section-number-2">3</span> skepu2 intro</h2>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> skepu2 intro</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
-<li>skepu2 is structured around source-to-source translator (precompiler)</li>
-<li>nested namespaces are not part of the api and should be considered implementation-specific.</li>
+<li>skepu2 is structured around source-to-source translator (precompiler)
+</li>
+<li>nested namespaces are not part of the api and should be considered implementation-specific. 
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9308f30" class="outline-2">
-<h2 id="org9308f30"><span class="section-number-2">4</span> skepu2 stencil interface design</h2>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> skepu2 stencil interface design</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
-<pre class="src src-C++">MapOverlap(<span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">radius</span>, <span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">radius</span>, <span style="color: #7fffd4;">size_t</span> <span style="color: #9acd32;">stride</span>, )
+
+<pre class="src src-C++">MapOverlap(int radius, int radius, size_t stride, )
 </pre>
 </div>
 <ul class="org-ul">
-<li><code>int x_radius</code>: overlap radius in the x-direction</li>
-<li><code>int y_radius</code>: overlap radius in the y-direction, used to deduce that an instance is 2d.</li>
-<li><code>size_t stride</code>: stride</li>
-<li>~~: pointer to the contained type, pointing to the centre of the overlap region.</li>
-<li>~~:</li>
+<li><code>int x_radius</code>: overlap radius in the x-direction
+</li>
+<li><code>int y_radius</code>: overlap radius in the y-direction, used to deduce that an instance is 2d. 
+</li>
+<li><code>size_t stride</code>: stride
+</li>
+<li>~~: pointer to the contained type, pointing to the centre of the overlap region. 
+</li>
+<li>~~: 
+</li>
 </ul>
 <div class="org-src-container">
-<label class="org-src-name"><span class="listing-number">Listing 1: </span>skepu2 MapOverlap examples</label><pre class="src src-C++"><span style="color: #7fffd4;">float</span> <span style="color: #98fb98;">conv</span>(<span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">overlap</span>, <span style="color: #7fffd4;">size_t</span> <span style="color: #9acd32;">stride</span>, <span style="color: #ffffff;">const</span> <span style="color: #7fffd4;">float</span> *<span style="color: #9acd32;">v</span>, <span style="color: #ffffff;">const</span> <span style="color: #7fffd4;">Vec</span>&lt;<span style="color: #7fffd4;">float</span>&gt; <span style="color: #9acd32;">stencil</span>, <span style="color: #7fffd4;">float</span> <span style="color: #9acd32;">scale</span>)
+<label class="org-src-name">skepu2 MapOverlap examples</label>
+<pre class="src src-C++">float conv(int overlap, size_t stride, const float *v, const Vec&lt;float&gt; stencil, float scale)
 {
-    <span style="color: #7fffd4;">float</span> <span style="color: #9acd32;">res</span> = 0;
-    <span style="color: #ffffff;">for</span> (<span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">i</span> = -overlap; i &lt;= overlap; ++i)
-        res += stencil[i + overlap] * v[i*stride];
-    <span style="color: #ffffff;">return</span> res / scale;
+	float res = 0;
+	for (int i = -overlap; i &lt;= overlap; ++i)
+		res += stencil[i + overlap] * v[i*stride];
+	return res / scale;
 }
 
-<span style="color: #7fffd4;">Vector</span>&lt;<span style="color: #7fffd4;">float</span>&gt; <span style="color: #98fb98;">convolution</span>(<span style="color: #7fffd4;">Vector</span>&lt;<span style="color: #7fffd4;">float</span>&gt; &amp;<span style="color: #9acd32;">v</span>)
+Vector&lt;float&gt; convolution(Vector&lt;float&gt; &amp;v)
 {
-    <span style="color: #ffffff;">auto</span> <span style="color: #9acd32;">convol</span> = MapOverlap(conv);
-    <span style="color: #7fffd4;">Vector</span>&lt;<span style="color: #7fffd4;">float</span>&gt; <span style="color: #9acd32;">stencil</span> {1, 2, 4, 2, 1};
-    <span style="color: #7fffd4;">Vector</span>&lt;<span style="color: #7fffd4;">float</span>&gt; <span style="color: #9acd32;">result</span>(v.size());
-    convol.setOverlap(2);
-    <span style="color: #ffffff;">return</span> convol(result, v, stencil, 10);
+	auto convol = MapOverlap(conv);
+	Vector&lt;float&gt; stencil {1, 2, 4, 2, 1};
+	Vector&lt;float&gt; result(v.size());
+	convol.setOverlap(2);
+	return convol(result, v, stencil, 10);
 }
 </pre>
 </div>

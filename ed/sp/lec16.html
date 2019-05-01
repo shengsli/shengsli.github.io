@@ -3,30 +3,23 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-01 Wed 03:06 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>sp lec16 w11a malware analysis for android apps</title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="sheng li" />
+<!-- 2019-05-01 Wed 21:53 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="sheng li" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
+  .title  { text-align: center; }
   .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
+  .done   { color: green; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -53,111 +46,27 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara { display: inline; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -177,7 +86,6 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
@@ -186,7 +94,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -235,228 +143,274 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc4f0066">1. malware analysis</a></li>
-<li><a href="#orgf34971f">2. malware analysis techniques</a></li>
-<li><a href="#org4ea4b14">3. android apps and markets</a>
+<li><a href="#sec-1">1. malware analysis</a></li>
+<li><a href="#sec-2">2. malware analysis techniques</a></li>
+<li><a href="#sec-3">3. android apps and markets</a>
 <ul>
-<li><a href="#org0b73a07">3.1. example: flashlight</a></li>
+<li><a href="#sec-3-1">3.1. example: flashlight</a></li>
 </ul>
 </li>
-<li><a href="#org99b376f">4. android malware and families</a></li>
-<li><a href="#orge88209a">5. android architecture</a></li>
-<li><a href="#org771e904">6. example: construct behavioural models</a>
+<li><a href="#sec-4">4. android malware and families</a></li>
+<li><a href="#sec-5">5. android architecture</a></li>
+<li><a href="#sec-6">6. example: construct behavioural models</a>
 <ul>
-<li><a href="#orgf03b450">6.1. example: flashlight again, real application case study</a></li>
+<li><a href="#sec-6-1">6.1. example: flashlight again, real application case study</a></li>
 </ul>
 </li>
-<li><a href="#orge4d0392">7. syntax based android android malware classifiers</a>
+<li><a href="#sec-7">7. syntax based android android malware classifiers</a>
 <ul>
-<li><a href="#org0c8dc51">7.1. syntax based features - permission</a></li>
-<li><a href="#org8dc7525">7.2. syntax based features - api calls</a></li>
-<li><a href="#org5e9c4a2">7.3. syntax based features - reachables</a></li>
-<li><a href="#org4d4a7c5">7.4. syntax based features - invoke-befores</a></li>
-<li><a href="#org096a6d8">7.5. semantics based - unwanted behaviou</a></li>
+<li><a href="#sec-7-1">7.1. syntax based features - permission</a></li>
+<li><a href="#sec-7-2">7.2. syntax based features - api calls</a></li>
+<li><a href="#sec-7-3">7.3. syntax based features - reachables</a></li>
+<li><a href="#sec-7-4">7.4. syntax based features - invoke-befores</a></li>
+<li><a href="#sec-7-5">7.5. semantics based - unwanted behaviou</a></li>
 </ul>
 </li>
-<li><a href="#orgd82b479">8. more information</a>
+<li><a href="#sec-8">8. more information</a>
 <ul>
-<li><a href="#org1cd4f1b">8.1. app guarden ???? - 2017</a></li>
-<li><a href="#orge5d9028">8.2. PreSBeMA 2017 - 2020</a></li>
-<li><a href="#orgdeaf547">8.3. </a></li>
+<li><a href="#sec-8-1">8.1. app guarden ???? - 2017</a></li>
+<li><a href="#sec-8-2">8.2. PreSBeMA 2017 - 2020</a></li>
+<li><a href="#sec-8-3">8.3. </a></li>
 </ul>
 </li>
-<li><a href="#org42bc53f">9. reflection: lessons for sp</a></li>
-<li><a href="#org83441a2">10. further reading: android hacker's handbook</a></li>
-<li><a href="#org7ea5b85">11. next lecture: last lecture</a></li>
-<li><a href="#orgce6a286">12. wed lab: android repackaging</a></li>
+<li><a href="#sec-9">9. reflection: lessons for sp</a></li>
+<li><a href="#sec-10">10. further reading: android hacker's handbook</a></li>
+<li><a href="#sec-11">11. next lecture: last lecture</a></li>
+<li><a href="#sec-12">12. wed lab: android repackaging</a></li>
 </ul>
 </div>
 </div>
 <ul class="org-ul">
-<li>techniques to detect bad software</li>
-<li>repackaging: hide malware</li>
+<li>techniques to detect bad software
+</li>
+<li>repackaging: hide malware
+</li>
 </ul>
-<div id="outline-container-orgc4f0066" class="outline-2">
-<h2 id="orgc4f0066"><span class="section-number-2">1</span> malware analysis</h2>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> malware analysis</h2>
 </div>
-<div id="outline-container-orgf34971f" class="outline-2">
-<h2 id="orgf34971f"><span class="section-number-2">2</span> malware analysis techniques</h2>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> malware analysis techniques</h2>
 <div class="outline-text-2" id="text-2">
 <ol class="org-ol">
 <li>reverse engineering
 <ul class="org-ul">
-<li>experts</li>
-<li>precise but</li>
-<li>expensive, cost and time</li>
-</ul></li>
+<li>experts
+</li>
+<li>precise but
+</li>
+<li>expensive, cost and time
+</li>
+</ul>
+</li>
 <li>static analysis
 <ul class="org-ul">
 <li>basic:
 <ul class="org-ul">
-<li>meta-information, api calls, hash</li>
-<li>compression</li>
-</ul></li>
-</ul></li>
+<li>meta-information, api calls, hash
+</li>
+<li>compression
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>dynamic analysis
 <ul class="org-ul">
-<li>efficient but often under-approximated</li>
-</ul></li>
+<li>efficient but often under-approximated
+</li>
+</ul>
+</li>
 <li>ML
 <ul class="org-ul">
-<li>statistical model</li>
-<li>efficient for detection</li>
-<li>expensive for training</li>
-<li>risk of overfitting</li>
-</ul></li>
+<li>statistical model
+</li>
+<li>efficient for detection
+</li>
+<li>expensive for training
+</li>
+<li>risk of overfitting
+</li>
+</ul>
+</li>
 </ol>
-
 <ul class="org-ul">
-<li>prevision and efficiency graph</li>
-<li>comprehension and automation graph</li>
+<li>prevision and efficiency graph
+</li>
+<li>comprehension and automation graph
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4ea4b14" class="outline-2">
-<h2 id="org4ea4b14"><span class="section-number-2">3</span> android apps and markets</h2>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> android apps and markets</h2>
 <div class="outline-text-2" id="text-3">
-</div>
-<div id="outline-container-org0b73a07" class="outline-3">
-<h3 id="org0b73a07"><span class="section-number-3">3.1</span> example: flashlight</h3>
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> example: flashlight</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
-<li>permissions</li>
-<li>camera permission is tied up with flashlight</li>
-<li>FCT prosecuted this developer</li>
-<li>if wanna collect data, have to make a declaration</li>
+<li>permissions 
+</li>
+<li>camera permission is tied up with flashlight
+</li>
+<li>FCT prosecuted this developer
+</li>
+<li>if wanna collect data, have to make a declaration
+</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org99b376f" class="outline-2">
-<h2 id="org99b376f"><span class="section-number-2">4</span> android malware and families</h2>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> android malware and families</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
-<li>many variations</li>
-<li>basebridge</li>
-<li>dendroid</li>
-<li>banking Trojans: target mobile banking</li>
+<li>many variations
+</li>
+<li>basebridge
+</li>
+<li>dendroid
+</li>
+<li>banking Trojans: target mobile banking
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge88209a" class="outline-2">
-<h2 id="orge88209a"><span class="section-number-2">5</span> android architecture</h2>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> android architecture</h2>
 </div>
-<div id="outline-container-org771e904" class="outline-2">
-<h2 id="org771e904"><span class="section-number-2">6</span> example: construct behavioural models</h2>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> example: construct behavioural models</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
-<li>an automaton</li>
-<li>manifest file: how code hooks up the framework</li>
-<li>cf. ios has more strict sandbox</li>
-<li>we are interested in security-relevant events.</li>
-<li>analyse activity of sender and receiver</li>
+<li>an automaton 
+</li>
+<li>manifest file: how code hooks up the framework
+</li>
+<li>cf. ios has more strict sandbox 
+</li>
+<li>we are interested in security-relevant events. 
+</li>
+<li>analyse activity of sender and receiver
+</li>
 </ul>
 </div>
-<div id="outline-container-orgf03b450" class="outline-3">
-<h3 id="orgf03b450"><span class="section-number-3">6.1</span> example: flashlight again, real application case study</h3>
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> example: flashlight again, real application case study</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
-<li>only consider inter-component communication</li>
-<li>reduce down to security relevant activities</li>
+<li>only consider inter-component communication
+</li>
+<li>reduce down to security relevant activities
+</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-orge4d0392" class="outline-2">
-<h2 id="orge4d0392"><span class="section-number-2">7</span> syntax based android android malware classifiers</h2>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> syntax based android android malware classifiers</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
-<li>poor robustness, watch recording <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-03-25 Mon 11:41&gt;</span></span></li>
+<li>poor robustness, watch recording <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-03-25 Mon 11:41&gt;</span></span>
+</li>
 </ul>
 </div>
-<div id="outline-container-org0c8dc51" class="outline-3">
-<h3 id="org0c8dc51"><span class="section-number-3">7.1</span> syntax based features - permission</h3>
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> syntax based features - permission</h3>
 <div class="outline-text-3" id="text-7-1">
 <ul class="org-ul">
-<li>there is not a strong relation btw require permission and use permission</li>
+<li>there is not a strong relation btw require permission and use permission
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org8dc7525" class="outline-3">
-<h3 id="org8dc7525"><span class="section-number-3">7.2</span> syntax based features - api calls</h3>
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> syntax based features - api calls</h3>
 <div class="outline-text-3" id="text-7-2">
 <ul class="org-ul">
-<li>might appear dead code</li>
+<li>might appear dead code
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5e9c4a2" class="outline-3">
-<h3 id="org5e9c4a2"><span class="section-number-3">7.3</span> syntax based features - reachables</h3>
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3"><span class="section-number-3">7.3</span> syntax based features - reachables</h3>
 <div class="outline-text-3" id="text-7-3">
 <ul class="org-ul">
-<li>static analysis to find reachable functions</li>
+<li>static analysis to find reachable functions
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4d4a7c5" class="outline-3">
-<h3 id="org4d4a7c5"><span class="section-number-3">7.4</span> syntax based features - invoke-befores</h3>
+<div id="outline-container-sec-7-4" class="outline-3">
+<h3 id="sec-7-4"><span class="section-number-3">7.4</span> syntax based features - invoke-befores</h3>
 <div class="outline-text-3" id="text-7-4">
 <ul class="org-ul">
-<li>send out msg without clicking it</li>
+<li>send out msg without clicking it 
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org096a6d8" class="outline-3">
-<h3 id="org096a6d8"><span class="section-number-3">7.5</span> semantics based - unwanted behaviou</h3>
+<div id="outline-container-sec-7-5" class="outline-3">
+<h3 id="sec-7-5"><span class="section-number-3">7.5</span> semantics based - unwanted behaviou</h3>
 <div class="outline-text-3" id="text-7-5">
 <ul class="org-ul">
-<li>sequence of behaviours is like malicious behaviours</li>
-<li>ML research in security</li>
-<li>partition malwares and test it</li>
-<li>test on different malwares, give very poor performance</li>
+<li>sequence of behaviours is like malicious behaviours
+</li>
+<li>ML research in security
+</li>
+<li>partition malwares and test it
+</li>
+<li>test on different malwares, give very poor performance
+</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd82b479" class="outline-2">
-<h2 id="orgd82b479"><span class="section-number-2">8</span> more information</h2>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> more information</h2>
 <div class="outline-text-2" id="text-8">
+</div><div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> app guarden ???? - 2017</h3>
 </div>
-<div id="outline-container-org1cd4f1b" class="outline-3">
-<h3 id="org1cd4f1b"><span class="section-number-3">8.1</span> app guarden ???? - 2017</h3>
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> PreSBeMA 2017 - 2020</h3>
 </div>
-<div id="outline-container-orge5d9028" class="outline-3">
-<h3 id="orge5d9028"><span class="section-number-3">8.2</span> PreSBeMA 2017 - 2020</h3>
-</div>
-<div id="outline-container-orgdeaf547" class="outline-3">
-<h3 id="orgdeaf547"><span class="section-number-3">8.3</span> </h3>
+<div id="outline-container-sec-8-3" class="outline-3">
+<h3 id="sec-8-3"><span class="section-number-3">8.3</span> </h3>
 <div class="outline-text-3" id="text-8-3">
 <ul class="org-ul">
-<li>google use dynamic analysis</li>
+<li>google use dynamic analysis
+</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org42bc53f" class="outline-2">
-<h2 id="org42bc53f"><span class="section-number-2">9</span> reflection: lessons for sp</h2>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> reflection: lessons for sp</h2>
 <div class="outline-text-2" id="text-9">
 <ul class="org-ul">
-<li>follow good practices</li>
-<li>use good tools</li>
-<li>be aware of third party libraries</li>
-<li>obfuscation</li>
-<li>avoid reflection</li>
+<li>follow good practices
+</li>
+<li>use good tools
+</li>
+<li>be aware of third party libraries
+</li>
+<li>obfuscation
+</li>
+<li>avoid reflection
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org83441a2" class="outline-2">
-<h2 id="org83441a2"><span class="section-number-2">10</span> further reading: android hacker's handbook</h2>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> further reading: android hacker's handbook</h2>
 </div>
-<div id="outline-container-org7ea5b85" class="outline-2">
-<h2 id="org7ea5b85"><span class="section-number-2">11</span> next lecture: last lecture</h2>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> next lecture: last lecture</h2>
 </div>
-<div id="outline-container-orgce6a286" class="outline-2">
-<h2 id="orgce6a286"><span class="section-number-2">12</span> wed lab: android repackaging</h2>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> wed lab: android repackaging</h2>
 </div>
 </div>
 </body>
