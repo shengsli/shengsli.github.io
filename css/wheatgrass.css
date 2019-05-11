@@ -8,3 +8,14 @@ a:visited {color: #59e9ff;}
 a:hover {background-color: #415160;}
 a:active {background-color: #ffff00;}
 b {color:#ff0000;}
+#content, #postamble, #preamble {
+    max-width: 900px;
+    margin: 0 auto;
+}
+#preamble {
+    border-bottom: 1px solid #CCCCCC;
+}
+#postamble {
+    border-top: 1px solid #CCCCCC;
+    padding-top: 5px;
+}
