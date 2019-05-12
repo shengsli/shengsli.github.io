@@ -3,8 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>ppls index page</title>
-<!-- 2019-05-12 Sun 02:32 -->
+<title>design patterns</title>
+<!-- 2019-05-12 Sun 02:31 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="sheng li" />
@@ -138,15 +138,65 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">ppls index page</h1>
+<h1 class="title">design patterns</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. why use design patterns? benefits</a></li>
+<li><a href="#sec-2">2. creational design patterns</a>
+<ul>
+<li><a href="#sec-2-1">2.1. abstract factory</a></li>
+<li><a href="#sec-2-2">2.2. builder</a></li>
+<li><a href="#sec-2-3">2.3. factory method</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. extra</a></li>
+</ul>
+</div>
+</div>
+<p>
+more on <a href="https://sourcemaking.com/design_patterns">https://sourcemaking.com/design_patterns</a>
+</p>
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> ppls exam                                      :@Appleton Tower Concourse:</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> why use design patterns? benefits</h2>
 <div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>speed up the development process by providing tested, proven development paradigms
+</li>
+<li>reusing skeletons prevents subtle issues that can cause major problems
+</li>
+<li>improves code readability
+</li>
+<li>applicable to a boarder range of problems, not tied to a particular problem, 
+<ul class="org-ul">
+<li>can be improved over time, not a ad-hoc design
+</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 <div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> lectures</h2>
+<h2 id="sec-2"><span class="section-number-2">2</span> creational design patterns</h2>
 <div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>patterns are al bout class instantiation
+</li>
+<li>a pattern can be further divided into class-creation patterns and object-creational patterns 
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> abstract factory</h3>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> builder</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>separate object construction from its representation
+</li>
+</ul>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -157,92 +207,30 @@ for the JavaScript code in this tag.
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">lecture notes</th>
-<th scope="col" class="left">review notes</th>
+<th scope="col" class="left">builder</th>
+<th scope="col" class="left">constructor</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left"><a href="lec01.html">lec01 parallel arch. for dummies 1</a></td>
 <td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec02.html">lec02 parallel arch. for dummies 2</a></td>
-<td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec03.html">lec03 co notation and patterns</a></td>
-<td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec04.html">lec04</a></td>
-<td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec05.html">lec05 w3a Lamport's bakery algo.</a></td>
-<td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec06.html">lec06 w3b barrier</a></td>
-<td class="left"><a href="lec06review.html">lec06review</a></td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec07.html">lec07 w5a structured primitives</a></td>
-<td class="left"><a href="lec07review.html">lec07review</a></td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec08.html">lec08</a></td>
-<td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec09.html">lec09</a></td>
-<td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec10.html">lec10</a></td>
-<td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec11.html">lec11</a></td>
-<td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec12.html">lec12</a></td>
-<td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec13.html">lec13</a></td>
-<td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec14.html">lec14 w9b wrap up mpi, patterns</a></td>
-<td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec15.html">lec15</a></td>
-<td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left"><a href="lec16.html">lec16</a></td>
 <td class="left">&#xa0;</td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> factory method</h3>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> extra</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<a href="https://sourcemaking.com/design_patterns">what is a (design) pattern/skeleton (in SE)?</a>
+<a href="https://refactoring.guru/design-patterns">design pattern guru</a>
+</p>
 </div>
 </div>
 </div>
