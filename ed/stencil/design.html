@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>interface design</title>
-<!-- 2019-05-14 Tue 00:32 -->
+<!-- 2019-05-14 Tue 01:01 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="sheng li" />
@@ -88,7 +88,7 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/wheatgrass.css">
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/style.css">
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -229,7 +229,7 @@ for the JavaScript code in this tag.
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 
-<pre class="src src-C++">MapOverlap(int radius, int radius, size_t stride, )
+<pre class="src src-C++">MapOverlap(<span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">radius</span>, <span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">radius</span>, <span style="color: #7fffd4;">size_t</span> <span style="color: #9acd32;">stride</span>, )
 </pre>
 </div>
 <ul class="org-ul">
@@ -246,21 +246,21 @@ for the JavaScript code in this tag.
 </ul>
 <div class="org-src-container">
 <label class="org-src-name">skepu2 MapOverlap examples</label>
-<pre class="src src-C++">float conv(int overlap, size_t stride, const float *v, const Vec&lt;float&gt; stencil, float scale)
+<pre class="src src-C++"><span style="color: #7fffd4;">float</span> <span style="color: #98fb98;">conv</span>(<span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">overlap</span>, <span style="color: #7fffd4;">size_t</span> <span style="color: #9acd32;">stride</span>, <span style="color: #ffffff;">const</span> <span style="color: #7fffd4;">float</span> *<span style="color: #9acd32;">v</span>, <span style="color: #ffffff;">const</span> <span style="color: #7fffd4;">Vec</span>&lt;<span style="color: #7fffd4;">float</span>&gt; <span style="color: #9acd32;">stencil</span>, <span style="color: #7fffd4;">float</span> <span style="color: #9acd32;">scale</span>)
 {
-	float res = 0;
-	for (int i = -overlap; i &lt;= overlap; ++i)
-		res += stencil[i + overlap] * v[i*stride];
-	return res / scale;
+    <span style="color: #7fffd4;">float</span> <span style="color: #9acd32;">res</span> = 0;
+    <span style="color: #ffffff;">for</span> (<span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">i</span> = -overlap; i &lt;= overlap; ++i)
+        res += stencil[i + overlap] * v[i*stride];
+    <span style="color: #ffffff;">return</span> res / scale;
 }
 
-Vector&lt;float&gt; convolution(Vector&lt;float&gt; &amp;v)
+<span style="color: #7fffd4;">Vector</span>&lt;<span style="color: #7fffd4;">float</span>&gt; <span style="color: #98fb98;">convolution</span>(<span style="color: #7fffd4;">Vector</span>&lt;<span style="color: #7fffd4;">float</span>&gt; &amp;<span style="color: #9acd32;">v</span>)
 {
-	auto convol = MapOverlap(conv);
-	Vector&lt;float&gt; stencil {1, 2, 4, 2, 1};
-	Vector&lt;float&gt; result(v.size());
-	convol.setOverlap(2);
-	return convol(result, v, stencil, 10);
+    <span style="color: #ffffff;">auto</span> <span style="color: #9acd32;">convol</span> = MapOverlap(conv);
+    <span style="color: #7fffd4;">Vector</span>&lt;<span style="color: #7fffd4;">float</span>&gt; <span style="color: #9acd32;">stencil</span> {1, 2, 4, 2, 1};
+    <span style="color: #7fffd4;">Vector</span>&lt;<span style="color: #7fffd4;">float</span>&gt; <span style="color: #98fb98;">result</span>(v.size());
+    convol.setOverlap(2);
+    <span style="color: #ffffff;">return</span> convol(result, v, stencil, 10);
 }
 </pre>
 </div>
