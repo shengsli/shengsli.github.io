@@ -16,5 +16,6 @@ b {color:#ff0000;}
     padding-top: 5px;
 }
 table, th, td {
-  border: 1px solid black;
+	border: 1px solid black;
+	width: 100%;
 }
