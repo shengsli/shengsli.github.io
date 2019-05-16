@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>ppls lec06 review</title>
-<!-- 2019-05-14 Tue 20:05 -->
+<!-- 2019-05-16 Thu 22:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="sheng li" />
@@ -425,7 +425,7 @@ for [s = o to stages-1] { ## there will be log_2 p stages
 <ul class="org-ul">
 <li>How friends are calculated?
 <ul class="org-ul">
-<li>friend id = \(myid + 2^(stage-1)\), stage starts from 1
+<li>friend id = \((myid + 2^{(stage-1)) mod P}\), stage starts from 1, P is number of threads
 </li>
 </ul>
 </li>
