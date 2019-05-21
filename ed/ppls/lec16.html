@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>ppls lec16 w10b Linda</title>
-<!-- 2019-05-20 Mon 20:23 -->
+<!-- 2019-05-21 Tue 22:05 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="sheng li" />
@@ -150,7 +150,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-2-2">2.2. take a tuple out from tuple: <code>in(...)</code></a></li>
 <li><a href="#sec-2-3">2.3. read</a></li>
 <li><a href="#sec-2-4">2.4. eval</a></li>
-<li><a href="#sec-2-5">2.5. non-blocking read: <code>rdp</code></a></li>
+<li><a href="#sec-2-5">2.5. non-blocking read: <code>inp</code>, <code>rdp</code></a></li>
 </ul>
 </li>
 <li><a href="#sec-3">3. example: bag of tasks pattern, cf. p29</a>
@@ -179,13 +179,13 @@ Created by sheng li on <span class="timestamp-wrapper"><span class="timestamp">&
 <h2 id="sec-1"><span class="section-number-2">1</span> Linda</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li>an alternative parallelism model
+<li>Linda is an alternative parallelism model.
 </li>
-<li>implementation: JavaSpace
+<li>An implementation of Linda is JavaSpace.
 </li>
-<li><b>key concept: tuple space</b>
+<li><b>key concept</b>: tuple space
 <ul class="org-ul">
-<li>tuple space is a global content addressable memory
+<li>Tuple space is a global content addressable memory.
 </li>
 <li>shared and accessible by all processes
 </li>
@@ -261,6 +261,12 @@ Created by sheng li on <span class="timestamp-wrapper"><span class="timestamp">&
 </div>
 <div id="outline-container-sec-2-3" class="outline-3">
 <h3 id="sec-2-3"><span class="section-number-3">2.3</span> read</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li><code>rd(...)</code>
+</li>
+</ul>
+</div>
 </div>
 <div id="outline-container-sec-2-4" class="outline-3">
 <h3 id="sec-2-4"><span class="section-number-3">2.4</span> eval</h3>
@@ -280,7 +286,7 @@ Created by sheng li on <span class="timestamp-wrapper"><span class="timestamp">&
 </div>
 </div>
 <div id="outline-container-sec-2-5" class="outline-3">
-<h3 id="sec-2-5"><span class="section-number-3">2.5</span> non-blocking read: <code>rdp</code></h3>
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> non-blocking read: <code>inp</code>, <code>rdp</code></h3>
 </div>
 </div>
 <div id="outline-container-sec-3" class="outline-2">
@@ -294,6 +300,47 @@ Created by sheng li on <span class="timestamp-wrapper"><span class="timestamp">&
 <li>termination condition
 </li>
 </ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">operation</th>
+<th scope="col" class="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">out</td>
+<td class="left">add a tuple to tuple sapce</td>
+</tr>
+
+<tr>
+<td class="left">in</td>
+<td class="left">remove a tuple from tuple space</td>
+</tr>
+
+<tr>
+<td class="left">rd</td>
+<td class="left">read a tuple without removing</td>
+</tr>
+
+<tr>
+<td class="left">eval</td>
+<td class="left">dnamically create new processes to evaluate each field of tuple</td>
+</tr>
+
+<tr>
+<td class="left">inp, rdp</td>
+<td class="left">non-blocking read</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="outline-container-sec-3-1" class="outline-3">
 <h3 id="sec-3-1"><span class="section-number-3">3.1</span> main p208</h3>
@@ -343,6 +390,8 @@ Created by sheng li on <span class="timestamp-wrapper"><span class="timestamp">&
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>create a process <code>eval ... sieve(1)</code>
+</li>
+<li>tuple(destination process, sequence/order, value)
 </li>
 </ul>
 </div>

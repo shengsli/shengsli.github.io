@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>ppls lec11 w8a review</title>
-<!-- 2019-05-20 Mon 20:23 -->
+<!-- 2019-05-21 Tue 22:05 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="sheng li" />
@@ -143,7 +143,16 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. </a></li>
+<li><a href="#sec-1">1. Programming with message passing</a></li>
+<li><a href="#sec-2">2. Collective operations</a></li>
+<li><a href="#sec-3">3. MPI concepts, in a nutshell</a>
+<ul>
+<li><a href="#sec-3-1">3.1. communicator</a></li>
+<li><a href="#sec-3-2">3.2. Send/Receive</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Example: Hello World in MPI</a></li>
+<li><a href="#sec-5">5. MPI primitives</a></li>
 </ul>
 </div>
 </div>
@@ -160,9 +169,133 @@ This lecture is about distributed memory programming
 </li>
 <li>need some other mechanisms beyond reads and writes, e.g. message passing
 </li>
+<li>There are several approaches to abstracting and implementing such a model. We will focus on message passing, which dominates the performance-oriented parallel computing world. 
+</li>
 </ul>
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> </h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> Programming with message passing</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>send and receive primitives for transferring data out of and into local address spaces
+</li>
+<li>We express algorithms as a collection of <span class="underline">local perspectives</span>.
+</li>
+<li>These are often captured in a single program source using Single Program Multiple Data (SMPD) style, with different processes following different paths through the <span class="underline">same code</span>, branching with respect to <span class="underline">local data values</span> and/or to <span class="underline">some process identifier</span>. 
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Collective operations</h2>
+<div class="outline-text-2" id="text-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">operation</th>
+<th scope="col" class="left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">broadcast</td>
+<td class="left">everyone gets a copy of the same values</td>
+</tr>
+
+<tr>
+<td class="left">scatter</td>
+<td class="left">partition data and spread across to group</td>
+</tr>
+
+<tr>
+<td class="left">gather</td>
+<td class="left">gather data from across the group</td>
+</tr>
+
+<tr>
+<td class="left">reduction</td>
+<td class="left">gather values with an associative operation</td>
+</tr>
+
+<tr>
+<td class="left">scan</td>
+<td class="left">reduce and compute all the ordered partial reduction</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> MPI concepts, in a nutshell</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>creates processes statically using <code>mpirun</code> or spawn processes dynamically
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> communicator</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>All communications take place within the context of "communication spaces", called <b>communicators</b>, which denotes sets of processes. 
+</li>
+<li>A process can belong to many communicators simultaneously. 
+</li>
+<li>New communicator can be defined dynamically. 
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Send/Receive</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li><code>send</code> must specify a target.
+</li>
+<li><code>receive</code> can wild card on matching order. 
+</li>
+<li>Messages can be tagged with an extra value to aid disambiguation. 
+</li>
+<li>There are many synchronization modes and collective operations. 
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Example: Hello World in MPI</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #7fffd4;">int</span> <span style="color: #98fb98;">main</span>(<span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">argc</span>, <span style="color: #7fffd4;">char</span> *<span style="color: #9acd32;">argv</span>)
+{
+    <span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">rank</span>, <span style="color: #9acd32;">p</span>;
+    MPI_Init(&amp;argc, &amp;argv);
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;RANK);
+    MPI_Comm_Size(MPI_COMM_WORLD, &amp;P);
+    printf(<span style="color: #bdb76b;">"Hello world from process %d of %d\n"</span>, rank, p);
+    MPI_Finalize();
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> MPI primitives</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li><code>int MPI_Init(int *argc, char ***argv)</code> and <code>int MPI_Finalize()</code> must be called once by every participating process before any other MPI calls.
+</li>
+<li>Each process has a unique identifier in each communicator of which it is a member (range 0..members-1). The built-in communicator to which all processes belong is called <code>MPI_COMM_WORLD</code>. A process can find the size of a communicator and its own rank within it by <code>int MPI_Comm_Size(MPI_Comm comm, int *np)</code> and <code>int MPI_Comm_rank(MPI_Comm comm, int *me)</code>.
+</li>
+</ul>
+</div>
 </div>
 </div>
 </body>
