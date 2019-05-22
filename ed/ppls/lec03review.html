@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>ppls lec03 w2a</title>
-<!-- 2019-05-20 Mon 20:23 -->
+<!-- 2019-05-22 Wed 15:15 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="sheng li" />
@@ -266,13 +266,13 @@ This lecture is going to use <code>co</code> notation and look at patterns in pa
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
 
-<pre class="src src-C"><span style="color: #7fffd4;">double</span> <span style="color: #98fb98;">quad</span>(<span style="color: #7fffd4;">double</span> <span style="color: #9acd32;">left</span>, <span style="color: #7fffd4;">double</span> <span style="color: #9acd32;">right</span>, <span style="color: #7fffd4;">double</span> <span style="color: #9acd32;">fleft</span>, <span style="color: #7fffd4;">double</span> <span style="color: #9acd32;">fright</span>, <span style="color: #7fffd4;">double</span> <span style="color: #9acd32;">lrarea</span>) {
-    <span style="color: #7fffd4;">double</span> <span style="color: #9acd32;">mid</span>, <span style="color: #9acd32;">fmid</span>, <span style="color: #9acd32;">larea</span>, <span style="color: #9acd32;">rarea</span>; 
+<pre class="src src-C"><span style="color: #228b22;">double</span> <span style="color: #0000ff;">quad</span>(<span style="color: #228b22;">double</span> <span style="color: #a0522d;">left</span>, <span style="color: #228b22;">double</span> <span style="color: #a0522d;">right</span>, <span style="color: #228b22;">double</span> <span style="color: #a0522d;">fleft</span>, <span style="color: #228b22;">double</span> <span style="color: #a0522d;">fright</span>, <span style="color: #228b22;">double</span> <span style="color: #a0522d;">lrarea</span>) {
+    <span style="color: #228b22;">double</span> <span style="color: #a0522d;">mid</span>, <span style="color: #a0522d;">fmid</span>, <span style="color: #a0522d;">larea</span>, <span style="color: #a0522d;">rarea</span>; 
     mid = (left + rught ) / 2;
     fmid = F(mid);
     larea = (fleft + fmid) * (mid - left) / 2;
     rarea = (fmid + fright) * ( right - mid) / 2;
-    <span style="color: #ffffff;">if</span> (fabs((larea + rarea) - lrarea) &gt; EPSILON) {
+    <span style="color: #a020f0;">if</span> (fabs((larea + rarea) - lrarea) &gt; EPSILON) {
         larea = quad(left, mid, fleft, fmid, larea);
         rarea = quad(mid, right, fmid, fright, rarea);
     }

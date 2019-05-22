@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>ppls lec10 w7b review Java threads</title>
-<!-- 2019-05-21 Tue 22:05 -->
+<!-- 2019-05-22 Wed 15:15 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="sheng li" />
@@ -166,18 +166,18 @@ Created by sheng li on <span class="timestamp-wrapper"><span class="timestamp">&
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #ffffff;">class</span> <span style="color: #7fffd4;">Simple</span> <span style="color: #ffffff;">extends</span> <span style="color: #7fffd4;">Threads</span> {
-    <span style="color: #ffffff;">public</span> <span style="color: #7fffd4;">void</span> <span style="color: #98fb98;">run</span>() {
-        System.out.println(<span style="color: #bdb76b;">"this is a thread"</span>);
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Simple</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Threads</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">run</span>() {
+        System.out.println(<span style="color: #8b2252;">"this is a thread"</span>);
     }
 }
-<span style="color: #ffffff;">new</span> <span style="color: #7fffd4;">Simple</span>().start();
-<span style="color: #ffffff;">class</span> <span style="color: #7fffd4;">Bigger</span> <span style="color: #ffffff;">extends</span> <span style="color: #7fffd4;">Whatever</span> <span style="color: #ffffff;">implements</span> <span style="color: #7fffd4;">Runnable</span> {
-    <span style="color: #ffffff;">public</span> <span style="color: #7fffd4;">void</span> <span style="color: #98fb98;">run</span>() {
-        <span style="color: #00cd66;">//</span><span style="color: #00cd66;">...</span>
+<span style="color: #a020f0;">new</span> <span style="color: #228b22;">Simple</span>().start();
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Bigger</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Whatever</span> <span style="color: #a020f0;">implements</span> <span style="color: #228b22;">Runnable</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">run</span>() {
+        <span style="color: #b22222;">//</span><span style="color: #b22222;">...</span>
     }
 }
-<span style="color: #ffffff;">new</span> <span style="color: #7fffd4;">Thread</span>(<span style="color: #ffffff;">new</span> <span style="color: #7fffd4;">bigger</span>()).start();
+<span style="color: #a020f0;">new</span> <span style="color: #228b22;">Thread</span>(<span style="color: #a020f0;">new</span> <span style="color: #228b22;">bigger</span>()).start();
 </pre>
 </div>
 </div>

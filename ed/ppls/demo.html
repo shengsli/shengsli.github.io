@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Demo</title>
-<!-- 2019-05-20 Mon 20:23 -->
+<!-- 2019-05-22 Wed 15:15 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sheng Li" />
@@ -141,40 +141,40 @@ for the JavaScript code in this tag.
 <h1 class="title">Demo</h1>
 <div class="org-src-container">
 
-<pre class="src src-C">  <span style="color: #00cd66;">// </span><span style="color: #00cd66;">A well behaved version of "Hello World".</span>
-  <span style="color: #00cd66;">// </span><span style="color: #00cd66;">The random sleep() just causes different </span>
-  <span style="color: #00cd66;">// </span><span style="color: #00cd66;">interleavings, but each thread always gets</span>
-  <span style="color: #00cd66;">// </span><span style="color: #00cd66;">a distinct value of i.</span>
-<span style="color: #b0c4de;">  #include</span> <span style="color: #bdb76b;">&lt;stdio.h&gt;</span>
-<span style="color: #b0c4de;">  #include</span> <span style="color: #bdb76b;">&lt;stdlib.h&gt;</span>
-<span style="color: #b0c4de;">  #include</span> <span style="color: #bdb76b;">&lt;time.h&gt;</span>
-<span style="color: #b0c4de;">  #include</span> <span style="color: #bdb76b;">&lt;pthread.h&gt;</span>
+<pre class="src src-C">  <span style="color: #b22222;">// </span><span style="color: #b22222;">A well behaved version of "Hello World".</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">The random sleep() just causes different </span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">interleavings, but each thread always gets</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">a distinct value of i.</span>
+<span style="color: #483d8b;">  #include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
+<span style="color: #483d8b;">  #include</span> <span style="color: #8b2252;">&lt;stdlib.h&gt;</span>
+<span style="color: #483d8b;">  #include</span> <span style="color: #8b2252;">&lt;time.h&gt;</span>
+<span style="color: #483d8b;">  #include</span> <span style="color: #8b2252;">&lt;pthread.h&gt;</span>
 
-<span style="color: #b0c4de;">  #define</span> <span style="color: #9acd32;">P</span> 100
+<span style="color: #483d8b;">  #define</span> <span style="color: #a0522d;">P</span> 100
 
-  <span style="color: #7fffd4;">void</span> *<span style="color: #98fb98;">sayhello</span> (<span style="color: #7fffd4;">void</span> *<span style="color: #9acd32;">id</span>)
+  <span style="color: #228b22;">void</span> *<span style="color: #0000ff;">sayhello</span> (<span style="color: #228b22;">void</span> *<span style="color: #a0522d;">id</span>)
   {  
     sleep(rand()%5);
-    printf(<span style="color: #bdb76b;">"Hello from thread %d\n"</span>, (<span style="color: #7fffd4;">int</span>) id);
+    printf(<span style="color: #8b2252;">"Hello from thread %d\n"</span>, (<span style="color: #228b22;">int</span>) id);
   }
 
-  <span style="color: #7fffd4;">int</span> <span style="color: #98fb98;">main</span> (<span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">argc</span>, <span style="color: #7fffd4;">char</span> *<span style="color: #9acd32;">argv</span>[]) { 
-    <span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">i</span>;
-    <span style="color: #7fffd4;">pthread_t</span> <span style="color: #9acd32;">thread</span>[P];
-    <span style="color: #7fffd4;">time_t</span> <span style="color: #9acd32;">t</span>;
+  <span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[]) { 
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+    <span style="color: #228b22;">pthread_t</span> <span style="color: #a0522d;">thread</span>[P];
+    <span style="color: #228b22;">time_t</span> <span style="color: #a0522d;">t</span>;
 
-    t = time(<span style="color: #40e0d0;">NULL</span>);  <span style="color: #00cd66;">// </span><span style="color: #00cd66;">seed the random number</span>
-    srand((<span style="color: #7fffd4;">int</span>) t);  <span style="color: #00cd66;">// </span><span style="color: #00cd66;">generator from outside</span>
+    t = time(<span style="color: #008b8b;">NULL</span>);  <span style="color: #b22222;">// </span><span style="color: #b22222;">seed the random number</span>
+    srand((<span style="color: #228b22;">int</span>) t);  <span style="color: #b22222;">// </span><span style="color: #b22222;">generator from outside</span>
 
-    printf(<span style="color: #bdb76b;">"Hello from the main thread\n"</span>);
-    <span style="color: #ffffff;">for</span> (i=0; i&lt;P; i++) {
-      pthread_create(&amp;thread[i], <span style="color: #40e0d0;">NULL</span>, sayhello, (<span style="color: #7fffd4;">void</span> *)i);
+    printf(<span style="color: #8b2252;">"Hello from the main thread\n"</span>);
+    <span style="color: #a020f0;">for</span> (i=0; i&lt;P; i++) {
+      pthread_create(&amp;thread[i], <span style="color: #008b8b;">NULL</span>, sayhello, (<span style="color: #228b22;">void</span> *)i);
     }
 
-    <span style="color: #ffffff;">for</span> (i=0; i&lt;P; i++) {
-      pthread_join(thread[i], <span style="color: #40e0d0;">NULL</span>);
+    <span style="color: #a020f0;">for</span> (i=0; i&lt;P; i++) {
+      pthread_join(thread[i], <span style="color: #008b8b;">NULL</span>);
     }
-    printf(<span style="color: #bdb76b;">"Goodbye from the main thread\n"</span>);
+    printf(<span style="color: #8b2252;">"Goodbye from the main thread\n"</span>);
     exit(0);
   }
 </pre>
