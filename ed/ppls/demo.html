@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>shengsli</title>
+<title>Demo</title>
 <!-- 2019-06-22 Sat 23:37 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
@@ -137,17 +137,47 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">shengsli</h1>
-<p>
-<a href="blog/index.html">Blogs</a> - <a href="https://github.com/shengsli">GitHub</a> 
-</p>
+<h1 class="title">Demo</h1>
+<div class="org-src-container">
 
-<ul class="org-ul">
-<li><a href="ed/stencil/index.html">stencil</a>
-</li>
-<li><a href="ed/ppls/index.html">ppls</a>
-</li>
-</ul>
+<pre class="src src-C">  <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">A well behaved version of "Hello World".</span>
+  <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">The random sleep() just causes different </span>
+  <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">interleavings, but each thread always gets</span>
+  <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">a distinct value of i.</span>
+<span style="font-weight: bold;">  #include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
+<span style="font-weight: bold;">  #include</span> <span style="font-style: italic;">&lt;stdlib.h&gt;</span>
+<span style="font-weight: bold;">  #include</span> <span style="font-style: italic;">&lt;time.h&gt;</span>
+<span style="font-weight: bold;">  #include</span> <span style="font-style: italic;">&lt;pthread.h&gt;</span>
+
+<span style="font-weight: bold;">  #define</span> <span style="font-weight: bold; font-style: italic;">P</span> 100
+
+  <span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold;">sayhello</span> (<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold; font-style: italic;">id</span>)
+  {  
+    sleep(rand()%5);
+    printf(<span style="font-style: italic;">"Hello from thread %d\n"</span>, (<span style="font-weight: bold; text-decoration: underline;">int</span>) id);
+  }
+
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> *<span style="font-weight: bold; font-style: italic;">argv</span>[]) { 
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span>;
+    <span style="font-weight: bold; text-decoration: underline;">pthread_t</span> <span style="font-weight: bold; font-style: italic;">thread</span>[P];
+    <span style="font-weight: bold; text-decoration: underline;">time_t</span> <span style="font-weight: bold; font-style: italic;">t</span>;
+
+    t = time(<span style="font-weight: bold; text-decoration: underline;">NULL</span>);  <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">seed the random number</span>
+    srand((<span style="font-weight: bold; text-decoration: underline;">int</span>) t);  <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">generator from outside</span>
+
+    printf(<span style="font-style: italic;">"Hello from the main thread\n"</span>);
+    <span style="font-weight: bold;">for</span> (i=0; i&lt;P; i++) {
+      pthread_create(&amp;thread[i], <span style="font-weight: bold; text-decoration: underline;">NULL</span>, sayhello, (<span style="font-weight: bold; text-decoration: underline;">void</span> *)i);
+    }
+
+    <span style="font-weight: bold;">for</span> (i=0; i&lt;P; i++) {
+      pthread_join(thread[i], <span style="font-weight: bold; text-decoration: underline;">NULL</span>);
+    }
+    printf(<span style="font-style: italic;">"Goodbye from the main thread\n"</span>);
+    exit(0);
+  }
+</pre>
+</div>
 </div>
 </body>
 </html>

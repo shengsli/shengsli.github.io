@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>shengsli</title>
+<title>ppls lec06 w3b barriers</title>
 <!-- 2019-06-22 Sat 23:37 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
@@ -137,17 +137,109 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">shengsli</h1>
-<p>
-<a href="blog/index.html">Blogs</a> - <a href="https://github.com/shengsli">GitHub</a> 
-</p>
-
-<ul class="org-ul">
-<li><a href="ed/stencil/index.html">stencil</a>
+<h1 class="title">ppls lec06 w3b barriers</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. barriers</a></li>
+<li><a href="#sec-2">2. counter barrier p69 WRONG</a></li>
+<li><a href="#sec-3">3. sense reversing barrier</a></li>
+<li><a href="#sec-4">4. symmetric barriers</a>
+<ul>
+<li><a href="#sec-4-1">4.1. flag implementation WRONG p74</a></li>
+<li><a href="#sec-4-2">4.2. distinct variables at each stage p75</a></li>
+</ul>
 </li>
-<li><a href="ed/ppls/index.html">ppls</a>
+<li><a href="#sec-5">5. dissemination barriers</a></li>
+<li><a href="#sec-6">6. next: structured primitives</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> barriers</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>barrier synchronization is a pattern of condition synchronization
+</li>
+<li>centraliased: count # of workers
+</li>
+<li>local pair wise synchronization
 </li>
 </ul>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> counter barrier p69 WRONG</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>most counter will fail
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> sense reversing barrier</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>analogy: green and red signal
+</li>
+<li>every iteration, signal reverse the meaning
+</li>
+<li>counter, barrier, signal
+</li>
+<li><code>sense = mySense;</code>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> symmetric barriers</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>not centralised
+</li>
+<li>power of 2 workers -&gt; butterfly pattern
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> flag implementation WRONG p74</h3>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> distinct variables at each stage p75</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>how to choose friends?
+</li>
+<li>ans: increment offset, hard coded
+</li>
+<li>if a thread crashes,  the program never proceeds to the next stage. 
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> dissemination barriers</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>not just power of 2
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> next: structured primitives</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>os provide some support, e.g. suspend, resume
+</li>
+<li>and it will change our ways to implement
+</li>
+</ul>
+</div>
+</div>
 </div>
 </body>
 </html>

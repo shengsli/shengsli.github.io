@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>ppls lec01 w1a parallel architecture for dummies 1</title>
+<!-- 2019-06-22 Sat 23:37 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/style.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ppls lec01 w1a parallel architecture for dummies 1</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. What is this course about?</a></li>
+<li><a href="#sec-2">2. Why do we care about/ is it interesting?/motivations</a></li>
+<li><a href="#sec-3">3. How are we going to address?/structure of this course/roadmap</a></li>
+<li><a href="#sec-4">4. Parallel architecture for dummies</a>
+<ul>
+<li><a href="#sec-4-1">4.1. shared memory architectures</a>
+<ul>
+<li><a href="#sec-4-1-1">4.1.1. low-level perspective: when it become complicated and problematic</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-5">5. multicomputer architectures</a>
+<ul>
+<li><a href="#sec-5-1">5.1. low-level perspective: hardware and software</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> What is this course about?</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>This course is about programming languages and libraries. Programming mechanism in general.
+</li>
+<li>This course is bout bridging the gap between <b>high-level parallel applications and algorithms</b> and <b>parallel architectures and their low-level programming interfaces</b>. 
+</li>
+<li>The challenge is to provide programming mechanisms (whether through language constructes or libraries) which provide a good balance between
+<ul class="org-ul">
+<li>conceptual <b>simplicity</b>: it should be "easy" to program correctly. 
+</li>
+<li><b>performance</b> retention: if our algorithm and architecture are good, we shouldn't lose "too much" in the mapping between them.
+</li>
+<li>portability
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Why do we care about/ is it interesting?/motivations</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Performance: Clock speed stops getting faster. increase cores and get most out of them
+</li>
+<li>Distributed: Concurrency is the inherent property of problems to solve/applications/systems, e.g. distributed file systems, sensor networks. 
+</li>
+<li>Systems programming: e.g. implementing OS. think of a system as being composed of concurrent components. 
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> How are we going to address?/structure of this course/roadmap</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>programming is a bridge, two sides of the bridges: 
+<ul class="org-ul">
+<li>parallel architecture
+<ul class="org-ul">
+<li>capabilities
+</li>
+<li>limitations
+</li>
+<li>requirements
+</li>
+</ul>
+</li>
+<li>parallel algorithm and applications
+</li>
+</ul>
+</li>
+<li>2 traditional models: 
+<ul class="org-ul">
+<li>shared variable programming/shared memory programming
+</li>
+<li>message passing programming/distributed memory programming
+</li>
+<li>key difference: can all activities (processes/threads) see all of the data all of the time?
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Parallel architecture for dummies</h2>
+<div class="outline-text-2" id="text-4">
+<ol class="org-ol">
+<li>shared memory architectures in which all processors can physically address the whole memory. 
+</li>
+<li>multicomputer/distributed memory architecture in which processors can only physically address their own memory, which interact with messages across the network. e.g. a networked cluster of PCs. 
+</li>
+</ol>
+<ul class="org-ul">
+<li>Increasingly, systems will span both classes (e.g. Intel SCC) and incorporate other specialized constrained parallel hardware such as GPUs.
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> shared memory architectures</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>one address space shared by all CPUs.
+</li>
+<li>Cache keeps frequently used data close to the processor. In normal sequential systems, cache is hidden. 
+</li>
+<li>2 types of shared memory architectures: 
+<ol class="org-ol">
+<li>Uniform memory access (UMA) architecture have all memory "equidistant" from all CPUs. 
+</li>
+<li>Non uniform memory access (NUMA) architecture: performance varies with data location. 
+<ul class="org-ul">
+<li>cf. distributed shared memory
+</li>
+<li>In NUMA architecture, memory is physically distributed but logically shared. 
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> low-level perspective: when it become complicated and problematic</h4>
+<div class="outline-text-4" id="text-4-1-1">
+</div><ol class="org-ol"><li><a id="sec-4-1-1-1" name="sec-4-1-1-1"></a>example, error case:<br  /><div class="outline-text-5" id="text-4-1-1-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">P0</th>
+<th scope="col" class="left">P1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">lots of work (&amp;x);</td>
+<td class="left">while (flag == 0); //spinning</td>
+</tr>
+
+<tr>
+<td class="left">flag = 1;</td>
+<td class="left">y = f(x);</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li><a id="sec-4-1-1-2" name="sec-4-1-1-2"></a>cache<br  /><div class="outline-text-5" id="text-4-1-1-2">
+<pre class="example">
+x = 2;      LD R1,#2
+            ST R1,x     [to cache]
+y = 1;      LD R1,#1
+            ST R1,y     [to cache]
+...
+            cache write-back of y -&gt; memory
+...
+
+if (x&lt;=y)   LD R1,x     [from cache]
+            LD R2,y     [memory back to cache]
+            BGT R1,R2,target
+</pre>
+<p>
+This program above is broken unless you program in the sequentially consistent architecture.  
+</p>
+</div>
+</li>
+<li><a id="sec-4-1-1-3" name="sec-4-1-1-3"></a>consistency model<br  /><div class="outline-text-5" id="text-4-1-1-3">
+<ol class="org-ol">
+<li><b>Sequential consistency</b>: every processors sees the <b>same sequential interleaving of the basic reads and writes</b>. Intuitive but expensive to implement. 
+</li>
+<li><b>Release consistency</b>: writes are only guaranteed to be visible after program-specified synchronization points (trigged by special machine instructions). The ordering as written by one processor between such points may be seen differently by other processors. Less intuitive but allows aster implementations. 
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-4-1-1-4" name="sec-4-1-1-4"></a>tricky performance issues<br  /><div class="outline-text-5" id="text-4-1-1-4">
+<ul class="org-ul">
+<li>The <b>unit of transfer</b> between memory and cache is a cache-line or block, containing several words. 
+</li>
+<li><b>False sharing</b> occurs when <b>two logically unconnected variables cache the same cache-line</b>. 
+</li>
+<li>example: 
+</li>
+</ul>
+<pre class="example">
+shared int x, y;
+
+// P0
+for 1000000 iterations {
+    x = ... not touching y ... 
+}
+
+// P1
+for 1000000 iterations {
+    y = ... not touching x ...
+}
+</pre>
+<ul class="org-ul">
+<li>P1 get a fresh copy of y every time x is updated, because x and y are cached in the same cache line. 
+</li>
+<li>May not be physically independent at the level of cache blocks. 
+</li>
+</ul>
+</div>
+</li></ol>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> multicomputer architectures</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>The difference is <b>the lack of any hardware integration between cache/memory system and the interconnect</b>. Each processor only accesses its <b>own</b> physical address space. Information is shared by explicit, co-operative message passing. 
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> low-level perspective: hardware and software</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>Performance/correctness issues include the semantics of synchronization and constraints on message ordering.
+</li>
+<li>Example: p11
+</li>
+<li>Problems: The implementation of messaging does not guarantee order. 
+</li>
+<li>Summary: 
+<ul class="org-ul">
+<li>Assumptions we made might not be true in the real underlying systems.
+</li>
+<li>Trade off between simplicity and cost
+</li>
+<li>Real parallel machines are complex, with unforeseen semantic and performance traps. We need to provide programming tools which simplify things, but without sacrificing too much performance. 
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

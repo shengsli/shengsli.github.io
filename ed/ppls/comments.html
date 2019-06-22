@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>shengsli</title>
+<title>comments/discussion</title>
 <!-- 2019-06-22 Sat 23:37 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
@@ -137,15 +137,13 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">shengsli</h1>
-<p>
-<a href="blog/index.html">Blogs</a> - <a href="https://github.com/shengsli">GitHub</a> 
-</p>
-
+<h1 class="title">comments/discussion</h1>
 <ul class="org-ul">
-<li><a href="ed/stencil/index.html">stencil</a>
+<li>In the first phase, parent thread (thread 0) initializes each child thread id, calculate its chunk size and prepare items which will be allocated to each child thread. Thread 0 calls <code>pthread_create</code> to create threads, passes start routine and arguments (thread id, chunk size, items). 
 </li>
-<li><a href="ed/ppls/index.html">ppls</a>
+<li>In the second phase, I used <code>pthread_barrier</code> to synchronize all the threads before thread 0 start to perform sequential prefix sum at highest indices. I put this barrier before thread 0 start prefix sum at highest indices, and I put this barrier right after child threads finish the first phase. Sequential prefix sum at highest indices is implemented in <code>parent_sequentialprefixsum()</code>. Thread 1 has finished the calculation on the first chunk. Thread 0 only needs to calculate from the second chunk. The last item of each chunk adds the value of last item in the previous chunk to itself. Other threads wait for thread 0 until it finishes this highest-indexed prefix sum. To achieve this, I used a second barrier after the code block of this highest-indexed prefix sum in thread 0, and I put this second barrier right after the first barrier, before child threads do any further computation. 
+</li>
+<li>In the third phase, each child thread does local updates to its own data chunk. The last item of each chunk has completed its calculation in phase 2. In this phase, each item (except the last one) add the value of last item in the previous chunk to itself. At this point, all threads finish calculation and terminate by return. Thread 0 joins all threads. 
 </li>
 </ul>
 </div>

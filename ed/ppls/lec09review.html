@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>ppls lec09 review Pthreads: Semaphores, "Monitors", Consistency Model and Example Code</title>
+<!-- 2019-06-22 Sat 23:37 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/style.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ppls lec09 review Pthreads: Semaphores, "Monitors", Consistency Model and Example Code</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Example: bad counter p102, good counter p104</a></li>
+<li><a href="#sec-2">2. Coordinating shared accesses</a></li>
+<li><a href="#sec-3">3. <span class="todo TODO">TODO</span> Example: producers and consumers p105</a></li>
+<li><a href="#sec-4">4. Pthreads "Monitors"</a></li>
+<li><a href="#sec-5">5. Example: simple Jacobi</a></li>
+<li><a href="#sec-6">6. Reusable counter barrier</a></li>
+<li><a href="#sec-7">7. Memory consistency p113</a></li>
+<li><a href="#sec-8">8. Pragmatic issues</a></li>
+<li><a href="#sec-9">9. Exercise 2</a></li>
+</ul>
+</div>
+</div>
+<p>
+This lecture will look at some examples written in C and Pthreads. 
+</p>
+<ul class="org-ul">
+<li>Pthreads semaphores
+</li>
+<li>What building blocks Pthreads provide for monitors
+</li>
+<li>Pthreads memory consistency model
+</li>
+</ul>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Example: bad counter p102, good counter p104</h2>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Coordinating shared accesses</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><code>sem_t sem;</code>
+</li>
+<li><code>sem_init(&amp;sem, share, init);</code>
+<ul class="org-ul">
+<li><code>init</code> is the initial value.
+</li>
+<li><code>share</code> is a boolean. 
+<ul class="org-ul">
+<li>true if semaphore is shared between processes.
+</li>
+<li>false if semaphore is shared between threads within a process.
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>sem_wait(s);</code> P(s)
+</li>
+<li><code>sem_post(s);</code> V(s)
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;pthread.h&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;semaphore.h&gt;</span>
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">target</span>;
+<span style="font-weight: bold; text-decoration: underline;">sem_t</span> <span style="font-weight: bold; font-style: italic;">lock</span>;
+<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold;">adderthread</span> (<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold; font-style: italic;">arg</span>)
+{
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span>;
+    <span style="font-weight: bold;">for</span> (i=0; i&lt;N; i++)
+    {
+        sem_wait(&amp;lock);
+        target = target+1;
+        sem_post(&amp;lock);
+    }
+}
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> *<span style="font-weight: bold; font-style: italic;">argv</span>[])
+{
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span>;
+    <span style="font-weight: bold; text-decoration: underline;">pthread_t</span> <span style="font-weight: bold; font-style: italic;">thread</span>[P];
+    target = 0;
+    sem_init(&amp;lock, 0, 1);
+    <span style="font-weight: bold;">for</span> (i=0; i&lt;P; i++)
+    {
+        pthread_create(&amp;thread[i], <span style="font-weight: bold; text-decoration: underline;">NULL</span>, adderthread, <span style="font-weight: bold; text-decoration: underline;">NULL</span>);
+    }
+    <span style="font-weight: bold;">for</span> (i=0; i&lt;P; i++) {
+      pthread_join(thread[i], <span style="font-weight: bold; text-decoration: underline;">NULL</span>);
+    }
+    printf(<span style="font-style: italic;">"Final counter value was %d (should be %d)\n"</span>, target, P*N);
+    <span style="font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Example: producers and consumers p105</h2>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Pthreads "Monitors"</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Pthreads doesn't provide monitor as a built-in programming construct, but it does provide the building blocks needed to achieve monitor-like effects. 
+</li>
+</ul>
+<ol class="org-ol">
+<li>locks: 
+<ul class="org-ul">
+<li><code>pthread_mutex_t m;</code>
+</li>
+<li><code>pthread_mutex_init($m, attr);</code>
+</li>
+<li><code>pthread_mutex_lock(&amp;m);</code>
+</li>
+<li><code>pthread_mutex_unlock(&amp;m);</code>
+</li>
+</ul>
+</li>
+<li>condition variables
+<ul class="org-ul">
+<li><code>pthread_cond_t cv;</code>
+</li>
+<li><code>pthread_cond_wait(&amp;cv, &amp;mut);</code>
+<ul class="org-ul">
+<li><code>mut</code> must be a lock already held by this thread. 
+</li>
+</ul>
+</li>
+<li><code>pthread_cond_signal(&amp;cv);</code>
+</li>
+<li><code>pthread_cond_broadcast(&amp;cv);</code> signal all
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Example: simple Jacobi</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>convergence test
+</li>
+<li>double buffering: <code>grid1</code>, <code>grid2</code>
+</li>
+<li>2 <code>Barrier()</code> calls =&gt; How to implement <code>Barrier()</code>? see reusable counter barrier
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold;">Worker</span>(<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold; font-style: italic;">arg</span>)
+{
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">myid</span> = (<span style="font-weight: bold; text-decoration: underline;">int</span>) arg, <span style="font-weight: bold; font-style: italic;">rowA</span> = myid*rowshare+1, <span style="font-weight: bold; font-style: italic;">rowB</span> = rowA+rowshare-1;
+    <span style="font-weight: bold;">for</span> (iters = 1; iters &lt;= numIters; iters++)
+    {
+        <span style="font-weight: bold;">for</span> (i = rowA; i &lt;= rowB; i++)
+        {
+            <span style="font-weight: bold;">for</span> (j = 1; j &lt;= gridSize; j++)
+                grid2[i][j] = (grid1[i-1][j] + grid1[i][j] +
+                               grid1[i+1][j] + grid1[i][j+1]) * 0.25;
+        }
+        Barrier();
+        <span style="font-weight: bold;">for</span> (i = rowA; i &lt;= rowB; i++)
+        {
+            <span style="font-weight: bold;">for</span> (j = 1; j &lt;= gridSize; j++)
+                grid1[i][j] = (grid2[i-1][j] + grid2[i][j] +
+                               grid2[i+1][j] + grid2[i][j+1]) * 0.25;
+        }
+        Barrier();
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Reusable counter barrier</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>We use a counter barrier.
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">pthread_mutex_t</span> <span style="font-weight: bold; font-style: italic;">barrier</span>;
+<span style="font-weight: bold; text-decoration: underline;">pthread_cond_t</span> <span style="font-weight: bold; font-style: italic;">go</span>;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">numArrived</span> = 0;
+
+<span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">Barrier</span>()
+{
+    pthread_mutex_lock(&amp;barrier);
+    numArrived++;
+    <span style="font-weight: bold;">if</span> (numArrived == numWorkers)
+    {
+        numArrived = 0;
+        pthread_condbroadcast(&amp;go); <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">tell all threads go to ready state</span>
+    }
+    <span style="font-weight: bold;">else</span>
+    {
+        pthread_cond_wait(&amp;go, &amp;barrier);
+    }
+    pthread_mutex_unlock(&amp;barrier);
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Memory consistency p113</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>Real architecture does not provide sequential consistency. 
+</li>
+<li>C and Pthreads combination guarantees a <span class="underline">weak</span> consistency memory model, with the only certainties provided at uses of Pthreads primitives. 
+<ul class="org-ul">
+<li>For example, all writes by a thread which has release some mutex, are guaranteed to be seen by any thread which then acquires it.
+</li>
+<li>Nothing can be assumed about the visibility of writes which cannot be seen to be ordered by their relationship to uses of Pthreads primitives.
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Pragmatic issues</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>be careful to use only thread-safe code, which works irrespective of how many threads are active. 
+</li>
+<li>e.g. <code>malloc</code> is not thread-safe. 
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Exercise 2</h2>
+</div>
+</div>
+</body>
+</html>

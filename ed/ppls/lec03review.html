@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>ppls lec03 w2a</title>
+<!-- 2019-06-22 Sat 23:37 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/style.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ppls lec03 w2a</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Overview</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Bag of tasks</a></li>
+<li><a href="#sec-1-2">1.2. Pipeline pattern (pipeline parallel computation)</a></li>
+<li><a href="#sec-1-3">1.3. Interacting peers pattern (aka. stencil)</a></li>
+<li><a href="#sec-1-4">1.4. Summary (a wish list of problems that we want to address)</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Adaptive Quadrature</a>
+<ul>
+<li><a href="#sec-2-1">2.1. Gist of sequential algorithms</a></li>
+<li><a href="#sec-2-2">2.2. sequential program code</a></li>
+<li><a href="#sec-2-3">2.3. how to parallelize it?</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. creating a thread has more overhead than a functional call</a></li>
+<li><a href="#sec-4">4. pipeline pattern: also used in hardware</a>
+<ul>
+<li><a href="#sec-4-1">4.1. producer-consumer relationship</a></li>
+<li><a href="#sec-4-2">4.2. implementing the bag</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Interacting peers pattern</a>
+<ul>
+<li><a href="#sec-5-1">5.1. shared memory version</a></li>
+<li><a href="#sec-5-2">5.2. message passing version</a></li>
+<li><a href="#sec-5-3">5.3. Example: finite difference methods - Jacobi</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Summary</a></li>
+</ul>
+</div>
+</div>
+<p>
+This lecture is going to use <code>co</code> notation and look at patterns in parallel algorithms.
+</p>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Overview</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Bag of tasks</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>worker threads
+</li>
+<li>A worker repeatedly take a task from the bag until there is no task. 
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Pipeline pattern (pipeline parallel computation)</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>We describe the problem as a sequence of stages.
+</li>
+<li>Each piece of data in the stream has to be processed by each stage in order. 
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Interacting peers pattern (aka. stencil)</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>overall computations in a multi-dimensional array
+</li>
+<li>The flow of computations is iterating over some timestamps.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Summary (a wish list of problems that we want to address)</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>creation of activities, both statically and dynamically
+</li>
+<li>local and global synchronization
+</li>
+<li>atomic (mutually excluding) actions
+</li>
+<li>conditional synchronization
+</li>
+<li>synchronous and asynchronous message exchange
+</li>
+<li>collective communication patterns and agglomerations
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Adaptive Quadrature</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>an example of numerical integration
+</li>
+<li>The algorithm we use to achieve this is adaptive quadrature. 
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Gist of sequential algorithms</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>We will do it in divide and conquer way by a series of approximations
+</li>
+<li>approximate it until it's good enough
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> sequential program code</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">double</span> <span style="font-weight: bold;">quad</span>(<span style="font-weight: bold; text-decoration: underline;">double</span> <span style="font-weight: bold; font-style: italic;">left</span>, <span style="font-weight: bold; text-decoration: underline;">double</span> <span style="font-weight: bold; font-style: italic;">right</span>, <span style="font-weight: bold; text-decoration: underline;">double</span> <span style="font-weight: bold; font-style: italic;">fleft</span>, <span style="font-weight: bold; text-decoration: underline;">double</span> <span style="font-weight: bold; font-style: italic;">fright</span>, <span style="font-weight: bold; text-decoration: underline;">double</span> <span style="font-weight: bold; font-style: italic;">lrarea</span>) {
+    <span style="font-weight: bold; text-decoration: underline;">double</span> <span style="font-weight: bold; font-style: italic;">mid</span>, <span style="font-weight: bold; font-style: italic;">fmid</span>, <span style="font-weight: bold; font-style: italic;">larea</span>, <span style="font-weight: bold; font-style: italic;">rarea</span>; 
+    mid = (left + rught ) / 2;
+    fmid = F(mid);
+    larea = (fleft + fmid) * (mid - left) / 2;
+    rarea = (fmid + fright) * ( right - mid) / 2;
+    <span style="font-weight: bold;">if</span> (fabs((larea + rarea) - lrarea) &gt; EPSILON) {
+        larea = quad(left, mid, fleft, fmid, larea);
+        rarea = quad(mid, right, fmid, fright, rarea);
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> how to parallelize it?</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>approximation computation is:
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C">area = quad (a, b, f(a), f(b), (f(a)+f(b)*(b-a)/2);
+</pre>
+</div>
+<ul class="org-ul">
+<li>The recursive calls to quad do not interfere with each other, we can parallelize it by replacing it with: 
+</li>
+</ul>
+<pre class="example">
+co
+  larea = quad(left, mid, fleft, fmid, larea);
+//
+  rarea = quad(mid, right, fmid, fright, rarea);
+oc
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> creating a thread has more overhead than a functional call</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>have a fixed number of threads
+</li>
+</ul>
+<pre class="example">
+place initial tasks in bag:
+co [w = 1 to P] {
+  while (all tasks not done) {
+	get a task;
+	execute the task;
+	possibly add new tasks to the bag;
+  }
+}
+</pre>
+<ul class="org-ul">
+<li>a sketch code
+</li>
+</ul>
+<pre class="example">
+shared int size = 1, idle = 0;
+shared double total = 0.0;
+bag.insert (a,b,f(a),f(b),approxarea);  ## create a task
+co [w = 1 to P] {
+  while (true) {
+    &lt; idle++;&gt;
+    &lt; await (size &gt; 0 || idle == P)
+      if (size &gt; 0)
+		  bag.remove(left, right ...); size--; idle--;  ## remove a task
+	  else
+		  break; &gt;
+    mid = (left + right) / 2;
+    if (fabs(larea + rarea - larea) &gt; EPSOLON) {
+      &lt; bag.insert (left, mid, fleft, fmid, larea);
+        bag.insert (mid, right, fmid, fright, rarea);
+        size = size + 2;
+    }
+    else &lt; total = total + karea + rarea; &gt;
+  }
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> pipeline pattern: also used in hardware</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>problem: Sieve of Eratosthenes, find primes by sieving 
+</li>
+<li>parallelize sieving
+</li>
+<li>create a stream of data passing to processes
+</li>
+<li>characteristics of this problem
+<ol class="org-ol">
+<li>We don't now how many sieves we need.
+</li>
+<li>We don't know which value to sieve. 
+</li>
+</ol>
+</li>
+<li>pseudo code
+</li>
+</ul>
+<pre class="example">
+main () { # generator
+  spawn the first sieve process;
+  for (i=2; i&lt;=N; i++) {
+    send i to first sieve;
+  }
+  send -1 to first sieve; # a "stop" signal
+}
+sieve () { # sieve process
+  int myprime, candidate;
+  receive myprime from predecessor and record it;
+  do {
+    receive candidate from predecessor;
+    if (candidate == -1) send -1 to successor if it exists
+    do {
+      receive candidate from predecessor; 
+      if (candidate == -1) send -1 to successor if it exists
+      else if (myprime doesn't divide candidate exactly) {
+        if (no successor yet) spawn successor sieve process;
+        send candidate to successor sieve process;
+      }
+    }
+  } while (candidate != -1)
+}
+</pre>
+</div>
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> producer-consumer relationship</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>shared memory
+</li>
+<li>algorithm analysis on different parallelism
+<ul class="org-ul">
+<li>big-oh
+</li>
+<li>load balance
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> implementing the bag</h3>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Interacting peers pattern</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> shared memory version</h3>
+<div class="outline-text-3" id="text-5-1">
+<pre class="example">
+repeat 
+  local = f (neighbours old value);
+until (all agree to stop);
+</pre>
+<ul class="org-ul">
+<li>models of physical phenomena are often expressed as a system of partial differential equations. These can be approximately solved by finite difference methods which involve <b>iteration on a matrix of points</b>, in an interacting peers pattern. 
+</li>
+</ul>
+
+<p>
+The matrix is surrounded by a fixed fringe, representing the boundary conditions. 
+</p>
+
+<p>
+The "compute" step usually involves only a small number of neighbouring points. <b>The termination test looks for convergence</b> i.e. <span class="underline">small difference in point values from one iteration to the next</span>, indicating approximate solution of the PDEs. 
+</p>
+
+<p>
+In this version, we use a duplicate grid and barriers to enforce correct synchronization between iterations. 
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> message passing version</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+In contrast, in a message passing version we could <b>remove the barriers</b> and <b>synchronize "naturally" with local synchronous messages only</b>. The termination test would require us to <b>collate local termination decision somehow</b>. 
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Example: finite difference methods - Jacobi</h3>
+<div class="outline-text-3" id="text-5-3">
+<pre class="example">
+shared real grid[n+2, n+2], newgrid[n+2, n+2];
+shared bool converged; local real diff;
+co [i = 1 to n, j = 1 to n] {
+  initialise grid;
+  do {
+    barrier();
+    converged = true;
+    newgrid[i,j] = (grid[i-1,j] + grid [i+1,j] +
+                    grid[i,j-1] + grid[i,j+1])/4;
+    diff = abs (newgrid[i,j] - grid[i,j]);
+    barrier();                                        ## before converged update
+    if (diff &gt; EPSILON) converged = false;
+    grid[i,j] = newgrid[i,j];
+    barrier();                                        ## before global check
+  } while (not converged);
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Summary</h2>
+</div>
+</div>
+</body>
+</html>
