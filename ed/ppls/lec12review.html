@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>ppls lec12 w8b review</title>
-<!-- 2019-06-22 Sat 23:37 -->
+<!-- 2019-06-23 Sun 03:18 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -210,12 +210,12 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 
-<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">MPI_Send</span>(<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold; font-style: italic;">buf</span>,             <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">pointer</span>
-             <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">count</span>,             <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">size</span>
-             <span style="font-weight: bold; text-decoration: underline;">MPI_Datatype</span> <span style="font-weight: bold; font-style: italic;">datatype</span>, <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">type</span>
-             <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">dest</span>,              <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">destination process</span>
-             <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">tag</span>,               <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">must be non-negative</span>
-             <span style="font-weight: bold; text-decoration: underline;">MPI_Comm</span> <span style="font-weight: bold; font-style: italic;">comm</span>)         <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">communicator</span>
+<pre class="src src-C"><span style="color: #228b22;">int</span> <span style="color: #0000ff;">MPI_Send</span>(<span style="color: #228b22;">void</span> *<span style="color: #a0522d;">buf</span>,             <span style="color: #b22222;">// </span><span style="color: #b22222;">pointer</span>
+             <span style="color: #228b22;">int</span> <span style="color: #a0522d;">count</span>,             <span style="color: #b22222;">// </span><span style="color: #b22222;">size</span>
+             <span style="color: #228b22;">MPI_Datatype</span> <span style="color: #a0522d;">datatype</span>, <span style="color: #b22222;">// </span><span style="color: #b22222;">type</span>
+             <span style="color: #228b22;">int</span> <span style="color: #a0522d;">dest</span>,              <span style="color: #b22222;">// </span><span style="color: #b22222;">destination process</span>
+             <span style="color: #228b22;">int</span> <span style="color: #a0522d;">tag</span>,               <span style="color: #b22222;">// </span><span style="color: #b22222;">must be non-negative</span>
+             <span style="color: #228b22;">MPI_Comm</span> <span style="color: #a0522d;">comm</span>)         <span style="color: #b22222;">// </span><span style="color: #b22222;">communicator</span>
 </pre>
 </div>
 </div>
@@ -225,13 +225,13 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 
-<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">MPI_Recv</span>(<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold; font-style: italic;">buf</span>,
-             <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">count</span>,
-             <span style="font-weight: bold; text-decoration: underline;">MPI_Datatype</span> <span style="font-weight: bold; font-style: italic;">datatype</span>,
-             <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">source</span>,            <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">source process</span>
-             <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">tag</span>,
-             <span style="font-weight: bold; text-decoration: underline;">MPI_Comm</span> <span style="font-weight: bold; font-style: italic;">comm</span>,
-             <span style="font-weight: bold; text-decoration: underline;">MPI_Status</span> *<span style="font-weight: bold; font-style: italic;">status</span>)
+<pre class="src src-C"><span style="color: #228b22;">int</span> <span style="color: #0000ff;">MPI_Recv</span>(<span style="color: #228b22;">void</span> *<span style="color: #a0522d;">buf</span>,
+             <span style="color: #228b22;">int</span> <span style="color: #a0522d;">count</span>,
+             <span style="color: #228b22;">MPI_Datatype</span> <span style="color: #a0522d;">datatype</span>,
+             <span style="color: #228b22;">int</span> <span style="color: #a0522d;">source</span>,            <span style="color: #b22222;">// </span><span style="color: #b22222;">source process</span>
+             <span style="color: #228b22;">int</span> <span style="color: #a0522d;">tag</span>,
+             <span style="color: #228b22;">MPI_Comm</span> <span style="color: #a0522d;">comm</span>,
+             <span style="color: #228b22;">MPI_Status</span> *<span style="color: #a0522d;">status</span>)
 </pre>
 </div>
 <ul class="org-ul">
@@ -245,37 +245,37 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 
-<pre class="src src-C"><span style="font-weight: bold;">#define</span> <span style="font-weight: bold; font-style: italic;">MAX_TASKS</span> 100
-<span style="font-weight: bold;">#define</span> <span style="font-weight: bold; font-style: italic;">NO_MORE_TASKS</span> MAX_TASKS+1
-<span style="font-weight: bold;">#define</span> <span style="font-weight: bold; font-style: italic;">FARMER</span> 0
-<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> *<span style="font-weight: bold; font-style: italic;">argv</span>)
+<pre class="src src-C"><span style="color: #483d8b;">#define</span> <span style="color: #a0522d;">MAX_TASKS</span> 100
+<span style="color: #483d8b;">#define</span> <span style="color: #a0522d;">NO_MORE_TASKS</span> MAX_TASKS+1
+<span style="color: #483d8b;">#define</span> <span style="color: #a0522d;">FARMER</span> 0
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>)
 {
-    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">np</span>, <span style="font-weight: bold; font-style: italic;">rank</span>;
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">np</span>, <span style="color: #a0522d;">rank</span>;
     MPI_Init(&amp;argc, &amp;argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
     MPI_Comm_size(MPI_COMM_WORLD, &amp;np);
-    <span style="font-weight: bold;">if</span> (rank == FARMER)
+    <span style="color: #a020f0;">if</span> (rank == FARMER)
     {
         farmer(np-1);
     }
-    <span style="font-weight: bold;">else</span>
+    <span style="color: #a020f0;">else</span>
     {
         worker();
     }
     MPI_Finalize();
 }
 
-<span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">farmer</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">workers</span>)
+<span style="color: #228b22;">void</span> <span style="color: #0000ff;">farmer</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">workers</span>)
 {
-    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span>, <span style="font-weight: bold; font-style: italic;">task</span>[MAX_TASKS], <span style="font-weight: bold; font-style: italic;">result</span> [MAX_TASKS], <span style="font-weight: bold; font-style: italic;">temp</span>, <span style="font-weight: bold; font-style: italic;">tag</span>, <span style="font-weight: bold; font-style: italic;">who</span>;
-    <span style="font-weight: bold; text-decoration: underline;">MPI_Status</span> <span style="font-weight: bold; font-style: italic;">status</span>;
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>, <span style="color: #a0522d;">task</span>[MAX_TASKS], <span style="color: #a0522d;">result</span> [MAX_TASKS], <span style="color: #a0522d;">temp</span>, <span style="color: #a0522d;">tag</span>, <span style="color: #a0522d;">who</span>;
+    <span style="color: #228b22;">MPI_Status</span> <span style="color: #a0522d;">status</span>;
 
-    <span style="font-weight: bold;">for</span> (i=0; i&lt;workers; i++)
+    <span style="color: #a020f0;">for</span> (i=0; i&lt;workers; i++)
     {
         MPI_Send(task[i], 1, MPI_INT, i+1, i, MPI_COMM_WORLD);
     }
 
-    <span style="font-weight: bold;">while</span> (i&lt;MAX_TASKS)
+    <span style="color: #a020f0;">while</span> (i&lt;MAX_TASKS)
     {
         MPI_Recv(&amp;temp, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &amp;STATUS);
         who = status.STATUS.MPI_SOURCE;
@@ -285,7 +285,7 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
         i++;
     }
 
-    <span style="font-weight: bold;">for</span> (i=0; i&lt;workers; i++)
+    <span style="color: #a020f0;">for</span> (i=0; i&lt;workers; i++)
     {
         MPI_Recv(&amp;temp, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMMON_WORLD);
         who = status.MPI_SOURCE;
@@ -295,14 +295,14 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
     }
 }
 
-<span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">worker</span> ()
+<span style="color: #228b22;">void</span> <span style="color: #0000ff;">worker</span> ()
 {
-    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">task</span>, <span style="font-weight: bold; font-style: italic;">result</span>, <span style="font-weight: bold; font-style: italic;">tag</span>;
-    <span style="font-weight: bold; text-decoration: underline;">MPI_Status</span> <span style="font-weight: bold; font-style: italic;">status</span>;
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">task</span>, <span style="color: #a0522d;">result</span>, <span style="color: #a0522d;">tag</span>;
+    <span style="color: #228b22;">MPI_Status</span> <span style="color: #a0522d;">status</span>;
     MPI_Recv(&amp;task, 1, MPI_INT, FARMER, MPI_ANY_TAG, MPI_COMMON_WORLD, &amp;status);
     tag = status.MPI_TAG;
 
-    <span style="font-weight: bold;">while</span> (tag != NO_MOE_TASKS)
+    <span style="color: #a020f0;">while</span> (tag != NO_MOE_TASKS)
     {
         result = somefunction(task);
         MPI_Send(&amp;result, 1, MPI_INT, FARMER, tag, MPI_COMM_WORLD);

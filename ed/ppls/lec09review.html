@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>ppls lec09 review Pthreads: Semaphores, "Monitors", Consistency Model and Example Code</title>
-<!-- 2019-06-22 Sat 23:37 -->
+<!-- 2019-06-23 Sun 03:18 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -195,36 +195,36 @@ This lecture will look at some examples written in C and Pthreads.
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
-<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;pthread.h&gt;</span>
-<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;semaphore.h&gt;</span>
-<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">target</span>;
-<span style="font-weight: bold; text-decoration: underline;">sem_t</span> <span style="font-weight: bold; font-style: italic;">lock</span>;
-<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold;">adderthread</span> (<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold; font-style: italic;">arg</span>)
+<pre class="src src-C"><span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;pthread.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;semaphore.h&gt;</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">target</span>;
+<span style="color: #228b22;">sem_t</span> <span style="color: #a0522d;">lock</span>;
+<span style="color: #228b22;">void</span> *<span style="color: #0000ff;">adderthread</span> (<span style="color: #228b22;">void</span> *<span style="color: #a0522d;">arg</span>)
 {
-    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span>;
-    <span style="font-weight: bold;">for</span> (i=0; i&lt;N; i++)
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+    <span style="color: #a020f0;">for</span> (i=0; i&lt;N; i++)
     {
         sem_wait(&amp;lock);
         target = target+1;
         sem_post(&amp;lock);
     }
 }
-<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> *<span style="font-weight: bold; font-style: italic;">argv</span>[])
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[])
 {
-    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span>;
-    <span style="font-weight: bold; text-decoration: underline;">pthread_t</span> <span style="font-weight: bold; font-style: italic;">thread</span>[P];
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+    <span style="color: #228b22;">pthread_t</span> <span style="color: #a0522d;">thread</span>[P];
     target = 0;
     sem_init(&amp;lock, 0, 1);
-    <span style="font-weight: bold;">for</span> (i=0; i&lt;P; i++)
+    <span style="color: #a020f0;">for</span> (i=0; i&lt;P; i++)
     {
-        pthread_create(&amp;thread[i], <span style="font-weight: bold; text-decoration: underline;">NULL</span>, adderthread, <span style="font-weight: bold; text-decoration: underline;">NULL</span>);
+        pthread_create(&amp;thread[i], <span style="color: #008b8b;">NULL</span>, adderthread, <span style="color: #008b8b;">NULL</span>);
     }
-    <span style="font-weight: bold;">for</span> (i=0; i&lt;P; i++) {
-      pthread_join(thread[i], <span style="font-weight: bold; text-decoration: underline;">NULL</span>);
+    <span style="color: #a020f0;">for</span> (i=0; i&lt;P; i++) {
+      pthread_join(thread[i], <span style="color: #008b8b;">NULL</span>);
     }
-    printf(<span style="font-style: italic;">"Final counter value was %d (should be %d)\n"</span>, target, P*N);
-    <span style="font-weight: bold;">return</span> 0;
+    printf(<span style="color: #8b2252;">"Final counter value was %d (should be %d)\n"</span>, target, P*N);
+    <span style="color: #a020f0;">return</span> 0;
 }
 </pre>
 </div>
@@ -286,21 +286,21 @@ This lecture will look at some examples written in C and Pthreads.
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold;">Worker</span>(<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold; font-style: italic;">arg</span>)
+<pre class="src src-C"><span style="color: #228b22;">void</span> *<span style="color: #0000ff;">Worker</span>(<span style="color: #228b22;">void</span> *<span style="color: #a0522d;">arg</span>)
 {
-    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">myid</span> = (<span style="font-weight: bold; text-decoration: underline;">int</span>) arg, <span style="font-weight: bold; font-style: italic;">rowA</span> = myid*rowshare+1, <span style="font-weight: bold; font-style: italic;">rowB</span> = rowA+rowshare-1;
-    <span style="font-weight: bold;">for</span> (iters = 1; iters &lt;= numIters; iters++)
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">myid</span> = (<span style="color: #228b22;">int</span>) arg, <span style="color: #a0522d;">rowA</span> = myid*rowshare+1, <span style="color: #a0522d;">rowB</span> = rowA+rowshare-1;
+    <span style="color: #a020f0;">for</span> (iters = 1; iters &lt;= numIters; iters++)
     {
-        <span style="font-weight: bold;">for</span> (i = rowA; i &lt;= rowB; i++)
+        <span style="color: #a020f0;">for</span> (i = rowA; i &lt;= rowB; i++)
         {
-            <span style="font-weight: bold;">for</span> (j = 1; j &lt;= gridSize; j++)
+            <span style="color: #a020f0;">for</span> (j = 1; j &lt;= gridSize; j++)
                 grid2[i][j] = (grid1[i-1][j] + grid1[i][j] +
                                grid1[i+1][j] + grid1[i][j+1]) * 0.25;
         }
         Barrier();
-        <span style="font-weight: bold;">for</span> (i = rowA; i &lt;= rowB; i++)
+        <span style="color: #a020f0;">for</span> (i = rowA; i &lt;= rowB; i++)
         {
-            <span style="font-weight: bold;">for</span> (j = 1; j &lt;= gridSize; j++)
+            <span style="color: #a020f0;">for</span> (j = 1; j &lt;= gridSize; j++)
                 grid1[i][j] = (grid2[i-1][j] + grid2[i][j] +
                                grid2[i+1][j] + grid2[i][j+1]) * 0.25;
         }
@@ -320,20 +320,20 @@ This lecture will look at some examples written in C and Pthreads.
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">pthread_mutex_t</span> <span style="font-weight: bold; font-style: italic;">barrier</span>;
-<span style="font-weight: bold; text-decoration: underline;">pthread_cond_t</span> <span style="font-weight: bold; font-style: italic;">go</span>;
-<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">numArrived</span> = 0;
+<pre class="src src-C"><span style="color: #228b22;">pthread_mutex_t</span> <span style="color: #a0522d;">barrier</span>;
+<span style="color: #228b22;">pthread_cond_t</span> <span style="color: #a0522d;">go</span>;
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">numArrived</span> = 0;
 
-<span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">Barrier</span>()
+<span style="color: #228b22;">void</span> <span style="color: #0000ff;">Barrier</span>()
 {
     pthread_mutex_lock(&amp;barrier);
     numArrived++;
-    <span style="font-weight: bold;">if</span> (numArrived == numWorkers)
+    <span style="color: #a020f0;">if</span> (numArrived == numWorkers)
     {
         numArrived = 0;
-        pthread_condbroadcast(&amp;go); <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">tell all threads go to ready state</span>
+        pthread_condbroadcast(&amp;go); <span style="color: #b22222;">// </span><span style="color: #b22222;">tell all threads go to ready state</span>
     }
-    <span style="font-weight: bold;">else</span>
+    <span style="color: #a020f0;">else</span>
     {
         pthread_cond_wait(&amp;go, &amp;barrier);
     }

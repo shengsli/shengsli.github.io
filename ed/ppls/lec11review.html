@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>ppls lec11 w8a review</title>
-<!-- 2019-06-22 Sat 23:37 -->
+<!-- 2019-06-23 Sun 03:18 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -267,13 +267,13 @@ This lecture is about distributed memory programming
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 
-<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> *<span style="font-weight: bold; font-style: italic;">argv</span>)
+<pre class="src src-C"><span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>)
 {
-    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">rank</span>, <span style="font-weight: bold; font-style: italic;">p</span>;
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">rank</span>, <span style="color: #a0522d;">p</span>;
     MPI_Init(&amp;argc, &amp;argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &amp;RANK);
     MPI_Comm_Size(MPI_COMM_WORLD, &amp;P);
-    printf(<span style="font-style: italic;">"Hello world from process %d of %d\n"</span>, rank, p);
+    printf(<span style="color: #8b2252;">"Hello world from process %d of %d\n"</span>, rank, p);
     MPI_Finalize();
 }
 </pre>

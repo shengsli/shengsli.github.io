@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>ppls lec10 w7b review Java threads</title>
-<!-- 2019-06-22 Sat 23:37 -->
+<!-- 2019-06-23 Sun 03:18 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -160,18 +160,18 @@ for the JavaScript code in this tag.
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">Simple</span> <span style="font-weight: bold;">extends</span> <span style="font-weight: bold; text-decoration: underline;">Threads</span> {
-    <span style="font-weight: bold;">public</span> <span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">run</span>() {
-        System.out.println(<span style="font-style: italic;">"this is a thread"</span>);
+<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Simple</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Threads</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">run</span>() {
+        System.out.println(<span style="color: #8b2252;">"this is a thread"</span>);
     }
 }
-<span style="font-weight: bold;">new</span> <span style="font-weight: bold; text-decoration: underline;">Simple</span>().start();
-<span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">Bigger</span> <span style="font-weight: bold;">extends</span> <span style="font-weight: bold; text-decoration: underline;">Whatever</span> <span style="font-weight: bold;">implements</span> <span style="font-weight: bold; text-decoration: underline;">Runnable</span> {
-    <span style="font-weight: bold;">public</span> <span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">run</span>() {
-        <span style="font-weight: bold; font-style: italic;">//</span><span style="font-weight: bold; font-style: italic;">...</span>
+<span style="color: #a020f0;">new</span> <span style="color: #228b22;">Simple</span>().start();
+<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Bigger</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Whatever</span> <span style="color: #a020f0;">implements</span> <span style="color: #228b22;">Runnable</span> {
+    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">run</span>() {
+        <span style="color: #b22222;">//</span><span style="color: #b22222;">...</span>
     }
 }
-<span style="font-weight: bold;">new</span> <span style="font-weight: bold; text-decoration: underline;">Thread</span>(<span style="font-weight: bold;">new</span> <span style="font-weight: bold; text-decoration: underline;">bigger</span>()).start();
+<span style="color: #a020f0;">new</span> <span style="color: #228b22;">Thread</span>(<span style="color: #a020f0;">new</span> <span style="color: #228b22;">bigger</span>()).start();
 </pre>
 </div>
 </div>
