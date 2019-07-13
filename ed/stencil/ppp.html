@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>progress-plans-problems</title>
-<!-- 2019-07-09 Tue 22:22 -->
+<!-- 2019-07-13 Sat 20:24 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -169,11 +169,20 @@ for the JavaScript code in this tag.
 <ul class="org-ul">
 <li>add #iterations, sum example overflow
 </li>
-<li>pthread barrier, c++ barrier
+<li>counter barrier, pthread barrier, c++ barrier
 </li>
-<li>threadStencil
+<li>std::thread, threadStencil: 
+<pre class="example">
+THREADS[t] = new std::thread(&amp;Stencil1DImplementation&lt;EL&gt;::threadStencil1D&lt;IN,OUT,ARGs...&gt;, this, threadArguments, radius, paddingOption, nIters, t, args...);
+</pre>
 </li>
-<li>jacobi == average ?
+<li>jacobi == average?
+</li>
+<li>adding niters makes the type of input and output the same
+</li>
+<li>how to use lambda?
+</li>
+<li>matrix multiplication. e.g. convolution. user defined manually?
 </li>
 </ul>
 </div>
@@ -184,11 +193,13 @@ for the JavaScript code in this tag.
 </li>
 <li><code>[&#xa0;]</code> Jacobi
 </li>
-<li><code>[&#xa0;]</code> heat transfer
+<li><code>[&#xa0;]</code> heat transfer 2D
 </li>
 <li><code>[&#xa0;]</code> test and plot, (bash script and R script)
 </li>
 <li><code>[X]</code> add #iterations to interface, not recreate threads
+</li>
+<li><code>[X]</code> stencil 3d, sum 3d
 </li>
 </ul>
 </div>
