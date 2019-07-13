@@ -1,0 +1,2453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>macros</title>
+<!-- 2019-07-14 Sun 00:40 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/style.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">macros</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Bodybuilding.com macros calculator</a></li>
+<li><a href="#sec-2">2. Input: weight/kg, energy/kcal. Output: the rest</a></li>
+<li><a href="#sec-3">3. Input: weight/kg. Output: the rest. Harris-Benedict equation 1919 estimates BMR. Energy=BMR*1.375. Age=22.</a></li>
+<li><a href="#sec-4">4. Input: weight/kg. Output: the rest. Harris-Benedict equation 1984 estimates BMR. Energy=BMR*1.375. Age=22.</a></li>
+<li><a href="#sec-5">5. Nutrition</a></li>
+<li><a href="#sec-6">6. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-13 Sat&gt;</span></span></a></li>
+<li><a href="#sec-7">7. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-12 Fri&gt;</span></span></a></li>
+<li><a href="#sec-8">8. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-11 Thu&gt;</span></span></a></li>
+<li><a href="#sec-9">9. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-10 Wed&gt;</span></span></a></li>
+<li><a href="#sec-10">10. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-09 Tue&gt;</span></span></a></li>
+<li><a href="#sec-11">11. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-08 Mon&gt;</span></span></a></li>
+<li><a href="#sec-12">12. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-07 Sun&gt;</span></span></a></li>
+<li><a href="#sec-13">13. carbohydrate cycling</a>
+<ul>
+<li><a href="#sec-13-1">13.1. Basal metabolic rate (BMR) formula</a></li>
+<li><a href="#sec-13-2">13.2. </a></li>
+</ul>
+</li>
+<li><a href="#sec-14">14. </a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Bodybuilding.com macros calculator</h2>
+<div class="outline-text-2" id="text-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">Weight/kg</th>
+<th scope="col" class="right">Weight/lbs</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+<th scope="col" class="left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">65</td>
+<td class="right">143.3003</td>
+<td class="right">1661</td>
+<td class="right">166</td>
+<td class="right">166</td>
+<td class="right">37</td>
+<td class="left">cutting</td>
+</tr>
+
+<tr>
+<td class="right">65</td>
+<td class="right">143.3003</td>
+<td class="right">2078</td>
+<td class="right">156</td>
+<td class="right">233</td>
+<td class="right">58</td>
+<td class="left">maintain</td>
+</tr>
+
+<tr>
+<td class="right">65</td>
+<td class="right">143.3003</td>
+<td class="right">2580</td>
+<td class="right">193</td>
+<td class="right">290</td>
+<td class="right">72</td>
+<td class="left">bulk</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">61</td>
+<td class="right">134.48182</td>
+<td class="right">1620</td>
+<td class="right">162</td>
+<td class="right">162</td>
+<td class="right">36</td>
+<td class="left">cutting</td>
+</tr>
+
+<tr>
+<td class="right">61</td>
+<td class="right">134.48182</td>
+<td class="right">2020</td>
+<td class="right">152</td>
+<td class="right">227</td>
+<td class="right">56</td>
+<td class="left">maintain</td>
+</tr>
+
+<tr>
+<td class="right">61</td>
+<td class="right">134.48182</td>
+<td class="right">2522</td>
+<td class="right">189</td>
+<td class="right">284</td>
+<td class="right">70</td>
+<td class="left">bulk</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">60</td>
+<td class="right">132.2772</td>
+<td class="right">1612</td>
+<td class="right">161</td>
+<td class="right">161</td>
+<td class="right">36</td>
+<td class="left">cutting</td>
+</tr>
+
+<tr>
+<td class="right">60</td>
+<td class="right">132.2772</td>
+<td class="right">2012</td>
+<td class="right">151</td>
+<td class="right">226</td>
+<td class="right">56</td>
+<td class="left">maintain</td>
+</tr>
+
+<tr>
+<td class="right">60</td>
+<td class="right">132.2772</td>
+<td class="right">2510</td>
+<td class="right">188</td>
+<td class="right">282</td>
+<td class="right">70</td>
+<td class="left">bulk</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">59</td>
+<td class="right">130.07258</td>
+<td class="right">1800</td>
+<td class="right">180</td>
+<td class="right">180</td>
+<td class="right">40</td>
+<td class="left">cutting</td>
+</tr>
+
+<tr>
+<td class="right">59</td>
+<td class="right">130.07258</td>
+<td class="right">1995</td>
+<td class="right">150</td>
+<td class="right">225</td>
+<td class="right">55</td>
+<td class="left">maintain</td>
+</tr>
+
+<tr>
+<td class="right">59</td>
+<td class="right">130.07258</td>
+<td class="right">2493</td>
+<td class="right">187</td>
+<td class="right">281</td>
+<td class="right">69</td>
+<td class="left">bulk</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">58</td>
+<td class="right">127.86796</td>
+<td class="right">1792</td>
+<td class="right">179</td>
+<td class="right">179</td>
+<td class="right">40</td>
+<td class="left">cutting</td>
+</tr>
+
+<tr>
+<td class="right">58</td>
+<td class="right">127.86796</td>
+<td class="right">1983</td>
+<td class="right">149</td>
+<td class="right">223</td>
+<td class="right">55</td>
+<td class="left">maintain</td>
+</tr>
+
+<tr>
+<td class="right">58</td>
+<td class="right">127.86796</td>
+<td class="right">2481</td>
+<td class="right">186</td>
+<td class="right">279</td>
+<td class="right">69</td>
+<td class="left">bulk</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">55</td>
+<td class="right">121.2541</td>
+<td class="right">1751</td>
+<td class="right">175</td>
+<td class="right">175</td>
+<td class="right">39</td>
+<td class="left">cutting</td>
+</tr>
+
+<tr>
+<td class="right">55</td>
+<td class="right">121.2541</td>
+<td class="right">1946</td>
+<td class="right">146</td>
+<td class="right">219</td>
+<td class="right">54</td>
+<td class="left">maintain</td>
+</tr>
+
+<tr>
+<td class="right">55</td>
+<td class="right">121.2541</td>
+<td class="right">2444</td>
+<td class="right">183</td>
+<td class="right">275</td>
+<td class="right">68</td>
+<td class="left">bulk</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Input: weight/kg, energy/kcal. Output: the rest</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>1.50g per lbs
+</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">Weight/kg</th>
+<th scope="col" class="right">Weight/lbs</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">60</td>
+<td class="right">132.2772</td>
+<td class="right">1900</td>
+<td class="right">198.4158</td>
+<td class="right">165.3465</td>
+<td class="right">49.438978</td>
+</tr>
+
+<tr>
+<td class="right">59</td>
+<td class="right">130.07258</td>
+<td class="right">1850</td>
+<td class="right">195.10887</td>
+<td class="right">162.59073</td>
+<td class="right">46.577956</td>
+</tr>
+
+<tr>
+<td class="right">58</td>
+<td class="right">127.86796</td>
+<td class="right">1800</td>
+<td class="right">191.80194</td>
+<td class="right">159.83495</td>
+<td class="right">43.716938</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Input: weight/kg. Output: the rest. Harris-Benedict equation 1919 estimates BMR. Energy=BMR*1.375. Age=22.</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>1.50g per lbs
+</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">Weight/kg</th>
+<th scope="col" class="right">Weight/lbs</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">60</td>
+<td class="right">132.2772</td>
+<td class="right">2177.3309</td>
+<td class="right">198.4158</td>
+<td class="right">165.3465</td>
+<td class="right">80.253522</td>
+</tr>
+
+<tr>
+<td class="right">59</td>
+<td class="right">130.07258</td>
+<td class="right">2158.4225</td>
+<td class="right">195.10887</td>
+<td class="right">162.59073</td>
+<td class="right">80.847122</td>
+</tr>
+
+<tr>
+<td class="right">58</td>
+<td class="right">127.86796</td>
+<td class="right">2139.5140</td>
+<td class="right">191.80194</td>
+<td class="right">159.83495</td>
+<td class="right">81.440716</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Input: weight/kg. Output: the rest. Harris-Benedict equation 1984 estimates BMR. Energy=BMR*1.375. Age=22.</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>1.50g protein per lbs
+</li>
+<li>1.25g carbs per lbs
+</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">Weight/kg</th>
+<th scope="col" class="right">Weight/lbs</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">60</td>
+<td class="right">132.2772</td>
+<td class="right">2163.59</td>
+<td class="right">198.4158</td>
+<td class="right">165.3465</td>
+<td class="right">78.726756</td>
+</tr>
+
+<tr>
+<td class="right">59</td>
+<td class="right">130.07258</td>
+<td class="right">2145.1691</td>
+<td class="right">195.10887</td>
+<td class="right">162.59073</td>
+<td class="right">79.374522</td>
+</tr>
+
+<tr>
+<td class="right">58</td>
+<td class="right">127.86796</td>
+<td class="right">2126.7483</td>
+<td class="right">191.80194</td>
+<td class="right">159.83495</td>
+<td class="right">80.022304</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Nutrition</h2>
+<div class="outline-text-2" id="text-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Food</th>
+<th scope="col" class="left">Unit</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Chicken Breast</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">106</td>
+<td class="right">24</td>
+<td class="right">0</td>
+<td class="right">1.1</td>
+</tr>
+
+<tr>
+<td class="left">Sirloin</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">201</td>
+<td class="right">21.6</td>
+<td class="right">0</td>
+<td class="right">12.7</td>
+</tr>
+
+<tr>
+<td class="left">Oatmeal</td>
+<td class="left">1 bag</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+</tr>
+
+<tr>
+<td class="left">Egg internet</td>
+<td class="left">1 egg</td>
+<td class="right">50</td>
+<td class="right">65</td>
+<td class="right">6.3</td>
+<td class="right">0</td>
+<td class="right">4.5</td>
+</tr>
+
+<tr>
+<td class="left">Egg white internet</td>
+<td class="left">1 egg</td>
+<td class="right">30</td>
+<td class="right">17</td>
+<td class="right">3.6</td>
+<td class="right">0</td>
+<td class="right">0.1</td>
+</tr>
+
+<tr>
+<td class="left">Sainsbury egg M</td>
+<td class="left">1 egg</td>
+<td class="right">50</td>
+<td class="right">72</td>
+<td class="right">7.1</td>
+<td class="right">0</td>
+<td class="right">4.8</td>
+</tr>
+
+<tr>
+<td class="left">Tesco egg M</td>
+<td class="left">1 egg</td>
+<td class="right">50</td>
+<td class="right">67</td>
+<td class="right">6.4</td>
+<td class="right">0</td>
+<td class="right">4.6</td>
+</tr>
+
+<tr>
+<td class="left">Whey</td>
+<td class="left">1 spoon</td>
+<td class="right">25</td>
+<td class="right">103</td>
+<td class="right">21</td>
+<td class="right">1</td>
+<td class="right">1.9</td>
+</tr>
+
+<tr>
+<td class="left">Pancake</td>
+<td class="left">2 spoons</td>
+<td class="right">50</td>
+<td class="right">184</td>
+<td class="right">31</td>
+<td class="right">7.6</td>
+<td class="right">3.3</td>
+</tr>
+
+<tr>
+<td class="left">Mug Cake</td>
+<td class="left">2 spoons</td>
+<td class="right">50</td>
+<td class="right">182</td>
+<td class="right">25</td>
+<td class="right">13</td>
+<td class="right">2.7</td>
+</tr>
+
+<tr>
+<td class="left">White Rice</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">151</td>
+<td class="right">3.2</td>
+<td class="right">34</td>
+<td class="right">0.3</td>
+</tr>
+
+<tr>
+<td class="left">Tesco Jasmine Rice</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">349</td>
+<td class="right">7.9</td>
+<td class="right">78</td>
+<td class="right">0.6</td>
+</tr>
+
+<tr>
+<td class="left">Rice cake</td>
+<td class="left">1 piece</td>
+<td class="right">7</td>
+<td class="right">27</td>
+<td class="right">0.5</td>
+<td class="right">5.7</td>
+<td class="right">0.2</td>
+</tr>
+
+<tr>
+<td class="left">Tesco Pineapple</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">45</td>
+<td class="right">0.4</td>
+<td class="right">9.7</td>
+<td class="right">0.2</td>
+</tr>
+
+<tr>
+<td class="left">Tesco blueberry</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">68</td>
+<td class="right">0.7</td>
+<td class="right">14.5</td>
+<td class="right">0.3</td>
+</tr>
+
+<tr>
+<td class="left">Sainsbury blueberry</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">45</td>
+<td class="right">0.9</td>
+<td class="right">9.1</td>
+<td class="right">0.3</td>
+</tr>
+
+<tr>
+<td class="left">Tesco Sweet potato</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">94</td>
+<td class="right">1.1</td>
+<td class="right">20.5</td>
+<td class="right">0.3</td>
+</tr>
+
+<tr>
+<td class="left">Sainsbury cod</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">98</td>
+<td class="right">21.5</td>
+<td class="right">0</td>
+<td class="right">1.3</td>
+</tr>
+
+<tr>
+<td class="left">Sainsbury salmon</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">267</td>
+<td class="right">21.5</td>
+<td class="right">0</td>
+<td class="right">20</td>
+</tr>
+
+<tr>
+<td class="left">Tesco asparagus</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">29</td>
+<td class="right">2.9</td>
+<td class="right">2</td>
+<td class="right">0.6</td>
+</tr>
+
+<tr>
+<td class="left">Tesco chicken thigh</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">161</td>
+<td class="right">18.3</td>
+<td class="right">0</td>
+<td class="right">9.8</td>
+</tr>
+
+<tr>
+<td class="left">Tesco baby potato</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">76</td>
+<td class="right">1.7</td>
+<td class="right">16.1</td>
+<td class="right">0.3</td>
+</tr>
+
+<tr>
+<td class="left">Sainsbury banana loose</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">103</td>
+<td class="right">1.2</td>
+<td class="right">23.2</td>
+<td class="right">0</td>
+</tr>
+
+<tr>
+<td class="left">Sainsbury gala apple</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">53</td>
+<td class="right">0</td>
+<td class="right">11.8</td>
+<td class="right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-13 Sat&gt;</span></span></h2>
+<div class="outline-text-2" id="text-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Food</th>
+<th scope="col" class="left">Unit</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+<th scope="col" class="right">Number</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Oatmeal</td>
+<td class="left">1 bag</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+<td class="right">1</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+</tr>
+
+<tr>
+<td class="left">Egg white internet</td>
+<td class="left">1 egg</td>
+<td class="right">30</td>
+<td class="right">17</td>
+<td class="right">3.6</td>
+<td class="right">0</td>
+<td class="right">0.1</td>
+<td class="right">2</td>
+<td class="right">60</td>
+<td class="right">34</td>
+<td class="right">7.2</td>
+<td class="right">0</td>
+<td class="right">0.2</td>
+</tr>
+
+<tr>
+<td class="left">Sirloin</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">201</td>
+<td class="right">21.6</td>
+<td class="right">0</td>
+<td class="right">12.7</td>
+<td class="right">2.27</td>
+<td class="right">227.</td>
+<td class="right">456.27</td>
+<td class="right">49.032</td>
+<td class="right">0.</td>
+<td class="right">28.829</td>
+</tr>
+
+<tr>
+<td class="left">Tesco asparagus</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">29</td>
+<td class="right">2.9</td>
+<td class="right">2</td>
+<td class="right">0.6</td>
+<td class="right">0.6</td>
+<td class="right">60.</td>
+<td class="right">17.4</td>
+<td class="right">1.74</td>
+<td class="right">1.2</td>
+<td class="right">0.36</td>
+</tr>
+
+<tr>
+<td class="left">Chicken Breast</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">106</td>
+<td class="right">24</td>
+<td class="right">0</td>
+<td class="right">1.1</td>
+<td class="right">5.5</td>
+<td class="right">550.</td>
+<td class="right">583.</td>
+<td class="right">132.</td>
+<td class="right">0.</td>
+<td class="right">6.05</td>
+</tr>
+
+<tr>
+<td class="left">Tesco Sweet potato</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">94</td>
+<td class="right">1.1</td>
+<td class="right">20.5</td>
+<td class="right">0.3</td>
+<td class="right">6</td>
+<td class="right">600</td>
+<td class="right">564</td>
+<td class="right">6.6</td>
+<td class="right">123.</td>
+<td class="right">1.8</td>
+</tr>
+
+<tr>
+<td class="left">Sainsbury gala apple</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">53</td>
+<td class="right">0</td>
+<td class="right">11.8</td>
+<td class="right">0</td>
+<td class="right">1</td>
+<td class="right">100</td>
+<td class="right">53</td>
+<td class="right">0</td>
+<td class="right">11.8</td>
+<td class="right">0</td>
+</tr>
+
+<tr>
+<td class="left">Tesco Pineapple</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">45</td>
+<td class="right">0.4</td>
+<td class="right">9.7</td>
+<td class="right">0.2</td>
+<td class="right">2</td>
+<td class="right">200</td>
+<td class="right">90</td>
+<td class="right">0.8</td>
+<td class="right">19.4</td>
+<td class="right">0.4</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Sum</td>
+<td class="left">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">0</td>
+<td class="right">1897.67</td>
+<td class="right">200.372</td>
+<td class="right">171.4</td>
+<td class="right">39.739</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-12 Fri&gt;</span></span></h2>
+<div class="outline-text-2" id="text-7">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Food</th>
+<th scope="col" class="left">Unit</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+<th scope="col" class="right">Number</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Oatmeal</td>
+<td class="left">1 bag</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+<td class="right">1</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+</tr>
+
+<tr>
+<td class="left">Sirloin</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">201</td>
+<td class="right">21.6</td>
+<td class="right">0</td>
+<td class="right">12.7</td>
+<td class="right">2.27</td>
+<td class="right">227.</td>
+<td class="right">456.27</td>
+<td class="right">49.032</td>
+<td class="right">0.</td>
+<td class="right">28.829</td>
+</tr>
+
+<tr>
+<td class="left">Tesco asparagus</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">29</td>
+<td class="right">2.9</td>
+<td class="right">2</td>
+<td class="right">0.6</td>
+<td class="right">0.6</td>
+<td class="right">60.</td>
+<td class="right">17.4</td>
+<td class="right">1.74</td>
+<td class="right">1.2</td>
+<td class="right">0.36</td>
+</tr>
+
+<tr>
+<td class="left">Chicken Breast</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">106</td>
+<td class="right">24</td>
+<td class="right">0</td>
+<td class="right">1.1</td>
+<td class="right">2.6</td>
+<td class="right">260.</td>
+<td class="right">275.6</td>
+<td class="right">62.4</td>
+<td class="right">0.</td>
+<td class="right">2.86</td>
+</tr>
+
+<tr>
+<td class="left">Chicken Breast</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">106</td>
+<td class="right">24</td>
+<td class="right">0</td>
+<td class="right">1.1</td>
+<td class="right">3.16</td>
+<td class="right">316.</td>
+<td class="right">334.96</td>
+<td class="right">75.84</td>
+<td class="right">0.</td>
+<td class="right">3.476</td>
+</tr>
+
+<tr>
+<td class="left">Tesco blueberry</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">68</td>
+<td class="right">0.7</td>
+<td class="right">14.5</td>
+<td class="right">0.3</td>
+<td class="right">2</td>
+<td class="right">200</td>
+<td class="right">136</td>
+<td class="right">1.4</td>
+<td class="right">29.</td>
+<td class="right">0.6</td>
+</tr>
+
+<tr>
+<td class="left">Tesco Sweet potato</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">94</td>
+<td class="right">1.1</td>
+<td class="right">20.5</td>
+<td class="right">0.3</td>
+<td class="right">2.87</td>
+<td class="right">287.</td>
+<td class="right">269.78</td>
+<td class="right">3.157</td>
+<td class="right">58.835</td>
+<td class="right">0.861</td>
+</tr>
+
+<tr>
+<td class="left">Tesco baby potato</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">76</td>
+<td class="right">1.7</td>
+<td class="right">16.1</td>
+<td class="right">0.3</td>
+<td class="right">2.5</td>
+<td class="right">250.</td>
+<td class="right">190.</td>
+<td class="right">4.25</td>
+<td class="right">40.25</td>
+<td class="right">0.75</td>
+</tr>
+
+<tr>
+<td class="left">Sainsbury gala apple</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">53</td>
+<td class="right">0</td>
+<td class="right">11.8</td>
+<td class="right">0</td>
+<td class="right">1</td>
+<td class="right">100</td>
+<td class="right">53</td>
+<td class="right">0</td>
+<td class="right">11.8</td>
+<td class="right">0</td>
+</tr>
+
+<tr>
+<td class="left">Tesco Pineapple</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">45</td>
+<td class="right">0.4</td>
+<td class="right">9.7</td>
+<td class="right">0.2</td>
+<td class="right">2</td>
+<td class="right">200</td>
+<td class="right">90</td>
+<td class="right">0.8</td>
+<td class="right">19.4</td>
+<td class="right">0.4</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Sum</td>
+<td class="left">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">0</td>
+<td class="right">1923.01</td>
+<td class="right">201.619</td>
+<td class="right">176.485</td>
+<td class="right">40.236</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-11 Thu&gt;</span></span></h2>
+<div class="outline-text-2" id="text-8">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Food</th>
+<th scope="col" class="left">Unit</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+<th scope="col" class="right">Number</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Oatmeal</td>
+<td class="left">1 bag</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+<td class="right">1</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+</tr>
+
+<tr>
+<td class="left">Sainsbury banana loose</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">103</td>
+<td class="right">1.2</td>
+<td class="right">23.2</td>
+<td class="right">0</td>
+<td class="right">1</td>
+<td class="right">100</td>
+<td class="right">103</td>
+<td class="right">1.2</td>
+<td class="right">23.2</td>
+<td class="right">0</td>
+</tr>
+
+<tr>
+<td class="left">Sirloin</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">201</td>
+<td class="right">21.6</td>
+<td class="right">0</td>
+<td class="right">12.7</td>
+<td class="right">2.27</td>
+<td class="right">227.</td>
+<td class="right">456.27</td>
+<td class="right">49.032</td>
+<td class="right">0.</td>
+<td class="right">28.829</td>
+</tr>
+
+<tr>
+<td class="left">Tesco asparagus</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">29</td>
+<td class="right">2.9</td>
+<td class="right">2</td>
+<td class="right">0.6</td>
+<td class="right">0.6</td>
+<td class="right">60.</td>
+<td class="right">17.4</td>
+<td class="right">1.74</td>
+<td class="right">1.2</td>
+<td class="right">0.36</td>
+</tr>
+
+<tr>
+<td class="left">Chicken Breast</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">106</td>
+<td class="right">24</td>
+<td class="right">0</td>
+<td class="right">1.1</td>
+<td class="right">2.6</td>
+<td class="right">260.</td>
+<td class="right">275.6</td>
+<td class="right">62.4</td>
+<td class="right">0.</td>
+<td class="right">2.86</td>
+</tr>
+
+<tr>
+<td class="left">Chicken Breast</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">106</td>
+<td class="right">24</td>
+<td class="right">0</td>
+<td class="right">1.1</td>
+<td class="right">3</td>
+<td class="right">300</td>
+<td class="right">318</td>
+<td class="right">72</td>
+<td class="right">0</td>
+<td class="right">3.3</td>
+</tr>
+
+<tr>
+<td class="left">Tesco blueberry</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">68</td>
+<td class="right">0.7</td>
+<td class="right">14.5</td>
+<td class="right">0.3</td>
+<td class="right">1.2</td>
+<td class="right">120.</td>
+<td class="right">81.6</td>
+<td class="right">0.84</td>
+<td class="right">17.4</td>
+<td class="right">0.36</td>
+</tr>
+
+<tr>
+<td class="left">Tesco baby potato</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">76</td>
+<td class="right">1.7</td>
+<td class="right">16.1</td>
+<td class="right">0.3</td>
+<td class="right">6</td>
+<td class="right">600</td>
+<td class="right">456</td>
+<td class="right">10.2</td>
+<td class="right">96.6</td>
+<td class="right">1.8</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Sum</td>
+<td class="left">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">0</td>
+<td class="right">1807.87</td>
+<td class="right">200.412</td>
+<td class="right">154.4</td>
+<td class="right">39.609</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-10 Wed&gt;</span></span></h2>
+<div class="outline-text-2" id="text-9">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Food</th>
+<th scope="col" class="left">Unit</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+<th scope="col" class="right">Number</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Oatmeal</td>
+<td class="left">1 bag</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+<td class="right">1</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+</tr>
+
+<tr>
+<td class="left">Sirloin</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">201</td>
+<td class="right">21.6</td>
+<td class="right">0</td>
+<td class="right">12.7</td>
+<td class="right">2.27</td>
+<td class="right">227.</td>
+<td class="right">456.27</td>
+<td class="right">49.032</td>
+<td class="right">0.</td>
+<td class="right">28.829</td>
+</tr>
+
+<tr>
+<td class="left">Sweet potato</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">94</td>
+<td class="right">1.1</td>
+<td class="right">20.5</td>
+<td class="right">0.3</td>
+<td class="right">5.25</td>
+<td class="right">525.</td>
+<td class="right">493.5</td>
+<td class="right">5.775</td>
+<td class="right">107.625</td>
+<td class="right">1.575</td>
+</tr>
+
+<tr>
+<td class="left">Tesco asparagus</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">29</td>
+<td class="right">2.9</td>
+<td class="right">2</td>
+<td class="right">0.6</td>
+<td class="right">0.3</td>
+<td class="right">30.</td>
+<td class="right">8.7</td>
+<td class="right">0.87</td>
+<td class="right">0.6</td>
+<td class="right">0.18</td>
+</tr>
+
+<tr>
+<td class="left">Chicken Breast</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">106</td>
+<td class="right">24</td>
+<td class="right">0</td>
+<td class="right">1.1</td>
+<td class="right">2.4</td>
+<td class="right">240.</td>
+<td class="right">254.4</td>
+<td class="right">57.6</td>
+<td class="right">0.</td>
+<td class="right">2.64</td>
+</tr>
+
+<tr>
+<td class="left">Chicken Breast</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">106</td>
+<td class="right">24</td>
+<td class="right">0</td>
+<td class="right">1.1</td>
+<td class="right">3</td>
+<td class="right">300</td>
+<td class="right">318</td>
+<td class="right">72</td>
+<td class="right">0</td>
+<td class="right">3.3</td>
+</tr>
+
+<tr>
+<td class="left">Tesco asparagus</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">29</td>
+<td class="right">2.9</td>
+<td class="right">2</td>
+<td class="right">0.6</td>
+<td class="right">0.2</td>
+<td class="right">20.</td>
+<td class="right">5.8</td>
+<td class="right">0.58</td>
+<td class="right">0.4</td>
+<td class="right">0.12</td>
+</tr>
+
+<tr>
+<td class="left">Tesco blueberry</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">68</td>
+<td class="right">0.7</td>
+<td class="right">14.5</td>
+<td class="right">0.3</td>
+<td class="right">1.45</td>
+<td class="right">145.</td>
+<td class="right">98.6</td>
+<td class="right">1.015</td>
+<td class="right">21.025</td>
+<td class="right">0.435</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Sum</td>
+<td class="left">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">0</td>
+<td class="right">1735.27</td>
+<td class="right">189.872</td>
+<td class="right">145.65</td>
+<td class="right">39.179</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-09 Tue&gt;</span></span></h2>
+<div class="outline-text-2" id="text-10">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Food</th>
+<th scope="col" class="left">Unit</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+<th scope="col" class="right">Number</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Oatmeal</td>
+<td class="left">1 bag</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+<td class="right">1</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+</tr>
+
+<tr>
+<td class="left">Tesco blueberry</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">68</td>
+<td class="right">0.7</td>
+<td class="right">14.5</td>
+<td class="right">0.3</td>
+<td class="right">1.2</td>
+<td class="right">120.</td>
+<td class="right">81.6</td>
+<td class="right">0.84</td>
+<td class="right">17.4</td>
+<td class="right">0.36</td>
+</tr>
+
+<tr>
+<td class="left">Egg white internet</td>
+<td class="left">1 egg</td>
+<td class="right">30</td>
+<td class="right">17</td>
+<td class="right">3.6</td>
+<td class="right">0</td>
+<td class="right">0.1</td>
+<td class="right">3</td>
+<td class="right">90</td>
+<td class="right">51</td>
+<td class="right">10.8</td>
+<td class="right">0</td>
+<td class="right">0.3</td>
+</tr>
+
+<tr>
+<td class="left">Sirloin</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">201</td>
+<td class="right">21.6</td>
+<td class="right">0</td>
+<td class="right">12.7</td>
+<td class="right">2.27</td>
+<td class="right">227.</td>
+<td class="right">456.27</td>
+<td class="right">49.032</td>
+<td class="right">0.</td>
+<td class="right">28.829</td>
+</tr>
+
+<tr>
+<td class="left">Sweet potato</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">94</td>
+<td class="right">1.1</td>
+<td class="right">20.5</td>
+<td class="right">0.3</td>
+<td class="right">4</td>
+<td class="right">400</td>
+<td class="right">376</td>
+<td class="right">4.4</td>
+<td class="right">82.</td>
+<td class="right">1.2</td>
+</tr>
+
+<tr>
+<td class="left">Tesco asparagus</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">29</td>
+<td class="right">2.9</td>
+<td class="right">2</td>
+<td class="right">0.6</td>
+<td class="right">0.53</td>
+<td class="right">53.</td>
+<td class="right">15.37</td>
+<td class="right">1.537</td>
+<td class="right">1.06</td>
+<td class="right">0.318</td>
+</tr>
+
+<tr>
+<td class="left">Chicken Breast</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">106</td>
+<td class="right">24</td>
+<td class="right">0</td>
+<td class="right">1.1</td>
+<td class="right">3.65</td>
+<td class="right">365.</td>
+<td class="right">386.9</td>
+<td class="right">87.6</td>
+<td class="right">0.</td>
+<td class="right">4.015</td>
+</tr>
+
+<tr>
+<td class="left">Tesco asparagus</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">29</td>
+<td class="right">2.9</td>
+<td class="right">2</td>
+<td class="right">0.6</td>
+<td class="right">0.3</td>
+<td class="right">30.</td>
+<td class="right">8.7</td>
+<td class="right">0.87</td>
+<td class="right">0.6</td>
+<td class="right">0.18</td>
+</tr>
+
+<tr>
+<td class="left">Pineapple</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">45</td>
+<td class="right">0.4</td>
+<td class="right">9.7</td>
+<td class="right">0.2</td>
+<td class="right">1.3</td>
+<td class="right">130.</td>
+<td class="right">58.5</td>
+<td class="right">0.52</td>
+<td class="right">12.61</td>
+<td class="right">0.26</td>
+</tr>
+
+<tr>
+<td class="left">Sainsbury cod</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">98</td>
+<td class="right">21.5</td>
+<td class="right">0</td>
+<td class="right">1.3</td>
+<td class="right">2.5</td>
+<td class="right">250.</td>
+<td class="right">245.</td>
+<td class="right">53.75</td>
+<td class="right">0.</td>
+<td class="right">3.25</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Sum</td>
+<td class="left">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">0</td>
+<td class="right">1779.34</td>
+<td class="right">212.349</td>
+<td class="right">129.67</td>
+<td class="right">40.812</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-08 Mon&gt;</span></span></h2>
+<div class="outline-text-2" id="text-11">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Food</th>
+<th scope="col" class="left">Unit</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+<th scope="col" class="right">Number</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Oatmeal</td>
+<td class="left">1 bag</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+<td class="right">1</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+</tr>
+
+<tr>
+<td class="left">Tesco blueberry</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">68</td>
+<td class="right">0.7</td>
+<td class="right">14.5</td>
+<td class="right">0.3</td>
+<td class="right">0.3</td>
+<td class="right">30.</td>
+<td class="right">20.4</td>
+<td class="right">0.21</td>
+<td class="right">4.35</td>
+<td class="right">0.09</td>
+</tr>
+
+<tr>
+<td class="left">Tesco egg M</td>
+<td class="left">1 egg</td>
+<td class="right">50</td>
+<td class="right">67</td>
+<td class="right">6.4</td>
+<td class="right">0</td>
+<td class="right">4.6</td>
+<td class="right">1</td>
+<td class="right">50</td>
+<td class="right">67</td>
+<td class="right">6.4</td>
+<td class="right">0</td>
+<td class="right">4.6</td>
+</tr>
+
+<tr>
+<td class="left">Egg white internet</td>
+<td class="left">1 egg</td>
+<td class="right">30</td>
+<td class="right">17</td>
+<td class="right">3.6</td>
+<td class="right">0</td>
+<td class="right">0.1</td>
+<td class="right">3</td>
+<td class="right">51</td>
+<td class="right">90</td>
+<td class="right">10.8</td>
+<td class="right">0</td>
+<td class="right">0.3</td>
+</tr>
+
+<tr>
+<td class="left">Sirloin</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">201</td>
+<td class="right">21.6</td>
+<td class="right">0</td>
+<td class="right">12.7</td>
+<td class="right">2.27</td>
+<td class="right">227.</td>
+<td class="right">456.27</td>
+<td class="right">49.032</td>
+<td class="right">0.</td>
+<td class="right">28.829</td>
+</tr>
+
+<tr>
+<td class="left">Sweet potato</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">94</td>
+<td class="right">1.1</td>
+<td class="right">20.5</td>
+<td class="right">0.3</td>
+<td class="right">4.21</td>
+<td class="right">421.</td>
+<td class="right">395.74</td>
+<td class="right">4.631</td>
+<td class="right">86.305</td>
+<td class="right">1.263</td>
+</tr>
+
+<tr>
+<td class="left">Pineapple</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">45</td>
+<td class="right">0.4</td>
+<td class="right">9.7</td>
+<td class="right">0.2</td>
+<td class="right">1.3</td>
+<td class="right">130.</td>
+<td class="right">58.5</td>
+<td class="right">0.52</td>
+<td class="right">12.61</td>
+<td class="right">0.26</td>
+</tr>
+
+<tr>
+<td class="left">Chicken Breast</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">106</td>
+<td class="right">24</td>
+<td class="right">0</td>
+<td class="right">1.1</td>
+<td class="right">3.65</td>
+<td class="right">365.</td>
+<td class="right">386.9</td>
+<td class="right">87.6</td>
+<td class="right">0.</td>
+<td class="right">4.015</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Sum</td>
+<td class="left">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">0</td>
+<td class="right">1574.81</td>
+<td class="right">162.193</td>
+<td class="right">119.265</td>
+<td class="right">41.457</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-07 Sun&gt;</span></span></h2>
+<div class="outline-text-2" id="text-12">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Food</th>
+<th scope="col" class="left">Unit</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+<th scope="col" class="right">Number</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Chicken Breast</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">106</td>
+<td class="right">24</td>
+<td class="right">0</td>
+<td class="right">1.1</td>
+<td class="right">3.65</td>
+<td class="right">365.</td>
+<td class="right">386.9</td>
+<td class="right">87.6</td>
+<td class="right">0.</td>
+<td class="right">4.015</td>
+</tr>
+
+<tr>
+<td class="left">Sirloin</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">201</td>
+<td class="right">21.6</td>
+<td class="right">0</td>
+<td class="right">12.7</td>
+<td class="right">2.27</td>
+<td class="right">227.</td>
+<td class="right">456.27</td>
+<td class="right">49.032</td>
+<td class="right">0.</td>
+<td class="right">28.829</td>
+</tr>
+
+<tr>
+<td class="left">Oatmeal</td>
+<td class="left">1 bag</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+<td class="right">1</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+</tr>
+
+<tr>
+<td class="left">Sainsbury egg M</td>
+<td class="left">1 egg</td>
+<td class="right">50</td>
+<td class="right">72</td>
+<td class="right">7.1</td>
+<td class="right">0</td>
+<td class="right">4.8</td>
+<td class="right">1</td>
+<td class="right">50</td>
+<td class="right">72</td>
+<td class="right">7.1</td>
+<td class="right">0</td>
+<td class="right">4.8</td>
+</tr>
+
+<tr>
+<td class="left">Egg white internet</td>
+<td class="left">1 egg</td>
+<td class="right">30</td>
+<td class="right">17</td>
+<td class="right">3.5</td>
+<td class="right">0</td>
+<td class="right">0</td>
+<td class="right">2</td>
+<td class="right">60</td>
+<td class="right">34</td>
+<td class="right">7.</td>
+<td class="right">0</td>
+<td class="right">0</td>
+</tr>
+
+<tr>
+<td class="left">Sweet potato</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">94</td>
+<td class="right">1.1</td>
+<td class="right">20.5</td>
+<td class="right">0.3</td>
+<td class="right">3</td>
+<td class="right">300</td>
+<td class="right">282</td>
+<td class="right">3.3</td>
+<td class="right">61.5</td>
+<td class="right">0.9</td>
+</tr>
+
+<tr>
+<td class="left">Pineapple</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">45</td>
+<td class="right">0.4</td>
+<td class="right">9.7</td>
+<td class="right">0.2</td>
+<td class="right">1.3</td>
+<td class="right">130.</td>
+<td class="right">58.5</td>
+<td class="right">0.52</td>
+<td class="right">12.61</td>
+<td class="right">0.26</td>
+</tr>
+
+<tr>
+<td class="left">Custard tart</td>
+<td class="left">1 tart</td>
+<td class="right">55</td>
+<td class="right">160</td>
+<td class="right">2.4</td>
+<td class="right">21.1</td>
+<td class="right">7.2</td>
+<td class="right">2</td>
+<td class="right">110</td>
+<td class="right">320</td>
+<td class="right">4.8</td>
+<td class="right">42.2</td>
+<td class="right">14.4</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Sum</td>
+<td class="left">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">0</td>
+<td class="right">1709.67</td>
+<td class="right">162.352</td>
+<td class="right">132.31</td>
+<td class="right">55.304</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> carbohydrate cycling</h2>
+<div class="outline-text-2" id="text-13">
+</div><div id="outline-container-sec-13-1" class="outline-3">
+<h3 id="sec-13-1"><span class="section-number-3">13.1</span> Basal metabolic rate (BMR) formula</h3>
+<div class="outline-text-3" id="text-13-1">
+<ol class="org-ol">
+<li>Harris-Benedict equation 1919:
+<ul class="org-ul">
+<li>For men, 13.7516*weight + 5.0033*height - 6.7550*age + 66.4730 kcal/day
+</li>
+</ul>
+</li>
+<li>Revised Harris-Benedict equation 1984:
+<ul class="org-ul">
+<li>For men, 13.397 *weight + 4.799 *height - 5.677 *age + 88.362 kcal/day
+</li>
+</ul>
+</li>
+</ol>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Weight/kg</td>
+<td class="right">62</td>
+</tr>
+
+<tr>
+<td class="left">Energy/kcal</td>
+<td class="right">2567</td>
+</tr>
+
+<tr>
+<td class="left">Cutting/kcal</td>
+<td class="right">2182</td>
+</tr>
+
+<tr>
+<td class="left">Protein/g</td>
+<td class="right">109-130</td>
+</tr>
+
+<tr>
+<td class="left">Carbs/g</td>
+<td class="right">170</td>
+</tr>
+
+<tr>
+<td class="left">Fats/g</td>
+<td class="right">109-118</td>
+</tr>
+</tbody>
+</table>
+<ul class="org-ul">
+<li>136 lbs
+</li>
+<li>1.6 ratio 
+</li>
+<li>1-1.2 g/lbs protein * weight
+</li>
+<li>1.25  g/lbs carbs   * weight * (1-bfp)
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-13-2" class="outline-3">
+<h3 id="sec-13-2"><span class="section-number-3">13.2</span> </h3>
+<div class="outline-text-3" id="text-13-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="left" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="right">high carb</th>
+<th scope="col" class="left">mid carb</th>
+<th scope="col" class="right">low carb</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">protein</td>
+<td class="right">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">carbs</td>
+<td class="right">1.75</td>
+<td class="left">&#xa0;</td>
+<td class="right">0.25</td>
+</tr>
+
+<tr>
+<td class="left">fats</td>
+<td class="right">0.5</td>
+<td class="left">&#xa0;</td>
+<td class="right">1.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> </h2>
+<div class="outline-text-2" id="text-14">
+<ul class="org-ul">
+<li>keto
+</li>
+<li>carboloading
+</li>
+<li>intermittent fasting 
+</li>
+<li>Consistency over a period of time trumps everything. 
+</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>
