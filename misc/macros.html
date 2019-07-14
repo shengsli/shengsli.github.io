@@ -3,8 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>macros</title>
-<!-- 2019-07-14 Sun 00:40 -->
+<title>Macronutrients</title>
+<!-- 2019-07-14 Sun 19:01 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -137,385 +137,37 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">macros</h1>
+<h1 class="title">Macronutrients</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Bodybuilding.com macros calculator</a></li>
-<li><a href="#sec-2">2. Input: weight/kg, energy/kcal. Output: the rest</a></li>
-<li><a href="#sec-3">3. Input: weight/kg. Output: the rest. Harris-Benedict equation 1919 estimates BMR. Energy=BMR*1.375. Age=22.</a></li>
-<li><a href="#sec-4">4. Input: weight/kg. Output: the rest. Harris-Benedict equation 1984 estimates BMR. Energy=BMR*1.375. Age=22.</a></li>
-<li><a href="#sec-5">5. Nutrition</a></li>
-<li><a href="#sec-6">6. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-13 Sat&gt;</span></span></a></li>
-<li><a href="#sec-7">7. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-12 Fri&gt;</span></span></a></li>
-<li><a href="#sec-8">8. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-11 Thu&gt;</span></span></a></li>
-<li><a href="#sec-9">9. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-10 Wed&gt;</span></span></a></li>
-<li><a href="#sec-10">10. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-09 Tue&gt;</span></span></a></li>
-<li><a href="#sec-11">11. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-08 Mon&gt;</span></span></a></li>
-<li><a href="#sec-12">12. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-07 Sun&gt;</span></span></a></li>
-<li><a href="#sec-13">13. carbohydrate cycling</a>
+<li><a href="#sec-1">1. Input: weight/kg. Output: the rest. Harris-Benedict equation 1919 estimates BMR. Energy=BMR*factor.</a></li>
+<li><a href="#sec-2">2. Input: weight/kg. Output: the rest. Harris-Benedict equation 1984 estimates BMR. Energy=BMR*factor.</a></li>
+<li><a href="#sec-3">3. Nutrition</a></li>
+<li><a href="#sec-4">4. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-14 Sun&gt;</span></span> 59.6kg</a></li>
+<li><a href="#sec-5">5. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-13 Sat&gt;</span></span> 59.6kg</a></li>
+<li><a href="#sec-6">6. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-12 Fri&gt;</span></span> 59.6kg</a></li>
+<li><a href="#sec-7">7. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-11 Thu&gt;</span></span> 59.5kg</a></li>
+<li><a href="#sec-8">8. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-10 Wed&gt;</span></span> 60.3kg</a></li>
+<li><a href="#sec-9">9. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-09 Tue&gt;</span></span> 61kg</a></li>
+<li><a href="#sec-10">10. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-08 Mon&gt;</span></span> 61.5kg</a></li>
+<li><a href="#sec-11">11. <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-07 Sun&gt;</span></span> 62kg</a></li>
+<li><a href="#sec-12">12. Carbohydrate cycling</a>
 <ul>
-<li><a href="#sec-13-1">13.1. Basal metabolic rate (BMR) formula</a></li>
-<li><a href="#sec-13-2">13.2. </a></li>
+<li><a href="#sec-12-1">12.1. Basal metabolic rate (BMR) formula</a></li>
+<li><a href="#sec-12-2">12.2. high-mid-low cab day factors</a></li>
 </ul>
 </li>
-<li><a href="#sec-14">14. </a></li>
+<li><a href="#sec-13">13. diet solution</a></li>
+<li><a href="#sec-14">14. Bodybuilding.com macros calculator</a></li>
+<li><a href="#sec-15">15. Experiments</a></li>
 </ul>
 </div>
 </div>
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Bodybuilding.com macros calculator</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> Input: weight/kg. Output: the rest. Harris-Benedict equation 1919 estimates BMR. Energy=BMR*factor.</h2>
 <div class="outline-text-2" id="text-1">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="right" />
-
-<col  class="right" />
-
-<col  class="right" />
-
-<col  class="right" />
-
-<col  class="right" />
-
-<col  class="right" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="right">Weight/kg</th>
-<th scope="col" class="right">Weight/lbs</th>
-<th scope="col" class="right">Energy/kcal</th>
-<th scope="col" class="right">Protein/g</th>
-<th scope="col" class="right">Carbs/g</th>
-<th scope="col" class="right">Fats/g</th>
-<th scope="col" class="left">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="right">65</td>
-<td class="right">143.3003</td>
-<td class="right">1661</td>
-<td class="right">166</td>
-<td class="right">166</td>
-<td class="right">37</td>
-<td class="left">cutting</td>
-</tr>
-
-<tr>
-<td class="right">65</td>
-<td class="right">143.3003</td>
-<td class="right">2078</td>
-<td class="right">156</td>
-<td class="right">233</td>
-<td class="right">58</td>
-<td class="left">maintain</td>
-</tr>
-
-<tr>
-<td class="right">65</td>
-<td class="right">143.3003</td>
-<td class="right">2580</td>
-<td class="right">193</td>
-<td class="right">290</td>
-<td class="right">72</td>
-<td class="left">bulk</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="right">61</td>
-<td class="right">134.48182</td>
-<td class="right">1620</td>
-<td class="right">162</td>
-<td class="right">162</td>
-<td class="right">36</td>
-<td class="left">cutting</td>
-</tr>
-
-<tr>
-<td class="right">61</td>
-<td class="right">134.48182</td>
-<td class="right">2020</td>
-<td class="right">152</td>
-<td class="right">227</td>
-<td class="right">56</td>
-<td class="left">maintain</td>
-</tr>
-
-<tr>
-<td class="right">61</td>
-<td class="right">134.48182</td>
-<td class="right">2522</td>
-<td class="right">189</td>
-<td class="right">284</td>
-<td class="right">70</td>
-<td class="left">bulk</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="right">60</td>
-<td class="right">132.2772</td>
-<td class="right">1612</td>
-<td class="right">161</td>
-<td class="right">161</td>
-<td class="right">36</td>
-<td class="left">cutting</td>
-</tr>
-
-<tr>
-<td class="right">60</td>
-<td class="right">132.2772</td>
-<td class="right">2012</td>
-<td class="right">151</td>
-<td class="right">226</td>
-<td class="right">56</td>
-<td class="left">maintain</td>
-</tr>
-
-<tr>
-<td class="right">60</td>
-<td class="right">132.2772</td>
-<td class="right">2510</td>
-<td class="right">188</td>
-<td class="right">282</td>
-<td class="right">70</td>
-<td class="left">bulk</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="right">59</td>
-<td class="right">130.07258</td>
-<td class="right">1800</td>
-<td class="right">180</td>
-<td class="right">180</td>
-<td class="right">40</td>
-<td class="left">cutting</td>
-</tr>
-
-<tr>
-<td class="right">59</td>
-<td class="right">130.07258</td>
-<td class="right">1995</td>
-<td class="right">150</td>
-<td class="right">225</td>
-<td class="right">55</td>
-<td class="left">maintain</td>
-</tr>
-
-<tr>
-<td class="right">59</td>
-<td class="right">130.07258</td>
-<td class="right">2493</td>
-<td class="right">187</td>
-<td class="right">281</td>
-<td class="right">69</td>
-<td class="left">bulk</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="right">58</td>
-<td class="right">127.86796</td>
-<td class="right">1792</td>
-<td class="right">179</td>
-<td class="right">179</td>
-<td class="right">40</td>
-<td class="left">cutting</td>
-</tr>
-
-<tr>
-<td class="right">58</td>
-<td class="right">127.86796</td>
-<td class="right">1983</td>
-<td class="right">149</td>
-<td class="right">223</td>
-<td class="right">55</td>
-<td class="left">maintain</td>
-</tr>
-
-<tr>
-<td class="right">58</td>
-<td class="right">127.86796</td>
-<td class="right">2481</td>
-<td class="right">186</td>
-<td class="right">279</td>
-<td class="right">69</td>
-<td class="left">bulk</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="right">55</td>
-<td class="right">121.2541</td>
-<td class="right">1751</td>
-<td class="right">175</td>
-<td class="right">175</td>
-<td class="right">39</td>
-<td class="left">cutting</td>
-</tr>
-
-<tr>
-<td class="right">55</td>
-<td class="right">121.2541</td>
-<td class="right">1946</td>
-<td class="right">146</td>
-<td class="right">219</td>
-<td class="right">54</td>
-<td class="left">maintain</td>
-</tr>
-
-<tr>
-<td class="right">55</td>
-<td class="right">121.2541</td>
-<td class="right">2444</td>
-<td class="right">183</td>
-<td class="right">275</td>
-<td class="right">68</td>
-<td class="left">bulk</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Input: weight/kg, energy/kcal. Output: the rest</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li>1.50g per lbs
-</li>
-</ul>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="right" />
-
-<col  class="right" />
-
-<col  class="right" />
-
-<col  class="right" />
-
-<col  class="right" />
-
-<col  class="right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="right">Weight/kg</th>
-<th scope="col" class="right">Weight/lbs</th>
-<th scope="col" class="right">Energy/kcal</th>
-<th scope="col" class="right">Protein/g</th>
-<th scope="col" class="right">Carbs/g</th>
-<th scope="col" class="right">Fats/g</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="right">60</td>
-<td class="right">132.2772</td>
-<td class="right">1900</td>
-<td class="right">198.4158</td>
-<td class="right">165.3465</td>
-<td class="right">49.438978</td>
-</tr>
-
-<tr>
-<td class="right">59</td>
-<td class="right">130.07258</td>
-<td class="right">1850</td>
-<td class="right">195.10887</td>
-<td class="right">162.59073</td>
-<td class="right">46.577956</td>
-</tr>
-
-<tr>
-<td class="right">58</td>
-<td class="right">127.86796</td>
-<td class="right">1800</td>
-<td class="right">191.80194</td>
-<td class="right">159.83495</td>
-<td class="right">43.716938</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Input: weight/kg. Output: the rest. Harris-Benedict equation 1919 estimates BMR. Energy=BMR*1.375. Age=22.</h2>
-<div class="outline-text-2" id="text-3">
-<ul class="org-ul">
-<li>1.50g per lbs
-</li>
-</ul>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="right" />
-
-<col  class="right" />
-
-<col  class="right" />
-
-<col  class="right" />
-
-<col  class="right" />
-
-<col  class="right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="right">Weight/kg</th>
-<th scope="col" class="right">Weight/lbs</th>
-<th scope="col" class="right">Energy/kcal</th>
-<th scope="col" class="right">Protein/g</th>
-<th scope="col" class="right">Carbs/g</th>
-<th scope="col" class="right">Fats/g</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="right">60</td>
-<td class="right">132.2772</td>
-<td class="right">2177.3309</td>
-<td class="right">198.4158</td>
-<td class="right">165.3465</td>
-<td class="right">80.253522</td>
-</tr>
-
-<tr>
-<td class="right">59</td>
-<td class="right">130.07258</td>
-<td class="right">2158.4225</td>
-<td class="right">195.10887</td>
-<td class="right">162.59073</td>
-<td class="right">80.847122</td>
-</tr>
-
-<tr>
-<td class="right">58</td>
-<td class="right">127.86796</td>
-<td class="right">2139.5140</td>
-<td class="right">191.80194</td>
-<td class="right">159.83495</td>
-<td class="right">81.440716</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Input: weight/kg. Output: the rest. Harris-Benedict equation 1984 estimates BMR. Energy=BMR*1.375. Age=22.</h2>
-<div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>1.50g protein per lbs
 </li>
@@ -537,11 +189,20 @@ for the JavaScript code in this tag.
 <col  class="right" />
 
 <col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
 </colgroup>
 <thead>
 <tr>
 <th scope="col" class="right">Weight/kg</th>
 <th scope="col" class="right">Weight/lbs</th>
+<th scope="col" class="right">Height/cm</th>
+<th scope="col" class="right">Age</th>
+<th scope="col" class="right">Factor</th>
 <th scope="col" class="right">Energy/kcal</th>
 <th scope="col" class="right">Protein/g</th>
 <th scope="col" class="right">Carbs/g</th>
@@ -552,6 +213,93 @@ for the JavaScript code in this tag.
 <tr>
 <td class="right">60</td>
 <td class="right">132.2772</td>
+<td class="right">168</td>
+<td class="right">22</td>
+<td class="right">1.375</td>
+<td class="right">2177.3309</td>
+<td class="right">198.4158</td>
+<td class="right">165.3465</td>
+<td class="right">80.253522</td>
+</tr>
+
+<tr>
+<td class="right">59</td>
+<td class="right">130.07258</td>
+<td class="right">168</td>
+<td class="right">22</td>
+<td class="right">1.375</td>
+<td class="right">2158.4225</td>
+<td class="right">195.10887</td>
+<td class="right">162.59073</td>
+<td class="right">80.847122</td>
+</tr>
+
+<tr>
+<td class="right">58</td>
+<td class="right">127.86796</td>
+<td class="right">168</td>
+<td class="right">22</td>
+<td class="right">1.375</td>
+<td class="right">2139.5140</td>
+<td class="right">191.80194</td>
+<td class="right">159.83495</td>
+<td class="right">81.440716</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Input: weight/kg. Output: the rest. Harris-Benedict equation 1984 estimates BMR. Energy=BMR*factor.</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>1.50g protein per lbs
+</li>
+<li>1.25g carbs per lbs
+</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">Weight/kg</th>
+<th scope="col" class="right">Weight/lbs</th>
+<th scope="col" class="right">Height/cm</th>
+<th scope="col" class="right">Age</th>
+<th scope="col" class="right">Factor</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">60</td>
+<td class="right">132.2772</td>
+<td class="right">168</td>
+<td class="right">22</td>
+<td class="right">1.375</td>
 <td class="right">2163.59</td>
 <td class="right">198.4158</td>
 <td class="right">165.3465</td>
@@ -561,6 +309,9 @@ for the JavaScript code in this tag.
 <tr>
 <td class="right">59</td>
 <td class="right">130.07258</td>
+<td class="right">168</td>
+<td class="right">22</td>
+<td class="right">1.375</td>
 <td class="right">2145.1691</td>
 <td class="right">195.10887</td>
 <td class="right">162.59073</td>
@@ -570,6 +321,9 @@ for the JavaScript code in this tag.
 <tr>
 <td class="right">58</td>
 <td class="right">127.86796</td>
+<td class="right">168</td>
+<td class="right">22</td>
+<td class="right">1.375</td>
 <td class="right">2126.7483</td>
 <td class="right">191.80194</td>
 <td class="right">159.83495</td>
@@ -579,9 +333,9 @@ for the JavaScript code in this tag.
 </table>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Nutrition</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Nutrition</h2>
+<div class="outline-text-2" id="text-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -623,13 +377,23 @@ for the JavaScript code in this tag.
 </tr>
 
 <tr>
-<td class="left">Sirloin</td>
+<td class="left">Tesco Sirloin</td>
 <td class="left">&#xa0;</td>
 <td class="right">100</td>
 <td class="right">201</td>
 <td class="right">21.6</td>
 <td class="right">0</td>
 <td class="right">12.7</td>
+</tr>
+
+<tr>
+<td class="left">Tesco fillet</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">155</td>
+<td class="right">20.9</td>
+<td class="right">0</td>
+<td class="right">7.9</td>
 </tr>
 
 <tr>
@@ -855,9 +619,240 @@ for the JavaScript code in this tag.
 </table>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-13 Sat&gt;</span></span></h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-14 Sun&gt;</span></span> 59.6kg</h2>
+<div class="outline-text-2" id="text-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Food</th>
+<th scope="col" class="left">Unit</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+<th scope="col" class="right">Number</th>
+<th scope="col" class="right">Weight/g</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Oatmeal</td>
+<td class="left">1 bag</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+<td class="right">1</td>
+<td class="right">27</td>
+<td class="right">100</td>
+<td class="right">3</td>
+<td class="right">16</td>
+<td class="right">2.1</td>
+</tr>
+
+<tr>
+<td class="left">Tesco fillet</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">155</td>
+<td class="right">20.9</td>
+<td class="right">0</td>
+<td class="right">7.9</td>
+<td class="right">1.7</td>
+<td class="right">170.</td>
+<td class="right">263.5</td>
+<td class="right">35.53</td>
+<td class="right">0.</td>
+<td class="right">13.43</td>
+</tr>
+
+<tr>
+<td class="left">Tesco fillet</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">155</td>
+<td class="right">20.9</td>
+<td class="right">0</td>
+<td class="right">7.9</td>
+<td class="right">1.7</td>
+<td class="right">170.</td>
+<td class="right">263.5</td>
+<td class="right">35.53</td>
+<td class="right">0.</td>
+<td class="right">13.43</td>
+</tr>
+
+<tr>
+<td class="left">Tesco asparagus</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">29</td>
+<td class="right">2.9</td>
+<td class="right">2</td>
+<td class="right">0.6</td>
+<td class="right">0.6</td>
+<td class="right">60.</td>
+<td class="right">17.4</td>
+<td class="right">1.74</td>
+<td class="right">1.2</td>
+<td class="right">0.36</td>
+</tr>
+
+<tr>
+<td class="left">Chicken Breast</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">106</td>
+<td class="right">24</td>
+<td class="right">0</td>
+<td class="right">1.1</td>
+<td class="right">2.32</td>
+<td class="right">232.</td>
+<td class="right">245.92</td>
+<td class="right">55.68</td>
+<td class="right">0.</td>
+<td class="right">2.552</td>
+</tr>
+
+<tr>
+<td class="left">Chicken Breast</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">106</td>
+<td class="right">24</td>
+<td class="right">0</td>
+<td class="right">1.1</td>
+<td class="right">2.68</td>
+<td class="right">268.</td>
+<td class="right">284.08</td>
+<td class="right">64.32</td>
+<td class="right">0.</td>
+<td class="right">2.948</td>
+</tr>
+
+<tr>
+<td class="left">Tesco Sweet potato</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">94</td>
+<td class="right">1.1</td>
+<td class="right">20.5</td>
+<td class="right">0.3</td>
+<td class="right">3</td>
+<td class="right">300</td>
+<td class="right">282</td>
+<td class="right">3.3</td>
+<td class="right">61.5</td>
+<td class="right">0.9</td>
+</tr>
+
+<tr>
+<td class="left">Tesco Sweet potato</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">94</td>
+<td class="right">1.1</td>
+<td class="right">20.5</td>
+<td class="right">0.3</td>
+<td class="right">2</td>
+<td class="right">200</td>
+<td class="right">188</td>
+<td class="right">2.2</td>
+<td class="right">41.</td>
+<td class="right">0.6</td>
+</tr>
+
+<tr>
+<td class="left">Tesco blueberry</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">68</td>
+<td class="right">0.7</td>
+<td class="right">14.5</td>
+<td class="right">0.3</td>
+<td class="right">2</td>
+<td class="right">200</td>
+<td class="right">136</td>
+<td class="right">1.4</td>
+<td class="right">29.</td>
+<td class="right">0.6</td>
+</tr>
+
+<tr>
+<td class="left">Sainsbury gala apple</td>
+<td class="left">&#xa0;</td>
+<td class="right">100</td>
+<td class="right">53</td>
+<td class="right">0</td>
+<td class="right">11.8</td>
+<td class="right">0</td>
+<td class="right">1</td>
+<td class="right">100</td>
+<td class="right">53</td>
+<td class="right">0</td>
+<td class="right">11.8</td>
+<td class="right">0</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Sum</td>
+<td class="left">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">0</td>
+<td class="right">1833.4</td>
+<td class="right">202.7</td>
+<td class="right">160.5</td>
+<td class="right">36.92</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-13 Sat&gt;</span></span> 59.6kg</h2>
+<div class="outline-text-2" id="text-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1054,9 +1049,9 @@ for the JavaScript code in this tag.
 </table>
 </div>
 </div>
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7"><span class="section-number-2">7</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-12 Fri&gt;</span></span></h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-12 Fri&gt;</span></span> 59.6kg</h2>
+<div class="outline-text-2" id="text-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1285,9 +1280,9 @@ for the JavaScript code in this tag.
 </table>
 </div>
 </div>
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8"><span class="section-number-2">8</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-11 Thu&gt;</span></span></h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-11 Thu&gt;</span></span> 59.5kg</h2>
+<div class="outline-text-2" id="text-7">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1484,9 +1479,9 @@ for the JavaScript code in this tag.
 </table>
 </div>
 </div>
-<div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9"><span class="section-number-2">9</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-10 Wed&gt;</span></span></h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-10 Wed&gt;</span></span> 60.3kg</h2>
+<div class="outline-text-2" id="text-8">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1683,9 +1678,9 @@ for the JavaScript code in this tag.
 </table>
 </div>
 </div>
-<div id="outline-container-sec-10" class="outline-2">
-<h2 id="sec-10"><span class="section-number-2">10</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-09 Tue&gt;</span></span></h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-09 Tue&gt;</span></span> 61kg</h2>
+<div class="outline-text-2" id="text-9">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1914,9 +1909,9 @@ for the JavaScript code in this tag.
 </table>
 </div>
 </div>
-<div id="outline-container-sec-11" class="outline-2">
-<h2 id="sec-11"><span class="section-number-2">11</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-08 Mon&gt;</span></span></h2>
-<div class="outline-text-2" id="text-11">
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-08 Mon&gt;</span></span> 61.5kg</h2>
+<div class="outline-text-2" id="text-10">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -2113,9 +2108,9 @@ for the JavaScript code in this tag.
 </table>
 </div>
 </div>
-<div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12"><span class="section-number-2">12</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-07 Sun&gt;</span></span></h2>
-<div class="outline-text-2" id="text-12">
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-07 Sun&gt;</span></span> 62kg</h2>
+<div class="outline-text-2" id="text-11">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -2312,12 +2307,12 @@ for the JavaScript code in this tag.
 </table>
 </div>
 </div>
-<div id="outline-container-sec-13" class="outline-2">
-<h2 id="sec-13"><span class="section-number-2">13</span> carbohydrate cycling</h2>
-<div class="outline-text-2" id="text-13">
-</div><div id="outline-container-sec-13-1" class="outline-3">
-<h3 id="sec-13-1"><span class="section-number-3">13.1</span> Basal metabolic rate (BMR) formula</h3>
-<div class="outline-text-3" id="text-13-1">
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> Carbohydrate cycling</h2>
+<div class="outline-text-2" id="text-12">
+</div><div id="outline-container-sec-12-1" class="outline-3">
+<h3 id="sec-12-1"><span class="section-number-3">12.1</span> Basal metabolic rate (BMR) formula</h3>
+<div class="outline-text-3" id="text-12-1">
 <ol class="org-ol">
 <li>Harris-Benedict equation 1919:
 <ul class="org-ul">
@@ -2332,61 +2327,70 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 </ol>
+<ul class="org-ul">
+<li>1.6 ratio 
+</li>
+<li>1-1.2 g/lbs protein * weight * (1-bfp)
+</li>
+<li>1.25  g/lbs carbs   * weight
+</li>
+</ul>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="left" />
+<col  class="right" />
 
 <col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="left" />
 </colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">Weight/kg</th>
+<th scope="col" class="right">Weight/lbs</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+<th scope="col" class="left">Purpose</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="left">Weight/kg</td>
 <td class="right">62</td>
-</tr>
-
-<tr>
-<td class="left">Energy/kcal</td>
-<td class="right">2567</td>
-</tr>
-
-<tr>
-<td class="left">Cutting/kcal</td>
+<td class="right">136</td>
 <td class="right">2182</td>
-</tr>
-
-<tr>
-<td class="left">Protein/g</td>
 <td class="right">109-130</td>
-</tr>
-
-<tr>
-<td class="left">Carbs/g</td>
 <td class="right">170</td>
+<td class="right">109-118</td>
+<td class="left">cutting</td>
 </tr>
 
 <tr>
-<td class="left">Fats/g</td>
-<td class="right">109-118</td>
+<td class="right">62</td>
+<td class="right">136</td>
+<td class="right">2567</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="left">maintain</td>
 </tr>
 </tbody>
 </table>
-<ul class="org-ul">
-<li>136 lbs
-</li>
-<li>1.6 ratio 
-</li>
-<li>1-1.2 g/lbs protein * weight
-</li>
-<li>1.25  g/lbs carbs   * weight * (1-bfp)
-</li>
-</ul>
 </div>
 </div>
-<div id="outline-container-sec-13-2" class="outline-3">
-<h3 id="sec-13-2"><span class="section-number-3">13.2</span> </h3>
-<div class="outline-text-3" id="text-13-2">
+<div id="outline-container-sec-12-2" class="outline-3">
+<h3 id="sec-12-2"><span class="section-number-3">12.2</span> high-mid-low cab day factors</h3>
+<div class="outline-text-3" id="text-12-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -2395,7 +2399,7 @@ for the JavaScript code in this tag.
 
 <col  class="right" />
 
-<col  class="left" />
+<col  class="right" />
 
 <col  class="right" />
 </colgroup>
@@ -2403,29 +2407,29 @@ for the JavaScript code in this tag.
 <tr>
 <th scope="col" class="left">&#xa0;</th>
 <th scope="col" class="right">high carb</th>
-<th scope="col" class="left">mid carb</th>
+<th scope="col" class="right">mid carb</th>
 <th scope="col" class="right">low carb</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="left">protein</td>
-<td class="right">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
 </tr>
 
 <tr>
 <td class="left">carbs</td>
 <td class="right">1.75</td>
-<td class="left">&#xa0;</td>
+<td class="right">1</td>
 <td class="right">0.25</td>
 </tr>
 
 <tr>
 <td class="left">fats</td>
 <td class="right">0.5</td>
-<td class="left">&#xa0;</td>
+<td class="right">1</td>
 <td class="right">1.5</td>
 </tr>
 </tbody>
@@ -2433,9 +2437,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-14" class="outline-2">
-<h2 id="sec-14"><span class="section-number-2">14</span> </h2>
-<div class="outline-text-2" id="text-14">
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> diet solution</h2>
+<div class="outline-text-2" id="text-13">
 <ul class="org-ul">
 <li>keto
 </li>
@@ -2446,6 +2450,289 @@ for the JavaScript code in this tag.
 <li>Consistency over a period of time trumps everything. 
 </li>
 </ul>
+</div>
+</div>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> Bodybuilding.com macros calculator</h2>
+<div class="outline-text-2" id="text-14">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">Weight/kg</th>
+<th scope="col" class="right">Weight/lbs</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+<th scope="col" class="left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">65</td>
+<td class="right">143.3003</td>
+<td class="right">1661</td>
+<td class="right">166</td>
+<td class="right">166</td>
+<td class="right">37</td>
+<td class="left">cutting</td>
+</tr>
+
+<tr>
+<td class="right">65</td>
+<td class="right">143.3003</td>
+<td class="right">2078</td>
+<td class="right">156</td>
+<td class="right">233</td>
+<td class="right">58</td>
+<td class="left">maintain</td>
+</tr>
+
+<tr>
+<td class="right">65</td>
+<td class="right">143.3003</td>
+<td class="right">2580</td>
+<td class="right">193</td>
+<td class="right">290</td>
+<td class="right">72</td>
+<td class="left">bulk</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">61</td>
+<td class="right">134.48182</td>
+<td class="right">1620</td>
+<td class="right">162</td>
+<td class="right">162</td>
+<td class="right">36</td>
+<td class="left">cutting</td>
+</tr>
+
+<tr>
+<td class="right">61</td>
+<td class="right">134.48182</td>
+<td class="right">2020</td>
+<td class="right">152</td>
+<td class="right">227</td>
+<td class="right">56</td>
+<td class="left">maintain</td>
+</tr>
+
+<tr>
+<td class="right">61</td>
+<td class="right">134.48182</td>
+<td class="right">2522</td>
+<td class="right">189</td>
+<td class="right">284</td>
+<td class="right">70</td>
+<td class="left">bulk</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">60</td>
+<td class="right">132.2772</td>
+<td class="right">1612</td>
+<td class="right">161</td>
+<td class="right">161</td>
+<td class="right">36</td>
+<td class="left">cutting</td>
+</tr>
+
+<tr>
+<td class="right">60</td>
+<td class="right">132.2772</td>
+<td class="right">2012</td>
+<td class="right">151</td>
+<td class="right">226</td>
+<td class="right">56</td>
+<td class="left">maintain</td>
+</tr>
+
+<tr>
+<td class="right">60</td>
+<td class="right">132.2772</td>
+<td class="right">2510</td>
+<td class="right">188</td>
+<td class="right">282</td>
+<td class="right">70</td>
+<td class="left">bulk</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">59</td>
+<td class="right">130.07258</td>
+<td class="right">1800</td>
+<td class="right">180</td>
+<td class="right">180</td>
+<td class="right">40</td>
+<td class="left">cutting</td>
+</tr>
+
+<tr>
+<td class="right">59</td>
+<td class="right">130.07258</td>
+<td class="right">1995</td>
+<td class="right">150</td>
+<td class="right">225</td>
+<td class="right">55</td>
+<td class="left">maintain</td>
+</tr>
+
+<tr>
+<td class="right">59</td>
+<td class="right">130.07258</td>
+<td class="right">2493</td>
+<td class="right">187</td>
+<td class="right">281</td>
+<td class="right">69</td>
+<td class="left">bulk</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">58</td>
+<td class="right">127.86796</td>
+<td class="right">1792</td>
+<td class="right">179</td>
+<td class="right">179</td>
+<td class="right">40</td>
+<td class="left">cutting</td>
+</tr>
+
+<tr>
+<td class="right">58</td>
+<td class="right">127.86796</td>
+<td class="right">1983</td>
+<td class="right">149</td>
+<td class="right">223</td>
+<td class="right">55</td>
+<td class="left">maintain</td>
+</tr>
+
+<tr>
+<td class="right">58</td>
+<td class="right">127.86796</td>
+<td class="right">2481</td>
+<td class="right">186</td>
+<td class="right">279</td>
+<td class="right">69</td>
+<td class="left">bulk</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">55</td>
+<td class="right">121.2541</td>
+<td class="right">1751</td>
+<td class="right">175</td>
+<td class="right">175</td>
+<td class="right">39</td>
+<td class="left">cutting</td>
+</tr>
+
+<tr>
+<td class="right">55</td>
+<td class="right">121.2541</td>
+<td class="right">1946</td>
+<td class="right">146</td>
+<td class="right">219</td>
+<td class="right">54</td>
+<td class="left">maintain</td>
+</tr>
+
+<tr>
+<td class="right">55</td>
+<td class="right">121.2541</td>
+<td class="right">2444</td>
+<td class="right">183</td>
+<td class="right">275</td>
+<td class="right">68</td>
+<td class="left">bulk</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15"><span class="section-number-2">15</span> Experiments</h2>
+<div class="outline-text-2" id="text-15">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Date</th>
+<th scope="col" class="right">Weight/kg</th>
+<th scope="col" class="right">Weight/lbs</th>
+<th scope="col" class="right">Height/cm</th>
+<th scope="col" class="right">Age</th>
+<th scope="col" class="right">Factor</th>
+<th scope="col" class="right">Energy/kcal</th>
+<th scope="col" class="right">Protein/g</th>
+<th scope="col" class="right">Carbs/g</th>
+<th scope="col" class="right">Fats/g</th>
+<th scope="col" class="left">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-14 Sun&gt;</span></span></td>
+<td class="right">59.6</td>
+<td class="right">131.39535</td>
+<td class="right">168</td>
+<td class="right">22</td>
+<td class="right">1.375</td>
+<td class="right">1897.67</td>
+<td class="right">200.372</td>
+<td class="right">171.4</td>
+<td class="right">39.739</td>
+<td class="left">maintain, bfp=0.16-0.19</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
