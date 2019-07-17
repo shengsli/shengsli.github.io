@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>progress-plans-problems</title>
-<!-- 2019-07-15 Mon 21:11 -->
+<!-- 2019-07-17 Wed 18:52 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -171,11 +171,6 @@ for the JavaScript code in this tag.
 </li>
 <li>counter barrier, pthread barrier, c++ barrier
 </li>
-<li>std::thread, threadStencil: 
-<pre class="example">
-THREADS[t] = new std::thread(&amp;Stencil1DImplementation&lt;EL&gt;::threadStencil1D&lt;IN,OUT,ARGs...&gt;, this, threadArguments, radius, paddingOption, nIters, t, args...);
-</pre>
-</li>
 <li>jacobi == average?
 </li>
 <li>adding niters makes the type of input and output the same
@@ -185,6 +180,15 @@ THREADS[t] = new std::thread(&amp;Stencil1DImplementation&lt;EL&gt;::threadStenc
 <li>matrix multiplication. e.g. convolution. user defined manually?
 </li>
 <li>loop coalescing slows down
+</li>
+<li>James AMD CPU can have 2 threads per core. Non-uniform Memory Access model, 8 cores connect to memory by bus. 
+</li>
+<li>clang++ Reduce and Map skeleton, thread-pool? 
+</li>
+<li>std::thread, threadStencil: 
+<pre class="example">
+THREADS[t] = new std::thread(&amp;Stencil1DImplementation&lt;EL&gt;::threadStencil1D&lt;IN,OUT,ARGs...&gt;, this, threadArguments, radius, paddingOption, nIters, t, args...);
+</pre>
 </li>
 </ul>
 </div>
@@ -204,6 +208,8 @@ THREADS[t] = new std::thread(&amp;Stencil1DImplementation&lt;EL&gt;::threadStenc
 <li><code>[X]</code> add #iterations to interface, not recreate threads
 </li>
 <li><code>[X]</code> stencil 3d, sum 3d
+</li>
+<li><code>[X]</code> median2d, sum2d pthread version
 </li>
 </ul>
 </div>
