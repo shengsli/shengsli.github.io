@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>progress-plans-problems</title>
-<!-- 2019-07-17 Wed 18:52 -->
+<!-- 2019-07-29 Mon 22:34 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -165,7 +165,16 @@ for the JavaScript code in this tag.
 </tbody>
 </table>
 </center>
-<ul class="org-ul"><li><a id="sec-1" name="sec-1"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-22 Mon 14:00&gt;</span></span> w29<br  /><div class="outline-text-2" id="text-1">
+<ul class="org-ul"><li><a id="sec-1" name="sec-1"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-30 Tue 10:00&gt;</span></span> w30<br  /><div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>loop tiling: tile size choice. data size (radius size), cache size
+</li>
+<li><code>g++ sum2D.cpp -std=c++11 -O2 -lpthread -DNTHREADS=4 -DNDATABLOCKS=100 -DRADIUS=10 -DNROWS=1000 -DNCOLS=1000 -DPADDING=0 -DNITERS=1 -DOUTPUT -DTILE=7 -o sum2D</code>
+</li>
+</ul>
+</div>
+</li>
+<li><a id="sec-2" name="sec-2"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-22 Mon 14:00&gt;</span></span> w29<br  /><div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>add #iterations, sum example overflow
 </li>
@@ -190,18 +199,13 @@ for the JavaScript code in this tag.
 THREADS[t] = new std::thread(&amp;Stencil1DImplementation&lt;EL&gt;::threadStencil1D&lt;IN,OUT,ARGs...&gt;, this, threadArguments, radius, paddingOption, nIters, t, args...);
 </pre>
 </li>
-</ul>
-</div>
-</li>
-<li><a id="sec-2" name="sec-2"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-22 Mon 11:00&gt;</span></span> w30<br  /><div class="outline-text-2" id="text-2">
-<ul class="org-ul">
 <li><code>[X]</code> boundary decisions: constant, wrap around
 </li>
 <li><code>[X]</code> Gaussian blur 2d
 </li>
-<li><code>[&#xa0;]</code> Jacobi
+<li><code>[X]</code> Jacobi
 </li>
-<li><code>[&#xa0;]</code> heat transfer 2D
+<li><code>[X]</code> heat transfer 2D
 </li>
 <li><code>[X]</code> test and plot, (bash script and R script)
 </li>
