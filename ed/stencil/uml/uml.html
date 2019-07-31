@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>uml</title>
-<!-- 2019-07-13 Sat 20:24 -->
+<!-- 2019-07-31 Wed 14:30 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -231,7 +231,7 @@ for the JavaScript code in this tag.
 <div class="outline-text-2" id="text-7">
 <div class="org-src-container">
 
-<pre class="src src-C++">MapOverlap(<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">radius</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">radius</span>, <span style="font-weight: bold; text-decoration: underline;">size_t</span> <span style="font-weight: bold; font-style: italic;">stride</span>, ...)
+<pre class="src src-C++">MapOverlap(<span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">radius</span>, <span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">radius</span>, <span style="color: #7fffd4;">size_t</span> <span style="color: #9acd32;">stride</span>, ...)
 </pre>
 </div>
 <ul class="org-ul">
@@ -246,21 +246,21 @@ for the JavaScript code in this tag.
 </ul>
 <div class="org-src-container">
 <label class="org-src-name">skepu2 MapOverlap examples</label>
-<pre class="src src-C++"><span style="font-weight: bold; text-decoration: underline;">float</span> <span style="font-weight: bold;">conv</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">overlap</span>, <span style="font-weight: bold; text-decoration: underline;">size_t</span> <span style="font-weight: bold; font-style: italic;">stride</span>, <span style="font-weight: bold;">const</span> <span style="font-weight: bold; text-decoration: underline;">float</span> *<span style="font-weight: bold; font-style: italic;">v</span>, <span style="font-weight: bold;">const</span> <span style="font-weight: bold; text-decoration: underline;">Vec</span>&lt;<span style="font-weight: bold; text-decoration: underline;">float</span>&gt; <span style="font-weight: bold; font-style: italic;">stencil</span>, <span style="font-weight: bold; text-decoration: underline;">float</span> <span style="font-weight: bold; font-style: italic;">scale</span>)
+<pre class="src src-C++"><span style="color: #7fffd4;">float</span> <span style="color: #98fb98;">conv</span>(<span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">overlap</span>, <span style="color: #7fffd4;">size_t</span> <span style="color: #9acd32;">stride</span>, <span style="color: #ffffff;">const</span> <span style="color: #7fffd4;">float</span> *<span style="color: #9acd32;">v</span>, <span style="color: #ffffff;">const</span> <span style="color: #7fffd4;">Vec</span>&lt;<span style="color: #7fffd4;">float</span>&gt; <span style="color: #9acd32;">stencil</span>, <span style="color: #7fffd4;">float</span> <span style="color: #9acd32;">scale</span>)
 {
-    <span style="font-weight: bold; text-decoration: underline;">float</span> <span style="font-weight: bold; font-style: italic;">res</span> = 0;
-    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = -overlap; i &lt;= overlap; ++i)
+    <span style="color: #7fffd4;">float</span> <span style="color: #9acd32;">res</span> = 0;
+    <span style="color: #ffffff;">for</span> (<span style="color: #7fffd4;">int</span> <span style="color: #9acd32;">i</span> = -overlap; i &lt;= overlap; ++i)
         res += stencil[i + overlap] * v[i*stride];
-    <span style="font-weight: bold;">return</span> res / scale;
+    <span style="color: #ffffff;">return</span> res / scale;
 }
 
-<span style="font-weight: bold; text-decoration: underline;">Vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">float</span>&gt; <span style="font-weight: bold;">convolution</span>(<span style="font-weight: bold; text-decoration: underline;">Vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">float</span>&gt; &amp;<span style="font-weight: bold; font-style: italic;">v</span>)
+<span style="color: #7fffd4;">Vector</span>&lt;<span style="color: #7fffd4;">float</span>&gt; <span style="color: #98fb98;">convolution</span>(<span style="color: #7fffd4;">Vector</span>&lt;<span style="color: #7fffd4;">float</span>&gt; &amp;<span style="color: #9acd32;">v</span>)
 {
-    <span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">convol</span> = MapOverlap(conv);
-    <span style="font-weight: bold; text-decoration: underline;">Vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">float</span>&gt; <span style="font-weight: bold; font-style: italic;">stencil</span> {1, 2, 4, 2, 1};
-    <span style="font-weight: bold; text-decoration: underline;">Vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">float</span>&gt; <span style="font-weight: bold;">result</span>(v.size());
+    <span style="color: #ffffff;">auto</span> <span style="color: #9acd32;">convol</span> = MapOverlap(conv);
+    <span style="color: #7fffd4;">Vector</span>&lt;<span style="color: #7fffd4;">float</span>&gt; <span style="color: #9acd32;">stencil</span> {1, 2, 4, 2, 1};
+    <span style="color: #7fffd4;">Vector</span>&lt;<span style="color: #7fffd4;">float</span>&gt; <span style="color: #98fb98;">result</span>(v.size());
     convol.setOverlap(2);
-    <span style="font-weight: bold;">return</span> convol(result, v, stencil, 10);
+    <span style="color: #ffffff;">return</span> convol(result, v, stencil, 10);
 }
 </pre>
 </div>
