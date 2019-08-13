@@ -3,22 +3,29 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2019-08-13 Tue 22:17 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec11 w8a programming without shared memory</title>
-<!-- 2019-06-23 Sun 03:18 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -45,27 +52,111 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -85,15 +176,16 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/style.css">
+<link rel="stylesheet" 						   type="text/css" 						   href="/css/style.css">
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -142,209 +234,178 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. recap: multicomputer architectures p10</a></li>
-<li><a href="#sec-2">2. message passing p131</a></li>
-<li><a href="#sec-3">3. spmd compare-exchange</a>
+<li><a href="#org909d892">1. recap: multicomputer architectures p10</a></li>
+<li><a href="#org247a698">2. message passing p131</a></li>
+<li><a href="#orgf71249d">3. spmd compare-exchange</a>
 <ul>
-<li><a href="#sec-3-1">3.1. example: sorting p132</a></li>
+<li><a href="#org95e6571">3.1. example: sorting p132</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. message</a>
+<li><a href="#org70494a2">4. message</a>
 <ul>
-<li><a href="#sec-4-1">4.1. synchronization: synchronous/asynchronous</a></li>
-<li><a href="#sec-4-2">4.2. addressing</a></li>
-<li><a href="#sec-4-3">4.3. collective operations</a></li>
+<li><a href="#org96801d7">4.1. synchronization: synchronous/asynchronous</a></li>
+<li><a href="#orgb479993">4.2. addressing</a></li>
+<li><a href="#org6610e89">4.3. collective operations</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">5. mpi key ideas/concepts p139</a></li>
-<li><a href="#sec-6">6. 6 operations</a>
+<li><a href="#orgfdc0b87">5. mpi key ideas/concepts p139</a></li>
+<li><a href="#org7de2213">6. 6 operations</a>
 <ul>
-<li><a href="#sec-6-1">6.1. example: hello world p140</a></li>
-<li><a href="#sec-6-2">6.2. example: primitive</a></li>
-<li><a href="#sec-6-3">6.3. example: task farm</a>
+<li><a href="#org29d432e">6.1. example: hello world p140</a></li>
+<li><a href="#orgb98f13c">6.2. example: primitive</a></li>
+<li><a href="#org13459a7">6.3. example: task farm</a>
 <ul>
-<li><a href="#sec-6-3-1">6.3.1. 3 phases:</a></li>
-<li><a href="#sec-6-3-2">6.3.2. </a></li>
+<li><a href="#orgbb5a486">6.3.1. 3 phases:</a></li>
+<li><a href="#orgf701ec5">6.3.2. </a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#sec-7">7. <span class="todo TODO">TODO</span> look up send and recv params</a></li>
-<li><a href="#sec-8">8. <span class="todo TODO">TODO</span> look up code</a></li>
+<li><a href="#org89de593">7. <span class="todo TODO">TODO</span> look up send and recv params</a></li>
+<li><a href="#orgec57176">8. <span class="todo TODO">TODO</span> look up code</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> recap: multicomputer architectures p10</h2>
+<div id="outline-container-org909d892" class="outline-2">
+<h2 id="org909d892"><span class="section-number-2">1</span> recap: multicomputer architectures p10</h2>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> message passing p131</h2>
+<div id="outline-container-org247a698" class="outline-2">
+<h2 id="org247a698"><span class="section-number-2">2</span> message passing p131</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li>spmd: single program multiple data
-</li>
-<li>each node has a copy of code but parameterized differently, process <b>local data</b>
-</li>
+<li>spmd: single program multiple data</li>
+<li>each node has a copy of code but parameterized differently, process <b>local data</b></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> spmd compare-exchange</h2>
+<div id="outline-container-orgf71249d" class="outline-2">
+<h2 id="orgf71249d"><span class="section-number-2">3</span> spmd compare-exchange</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>operations:
 <ul class="org-ul">
-<li>send
-</li>
-<li>recv
-</li>
-</ul>
-</li>
+<li>send</li>
+<li>recv</li>
+</ul></li>
 </ul>
 </div>
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> example: sorting p132</h3>
+<div id="outline-container-org95e6571" class="outline-3">
+<h3 id="org95e6571"><span class="section-number-3">3.1</span> example: sorting p132</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
-<li>some data is scatter across the process
-</li>
-<li>each node has a chunk of data
-</li>
+<li>some data is scatter across the process</li>
+<li>each node has a chunk of data</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> message</h2>
+<div id="outline-container-org70494a2" class="outline-2">
+<h2 id="org70494a2"><span class="section-number-2">4</span> message</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> synchronization: synchronous/asynchronous</h3>
+</div>
+<div id="outline-container-org96801d7" class="outline-3">
+<h3 id="org96801d7"><span class="section-number-3">4.1</span> synchronization: synchronous/asynchronous</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
-<li>send and recv -&gt; deadlock
-</li>
+<li>send and recv -&gt; deadlock</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> addressing</h3>
+<div id="outline-container-orgb479993" class="outline-3">
+<h3 id="orgb479993"><span class="section-number-3">4.2</span> addressing</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
-<li>do we need to specify source and destination  in send and recv?
-</li>
+<li>do we need to specify source and destination  in send and recv?</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3"><span class="section-number-3">4.3</span> collective operations</h3>
+<div id="outline-container-org6610e89" class="outline-3">
+<h3 id="org6610e89"><span class="section-number-3">4.3</span> collective operations</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
-<li>communication patterns
-</li>
-<li>broadcast: send a copy of data to everyone
-</li>
-<li>scatter: partition data and spread across, e.g. sorting example p132
-</li>
-<li>gather: gather from across the group
-</li>
-<li>reduction: combine gathered values with an <b>associate operation</b>
-</li>
-<li>scan (prefix): reduce and copmute all the ordered partial reductions (partial results)
-</li>
+<li>communication patterns</li>
+<li>broadcast: send a copy of data to everyone</li>
+<li>scatter: partition data and spread across, e.g. sorting example p132</li>
+<li>gather: gather from across the group</li>
+<li>reduction: combine gathered values with an <b>associate operation</b></li>
+<li>scan (prefix): reduce and copmute all the ordered partial reductions (partial results)</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> mpi key ideas/concepts p139</h2>
+<div id="outline-container-orgfdc0b87" class="outline-2">
+<h2 id="orgfdc0b87"><span class="section-number-2">5</span> mpi key ideas/concepts p139</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
-<li>write one program in spmd style
-</li>
+<li>write one program in spmd style</li>
 <li>mpi run ask for:
 <ul class="org-ul">
 <li></li>
-</ul>
-</li>
+</ul></li>
 <li>communicator: create group 
 <ul class="org-ul">
-<li>provide process id/name for each thread
-</li>
-<li>which group does a thread belong to
-</li>
-</ul>
-</li>
+<li>provide process id/name for each thread</li>
+<li>which group does a thread belong to</li>
+</ul></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> 6 operations</h2>
+<div id="outline-container-org7de2213" class="outline-2">
+<h2 id="org7de2213"><span class="section-number-2">6</span> 6 operations</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-sec-6-1" class="outline-3">
-<h3 id="sec-6-1"><span class="section-number-3">6.1</span> example: hello world p140</h3>
+</div>
+<div id="outline-container-org29d432e" class="outline-3">
+<h3 id="org29d432e"><span class="section-number-3">6.1</span> example: hello world p140</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
-<li><code>MPI_Comm_rank()</code>: rank: tells who am i, which group am i in
-</li>
-<li><code>MPI_Comm_size()</code>: how many processes are there in this group/parallel program?
-</li>
-<li>possible to run over network
-</li>
-<li>cgi/mic/goodmpi
-</li>
+<li><code>MPI_Comm_rank()</code>: rank: tells who am i, which group am i in</li>
+<li><code>MPI_Comm_size()</code>: how many processes are there in this group/parallel program?</li>
+<li>possible to run over network</li>
+<li>cgi/mic/goodmpi</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-6-2" class="outline-3">
-<h3 id="sec-6-2"><span class="section-number-3">6.2</span> example: primitive</h3>
+<div id="outline-container-orgb98f13c" class="outline-3">
+<h3 id="orgb98f13c"><span class="section-number-3">6.2</span> example: primitive</h3>
 </div>
-<div id="outline-container-sec-6-3" class="outline-3">
-<h3 id="sec-6-3"><span class="section-number-3">6.3</span> example: task farm</h3>
+<div id="outline-container-org13459a7" class="outline-3">
+<h3 id="org13459a7"><span class="section-number-3">6.3</span> example: task farm</h3>
 <div class="outline-text-3" id="text-6-3">
 <ul class="org-ul">
-<li>bag: full of tasks
-</li>
-<li>assumption: more tasks than workers
-</li>
+<li>bag: full of tasks</li>
+<li>assumption: more tasks than workers</li>
 </ul>
 </div>
-<div id="outline-container-sec-6-3-1" class="outline-4">
-<h4 id="sec-6-3-1"><span class="section-number-4">6.3.1</span> 3 phases:</h4>
+<div id="outline-container-orgbb5a486" class="outline-4">
+<h4 id="orgbb5a486"><span class="section-number-4">6.3.1</span> 3 phases:</h4>
 <div class="outline-text-4" id="text-6-3-1">
 <ul class="org-ul">
-<li>phase 1: everyone get one task
-</li>
-<li>phase 2: demand-driven 
-</li>
-<li>phase 3: gather last results
-</li>
+<li>phase 1: everyone get one task</li>
+<li>phase 2: demand-driven</li>
+<li>phase 3: gather last results</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-6-3-2" class="outline-4">
-<h4 id="sec-6-3-2"><span class="section-number-4">6.3.2</span> </h4>
+<div id="outline-container-orgf701ec5" class="outline-4">
+<h4 id="orgf701ec5"><span class="section-number-4">6.3.2</span> </h4>
 <div class="outline-text-4" id="text-6-3-2">
 <ul class="org-ul">
-<li>worker only care getting a task and process
-</li>
-<li>be farmer or worker
-</li>
+<li>worker only care getting a task and process</li>
+<li>be farmer or worker</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7"><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> look up send and recv params</h2>
+<div id="outline-container-org89de593" class="outline-2">
+<h2 id="org89de593"><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> look up send and recv params</h2>
 </div>
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> look up code</h2>
+<div id="outline-container-orgec57176" class="outline-2">
+<h2 id="orgec57176"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> look up code</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
-<li><code>MPI_Send()</code>
-</li>
-<li><code>MPI_Recv()</code>
-</li>
+<li><code>MPI_Send()</code></li>
+<li><code>MPI_Recv()</code></li>
 </ul>
 </div>
 </div>
