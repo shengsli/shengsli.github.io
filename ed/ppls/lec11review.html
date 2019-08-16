@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-16 Fri 20:08 -->
+<!-- 2019-08-16 Fri 22:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec11 w8a review</title>
@@ -234,16 +234,16 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org22525d5">1. Programming with message passing</a></li>
-<li><a href="#org880da9b">2. Collective operations</a></li>
-<li><a href="#org7778400">3. MPI concepts, in a nutshell</a>
+<li><a href="#org2e2782c">1. Programming with message passing</a></li>
+<li><a href="#org4a9c4dc">2. Collective operations</a></li>
+<li><a href="#org707d2b2">3. MPI concepts, in a nutshell</a>
 <ul>
-<li><a href="#org9e71563">3.1. communicator</a></li>
-<li><a href="#org97835e6">3.2. Send/Receive</a></li>
+<li><a href="#orgfb123ff">3.1. communicator</a></li>
+<li><a href="#orga30e7f8">3.2. Send/Receive</a></li>
 </ul>
 </li>
-<li><a href="#org584fb3b">4. Example: Hello World in MPI</a></li>
-<li><a href="#org5099179">5. MPI primitives</a></li>
+<li><a href="#org2df94b6">4. Example: Hello World in MPI</a></li>
+<li><a href="#org202bbb7">5. MPI primitives</a></li>
 </ul>
 </div>
 </div>
@@ -255,8 +255,8 @@ This lecture is about distributed memory programming
 <li>need some other mechanisms beyond reads and writes, e.g. message passing</li>
 <li>There are several approaches to abstracting and implementing such a model. We will focus on message passing, which dominates the performance-oriented parallel computing world.</li>
 </ul>
-<div id="outline-container-org22525d5" class="outline-2">
-<h2 id="org22525d5"><span class="section-number-2">1</span> Programming with message passing</h2>
+<div id="outline-container-org2e2782c" class="outline-2">
+<h2 id="org2e2782c"><span class="section-number-2">1</span> Programming with message passing</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>send and receive primitives for transferring data out of and into local address spaces</li>
@@ -265,8 +265,8 @@ This lecture is about distributed memory programming
 </ul>
 </div>
 </div>
-<div id="outline-container-org880da9b" class="outline-2">
-<h2 id="org880da9b"><span class="section-number-2">2</span> Collective operations</h2>
+<div id="outline-container-org4a9c4dc" class="outline-2">
+<h2 id="org4a9c4dc"><span class="section-number-2">2</span> Collective operations</h2>
 <div class="outline-text-2" id="text-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -311,15 +311,15 @@ This lecture is about distributed memory programming
 </table>
 </div>
 </div>
-<div id="outline-container-org7778400" class="outline-2">
-<h2 id="org7778400"><span class="section-number-2">3</span> MPI concepts, in a nutshell</h2>
+<div id="outline-container-org707d2b2" class="outline-2">
+<h2 id="org707d2b2"><span class="section-number-2">3</span> MPI concepts, in a nutshell</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>creates processes statically using <code>mpirun</code> or spawn processes dynamically</li>
 </ul>
 </div>
-<div id="outline-container-org9e71563" class="outline-3">
-<h3 id="org9e71563"><span class="section-number-3">3.1</span> communicator</h3>
+<div id="outline-container-orgfb123ff" class="outline-3">
+<h3 id="orgfb123ff"><span class="section-number-3">3.1</span> communicator</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>All communications take place within the context of "communication spaces", called <b>communicators</b>, which denotes sets of processes.</li>
@@ -328,8 +328,8 @@ This lecture is about distributed memory programming
 </ul>
 </div>
 </div>
-<div id="outline-container-org97835e6" class="outline-3">
-<h3 id="org97835e6"><span class="section-number-3">3.2</span> Send/Receive</h3>
+<div id="outline-container-orga30e7f8" class="outline-3">
+<h3 id="orga30e7f8"><span class="section-number-3">3.2</span> Send/Receive</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li><code>send</code> must specify a target.</li>
@@ -340,8 +340,8 @@ This lecture is about distributed memory programming
 </div>
 </div>
 </div>
-<div id="outline-container-org584fb3b" class="outline-2">
-<h2 id="org584fb3b"><span class="section-number-2">4</span> Example: Hello World in MPI</h2>
+<div id="outline-container-org2df94b6" class="outline-2">
+<h2 id="org2df94b6"><span class="section-number-2">4</span> Example: Hello World in MPI</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>)
@@ -357,8 +357,8 @@ This lecture is about distributed memory programming
 </div>
 </div>
 </div>
-<div id="outline-container-org5099179" class="outline-2">
-<h2 id="org5099179"><span class="section-number-2">5</span> MPI primitives</h2>
+<div id="outline-container-org202bbb7" class="outline-2">
+<h2 id="org202bbb7"><span class="section-number-2">5</span> MPI primitives</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li><code>int MPI_Init(int *argc, char ***argv)</code> and <code>int MPI_Finalize()</code> must be called once by every participating process before any other MPI calls.</li>

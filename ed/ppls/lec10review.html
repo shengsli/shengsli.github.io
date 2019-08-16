@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-16 Fri 20:08 -->
+<!-- 2019-08-16 Fri 22:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec10 w7b review Java threads</title>
@@ -234,21 +234,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgbf71518">1. Java threads</a></li>
-<li><a href="#org4f302f6">2. Java Monitors</a></li>
-<li><a href="#org7fa591e">3. reader and writer</a>
+<li><a href="#orgd88c557">1. Java threads</a></li>
+<li><a href="#orgdcf5889">2. Java Monitors</a></li>
+<li><a href="#orgf8aca62">3. reader and writer</a>
 <ul>
-<li><a href="#orgf038424">3.1. overview</a></li>
-<li><a href="#org3b04a8a">3.2. version 1: (first attempt) make reader and writer monitors</a></li>
-<li><a href="#org812b31f">3.3. version 2:</a></li>
+<li><a href="#orgdf46a32">3.1. overview</a></li>
+<li><a href="#org8210f26">3.2. version 1: (first attempt) make reader and writer monitors</a></li>
+<li><a href="#org95073f2">3.3. version 2:</a></li>
 </ul>
 </li>
-<li><a href="#org7299072">4. <span class="todo TODO">TODO</span> </a></li>
+<li><a href="#orgcbde4db">4. <span class="todo TODO">TODO</span> </a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbf71518" class="outline-2">
-<h2 id="orgbf71518"><span class="section-number-2">1</span> Java threads</h2>
+<div id="outline-container-orgd88c557" class="outline-2">
+<h2 id="orgd88c557"><span class="section-number-2">1</span> Java threads</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Simple</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Threads</span> {
@@ -267,8 +267,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org4f302f6" class="outline-2">
-<h2 id="org4f302f6"><span class="section-number-2">2</span> Java Monitors</h2>
+<div id="outline-container-orgdcf5889" class="outline-2">
+<h2 id="orgdcf5889"><span class="section-number-2">2</span> Java Monitors</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>Any object in Java can become a monitor.</li>
@@ -287,12 +287,12 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org7fa591e" class="outline-2">
-<h2 id="org7fa591e"><span class="section-number-2">3</span> reader and writer</h2>
+<div id="outline-container-orgf8aca62" class="outline-2">
+<h2 id="orgf8aca62"><span class="section-number-2">3</span> reader and writer</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgf038424" class="outline-3">
-<h3 id="orgf038424"><span class="section-number-3">3.1</span> overview</h3>
+<div id="outline-container-orgdf46a32" class="outline-3">
+<h3 id="orgdf46a32"><span class="section-number-3">3.1</span> overview</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>reader threads: get a copy of data by calling <code>read()</code>.</li>
@@ -302,16 +302,16 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org3b04a8a" class="outline-3">
-<h3 id="org3b04a8a"><span class="section-number-3">3.2</span> version 1: (first attempt) make reader and writer monitors</h3>
+<div id="outline-container-org8210f26" class="outline-3">
+<h3 id="org8210f26"><span class="section-number-3">3.2</span> version 1: (first attempt) make reader and writer monitors</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>It's overkill and readers cannot read concurrently.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org812b31f" class="outline-3">
-<h3 id="org812b31f"><span class="section-number-3">3.3</span> version 2:</h3>
+<div id="outline-container-org95073f2" class="outline-3">
+<h3 id="org95073f2"><span class="section-number-3">3.3</span> version 2:</h3>
 <div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li><p>
@@ -335,8 +335,8 @@ data = temp + 1
 </div>
 </div>
 </div>
-<div id="outline-container-org7299072" class="outline-2">
-<h2 id="org7299072"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> </h2>
+<div id="outline-container-orgcbde4db" class="outline-2">
+<h2 id="orgcbde4db"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> </h2>
 </div>
 </div>
 </body>
