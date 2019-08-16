@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-13 Tue 22:17 -->
+<!-- 2019-08-16 Fri 20:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec04 w2b</title>
@@ -234,34 +234,34 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org76a4704">1. Recap</a></li>
-<li><a href="#org2cb92d7">2. Enter the main meat of this course</a></li>
-<li><a href="#org99757f0">3. Next</a></li>
-<li><a href="#orga82c95e">4. shared variable programming</a></li>
-<li><a href="#org5bade66">5. shared variable synchronization</a></li>
-<li><a href="#orgbd64079">6. critical sections</a>
+<li><a href="#org91e9eee">1. Recap</a></li>
+<li><a href="#org5137dca">2. Enter the main meat of this course</a></li>
+<li><a href="#org7566ac8">3. Next</a></li>
+<li><a href="#orge9f0bbc">4. shared variable programming</a></li>
+<li><a href="#org6fcd520">5. shared variable synchronization</a></li>
+<li><a href="#orgce75a91">6. critical sections</a>
 <ul>
-<li><a href="#org5ea5257">6.1. important properties</a></li>
-<li><a href="#org7fcc715">6.2. critical sections and locks</a></li>
-<li><a href="#org3c4dc9c">6.3. implementing locks</a></li>
-<li><a href="#orgefb118b">6.4. <b>wrong</b> implementation of critical section using locking</a></li>
-<li><a href="#org374fceb">6.5. low-level perspective: atomic instruction</a></li>
-<li><a href="#orgdd8c0c2">6.6. solution: implementing locks using TS</a>
+<li><a href="#org18a5f76">6.1. important properties</a></li>
+<li><a href="#orgd1cda9b">6.2. critical sections and locks</a></li>
+<li><a href="#org3f31d85">6.3. implementing locks</a></li>
+<li><a href="#org7ce960d">6.4. <b>wrong</b> implementation of critical section using locking</a></li>
+<li><a href="#org85ab86f">6.5. low-level perspective: atomic instruction</a></li>
+<li><a href="#org273f463">6.6. solution: implementing locks using TS</a>
 <ul>
-<li><a href="#orgd7f39d1">6.6.1. version 1</a></li>
-<li><a href="#org1784f66">6.6.2. version 2: refinement, efficiency improvement</a></li>
-<li><a href="#org0a2bc53">6.6.3. version 3: concise form of version 2 (the same as version 2)</a></li>
+<li><a href="#orgd434bc3">6.6.1. version 1</a></li>
+<li><a href="#org5cf0838">6.6.2. version 2: refinement, efficiency improvement</a></li>
+<li><a href="#org5b93e98">6.6.3. version 3: concise form of version 2 (the same as version 2)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org2ed9bb9">7. Note: Why is consistency model important? p50</a></li>
-<li><a href="#orge5cea97">8. Reading:</a></li>
+<li><a href="#org732762e">7. Note: Why is consistency model important? p50</a></li>
+<li><a href="#orgf80971f">8. Reading:</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org76a4704" class="outline-2">
-<h2 id="org76a4704"><span class="section-number-2">1</span> Recap</h2>
+<div id="outline-container-org91e9eee" class="outline-2">
+<h2 id="org91e9eee"><span class="section-number-2">1</span> Recap</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>sync</li>
@@ -270,16 +270,16 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org2cb92d7" class="outline-2">
-<h2 id="org2cb92d7"><span class="section-number-2">2</span> Enter the main meat of this course</h2>
+<div id="outline-container-org5137dca" class="outline-2">
+<h2 id="org5137dca"><span class="section-number-2">2</span> Enter the main meat of this course</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>how to design programming languages, libraries, operations to help us express those kinds of patterns of parallelism and concurrency, in a conceptually simple way for programmers, without throwing away too much performance.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org99757f0" class="outline-2">
-<h2 id="org99757f0"><span class="section-number-2">3</span> Next</h2>
+<div id="outline-container-org7566ac8" class="outline-2">
+<h2 id="org7566ac8"><span class="section-number-2">3</span> Next</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>In the next few weeks, we will look at shared variable side of programming space. We will look at: 
@@ -300,11 +300,11 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orga82c95e" class="outline-2">
-<h2 id="orga82c95e"><span class="section-number-2">4</span> shared variable programming</h2>
+<div id="outline-container-orge9f0bbc" class="outline-2">
+<h2 id="orge9f0bbc"><span class="section-number-2">4</span> shared variable programming</h2>
 </div>
-<div id="outline-container-org5bade66" class="outline-2">
-<h2 id="org5bade66"><span class="section-number-2">5</span> shared variable synchronization</h2>
+<div id="outline-container-org6fcd520" class="outline-2">
+<h2 id="org6fcd520"><span class="section-number-2">5</span> shared variable synchronization</h2>
 <div class="outline-text-2" id="text-5">
 <ol class="org-ol">
 <li>mutual exclusion: prevent concurrency for some period.</li>
@@ -312,8 +312,8 @@ for the JavaScript code in this tag.
 </ol>
 </div>
 </div>
-<div id="outline-container-orgbd64079" class="outline-2">
-<h2 id="orgbd64079"><span class="section-number-2">6</span> critical sections</h2>
+<div id="outline-container-orgce75a91" class="outline-2">
+<h2 id="orgce75a91"><span class="section-number-2">6</span> critical sections</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>NOTE: atomicity is equivalent to critical section. 
@@ -331,8 +331,8 @@ co [i = 1 to n] {
 }
 </pre>
 </div>
-<div id="outline-container-org5ea5257" class="outline-3">
-<h3 id="org5ea5257"><span class="section-number-3">6.1</span> important properties</h3>
+<div id="outline-container-org18a5f76" class="outline-3">
+<h3 id="org18a5f76"><span class="section-number-3">6.1</span> important properties</h3>
 <div class="outline-text-3" id="text-6-1">
 <ol class="org-ol">
 <li>mutual exclusion</li>
@@ -346,16 +346,16 @@ co [i = 1 to n] {
 </ul>
 </div>
 </div>
-<div id="outline-container-org7fcc715" class="outline-3">
-<h3 id="org7fcc715"><span class="section-number-3">6.2</span> critical sections and locks</h3>
+<div id="outline-container-orgd1cda9b" class="outline-3">
+<h3 id="orgd1cda9b"><span class="section-number-3">6.2</span> critical sections and locks</h3>
 <div class="outline-text-3" id="text-6-2">
 <ul class="org-ul">
 <li>locking and unlocking</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3c4dc9c" class="outline-3">
-<h3 id="org3c4dc9c"><span class="section-number-3">6.3</span> implementing locks</h3>
+<div id="outline-container-org3f31d85" class="outline-3">
+<h3 id="org3f31d85"><span class="section-number-3">6.3</span> implementing locks</h3>
 <div class="outline-text-3" id="text-6-3">
 <ul class="org-ul">
 <li>A simple approach is to implement each lock with <b>a shared boolean variable</b>. 
@@ -380,8 +380,8 @@ co [i = 1 to n] {
 </ul>
 </div>
 </div>
-<div id="outline-container-orgefb118b" class="outline-3">
-<h3 id="orgefb118b"><span class="section-number-3">6.4</span> <b>wrong</b> implementation of critical section using locking</h3>
+<div id="outline-container-org7ce960d" class="outline-3">
+<h3 id="org7ce960d"><span class="section-number-3">6.4</span> <b>wrong</b> implementation of critical section using locking</h3>
 <div class="outline-text-3" id="text-6-4">
 <pre class="example">
 while (l);
@@ -393,8 +393,8 @@ l = false;
 </ul>
 </div>
 </div>
-<div id="outline-container-org374fceb" class="outline-3">
-<h3 id="org374fceb"><span class="section-number-3">6.5</span> low-level perspective: atomic instruction</h3>
+<div id="outline-container-org85ab86f" class="outline-3">
+<h3 id="org85ab86f"><span class="section-number-3">6.5</span> low-level perspective: atomic instruction</h3>
 <div class="outline-text-3" id="text-6-5">
 <ul class="org-ul">
 <li>There are many possibilities, including 
@@ -418,12 +418,12 @@ bool TS (bool v) {
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdd8c0c2" class="outline-3">
-<h3 id="orgdd8c0c2"><span class="section-number-3">6.6</span> solution: implementing locks using TS</h3>
+<div id="outline-container-org273f463" class="outline-3">
+<h3 id="org273f463"><span class="section-number-3">6.6</span> solution: implementing locks using TS</h3>
 <div class="outline-text-3" id="text-6-6">
 </div>
-<div id="outline-container-orgd7f39d1" class="outline-4">
-<h4 id="orgd7f39d1"><span class="section-number-4">6.6.1</span> version 1</h4>
+<div id="outline-container-orgd434bc3" class="outline-4">
+<h4 id="orgd434bc3"><span class="section-number-4">6.6.1</span> version 1</h4>
 <div class="outline-text-4" id="text-6-6-1">
 <pre class="example">
 lock_t l = false;
@@ -441,8 +441,8 @@ co [i = 1 to n] {
 </ul>
 </div>
 </div>
-<div id="outline-container-org1784f66" class="outline-4">
-<h4 id="org1784f66"><span class="section-number-4">6.6.2</span> version 2: refinement, efficiency improvement</h4>
+<div id="outline-container-org5cf0838" class="outline-4">
+<h4 id="org5cf0838"><span class="section-number-4">6.6.2</span> version 2: refinement, efficiency improvement</h4>
 <div class="outline-text-4" id="text-6-6-2">
 <ul class="org-ul">
 <li><b>test-and-set</b></li>
@@ -463,8 +463,8 @@ co [i = 1 to n] {
 </pre>
 </div>
 </div>
-<div id="outline-container-org0a2bc53" class="outline-4">
-<h4 id="org0a2bc53"><span class="section-number-4">6.6.3</span> version 3: concise form of version 2 (the same as version 2)</h4>
+<div id="outline-container-org5b93e98" class="outline-4">
+<h4 id="org5b93e98"><span class="section-number-4">6.6.3</span> version 3: concise form of version 2 (the same as version 2)</h4>
 <div class="outline-text-4" id="text-6-6-3">
 <ul class="org-ul">
 <li><b><span class="underline">test-and</span>-test-and-set</b></li>
@@ -484,8 +484,8 @@ co [i = 1 to n] {
 </div>
 </div>
 </div>
-<div id="outline-container-org2ed9bb9" class="outline-2">
-<h2 id="org2ed9bb9"><span class="section-number-2">7</span> Note: Why is consistency model important? p50</h2>
+<div id="outline-container-org732762e" class="outline-2">
+<h2 id="org732762e"><span class="section-number-2">7</span> Note: Why is consistency model important? p50</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li>This might fail id the model is more relaxed than SC.</li>
@@ -494,8 +494,8 @@ co [i = 1 to n] {
 </ul>
 </div>
 </div>
-<div id="outline-container-orge5cea97" class="outline-2">
-<h2 id="orge5cea97"><span class="section-number-2">8</span> Reading:</h2>
+<div id="outline-container-orgf80971f" class="outline-2">
+<h2 id="orgf80971f"><span class="section-number-2">8</span> Reading:</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li>J. Mellor-Crummey and M. Scott, Algorithms for scalable synchronization on shared-memory multiprocessors</li>

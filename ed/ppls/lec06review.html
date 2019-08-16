@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-13 Tue 22:17 -->
+<!-- 2019-08-16 Fri 20:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec06 review</title>
@@ -256,29 +256,29 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7aefafd">1. Barriers (a synchronization primitive)</a></li>
-<li><a href="#org654f3b2">2. Counter barriers (centralized)</a>
+<li><a href="#orgb3737e6">1. Barriers (a synchronization primitive)</a></li>
+<li><a href="#org10964b6">2. Counter barriers (centralized)</a>
 <ul>
-<li><a href="#org3f9a411">2.1. version 1 (correct): non-reusable</a></li>
-<li><a href="#org440f4d5">2.2. version 2 (wrong): 1st attempt to reuse</a></li>
-<li><a href="#orgfeebf8a">2.3. version 3 (correct): <b>sense reversing barrier</b>, 2nd attempt to reuse</a></li>
+<li><a href="#org3d41748">2.1. version 1 (correct): non-reusable</a></li>
+<li><a href="#org9910a9a">2.2. version 2 (wrong): 1st attempt to reuse</a></li>
+<li><a href="#orgf78b1ef">2.3. version 3 (correct): <b>sense reversing barrier</b>, 2nd attempt to reuse</a></li>
 </ul>
 </li>
-<li><a href="#orge03a2e6">3. Symmetric barriers (decentralized)</a>
+<li><a href="#orgeb7aba0">3. Symmetric barriers (decentralized)</a>
 <ul>
-<li><a href="#orgcadda61">3.1. butterfly pattern/barrier</a>
+<li><a href="#orgfd9d134">3.1. butterfly pattern/barrier</a>
 <ul>
-<li><a href="#org92746d0">3.1.1. implementation</a></li>
+<li><a href="#orgeba937f">3.1.1. implementation</a></li>
 </ul>
 </li>
-<li><a href="#orgca0e7ee">3.2. dissemination barriers: solve constraint on # threads is power of 2</a></li>
+<li><a href="#org20f668d">3.2. dissemination barriers: solve constraint on # threads is power of 2</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7aefafd" class="outline-2">
-<h2 id="org7aefafd"><span class="section-number-2">1</span> Barriers (a synchronization primitive)</h2>
+<div id="outline-container-orgb3737e6" class="outline-2">
+<h2 id="orgb3737e6"><span class="section-number-2">1</span> Barriers (a synchronization primitive)</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>general idea: 
@@ -293,12 +293,12 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org654f3b2" class="outline-2">
-<h2 id="org654f3b2"><span class="section-number-2">2</span> Counter barriers (centralized)</h2>
+<div id="outline-container-org10964b6" class="outline-2">
+<h2 id="org10964b6"><span class="section-number-2">2</span> Counter barriers (centralized)</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org3f9a411" class="outline-3">
-<h3 id="org3f9a411"><span class="section-number-3">2.1</span> version 1 (correct): non-reusable</h3>
+<div id="outline-container-org3d41748" class="outline-3">
+<h3 id="org3d41748"><span class="section-number-3">2.1</span> version 1 (correct): non-reusable</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>not reusable: once count become n, cannot be reset.</li>
@@ -314,8 +314,8 @@ co [i=1 to n] {
 </pre>
 </div>
 </div>
-<div id="outline-container-org440f4d5" class="outline-3">
-<h3 id="org440f4d5"><span class="section-number-3">2.2</span> version 2 (wrong): 1st attempt to reuse</h3>
+<div id="outline-container-org9910a9a" class="outline-3">
+<h3 id="org9910a9a"><span class="section-number-3">2.2</span> version 2 (wrong): 1st attempt to reuse</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>All threads will stuck. It will stop permanently.</li>
@@ -337,8 +337,8 @@ co [i=1 to n] {
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfeebf8a" class="outline-3">
-<h3 id="orgfeebf8a"><span class="section-number-3">2.3</span> version 3 (correct): <b>sense reversing barrier</b>, 2nd attempt to reuse</h3>
+<div id="outline-container-orgf78b1ef" class="outline-3">
+<h3 id="orgf78b1ef"><span class="section-number-3">2.3</span> version 3 (correct): <b>sense reversing barrier</b>, 2nd attempt to reuse</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>core of the idea:
@@ -385,12 +385,12 @@ co [i=1 to n] {
 </div>
 </div>
 </div>
-<div id="outline-container-orge03a2e6" class="outline-2">
-<h2 id="orge03a2e6"><span class="section-number-2">3</span> Symmetric barriers (decentralized)</h2>
+<div id="outline-container-orgeb7aba0" class="outline-2">
+<h2 id="orgeb7aba0"><span class="section-number-2">3</span> Symmetric barriers (decentralized)</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgcadda61" class="outline-3">
-<h3 id="orgcadda61"><span class="section-number-3">3.1</span> butterfly pattern/barrier</h3>
+<div id="outline-container-orgfd9d134" class="outline-3">
+<h3 id="orgfd9d134"><span class="section-number-3">3.1</span> butterfly pattern/barrier</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>designed to avoid the bottleneck at the critical section (counter).</li>
@@ -399,8 +399,8 @@ co [i=1 to n] {
 <li>\(log(n)\) steps/stages. Each step/stage has constant number of things to be done.</li>
 </ul>
 </div>
-<div id="outline-container-org92746d0" class="outline-4">
-<h4 id="org92746d0"><span class="section-number-4">3.1.1</span> implementation</h4>
+<div id="outline-container-orgeba937f" class="outline-4">
+<h4 id="orgeba937f"><span class="section-number-4">3.1.1</span> implementation</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <pre class="example">
          1                                   n
@@ -417,7 +417,7 @@ co [i=1 to n] {
 </ul>
 </div>
 <ol class="org-ol">
-<li><a id="orgbde30a4"></a>version 1: prototype<br />
+<li><a id="orgb1a37c7"></a>version 1: prototype<br />
 <div class="outline-text-5" id="text-3-1-1-1">
 <pre class="example">
 &lt;await (arrive[myid] == 0);&gt;
@@ -448,7 +448,7 @@ for [s = 0 to stages-1] {
 </ul>
 </div>
 </li>
-<li><a id="org5511ed0"></a>version 2: fixed<br />
+<li><a id="orgfe97e71"></a>version 2: fixed<br />
 <div class="outline-text-5" id="text-3-1-1-2">
 <pre class="example">
 for [s = o to stages-1] { ## there will be log_2 p stages
@@ -473,8 +473,8 @@ for [s = o to stages-1] { ## there will be log_2 p stages
 </ol>
 </div>
 </div>
-<div id="outline-container-orgca0e7ee" class="outline-3">
-<h3 id="orgca0e7ee"><span class="section-number-3">3.2</span> dissemination barriers: solve constraint on # threads is power of 2</h3>
+<div id="outline-container-org20f668d" class="outline-3">
+<h3 id="org20f668d"><span class="section-number-3">3.2</span> dissemination barriers: solve constraint on # threads is power of 2</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>A thread tells one thread that I will arrive, and waits one thread to arrive. 

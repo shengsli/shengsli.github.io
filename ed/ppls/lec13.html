@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-13 Tue 22:17 -->
+<!-- 2019-08-16 Fri 20:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec13 w9a</title>
@@ -234,26 +234,26 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org49b8f5d">1. probing</a></li>
-<li><a href="#org8fc75dd">2. collective operations</a>
+<li><a href="#org7fd608d">1. probing</a></li>
+<li><a href="#org763a18b">2. collective operations</a>
 <ul>
-<li><a href="#org5780974">2.1. broadcast</a></li>
-<li><a href="#org0da1698">2.2. scatter</a></li>
-<li><a href="#orga3e0b1a">2.3. all<sub>reduce</sub> (more special op)</a></li>
+<li><a href="#orgb2f77e5">2.1. broadcast</a></li>
+<li><a href="#orga1e5bd6">2.2. scatter</a></li>
+<li><a href="#org36451db">2.3. all<sub>reduce</sub> (more special op)</a></li>
 </ul>
 </li>
-<li><a href="#org0f9f4d9">3. Jacobi (1D wrapped)</a>
+<li><a href="#orgf134cac">3. Jacobi (1D wrapped)</a>
 <ul>
-<li><a href="#org6668746">3.1. code p166</a></li>
+<li><a href="#org42e28f3">3.1. code p166</a></li>
 </ul>
 </li>
-<li><a href="#orgbb7f95e">4. <span class="todo TODO">TODO</span> prime sieve</a></li>
-<li><a href="#org5aaba45">5. next communicator</a></li>
+<li><a href="#orga79aaa8">4. <span class="todo TODO">TODO</span> prime sieve</a></li>
+<li><a href="#orgeaa8879">5. next communicator</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org49b8f5d" class="outline-2">
-<h2 id="org49b8f5d"><span class="section-number-2">1</span> probing</h2>
+<div id="outline-container-org7fd608d" class="outline-2">
+<h2 id="org7fd608d"><span class="section-number-2">1</span> probing</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><code>MPI_Probe</code></li>
@@ -265,12 +265,12 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org8fc75dd" class="outline-2">
-<h2 id="org8fc75dd"><span class="section-number-2">2</span> collective operations</h2>
+<div id="outline-container-org763a18b" class="outline-2">
+<h2 id="org763a18b"><span class="section-number-2">2</span> collective operations</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org5780974" class="outline-3">
-<h3 id="org5780974"><span class="section-number-3">2.1</span> broadcast</h3>
+<div id="outline-container-orgb2f77e5" class="outline-3">
+<h3 id="orgb2f77e5"><span class="section-number-3">2.1</span> broadcast</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>src</li>
@@ -282,8 +282,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org0da1698" class="outline-3">
-<h3 id="org0da1698"><span class="section-number-3">2.2</span> scatter</h3>
+<div id="outline-container-orga1e5bd6" class="outline-3">
+<h3 id="orga1e5bd6"><span class="section-number-3">2.2</span> scatter</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>root assists</li>
@@ -294,8 +294,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orga3e0b1a" class="outline-3">
-<h3 id="orga3e0b1a"><span class="section-number-3">2.3</span> all<sub>reduce</sub> (more special op)</h3>
+<div id="outline-container-org36451db" class="outline-3">
+<h3 id="org36451db"><span class="section-number-3">2.3</span> all<sub>reduce</sub> (more special op)</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>used in Jacobi</li>
@@ -304,8 +304,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org0f9f4d9" class="outline-2">
-<h2 id="org0f9f4d9"><span class="section-number-2">3</span> Jacobi (1D wrapped)</h2>
+<div id="outline-container-orgf134cac" class="outline-2">
+<h2 id="orgf134cac"><span class="section-number-2">3</span> Jacobi (1D wrapped)</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li></li>
@@ -319,8 +319,8 @@ for the JavaScript code in this tag.
 <li>update</li>
 </ul>
 </div>
-<div id="outline-container-org6668746" class="outline-3">
-<h3 id="org6668746"><span class="section-number-3">3.1</span> code p166</h3>
+<div id="outline-container-org42e28f3" class="outline-3">
+<h3 id="org42e28f3"><span class="section-number-3">3.1</span> code p166</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>fidely</li>
@@ -328,16 +328,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgbb7f95e" class="outline-2">
-<h2 id="orgbb7f95e"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> prime sieve</h2>
+<div id="outline-container-orga79aaa8" class="outline-2">
+<h2 id="orga79aaa8"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> prime sieve</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>spawn</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5aaba45" class="outline-2">
-<h2 id="org5aaba45"><span class="section-number-2">5</span> next communicator</h2>
+<div id="outline-container-orgeaa8879" class="outline-2">
+<h2 id="orgeaa8879"><span class="section-number-2">5</span> next communicator</h2>
 </div>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-13 Tue 22:17 -->
+<!-- 2019-08-16 Fri 20:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec03 w2a</title>
@@ -234,48 +234,48 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdbdbe6c">1. Overview</a>
+<li><a href="#org91dd660">1. Overview</a>
 <ul>
-<li><a href="#org2d0b308">1.1. Bag of tasks</a></li>
-<li><a href="#orge559300">1.2. Pipeline pattern (pipeline parallel computation)</a></li>
-<li><a href="#orgc07fa8a">1.3. Interacting peers pattern (aka. stencil)</a></li>
-<li><a href="#org032fd06">1.4. Summary (a wish list of problems that we want to address)</a></li>
+<li><a href="#orgbf8251a">1.1. Bag of tasks</a></li>
+<li><a href="#orgcd5dc0d">1.2. Pipeline pattern (pipeline parallel computation)</a></li>
+<li><a href="#org2f17026">1.3. Interacting peers pattern (aka. stencil)</a></li>
+<li><a href="#org22b87dc">1.4. Summary (a wish list of problems that we want to address)</a></li>
 </ul>
 </li>
-<li><a href="#orgb6641ba">2. Adaptive Quadrature</a>
+<li><a href="#org7671ca1">2. Adaptive Quadrature</a>
 <ul>
-<li><a href="#orgf73f072">2.1. Gist of sequential algorithms</a></li>
-<li><a href="#org03ea5b5">2.2. sequential program code</a></li>
-<li><a href="#orgf51c85b">2.3. how to parallelize it?</a></li>
+<li><a href="#org6fe16fa">2.1. Gist of sequential algorithms</a></li>
+<li><a href="#orgb7d0168">2.2. sequential program code</a></li>
+<li><a href="#orge967d63">2.3. how to parallelize it?</a></li>
 </ul>
 </li>
-<li><a href="#org65a0e90">3. creating a thread has more overhead than a functional call</a></li>
-<li><a href="#orgfa085ea">4. pipeline pattern: also used in hardware</a>
+<li><a href="#orgbca5414">3. creating a thread has more overhead than a functional call</a></li>
+<li><a href="#org71eea7a">4. pipeline pattern: also used in hardware</a>
 <ul>
-<li><a href="#org4dbd869">4.1. producer-consumer relationship</a></li>
-<li><a href="#org79ae9c5">4.2. implementing the bag</a></li>
+<li><a href="#orgf61d13f">4.1. producer-consumer relationship</a></li>
+<li><a href="#orgcd202f3">4.2. implementing the bag</a></li>
 </ul>
 </li>
-<li><a href="#orgd7432d7">5. Interacting peers pattern</a>
+<li><a href="#org8a91f0a">5. Interacting peers pattern</a>
 <ul>
-<li><a href="#org9dfe580">5.1. shared memory version</a></li>
-<li><a href="#orgcfb3d63">5.2. message passing version</a></li>
-<li><a href="#orgf28e6c3">5.3. Example: finite difference methods - Jacobi</a></li>
+<li><a href="#orgbcb836f">5.1. shared memory version</a></li>
+<li><a href="#org3619f60">5.2. message passing version</a></li>
+<li><a href="#org61b1868">5.3. Example: finite difference methods - Jacobi</a></li>
 </ul>
 </li>
-<li><a href="#orgdefbba9">6. Summary</a></li>
+<li><a href="#org72612e6">6. Summary</a></li>
 </ul>
 </div>
 </div>
 <p>
 This lecture is going to use <code>co</code> notation and look at patterns in parallel algorithms.
 </p>
-<div id="outline-container-orgdbdbe6c" class="outline-2">
-<h2 id="orgdbdbe6c"><span class="section-number-2">1</span> Overview</h2>
+<div id="outline-container-org91dd660" class="outline-2">
+<h2 id="org91dd660"><span class="section-number-2">1</span> Overview</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org2d0b308" class="outline-3">
-<h3 id="org2d0b308"><span class="section-number-3">1.1</span> Bag of tasks</h3>
+<div id="outline-container-orgbf8251a" class="outline-3">
+<h3 id="orgbf8251a"><span class="section-number-3">1.1</span> Bag of tasks</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>worker threads</li>
@@ -283,8 +283,8 @@ This lecture is going to use <code>co</code> notation and look at patterns in pa
 </ul>
 </div>
 </div>
-<div id="outline-container-orge559300" class="outline-3">
-<h3 id="orge559300"><span class="section-number-3">1.2</span> Pipeline pattern (pipeline parallel computation)</h3>
+<div id="outline-container-orgcd5dc0d" class="outline-3">
+<h3 id="orgcd5dc0d"><span class="section-number-3">1.2</span> Pipeline pattern (pipeline parallel computation)</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>We describe the problem as a sequence of stages.</li>
@@ -292,8 +292,8 @@ This lecture is going to use <code>co</code> notation and look at patterns in pa
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc07fa8a" class="outline-3">
-<h3 id="orgc07fa8a"><span class="section-number-3">1.3</span> Interacting peers pattern (aka. stencil)</h3>
+<div id="outline-container-org2f17026" class="outline-3">
+<h3 id="org2f17026"><span class="section-number-3">1.3</span> Interacting peers pattern (aka. stencil)</h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li>overall computations in a multi-dimensional array</li>
@@ -301,8 +301,8 @@ This lecture is going to use <code>co</code> notation and look at patterns in pa
 </ul>
 </div>
 </div>
-<div id="outline-container-org032fd06" class="outline-3">
-<h3 id="org032fd06"><span class="section-number-3">1.4</span> Summary (a wish list of problems that we want to address)</h3>
+<div id="outline-container-org22b87dc" class="outline-3">
+<h3 id="org22b87dc"><span class="section-number-3">1.4</span> Summary (a wish list of problems that we want to address)</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li>creation of activities, both statically and dynamically</li>
@@ -315,16 +315,16 @@ This lecture is going to use <code>co</code> notation and look at patterns in pa
 </div>
 </div>
 </div>
-<div id="outline-container-orgb6641ba" class="outline-2">
-<h2 id="orgb6641ba"><span class="section-number-2">2</span> Adaptive Quadrature</h2>
+<div id="outline-container-org7671ca1" class="outline-2">
+<h2 id="org7671ca1"><span class="section-number-2">2</span> Adaptive Quadrature</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>an example of numerical integration</li>
 <li>The algorithm we use to achieve this is adaptive quadrature.</li>
 </ul>
 </div>
-<div id="outline-container-orgf73f072" class="outline-3">
-<h3 id="orgf73f072"><span class="section-number-3">2.1</span> Gist of sequential algorithms</h3>
+<div id="outline-container-org6fe16fa" class="outline-3">
+<h3 id="org6fe16fa"><span class="section-number-3">2.1</span> Gist of sequential algorithms</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>We will do it in divide and conquer way by a series of approximations</li>
@@ -332,8 +332,8 @@ This lecture is going to use <code>co</code> notation and look at patterns in pa
 </ul>
 </div>
 </div>
-<div id="outline-container-org03ea5b5" class="outline-3">
-<h3 id="org03ea5b5"><span class="section-number-3">2.2</span> sequential program code</h3>
+<div id="outline-container-orgb7d0168" class="outline-3">
+<h3 id="orgb7d0168"><span class="section-number-3">2.2</span> sequential program code</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #228b22;">double</span> <span style="color: #0000ff;">quad</span>(<span style="color: #228b22;">double</span> <span style="color: #a0522d;">left</span>, <span style="color: #228b22;">double</span> <span style="color: #a0522d;">right</span>, <span style="color: #228b22;">double</span> <span style="color: #a0522d;">fleft</span>, <span style="color: #228b22;">double</span> <span style="color: #a0522d;">fright</span>, <span style="color: #228b22;">double</span> <span style="color: #a0522d;">lrarea</span>) {
@@ -351,8 +351,8 @@ This lecture is going to use <code>co</code> notation and look at patterns in pa
 </div>
 </div>
 </div>
-<div id="outline-container-orgf51c85b" class="outline-3">
-<h3 id="orgf51c85b"><span class="section-number-3">2.3</span> how to parallelize it?</h3>
+<div id="outline-container-orge967d63" class="outline-3">
+<h3 id="orge967d63"><span class="section-number-3">2.3</span> how to parallelize it?</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>approximation computation is:</li>
@@ -374,8 +374,8 @@ oc
 </div>
 </div>
 </div>
-<div id="outline-container-org65a0e90" class="outline-2">
-<h2 id="org65a0e90"><span class="section-number-2">3</span> creating a thread has more overhead than a functional call</h2>
+<div id="outline-container-orgbca5414" class="outline-2">
+<h2 id="orgbca5414"><span class="section-number-2">3</span> creating a thread has more overhead than a functional call</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>have a fixed number of threads</li>
@@ -417,8 +417,8 @@ co [w = 1 to P] {
 </pre>
 </div>
 </div>
-<div id="outline-container-orgfa085ea" class="outline-2">
-<h2 id="orgfa085ea"><span class="section-number-2">4</span> pipeline pattern: also used in hardware</h2>
+<div id="outline-container-org71eea7a" class="outline-2">
+<h2 id="org71eea7a"><span class="section-number-2">4</span> pipeline pattern: also used in hardware</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>problem: Sieve of Eratosthenes, find primes by sieving</li>
@@ -457,8 +457,8 @@ sieve () { # sieve process
 }
 </pre>
 </div>
-<div id="outline-container-org4dbd869" class="outline-3">
-<h3 id="org4dbd869"><span class="section-number-3">4.1</span> producer-consumer relationship</h3>
+<div id="outline-container-orgf61d13f" class="outline-3">
+<h3 id="orgf61d13f"><span class="section-number-3">4.1</span> producer-consumer relationship</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>shared memory</li>
@@ -470,16 +470,16 @@ sieve () { # sieve process
 </ul>
 </div>
 </div>
-<div id="outline-container-org79ae9c5" class="outline-3">
-<h3 id="org79ae9c5"><span class="section-number-3">4.2</span> implementing the bag</h3>
+<div id="outline-container-orgcd202f3" class="outline-3">
+<h3 id="orgcd202f3"><span class="section-number-3">4.2</span> implementing the bag</h3>
 </div>
 </div>
-<div id="outline-container-orgd7432d7" class="outline-2">
-<h2 id="orgd7432d7"><span class="section-number-2">5</span> Interacting peers pattern</h2>
+<div id="outline-container-org8a91f0a" class="outline-2">
+<h2 id="org8a91f0a"><span class="section-number-2">5</span> Interacting peers pattern</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org9dfe580" class="outline-3">
-<h3 id="org9dfe580"><span class="section-number-3">5.1</span> shared memory version</h3>
+<div id="outline-container-orgbcb836f" class="outline-3">
+<h3 id="orgbcb836f"><span class="section-number-3">5.1</span> shared memory version</h3>
 <div class="outline-text-3" id="text-5-1">
 <pre class="example">
 repeat 
@@ -503,16 +503,16 @@ In this version, we use a duplicate grid and barriers to enforce correct synchro
 </p>
 </div>
 </div>
-<div id="outline-container-orgcfb3d63" class="outline-3">
-<h3 id="orgcfb3d63"><span class="section-number-3">5.2</span> message passing version</h3>
+<div id="outline-container-org3619f60" class="outline-3">
+<h3 id="org3619f60"><span class="section-number-3">5.2</span> message passing version</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 In contrast, in a message passing version we could <b>remove the barriers</b> and <b>synchronize "naturally" with local synchronous messages only</b>. The termination test would require us to <b>collate local termination decision somehow</b>. 
 </p>
 </div>
 </div>
-<div id="outline-container-orgf28e6c3" class="outline-3">
-<h3 id="orgf28e6c3"><span class="section-number-3">5.3</span> Example: finite difference methods - Jacobi</h3>
+<div id="outline-container-org61b1868" class="outline-3">
+<h3 id="org61b1868"><span class="section-number-3">5.3</span> Example: finite difference methods - Jacobi</h3>
 <div class="outline-text-3" id="text-5-3">
 <pre class="example">
 shared real grid[n+2, n+2], newgrid[n+2, n+2];
@@ -535,8 +535,8 @@ co [i = 1 to n, j = 1 to n] {
 </div>
 </div>
 </div>
-<div id="outline-container-orgdefbba9" class="outline-2">
-<h2 id="orgdefbba9"><span class="section-number-2">6</span> Summary</h2>
+<div id="outline-container-org72612e6" class="outline-2">
+<h2 id="org72612e6"><span class="section-number-2">6</span> Summary</h2>
 </div>
 </div>
 </body>

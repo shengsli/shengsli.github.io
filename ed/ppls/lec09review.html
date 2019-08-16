@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-13 Tue 22:17 -->
+<!-- 2019-08-16 Fri 20:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec09 review Pthreads: Semaphores, "Monitors", Consistency Model and Example Code</title>
@@ -234,15 +234,15 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2dfeb28">1. Example: bad counter p102, good counter p104</a></li>
-<li><a href="#org1b7dcba">2. Coordinating shared accesses</a></li>
-<li><a href="#org7ea74aa">3. <span class="todo TODO">TODO</span> Example: producers and consumers p105</a></li>
-<li><a href="#org90a4b1e">4. Pthreads "Monitors"</a></li>
-<li><a href="#org165e889">5. Example: simple Jacobi</a></li>
-<li><a href="#org637913c">6. Reusable counter barrier</a></li>
-<li><a href="#org6c97868">7. Memory consistency p113</a></li>
-<li><a href="#orgb6a46a6">8. Pragmatic issues</a></li>
-<li><a href="#orgd3c29c0">9. Exercise 2</a></li>
+<li><a href="#org72ad68a">1. Example: bad counter p102, good counter p104</a></li>
+<li><a href="#org70c23fa">2. Coordinating shared accesses</a></li>
+<li><a href="#org453cb22">3. <span class="todo TODO">TODO</span> Example: producers and consumers p105</a></li>
+<li><a href="#orgbc1c683">4. Pthreads "Monitors"</a></li>
+<li><a href="#org18aec69">5. Example: simple Jacobi</a></li>
+<li><a href="#org2a46cc3">6. Reusable counter barrier</a></li>
+<li><a href="#org0dc4539">7. Memory consistency p113</a></li>
+<li><a href="#org0c14627">8. Pragmatic issues</a></li>
+<li><a href="#orgbbb976c">9. Exercise 2</a></li>
 </ul>
 </div>
 </div>
@@ -254,11 +254,11 @@ This lecture will look at some examples written in C and Pthreads.
 <li>What building blocks Pthreads provide for monitors</li>
 <li>Pthreads memory consistency model</li>
 </ul>
-<div id="outline-container-org2dfeb28" class="outline-2">
-<h2 id="org2dfeb28"><span class="section-number-2">1</span> Example: bad counter p102, good counter p104</h2>
+<div id="outline-container-org72ad68a" class="outline-2">
+<h2 id="org72ad68a"><span class="section-number-2">1</span> Example: bad counter p102, good counter p104</h2>
 </div>
-<div id="outline-container-org1b7dcba" class="outline-2">
-<h2 id="org1b7dcba"><span class="section-number-2">2</span> Coordinating shared accesses</h2>
+<div id="outline-container-org70c23fa" class="outline-2">
+<h2 id="org70c23fa"><span class="section-number-2">2</span> Coordinating shared accesses</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><code>sem_t sem;</code></li>
@@ -311,11 +311,11 @@ This lecture will look at some examples written in C and Pthreads.
 </div>
 </div>
 
-<div id="outline-container-org7ea74aa" class="outline-2">
-<h2 id="org7ea74aa"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Example: producers and consumers p105</h2>
+<div id="outline-container-org453cb22" class="outline-2">
+<h2 id="org453cb22"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Example: producers and consumers p105</h2>
 </div>
-<div id="outline-container-org90a4b1e" class="outline-2">
-<h2 id="org90a4b1e"><span class="section-number-2">4</span> Pthreads "Monitors"</h2>
+<div id="outline-container-orgbc1c683" class="outline-2">
+<h2 id="orgbc1c683"><span class="section-number-2">4</span> Pthreads "Monitors"</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>Pthreads doesn't provide monitor as a built-in programming construct, but it does provide the building blocks needed to achieve monitor-like effects.</li>
@@ -342,8 +342,8 @@ This lecture will look at some examples written in C and Pthreads.
 </ol>
 </div>
 </div>
-<div id="outline-container-org165e889" class="outline-2">
-<h2 id="org165e889"><span class="section-number-2">5</span> Example: simple Jacobi</h2>
+<div id="outline-container-org18aec69" class="outline-2">
+<h2 id="org18aec69"><span class="section-number-2">5</span> Example: simple Jacobi</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>convergence test</li>
@@ -376,8 +376,8 @@ This lecture will look at some examples written in C and Pthreads.
 </div>
 </div>
 </div>
-<div id="outline-container-org637913c" class="outline-2">
-<h2 id="org637913c"><span class="section-number-2">6</span> Reusable counter barrier</h2>
+<div id="outline-container-org2a46cc3" class="outline-2">
+<h2 id="org2a46cc3"><span class="section-number-2">6</span> Reusable counter barrier</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>We use a counter barrier.</li>
@@ -406,8 +406,8 @@ This lecture will look at some examples written in C and Pthreads.
 </div>
 </div>
 </div>
-<div id="outline-container-org6c97868" class="outline-2">
-<h2 id="org6c97868"><span class="section-number-2">7</span> Memory consistency p113</h2>
+<div id="outline-container-org0dc4539" class="outline-2">
+<h2 id="org0dc4539"><span class="section-number-2">7</span> Memory consistency p113</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li>Real architecture does not provide sequential consistency.</li>
@@ -419,8 +419,8 @@ This lecture will look at some examples written in C and Pthreads.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb6a46a6" class="outline-2">
-<h2 id="orgb6a46a6"><span class="section-number-2">8</span> Pragmatic issues</h2>
+<div id="outline-container-org0c14627" class="outline-2">
+<h2 id="org0c14627"><span class="section-number-2">8</span> Pragmatic issues</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li>be careful to use only thread-safe code, which works irrespective of how many threads are active.</li>
@@ -428,8 +428,8 @@ This lecture will look at some examples written in C and Pthreads.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd3c29c0" class="outline-2">
-<h2 id="orgd3c29c0"><span class="section-number-2">9</span> Exercise 2</h2>
+<div id="outline-container-orgbbb976c" class="outline-2">
+<h2 id="orgbbb976c"><span class="section-number-2">9</span> Exercise 2</h2>
 </div>
 </div>
 </body>
