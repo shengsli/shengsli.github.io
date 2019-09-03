@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>The Design and Implementation of the FreeBSD Operating System</title>
-<!-- 2019-08-25 Sun 18:02 -->
+<!-- 2019-09-03 Tue 08:23 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -87,7 +87,7 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" 						   type="text/css" 						   href="https://shengsli.github.io/css/style.css">
+<link rel="stylesheet" 						   type="text/css" 						   href="/css/style.css">
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -160,6 +160,17 @@ for the JavaScript code in this tag.
 </li>
 </ol>
 </li>
+<li>Demanding paging and swapping
+<ol class="org-ol">
+<li>if system resources are scarce, the system uses a two-level approach
+</li>
+<li>if a modest amount of memory is available, the system evict resources not been used recently.
+</li>
+<li>if there be a severe resource shortage, swap the entire context of a process to secondary storage. 
+</li>
+</ol>
+</li>
+<li></li>
 </ul>
 </div>
 </div>
