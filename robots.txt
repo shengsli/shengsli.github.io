@@ -1,0 +1,20 @@
+User-agent: *
+Disallow: / 
+
+User-agent: Google
+Disallow: / 
+
+User-agent: Bingbot
+Disallow: / 
+
+User-agent: duckduckbot
+Disallow: / 
+
+User-agent: Yandex
+Disallow: / 
+
+User-agent: Baidu
+Disallow: / 
+
+User-agent: Googlebot-Image
+Disallow: / 
