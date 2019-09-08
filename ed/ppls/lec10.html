@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-16 Fri 22:58 -->
+<!-- 2019-09-06 Fri 16:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec10 w7b java threads</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,35 +234,35 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org64d1f7f">1. java threads</a>
+<li><a href="#orgf92fd94">1. java threads</a>
 <ul>
-<li><a href="#orgae4e5b0">1.1. thread class</a></li>
-<li><a href="#orga55f3be">1.2. exception</a></li>
-<li><a href="#orgb106315">1.3. demo</a></li>
+<li><a href="#org4b72a90">1.1. thread class</a></li>
+<li><a href="#orge3c851c">1.2. exception</a></li>
+<li><a href="#orgc5e2178">1.3. demo</a></li>
 </ul>
 </li>
-<li><a href="#org9dd166d">2. java monitors</a>
+<li><a href="#org353d004">2. java monitors</a>
 <ul>
-<li><a href="#orga0ce408">2.1. example: java condition variables</a></li>
-<li><a href="#org4ea5dae">2.2. example: readers &amp; writers</a>
+<li><a href="#orgfc8a094">2.1. example: java condition variables</a></li>
+<li><a href="#orgab8ac69">2.2. example: readers &amp; writers</a>
 <ul>
-<li><a href="#orga1657e1">2.2.1. demo: broken reader and writer</a></li>
-<li><a href="#org2e19bb7">2.2.2. demo:</a></li>
+<li><a href="#org889544e">2.2.1. demo: broken reader and writer</a></li>
+<li><a href="#org092a2a1">2.2.2. demo:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org4c00fc2">3. buffer for one producer - one consumer</a>
+<li><a href="#orgdf1340f">3. buffer for one producer - one consumer</a>
 <ul>
-<li><a href="#org590fff4">3.1. demo: reader and writer</a></li>
+<li><a href="#org8e8bdd1">3.1. demo: reader and writer</a></li>
 </ul>
 </li>
-<li><a href="#org338cc25">4. <span class="todo TODO">TODO</span> <b>take a copy and run it</b></a></li>
+<li><a href="#org1c69fc8">4. <span class="todo TODO">TODO</span> <b>take a copy and run it</b></a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org64d1f7f" class="outline-2">
-<h2 id="org64d1f7f"><span class="section-number-2">1</span> java threads</h2>
+<div id="outline-container-orgf92fd94" class="outline-2">
+<h2 id="orgf92fd94"><span class="section-number-2">1</span> java threads</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>java include concurrency and multithreading</li>
@@ -277,8 +277,8 @@ for the JavaScript code in this tag.
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-orgae4e5b0" class="outline-3">
-<h3 id="orgae4e5b0"><span class="section-number-3">1.1</span> thread class</h3>
+<div id="outline-container-org4b72a90" class="outline-3">
+<h3 id="org4b72a90"><span class="section-number-3">1.1</span> thread class</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>2 ways: 
@@ -289,16 +289,16 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orga55f3be" class="outline-3">
-<h3 id="orga55f3be"><span class="section-number-3">1.2</span> exception</h3>
+<div id="outline-container-orge3c851c" class="outline-3">
+<h3 id="orge3c851c"><span class="section-number-3">1.2</span> exception</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>java.lang.interruptedexception</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb106315" class="outline-3">
-<h3 id="orgb106315"><span class="section-number-3">1.3</span> demo</h3>
+<div id="outline-container-orgc5e2178" class="outline-3">
+<h3 id="orgc5e2178"><span class="section-number-3">1.3</span> demo</h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li>helloworld.java</li>
@@ -307,8 +307,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org9dd166d" class="outline-2">
-<h2 id="org9dd166d"><span class="section-number-2">2</span> java monitors</h2>
+<div id="outline-container-org353d004" class="outline-2">
+<h2 id="org353d004"><span class="section-number-2">2</span> java monitors</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>bulit-in from start</li>
@@ -322,8 +322,8 @@ for the JavaScript code in this tag.
 <li>keyword: synchronized</li>
 </ul>
 </div>
-<div id="outline-container-orga0ce408" class="outline-3">
-<h3 id="orga0ce408"><span class="section-number-3">2.1</span> example: java condition variables</h3>
+<div id="outline-container-orgfc8a094" class="outline-3">
+<h3 id="orgfc8a094"><span class="section-number-3">2.1</span> example: java condition variables</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>notify: signal</li>
@@ -331,16 +331,16 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org4ea5dae" class="outline-3">
-<h3 id="org4ea5dae"><span class="section-number-3">2.2</span> example: readers &amp; writers</h3>
+<div id="outline-container-orgab8ac69" class="outline-3">
+<h3 id="orgab8ac69"><span class="section-number-3">2.2</span> example: readers &amp; writers</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>at most one writer</li>
 <li>reader don't read while a writer is writing</li>
 </ul>
 </div>
-<div id="outline-container-orga1657e1" class="outline-4">
-<h4 id="orga1657e1"><span class="section-number-4">2.2.1</span> demo: broken reader and writer</h4>
+<div id="outline-container-org889544e" class="outline-4">
+<h4 id="org889544e"><span class="section-number-4">2.2.1</span> demo: broken reader and writer</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <ul class="org-ul">
 <li>no synchronization</li>
@@ -373,12 +373,12 @@ for the JavaScript code in this tag.
 </table>
 </div>
 </div>
-<div id="outline-container-org2e19bb7" class="outline-4">
-<h4 id="org2e19bb7"><span class="section-number-4">2.2.2</span> demo:</h4>
+<div id="outline-container-org092a2a1" class="outline-4">
+<h4 id="org092a2a1"><span class="section-number-4">2.2.2</span> demo:</h4>
 <div class="outline-text-4" id="text-2-2-2">
 </div>
 <ol class="org-ol">
-<li><a id="org4394dc6"></a>database class<br />
+<li><a id="org1cbe7b9"></a>database class<br />
 <div class="outline-text-5" id="text-2-2-2-1">
 <ul class="org-ul">
 <li>keyword: synchronized:
@@ -395,9 +395,9 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </li>
-<li><a id="org7f64a84"></a>how to?<br />
+<li><a id="org6fb5b18"></a>how to?<br />
 <ol class="org-ol">
-<li><a id="orgd76eadf"></a>reader<br />
+<li><a id="orge38cf40"></a>reader<br />
 <div class="outline-text-6" id="text-2-2-2-2-1">
 <ul class="org-ul">
 <li>add one more piece of data called <code>nr</code> (# of readers)</li>
@@ -414,17 +414,17 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </li>
-<li><a id="orgb29c753"></a>writer<br />
+<li><a id="orgd39724f"></a>writer<br />
 <div class="outline-text-6" id="text-2-2-2-2-2">
 <ul class="org-ul">
 <li><code>notify()</code> at the end: offer readers the chance to get in and read</li>
 </ul>
 </div>
 </li>
-<li><a id="org5715a0b"></a>database<br />
+<li><a id="org36e8a6b"></a>database<br />
 <div class="outline-text-6" id="text-2-2-2-2-3">
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #a020f0;">synchronized</span> (<span style="color: #a020f0;">this</span>) { nr ++; }
+<pre class="src src-java"><span style="font-weight: bold;">synchronized</span> (<span style="font-weight: bold;">this</span>) { nr ++; }
 </pre>
 </div>
 <ul class="org-ul">
@@ -438,20 +438,20 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org4c00fc2" class="outline-2">
-<h2 id="org4c00fc2"><span class="section-number-2">3</span> buffer for one producer - one consumer</h2>
+<div id="outline-container-orgdf1340f" class="outline-2">
+<h2 id="orgdf1340f"><span class="section-number-2">3</span> buffer for one producer - one consumer</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>java allows us to do it in 10 lines</li>
 <li><b>try code p128</b></li>
 </ul>
 </div>
-<div id="outline-container-org590fff4" class="outline-3">
-<h3 id="org590fff4"><span class="section-number-3">3.1</span> demo: reader and writer</h3>
+<div id="outline-container-org8e8bdd1" class="outline-3">
+<h3 id="org8e8bdd1"><span class="section-number-3">3.1</span> demo: reader and writer</h3>
 </div>
 </div>
-<div id="outline-container-org338cc25" class="outline-2">
-<h2 id="org338cc25"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> <b>take a copy and run it</b></h2>
+<div id="outline-container-org1c69fc8" class="outline-2">
+<h2 id="org1c69fc8"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> <b>take a copy and run it</b></h2>
 </div>
 </div>
 </body>

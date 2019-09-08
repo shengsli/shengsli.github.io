@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-16 Fri 22:58 -->
+<!-- 2019-09-06 Fri 16:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec08 w5b</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,30 +234,30 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2b31aca">1. semaphore</a></li>
-<li><a href="#orgf89a59f">2. monitors</a></li>
-<li><a href="#org0f7198b">3. solution to bounded buffer</a></li>
-<li><a href="#org51fb29d">4. building blocks</a>
+<li><a href="#orgcaf0c38">1. semaphore</a></li>
+<li><a href="#orgb191e2c">2. monitors</a></li>
+<li><a href="#orgee642af">3. solution to bounded buffer</a></li>
+<li><a href="#org5ed0444">4. building blocks</a>
 <ul>
-<li><a href="#orgb4fd1b1">4.1. mutual exclusion</a></li>
-<li><a href="#orgd4cd6da">4.2. condition synchronization</a></li>
+<li><a href="#orgdaf5386">4.1. mutual exclusion</a></li>
+<li><a href="#org4c69073">4.2. condition synchronization</a></li>
 </ul>
 </li>
-<li><a href="#orgdcfc629">5. state transition diagram: signal-and-continue</a></li>
-<li><a href="#orge08d614">6. demo</a></li>
+<li><a href="#org1469426">5. state transition diagram: signal-and-continue</a></li>
+<li><a href="#org1e70236">6. demo</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2b31aca" class="outline-2">
-<h2 id="org2b31aca"><span class="section-number-2">1</span> semaphore</h2>
+<div id="outline-container-orgcaf0c38" class="outline-2">
+<h2 id="orgcaf0c38"><span class="section-number-2">1</span> semaphore</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>unstructural</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf89a59f" class="outline-2">
-<h2 id="orgf89a59f"><span class="section-number-2">2</span> monitors</h2>
+<div id="outline-container-orgb191e2c" class="outline-2">
+<h2 id="orgb191e2c"><span class="section-number-2">2</span> monitors</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>more structured</li>
@@ -265,8 +265,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org0f7198b" class="outline-2">
-<h2 id="org0f7198b"><span class="section-number-2">3</span> solution to bounded buffer</h2>
+<div id="outline-container-orgee642af" class="outline-2">
+<h2 id="orgee642af"><span class="section-number-2">3</span> solution to bounded buffer</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>circular buffer: <code>rear</code>, <code>front</code></li>
@@ -279,19 +279,19 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org51fb29d" class="outline-2">
-<h2 id="org51fb29d"><span class="section-number-2">4</span> building blocks</h2>
+<div id="outline-container-org5ed0444" class="outline-2">
+<h2 id="org5ed0444"><span class="section-number-2">4</span> building blocks</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgb4fd1b1" class="outline-3">
-<h3 id="orgb4fd1b1"><span class="section-number-3">4.1</span> mutual exclusion</h3>
+<div id="outline-container-orgdaf5386" class="outline-3">
+<h3 id="orgdaf5386"><span class="section-number-3">4.1</span> mutual exclusion</h3>
 </div>
-<div id="outline-container-orgd4cd6da" class="outline-3">
-<h3 id="orgd4cd6da"><span class="section-number-3">4.2</span> condition synchronization</h3>
+<div id="outline-container-org4c69073" class="outline-3">
+<h3 id="org4c69073"><span class="section-number-3">4.2</span> condition synchronization</h3>
 </div>
 </div>
-<div id="outline-container-orgdcfc629" class="outline-2">
-<h2 id="orgdcfc629"><span class="section-number-2">5</span> state transition diagram: signal-and-continue</h2>
+<div id="outline-container-org1469426" class="outline-2">
+<h2 id="org1469426"><span class="section-number-2">5</span> state transition diagram: signal-and-continue</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>only one thread execute in monitor at a time</li>
@@ -303,8 +303,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orge08d614" class="outline-2">
-<h2 id="orge08d614"><span class="section-number-2">6</span> demo</h2>
+<div id="outline-container-org1e70236" class="outline-2">
+<h2 id="org1e70236"><span class="section-number-2">6</span> demo</h2>
 </div>
 </div>
 </body>

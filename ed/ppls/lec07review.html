@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-16 Fri 22:58 -->
+<!-- 2019-09-06 Fri 16:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>lec07 w5a review structured primitives</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,33 +234,33 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgfea7050">1. Big picture</a></li>
-<li><a href="#org37786ac">2. This lecture</a></li>
-<li><a href="#org34be67f">3. semaphores (dutch)</a></li>
-<li><a href="#orge9c0567">4. use semaphores to implement critical section p79</a></li>
-<li><a href="#org1fe0397">5. use semaphores to implement symmetric barrier p80 (see symmetric barriers on p72-73)</a></li>
-<li><a href="#org338b286">6. producers and consumers</a></li>
-<li><a href="#orga1325c8">7. version 1: <b>single item buffer</b> which allows multiple producers and consumers</a>
+<li><a href="#org9de1746">1. Big picture</a></li>
+<li><a href="#org5dedf26">2. This lecture</a></li>
+<li><a href="#org413abe1">3. semaphores (dutch)</a></li>
+<li><a href="#orgf0b388d">4. use semaphores to implement critical section p79</a></li>
+<li><a href="#orgbb869df">5. use semaphores to implement symmetric barrier p80 (see symmetric barriers on p72-73)</a></li>
+<li><a href="#orgd6df629">6. producers and consumers</a></li>
+<li><a href="#org454696f">7. version 1: <b>single item buffer</b> which allows multiple producers and consumers</a>
 <ul>
-<li><a href="#orge9f770d">7.1. 3 things</a></li>
-<li><a href="#org833091e">7.2. remarks</a></li>
-<li><a href="#org73a340b">7.3. code in co-notation p82</a></li>
+<li><a href="#org8d65dc6">7.1. 3 things</a></li>
+<li><a href="#orgb39e75e">7.2. remarks</a></li>
+<li><a href="#orgc12868b">7.3. code in co-notation p82</a></li>
 </ul>
 </li>
-<li><a href="#orgc30ed33">8. <span class="todo TODO">TODO</span> version 2: <b>multi-space buffer</b>, recording 30:00</a></li>
-<li><a href="#org2b2adbe">9. <span class="todo TODO">TODO</span> version 3</a>
+<li><a href="#org45ccda5">8. <span class="todo TODO">TODO</span> version 2: <b>multi-space buffer</b>, recording 30:00</a></li>
+<li><a href="#org09bd64f">9. <span class="todo TODO">TODO</span> version 3</a>
 <ul>
-<li><a href="#org8891210">9.1. extra issue with version 2</a></li>
-<li><a href="#orgee50e7a">9.2. solution: 2 levels of protection</a></li>
+<li><a href="#org4ef7feb">9.1. extra issue with version 2</a></li>
+<li><a href="#org6ada15b">9.2. solution: 2 levels of protection</a></li>
 </ul>
 </li>
-<li><a href="#orgdc797b2">10. <span class="todo TODO">TODO</span> version 4 (wrong): attempt to further relax version 3</a></li>
-<li><a href="#org91ed5a9">11. version 5: fix version 4</a></li>
+<li><a href="#org112eca7">10. <span class="todo TODO">TODO</span> version 4 (wrong): attempt to further relax version 3</a></li>
+<li><a href="#orga178c6b">11. version 5: fix version 4</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfea7050" class="outline-2">
-<h2 id="orgfea7050"><span class="section-number-2">1</span> Big picture</h2>
+<div id="outline-container-org9de1746" class="outline-2">
+<h2 id="org9de1746"><span class="section-number-2">1</span> Big picture</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Today we are gonna change our implementation style.</li>
@@ -283,8 +283,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org37786ac" class="outline-2">
-<h2 id="org37786ac"><span class="section-number-2">2</span> This lecture</h2>
+<div id="outline-container-org5dedf26" class="outline-2">
+<h2 id="org5dedf26"><span class="section-number-2">2</span> This lecture</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>semaphores</li>
@@ -294,8 +294,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org34be67f" class="outline-2">
-<h2 id="org34be67f"><span class="section-number-2">3</span> semaphores (dutch)</h2>
+<div id="outline-container-org413abe1" class="outline-2">
+<h2 id="org413abe1"><span class="section-number-2">3</span> semaphores (dutch)</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>is a special shared variable hold integer value</li>
@@ -308,8 +308,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orge9c0567" class="outline-2">
-<h2 id="orge9c0567"><span class="section-number-2">4</span> use semaphores to implement critical section p79</h2>
+<div id="outline-container-orgf0b388d" class="outline-2">
+<h2 id="orgf0b388d"><span class="section-number-2">4</span> use semaphores to implement critical section p79</h2>
 <div class="outline-text-2" id="text-4">
 <pre class="example">
 sem mutex = 1;
@@ -324,8 +324,8 @@ co [i = 1 to n] {
 </pre>
 </div>
 </div>
-<div id="outline-container-org1fe0397" class="outline-2">
-<h2 id="org1fe0397"><span class="section-number-2">5</span> use semaphores to implement symmetric barrier p80 (see symmetric barriers on p72-73)</h2>
+<div id="outline-container-orgbb869df" class="outline-2">
+<h2 id="orgbb869df"><span class="section-number-2">5</span> use semaphores to implement symmetric barrier p80 (see symmetric barriers on p72-73)</h2>
 <div class="outline-text-2" id="text-5">
 <pre class="example">
 for [s = 1 to stages] {
@@ -336,8 +336,8 @@ for [s = 1 to stages] {
 </pre>
 </div>
 </div>
-<div id="outline-container-org338b286" class="outline-2">
-<h2 id="org338b286"><span class="section-number-2">6</span> producers and consumers</h2>
+<div id="outline-container-orgd6df629" class="outline-2">
+<h2 id="orgd6df629"><span class="section-number-2">6</span> producers and consumers</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>scenario: multiple producers and multiple consumers</li>
@@ -351,12 +351,12 @@ for [s = 1 to stages] {
 </ul>
 </div>
 </div>
-<div id="outline-container-orga1325c8" class="outline-2">
-<h2 id="orga1325c8"><span class="section-number-2">7</span> version 1: <b>single item buffer</b> which allows multiple producers and consumers</h2>
+<div id="outline-container-org454696f" class="outline-2">
+<h2 id="org454696f"><span class="section-number-2">7</span> version 1: <b>single item buffer</b> which allows multiple producers and consumers</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-orge9f770d" class="outline-3">
-<h3 id="orge9f770d"><span class="section-number-3">7.1</span> 3 things</h3>
+<div id="outline-container-org8d65dc6" class="outline-3">
+<h3 id="org8d65dc6"><span class="section-number-3">7.1</span> 3 things</h3>
 <div class="outline-text-3" id="text-7-1">
 <ol class="org-ol">
 <li><code>sem full</code>: counts how many space in buffer is full. (in version 1, buffer only has 1 space)</li>
@@ -365,8 +365,8 @@ for [s = 1 to stages] {
 </ol>
 </div>
 </div>
-<div id="outline-container-org833091e" class="outline-3">
-<h3 id="org833091e"><span class="section-number-3">7.2</span> remarks</h3>
+<div id="outline-container-orgb39e75e" class="outline-3">
+<h3 id="orgb39e75e"><span class="section-number-3">7.2</span> remarks</h3>
 <div class="outline-text-3" id="text-7-2">
 <ul class="org-ul">
 <li>full and empty count resources</li>
@@ -386,8 +386,8 @@ for [s = 1 to stages] {
 </ul>
 </div>
 </div>
-<div id="outline-container-org73a340b" class="outline-3">
-<h3 id="org73a340b"><span class="section-number-3">7.3</span> code in co-notation p82</h3>
+<div id="outline-container-orgc12868b" class="outline-3">
+<h3 id="orgc12868b"><span class="section-number-3">7.3</span> code in co-notation p82</h3>
 <div class="outline-text-3" id="text-7-3">
 <pre class="example">
 T buf; sem empty = 1, full = 0;
@@ -414,8 +414,8 @@ oc
 </div>
 </div>
 </div>
-<div id="outline-container-orgc30ed33" class="outline-2">
-<h2 id="orgc30ed33"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> version 2: <b>multi-space buffer</b>, recording 30:00</h2>
+<div id="outline-container-org45ccda5" class="outline-2">
+<h2 id="org45ccda5"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> version 2: <b>multi-space buffer</b>, recording 30:00</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li>bounded buffer: an array with 2 integer indices (front and rear)</li>
@@ -450,20 +450,20 @@ co ## producer
 </pre>
 </div>
 </div>
-<div id="outline-container-org2b2adbe" class="outline-2">
-<h2 id="org2b2adbe"><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> version 3</h2>
+<div id="outline-container-org09bd64f" class="outline-2">
+<h2 id="org09bd64f"><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> version 3</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org8891210" class="outline-3">
-<h3 id="org8891210"><span class="section-number-3">9.1</span> extra issue with version 2</h3>
+<div id="outline-container-org4ef7feb" class="outline-3">
+<h3 id="org4ef7feb"><span class="section-number-3">9.1</span> extra issue with version 2</h3>
 <div class="outline-text-3" id="text-9-1">
 <ul class="org-ul">
 <li><b>race conditions</b>: increment of rear and front</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgee50e7a" class="outline-3">
-<h3 id="orgee50e7a"><span class="section-number-3">9.2</span> solution: 2 levels of protection</h3>
+<div id="outline-container-org6ada15b" class="outline-3">
+<h3 id="org6ada15b"><span class="section-number-3">9.2</span> solution: 2 levels of protection</h3>
 <div class="outline-text-3" id="text-9-2">
 <ol class="org-ol">
 <li>use <b>a split counting semaphore</b> to avoid buffer overflow (or underflow)</li>
@@ -498,8 +498,8 @@ oc
 </div>
 </div>
 </div>
-<div id="outline-container-orgdc797b2" class="outline-2">
-<h2 id="orgdc797b2"><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> version 4 (wrong): attempt to further relax version 3</h2>
+<div id="outline-container-org112eca7" class="outline-2">
+<h2 id="org112eca7"><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> version 4 (wrong): attempt to further relax version 3</h2>
 <div class="outline-text-2" id="text-10">
 <pre class="example">
 co
@@ -530,8 +530,8 @@ oc
 </ul>
 </div>
 </div>
-<div id="outline-container-org91ed5a9" class="outline-2">
-<h2 id="org91ed5a9"><span class="section-number-2">11</span> version 5: fix version 4</h2>
+<div id="outline-container-orga178c6b" class="outline-2">
+<h2 id="orga178c6b"><span class="section-number-2">11</span> version 5: fix version 4</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
 <li>independent lock semaphore for each space</li>

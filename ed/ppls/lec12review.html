@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-16 Fri 22:58 -->
+<!-- 2019-09-06 Fri 16:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec12 w8b review</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,27 +234,27 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1db2d17">1. Example: MPI Task Farm</a>
+<li><a href="#org09e8018">1. Example: MPI Task Farm</a>
 <ul>
-<li><a href="#org19a3be5">1.1. Gist of task farm</a></li>
+<li><a href="#org6c75b3c">1.1. Gist of task farm</a></li>
 </ul>
 </li>
-<li><a href="#org16676df">2. Send in standard mode</a></li>
-<li><a href="#org1fd259e">3. Receive in standard mode</a></li>
-<li><a href="#org170a09b">4. Code</a></li>
-<li><a href="#orgf0225b4">5. Synchronization in MPI</a>
+<li><a href="#orgaa5be18">2. Send in standard mode</a></li>
+<li><a href="#org43adef2">3. Receive in standard mode</a></li>
+<li><a href="#org247c553">4. Code</a></li>
+<li><a href="#org34d044a">5. Synchronization in MPI</a>
 <ul>
-<li><a href="#org1ca77af">5.1. blocking send and non-blocking send/receive</a>
+<li><a href="#org213c745">5.1. blocking send and non-blocking send/receive</a>
 <ul>
-<li><a href="#org6be35f4">5.1.1. send</a></li>
-<li><a href="#org37269fd">5.1.2. receive</a></li>
-<li><a href="#org0e6df18">5.1.3. Remarks</a></li>
+<li><a href="#org58dcfbf">5.1.1. send</a></li>
+<li><a href="#org45a5bc1">5.1.2. receive</a></li>
+<li><a href="#org3344793">5.1.3. Remarks</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org2054266">6. Is it possible to be non-blocking and synchronous?</a></li>
-<li><a href="#org5222142">7. Blocking communication semantics in MPI</a></li>
+<li><a href="#org0207988">6. Is it possible to be non-blocking and synchronous?</a></li>
+<li><a href="#org4ba335c">7. Blocking communication semantics in MPI</a></li>
 </ul>
 </div>
 </div>
@@ -264,8 +264,8 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 <ul class="org-ul">
 <li>We will focus on MPI synchronization.</li>
 </ul>
-<div id="outline-container-org1db2d17" class="outline-2">
-<h2 id="org1db2d17"><span class="section-number-2">1</span> Example: MPI Task Farm</h2>
+<div id="outline-container-org09e8018" class="outline-2">
+<h2 id="org09e8018"><span class="section-number-2">1</span> Example: MPI Task Farm</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>A task farm is bag-of-tasks in which all the tasks are known from the start.</li>
@@ -274,8 +274,8 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 <li>Tags are used to identify tasks and results. A special tag is used to indicate an "end of tasks" message.</li>
 </ul>
 </div>
-<div id="outline-container-org19a3be5" class="outline-3">
-<h3 id="org19a3be5"><span class="section-number-3">1.1</span> Gist of task farm</h3>
+<div id="outline-container-org6c75b3c" class="outline-3">
+<h3 id="org6c75b3c"><span class="section-number-3">1.1</span> Gist of task farm</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>With the assumption above, we can have 3 phases: 
@@ -288,31 +288,31 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 </div>
 </div>
 </div>
-<div id="outline-container-org16676df" class="outline-2">
-<h2 id="org16676df"><span class="section-number-2">2</span> Send in standard mode</h2>
+<div id="outline-container-orgaa5be18" class="outline-2">
+<h2 id="orgaa5be18"><span class="section-number-2">2</span> Send in standard mode</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #228b22;">int</span> <span style="color: #0000ff;">MPI_Send</span>(<span style="color: #228b22;">void</span> *<span style="color: #a0522d;">buf</span>,             <span style="color: #b22222;">// </span><span style="color: #b22222;">pointer</span>
-             <span style="color: #228b22;">int</span> <span style="color: #a0522d;">count</span>,             <span style="color: #b22222;">// </span><span style="color: #b22222;">size</span>
-             <span style="color: #228b22;">MPI_Datatype</span> <span style="color: #a0522d;">datatype</span>, <span style="color: #b22222;">// </span><span style="color: #b22222;">type</span>
-             <span style="color: #228b22;">int</span> <span style="color: #a0522d;">dest</span>,              <span style="color: #b22222;">// </span><span style="color: #b22222;">destination process</span>
-             <span style="color: #228b22;">int</span> <span style="color: #a0522d;">tag</span>,               <span style="color: #b22222;">// </span><span style="color: #b22222;">must be non-negative</span>
-             <span style="color: #228b22;">MPI_Comm</span> <span style="color: #a0522d;">comm</span>)         <span style="color: #b22222;">// </span><span style="color: #b22222;">communicator</span>
+<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">MPI_Send</span>(<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold; font-style: italic;">buf</span>,             <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">pointer</span>
+             <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">count</span>,             <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">size</span>
+             <span style="font-weight: bold; text-decoration: underline;">MPI_Datatype</span> <span style="font-weight: bold; font-style: italic;">datatype</span>, <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">type</span>
+             <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">dest</span>,              <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">destination process</span>
+             <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">tag</span>,               <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">must be non-negative</span>
+             <span style="font-weight: bold; text-decoration: underline;">MPI_Comm</span> <span style="font-weight: bold; font-style: italic;">comm</span>)         <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">communicator</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org1fd259e" class="outline-2">
-<h2 id="org1fd259e"><span class="section-number-2">3</span> Receive in standard mode</h2>
+<div id="outline-container-org43adef2" class="outline-2">
+<h2 id="org43adef2"><span class="section-number-2">3</span> Receive in standard mode</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #228b22;">int</span> <span style="color: #0000ff;">MPI_Recv</span>(<span style="color: #228b22;">void</span> *<span style="color: #a0522d;">buf</span>,
-             <span style="color: #228b22;">int</span> <span style="color: #a0522d;">count</span>,
-             <span style="color: #228b22;">MPI_Datatype</span> <span style="color: #a0522d;">datatype</span>,
-             <span style="color: #228b22;">int</span> <span style="color: #a0522d;">source</span>,            <span style="color: #b22222;">// </span><span style="color: #b22222;">source process</span>
-             <span style="color: #228b22;">int</span> <span style="color: #a0522d;">tag</span>,
-             <span style="color: #228b22;">MPI_Comm</span> <span style="color: #a0522d;">comm</span>,
-             <span style="color: #228b22;">MPI_Status</span> *<span style="color: #a0522d;">status</span>)
+<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">MPI_Recv</span>(<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold; font-style: italic;">buf</span>,
+             <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">count</span>,
+             <span style="font-weight: bold; text-decoration: underline;">MPI_Datatype</span> <span style="font-weight: bold; font-style: italic;">datatype</span>,
+             <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">source</span>,            <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">source process</span>
+             <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">tag</span>,
+             <span style="font-weight: bold; text-decoration: underline;">MPI_Comm</span> <span style="font-weight: bold; font-style: italic;">comm</span>,
+             <span style="font-weight: bold; text-decoration: underline;">MPI_Status</span> *<span style="font-weight: bold; font-style: italic;">status</span>)
 </pre>
 </div>
 <ul class="org-ul">
@@ -320,41 +320,41 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 </ul>
 </div>
 </div>
-<div id="outline-container-org170a09b" class="outline-2">
-<h2 id="org170a09b"><span class="section-number-2">4</span> Code</h2>
+<div id="outline-container-org247c553" class="outline-2">
+<h2 id="org247c553"><span class="section-number-2">4</span> Code</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #483d8b;">#define</span> <span style="color: #a0522d;">MAX_TASKS</span> 100
-<span style="color: #483d8b;">#define</span> <span style="color: #a0522d;">NO_MORE_TASKS</span> MAX_TASKS+1
-<span style="color: #483d8b;">#define</span> <span style="color: #a0522d;">FARMER</span> 0
-<span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>)
+<pre class="src src-C"><span style="font-weight: bold;">#define</span> <span style="font-weight: bold; font-style: italic;">MAX_TASKS</span> 100
+<span style="font-weight: bold;">#define</span> <span style="font-weight: bold; font-style: italic;">NO_MORE_TASKS</span> MAX_TASKS+1
+<span style="font-weight: bold;">#define</span> <span style="font-weight: bold; font-style: italic;">FARMER</span> 0
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> *<span style="font-weight: bold; font-style: italic;">argv</span>)
 {
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">np</span>, <span style="color: #a0522d;">rank</span>;
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">np</span>, <span style="font-weight: bold; font-style: italic;">rank</span>;
     MPI_Init(&amp;argc, &amp;argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
     MPI_Comm_size(MPI_COMM_WORLD, &amp;np);
-    <span style="color: #a020f0;">if</span> (rank == FARMER)
+    <span style="font-weight: bold;">if</span> (rank == FARMER)
     {
         farmer(np-1);
     }
-    <span style="color: #a020f0;">else</span>
+    <span style="font-weight: bold;">else</span>
     {
         worker();
     }
     MPI_Finalize();
 }
 
-<span style="color: #228b22;">void</span> <span style="color: #0000ff;">farmer</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">workers</span>)
+<span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">farmer</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">workers</span>)
 {
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>, <span style="color: #a0522d;">task</span>[MAX_TASKS], <span style="color: #a0522d;">result</span> [MAX_TASKS], <span style="color: #a0522d;">temp</span>, <span style="color: #a0522d;">tag</span>, <span style="color: #a0522d;">who</span>;
-    <span style="color: #228b22;">MPI_Status</span> <span style="color: #a0522d;">status</span>;
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span>, <span style="font-weight: bold; font-style: italic;">task</span>[MAX_TASKS], <span style="font-weight: bold; font-style: italic;">result</span> [MAX_TASKS], <span style="font-weight: bold; font-style: italic;">temp</span>, <span style="font-weight: bold; font-style: italic;">tag</span>, <span style="font-weight: bold; font-style: italic;">who</span>;
+    <span style="font-weight: bold; text-decoration: underline;">MPI_Status</span> <span style="font-weight: bold; font-style: italic;">status</span>;
 
-    <span style="color: #a020f0;">for</span> (i=0; i&lt;workers; i++)
+    <span style="font-weight: bold;">for</span> (i=0; i&lt;workers; i++)
     {
         MPI_Send(task[i], 1, MPI_INT, i+1, i, MPI_COMM_WORLD);
     }
 
-    <span style="color: #a020f0;">while</span> (i&lt;MAX_TASKS)
+    <span style="font-weight: bold;">while</span> (i&lt;MAX_TASKS)
     {
         MPI_Recv(&amp;temp, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &amp;STATUS);
         who = status.STATUS.MPI_SOURCE;
@@ -364,7 +364,7 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
         i++;
     }
 
-    <span style="color: #a020f0;">for</span> (i=0; i&lt;workers; i++)
+    <span style="font-weight: bold;">for</span> (i=0; i&lt;workers; i++)
     {
         MPI_Recv(&amp;temp, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMMON_WORLD);
         who = status.MPI_SOURCE;
@@ -374,14 +374,14 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
     }
 }
 
-<span style="color: #228b22;">void</span> <span style="color: #0000ff;">worker</span> ()
+<span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">worker</span> ()
 {
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">task</span>, <span style="color: #a0522d;">result</span>, <span style="color: #a0522d;">tag</span>;
-    <span style="color: #228b22;">MPI_Status</span> <span style="color: #a0522d;">status</span>;
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">task</span>, <span style="font-weight: bold; font-style: italic;">result</span>, <span style="font-weight: bold; font-style: italic;">tag</span>;
+    <span style="font-weight: bold; text-decoration: underline;">MPI_Status</span> <span style="font-weight: bold; font-style: italic;">status</span>;
     MPI_Recv(&amp;task, 1, MPI_INT, FARMER, MPI_ANY_TAG, MPI_COMMON_WORLD, &amp;status);
     tag = status.MPI_TAG;
 
-    <span style="color: #a020f0;">while</span> (tag != NO_MOE_TASKS)
+    <span style="font-weight: bold;">while</span> (tag != NO_MOE_TASKS)
     {
         result = somefunction(task);
         MPI_Send(&amp;result, 1, MPI_INT, FARMER, tag, MPI_COMM_WORLD);
@@ -393,8 +393,8 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 </div>
 </div>
 </div>
-<div id="outline-container-orgf0225b4" class="outline-2">
-<h2 id="orgf0225b4"><span class="section-number-2">5</span> Synchronization in MPI</h2>
+<div id="outline-container-org34d044a" class="outline-2">
+<h2 id="org34d044a"><span class="section-number-2">5</span> Synchronization in MPI</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 MPI uses the term blocking and synchronization in a lightly unconventional way. 
@@ -405,12 +405,12 @@ MPI uses the term blocking and synchronization in a lightly unconventional way.
 <li>MPI runtime is basically a matching process between send and receive. It's a complex implementation challenge.</li>
 </ul>
 </div>
-<div id="outline-container-org1ca77af" class="outline-3">
-<h3 id="org1ca77af"><span class="section-number-3">5.1</span> blocking send and non-blocking send/receive</h3>
+<div id="outline-container-org213c745" class="outline-3">
+<h3 id="org213c745"><span class="section-number-3">5.1</span> blocking send and non-blocking send/receive</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-org6be35f4" class="outline-4">
-<h4 id="org6be35f4"><span class="section-number-4">5.1.1</span> send</h4>
+<div id="outline-container-org58dcfbf" class="outline-4">
+<h4 id="org58dcfbf"><span class="section-number-4">5.1.1</span> send</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <ul class="org-ul">
 <li>A blocking send completes only when it is safe to reuse the specified output buffer (because the data has been copied some where sage by the system).</li>
@@ -422,16 +422,16 @@ MPI uses the term blocking and synchronization in a lightly unconventional way.
 </ul>
 </div>
 </div>
-<div id="outline-container-org37269fd" class="outline-4">
-<h4 id="org37269fd"><span class="section-number-4">5.1.2</span> receive</h4>
+<div id="outline-container-org45a5bc1" class="outline-4">
+<h4 id="org45a5bc1"><span class="section-number-4">5.1.2</span> receive</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <ul class="org-ul">
 <li>Similarly, non-blocking receive allows calling process to continue immediately with similar issues concerning the values which appear tin the buffer.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0e6df18" class="outline-4">
-<h4 id="org0e6df18"><span class="section-number-4">5.1.3</span> Remarks</h4>
+<div id="outline-container-org3344793" class="outline-4">
+<h4 id="org3344793"><span class="section-number-4">5.1.3</span> Remarks</h4>
 <div class="outline-text-4" id="text-5-1-3">
 <p>
 To manage these effects, there are MPI operations for monitoring the progress of non-blocking communications. (effectively, to ask, "is it OK to use this variable now?")
@@ -444,16 +444,16 @@ The idea is that with careful use these can allow the process to get on with oth
 </div>
 </div>
 </div>
-<div id="outline-container-org2054266" class="outline-2">
-<h2 id="org2054266"><span class="section-number-2">6</span> Is it possible to be non-blocking and synchronous?</h2>
+<div id="outline-container-org0207988" class="outline-2">
+<h2 id="org0207988"><span class="section-number-2">6</span> Is it possible to be non-blocking and synchronous?</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 It is possible in the sense that a process can ask/check/test if the transfer of buffer is complete. 
 </p>
 </div>
 </div>
-<div id="outline-container-org5222142" class="outline-2">
-<h2 id="org5222142"><span class="section-number-2">7</span> Blocking communication semantics in MPI</h2>
+<div id="outline-container-org4ba335c" class="outline-2">
+<h2 id="org4ba335c"><span class="section-number-2">7</span> Blocking communication semantics in MPI</h2>
 <div class="outline-text-2" id="text-7">
 <ol class="org-ol">
 <li><p>

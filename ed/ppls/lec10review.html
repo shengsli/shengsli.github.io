@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-16 Fri 22:58 -->
+<!-- 2019-09-06 Fri 16:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec10 w7b review Java threads</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,41 +234,41 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd88c557">1. Java threads</a></li>
-<li><a href="#orgdcf5889">2. Java Monitors</a></li>
-<li><a href="#orgf8aca62">3. reader and writer</a>
+<li><a href="#org29878d1">1. Java threads</a></li>
+<li><a href="#org8d9fbc5">2. Java Monitors</a></li>
+<li><a href="#org9806db9">3. reader and writer</a>
 <ul>
-<li><a href="#orgdf46a32">3.1. overview</a></li>
-<li><a href="#org8210f26">3.2. version 1: (first attempt) make reader and writer monitors</a></li>
-<li><a href="#org95073f2">3.3. version 2:</a></li>
+<li><a href="#org42db2e9">3.1. overview</a></li>
+<li><a href="#orgb7fccd7">3.2. version 1: (first attempt) make reader and writer monitors</a></li>
+<li><a href="#orgf3d9838">3.3. version 2:</a></li>
 </ul>
 </li>
-<li><a href="#orgcbde4db">4. <span class="todo TODO">TODO</span> </a></li>
+<li><a href="#org4da0310">4. <span class="todo TODO">TODO</span> </a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd88c557" class="outline-2">
-<h2 id="orgd88c557"><span class="section-number-2">1</span> Java threads</h2>
+<div id="outline-container-org29878d1" class="outline-2">
+<h2 id="org29878d1"><span class="section-number-2">1</span> Java threads</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #a020f0;">class</span> <span style="color: #228b22;">Simple</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Threads</span> {
-    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">run</span>() {
-        System.out.println(<span style="color: #8b2252;">"this is a thread"</span>);
+<pre class="src src-java"><span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">Simple</span> <span style="font-weight: bold;">extends</span> <span style="font-weight: bold; text-decoration: underline;">Threads</span> {
+    <span style="font-weight: bold;">public</span> <span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">run</span>() {
+        System.out.println(<span style="font-style: italic;">"this is a thread"</span>);
     }
 }
-<span style="color: #a020f0;">new</span> <span style="color: #228b22;">Simple</span>().start();
-<span style="color: #a020f0;">class</span> <span style="color: #228b22;">Bigger</span> <span style="color: #a020f0;">extends</span> <span style="color: #228b22;">Whatever</span> <span style="color: #a020f0;">implements</span> <span style="color: #228b22;">Runnable</span> {
-    <span style="color: #a020f0;">public</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">run</span>() {
-        <span style="color: #b22222;">//</span><span style="color: #b22222;">...</span>
+<span style="font-weight: bold;">new</span> <span style="font-weight: bold; text-decoration: underline;">Simple</span>().start();
+<span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">Bigger</span> <span style="font-weight: bold;">extends</span> <span style="font-weight: bold; text-decoration: underline;">Whatever</span> <span style="font-weight: bold;">implements</span> <span style="font-weight: bold; text-decoration: underline;">Runnable</span> {
+    <span style="font-weight: bold;">public</span> <span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">run</span>() {
+        <span style="font-weight: bold; font-style: italic;">//</span><span style="font-weight: bold; font-style: italic;">...</span>
     }
 }
-<span style="color: #a020f0;">new</span> <span style="color: #228b22;">Thread</span>(<span style="color: #a020f0;">new</span> <span style="color: #228b22;">bigger</span>()).start();
+<span style="font-weight: bold;">new</span> <span style="font-weight: bold; text-decoration: underline;">Thread</span>(<span style="font-weight: bold;">new</span> <span style="font-weight: bold; text-decoration: underline;">bigger</span>()).start();
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgdcf5889" class="outline-2">
-<h2 id="orgdcf5889"><span class="section-number-2">2</span> Java Monitors</h2>
+<div id="outline-container-org8d9fbc5" class="outline-2">
+<h2 id="org8d9fbc5"><span class="section-number-2">2</span> Java Monitors</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>Any object in Java can become a monitor.</li>
@@ -287,12 +287,12 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf8aca62" class="outline-2">
-<h2 id="orgf8aca62"><span class="section-number-2">3</span> reader and writer</h2>
+<div id="outline-container-org9806db9" class="outline-2">
+<h2 id="org9806db9"><span class="section-number-2">3</span> reader and writer</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgdf46a32" class="outline-3">
-<h3 id="orgdf46a32"><span class="section-number-3">3.1</span> overview</h3>
+<div id="outline-container-org42db2e9" class="outline-3">
+<h3 id="org42db2e9"><span class="section-number-3">3.1</span> overview</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>reader threads: get a copy of data by calling <code>read()</code>.</li>
@@ -302,16 +302,16 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org8210f26" class="outline-3">
-<h3 id="org8210f26"><span class="section-number-3">3.2</span> version 1: (first attempt) make reader and writer monitors</h3>
+<div id="outline-container-orgb7fccd7" class="outline-3">
+<h3 id="orgb7fccd7"><span class="section-number-3">3.2</span> version 1: (first attempt) make reader and writer monitors</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>It's overkill and readers cannot read concurrently.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org95073f2" class="outline-3">
-<h3 id="org95073f2"><span class="section-number-3">3.3</span> version 2:</h3>
+<div id="outline-container-orgf3d9838" class="outline-3">
+<h3 id="orgf3d9838"><span class="section-number-3">3.3</span> version 2:</h3>
 <div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li><p>
@@ -335,8 +335,8 @@ data = temp + 1
 </div>
 </div>
 </div>
-<div id="outline-container-orgcbde4db" class="outline-2">
-<h2 id="orgcbde4db"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> </h2>
+<div id="outline-container-org4da0310" class="outline-2">
+<h2 id="org4da0310"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> </h2>
 </div>
 </div>
 </body>

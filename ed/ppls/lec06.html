@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-16 Fri 22:58 -->
+<!-- 2019-09-06 Fri 16:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec06 w3b barriers</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,22 +234,22 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org86c31bf">1. barriers</a></li>
-<li><a href="#orge966b82">2. counter barrier p69 WRONG</a></li>
-<li><a href="#org4666429">3. sense reversing barrier</a></li>
-<li><a href="#org7e91691">4. symmetric barriers</a>
+<li><a href="#org3e1bea5">1. barriers</a></li>
+<li><a href="#orga858ece">2. counter barrier p69 WRONG</a></li>
+<li><a href="#org0511a50">3. sense reversing barrier</a></li>
+<li><a href="#org8a97d98">4. symmetric barriers</a>
 <ul>
-<li><a href="#orgc0e3954">4.1. flag implementation WRONG p74</a></li>
-<li><a href="#org0c8fbcc">4.2. distinct variables at each stage p75</a></li>
+<li><a href="#orgf9b0ba4">4.1. flag implementation WRONG p74</a></li>
+<li><a href="#orgacf3981">4.2. distinct variables at each stage p75</a></li>
 </ul>
 </li>
-<li><a href="#org6bf6ae5">5. dissemination barriers</a></li>
-<li><a href="#org3bf5138">6. next: structured primitives</a></li>
+<li><a href="#org52bacef">5. dissemination barriers</a></li>
+<li><a href="#orga5fa32f">6. next: structured primitives</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org86c31bf" class="outline-2">
-<h2 id="org86c31bf"><span class="section-number-2">1</span> barriers</h2>
+<div id="outline-container-org3e1bea5" class="outline-2">
+<h2 id="org3e1bea5"><span class="section-number-2">1</span> barriers</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>barrier synchronization is a pattern of condition synchronization</li>
@@ -258,16 +258,16 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orge966b82" class="outline-2">
-<h2 id="orge966b82"><span class="section-number-2">2</span> counter barrier p69 WRONG</h2>
+<div id="outline-container-orga858ece" class="outline-2">
+<h2 id="orga858ece"><span class="section-number-2">2</span> counter barrier p69 WRONG</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>most counter will fail</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4666429" class="outline-2">
-<h2 id="org4666429"><span class="section-number-2">3</span> sense reversing barrier</h2>
+<div id="outline-container-org0511a50" class="outline-2">
+<h2 id="org0511a50"><span class="section-number-2">3</span> sense reversing barrier</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>analogy: green and red signal</li>
@@ -277,19 +277,19 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org7e91691" class="outline-2">
-<h2 id="org7e91691"><span class="section-number-2">4</span> symmetric barriers</h2>
+<div id="outline-container-org8a97d98" class="outline-2">
+<h2 id="org8a97d98"><span class="section-number-2">4</span> symmetric barriers</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>not centralised</li>
 <li>power of 2 workers -&gt; butterfly pattern</li>
 </ul>
 </div>
-<div id="outline-container-orgc0e3954" class="outline-3">
-<h3 id="orgc0e3954"><span class="section-number-3">4.1</span> flag implementation WRONG p74</h3>
+<div id="outline-container-orgf9b0ba4" class="outline-3">
+<h3 id="orgf9b0ba4"><span class="section-number-3">4.1</span> flag implementation WRONG p74</h3>
 </div>
-<div id="outline-container-org0c8fbcc" class="outline-3">
-<h3 id="org0c8fbcc"><span class="section-number-3">4.2</span> distinct variables at each stage p75</h3>
+<div id="outline-container-orgacf3981" class="outline-3">
+<h3 id="orgacf3981"><span class="section-number-3">4.2</span> distinct variables at each stage p75</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>how to choose friends?</li>
@@ -299,16 +299,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org6bf6ae5" class="outline-2">
-<h2 id="org6bf6ae5"><span class="section-number-2">5</span> dissemination barriers</h2>
+<div id="outline-container-org52bacef" class="outline-2">
+<h2 id="org52bacef"><span class="section-number-2">5</span> dissemination barriers</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>not just power of 2</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3bf5138" class="outline-2">
-<h2 id="org3bf5138"><span class="section-number-2">6</span> next: structured primitives</h2>
+<div id="outline-container-orga5fa32f" class="outline-2">
+<h2 id="orga5fa32f"><span class="section-number-2">6</span> next: structured primitives</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>os provide some support, e.g. suspend, resume</li>

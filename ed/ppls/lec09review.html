@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-16 Fri 22:58 -->
+<!-- 2019-09-06 Fri 16:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec09 review Pthreads: Semaphores, "Monitors", Consistency Model and Example Code</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,15 +234,15 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6d5406c">1. Example: bad counter p102, good counter p104</a></li>
-<li><a href="#org8017f50">2. Coordinating shared accesses</a></li>
-<li><a href="#orgd21168b">3. <span class="todo TODO">TODO</span> Example: producers and consumers p105</a></li>
-<li><a href="#orgd9f4dac">4. Pthreads "Monitors"</a></li>
-<li><a href="#org643e1e1">5. Example: simple Jacobi</a></li>
-<li><a href="#org72f9339">6. Reusable counter barrier</a></li>
-<li><a href="#org69b6a2f">7. Memory consistency p113</a></li>
-<li><a href="#org60b96d8">8. Pragmatic issues</a></li>
-<li><a href="#orgf0113eb">9. Exercise 2</a></li>
+<li><a href="#org2e0163f">1. Example: bad counter p102, good counter p104</a></li>
+<li><a href="#org75322cc">2. Coordinating shared accesses</a></li>
+<li><a href="#orge25dc2b">3. <span class="todo TODO">TODO</span> Example: producers and consumers p105</a></li>
+<li><a href="#org77d25f1">4. Pthreads "Monitors"</a></li>
+<li><a href="#org9093461">5. Example: simple Jacobi</a></li>
+<li><a href="#org18bd276">6. Reusable counter barrier</a></li>
+<li><a href="#org9f53697">7. Memory consistency p113</a></li>
+<li><a href="#org99d819d">8. Pragmatic issues</a></li>
+<li><a href="#orge4d1fb5">9. Exercise 2</a></li>
 </ul>
 </div>
 </div>
@@ -254,11 +254,11 @@ This lecture will look at some examples written in C and Pthreads.
 <li>What building blocks Pthreads provide for monitors</li>
 <li>Pthreads memory consistency model</li>
 </ul>
-<div id="outline-container-org6d5406c" class="outline-2">
-<h2 id="org6d5406c"><span class="section-number-2">1</span> Example: bad counter p102, good counter p104</h2>
+<div id="outline-container-org2e0163f" class="outline-2">
+<h2 id="org2e0163f"><span class="section-number-2">1</span> Example: bad counter p102, good counter p104</h2>
 </div>
-<div id="outline-container-org8017f50" class="outline-2">
-<h2 id="org8017f50"><span class="section-number-2">2</span> Coordinating shared accesses</h2>
+<div id="outline-container-org75322cc" class="outline-2">
+<h2 id="org75322cc"><span class="section-number-2">2</span> Coordinating shared accesses</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><code>sem_t sem;</code></li>
@@ -275,47 +275,47 @@ This lecture will look at some examples written in C and Pthreads.
 <li><code>sem_post(s);</code> V(s)</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
-<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;pthread.h&gt;</span>
-<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;semaphore.h&gt;</span>
-<span style="color: #228b22;">int</span> <span style="color: #a0522d;">target</span>;
-<span style="color: #228b22;">sem_t</span> <span style="color: #a0522d;">lock</span>;
-<span style="color: #228b22;">void</span> *<span style="color: #0000ff;">adderthread</span> (<span style="color: #228b22;">void</span> *<span style="color: #a0522d;">arg</span>)
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;pthread.h&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;semaphore.h&gt;</span>
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">target</span>;
+<span style="font-weight: bold; text-decoration: underline;">sem_t</span> <span style="font-weight: bold; font-style: italic;">lock</span>;
+<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold;">adderthread</span> (<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold; font-style: italic;">arg</span>)
 {
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
-    <span style="color: #a020f0;">for</span> (i=0; i&lt;N; i++)
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span>;
+    <span style="font-weight: bold;">for</span> (i=0; i&lt;N; i++)
     {
         sem_wait(&amp;lock);
         target = target+1;
         sem_post(&amp;lock);
     }
 }
-<span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span> (<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[])
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> *<span style="font-weight: bold; font-style: italic;">argv</span>[])
 {
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
-    <span style="color: #228b22;">pthread_t</span> <span style="color: #a0522d;">thread</span>[P];
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span>;
+    <span style="font-weight: bold; text-decoration: underline;">pthread_t</span> <span style="font-weight: bold; font-style: italic;">thread</span>[P];
     target = 0;
     sem_init(&amp;lock, 0, 1);
-    <span style="color: #a020f0;">for</span> (i=0; i&lt;P; i++)
+    <span style="font-weight: bold;">for</span> (i=0; i&lt;P; i++)
     {
-        pthread_create(&amp;thread[i], <span style="color: #008b8b;">NULL</span>, adderthread, <span style="color: #008b8b;">NULL</span>);
+        pthread_create(&amp;thread[i], <span style="font-weight: bold; text-decoration: underline;">NULL</span>, adderthread, <span style="font-weight: bold; text-decoration: underline;">NULL</span>);
     }
-    <span style="color: #a020f0;">for</span> (i=0; i&lt;P; i++) {
-      pthread_join(thread[i], <span style="color: #008b8b;">NULL</span>);
+    <span style="font-weight: bold;">for</span> (i=0; i&lt;P; i++) {
+      pthread_join(thread[i], <span style="font-weight: bold; text-decoration: underline;">NULL</span>);
     }
-    printf(<span style="color: #8b2252;">"Final counter value was %d (should be %d)\n"</span>, target, P*N);
-    <span style="color: #a020f0;">return</span> 0;
+    printf(<span style="font-style: italic;">"Final counter value was %d (should be %d)\n"</span>, target, P*N);
+    <span style="font-weight: bold;">return</span> 0;
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd21168b" class="outline-2">
-<h2 id="orgd21168b"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Example: producers and consumers p105</h2>
+<div id="outline-container-orge25dc2b" class="outline-2">
+<h2 id="orge25dc2b"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Example: producers and consumers p105</h2>
 </div>
-<div id="outline-container-orgd9f4dac" class="outline-2">
-<h2 id="orgd9f4dac"><span class="section-number-2">4</span> Pthreads "Monitors"</h2>
+<div id="outline-container-org77d25f1" class="outline-2">
+<h2 id="org77d25f1"><span class="section-number-2">4</span> Pthreads "Monitors"</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>Pthreads doesn't provide monitor as a built-in programming construct, but it does provide the building blocks needed to achieve monitor-like effects.</li>
@@ -342,8 +342,8 @@ This lecture will look at some examples written in C and Pthreads.
 </ol>
 </div>
 </div>
-<div id="outline-container-org643e1e1" class="outline-2">
-<h2 id="org643e1e1"><span class="section-number-2">5</span> Example: simple Jacobi</h2>
+<div id="outline-container-org9093461" class="outline-2">
+<h2 id="org9093461"><span class="section-number-2">5</span> Example: simple Jacobi</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>convergence test</li>
@@ -351,21 +351,21 @@ This lecture will look at some examples written in C and Pthreads.
 <li>2 <code>Barrier()</code> calls =&gt; How to implement <code>Barrier()</code>? see reusable counter barrier</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #228b22;">void</span> *<span style="color: #0000ff;">Worker</span>(<span style="color: #228b22;">void</span> *<span style="color: #a0522d;">arg</span>)
+<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold;">Worker</span>(<span style="font-weight: bold; text-decoration: underline;">void</span> *<span style="font-weight: bold; font-style: italic;">arg</span>)
 {
-    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">myid</span> = (<span style="color: #228b22;">int</span>) arg, <span style="color: #a0522d;">rowA</span> = myid*rowshare+1, <span style="color: #a0522d;">rowB</span> = rowA+rowshare-1;
-    <span style="color: #a020f0;">for</span> (iters = 1; iters &lt;= numIters; iters++)
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">myid</span> = (<span style="font-weight: bold; text-decoration: underline;">int</span>) arg, <span style="font-weight: bold; font-style: italic;">rowA</span> = myid*rowshare+1, <span style="font-weight: bold; font-style: italic;">rowB</span> = rowA+rowshare-1;
+    <span style="font-weight: bold;">for</span> (iters = 1; iters &lt;= numIters; iters++)
     {
-        <span style="color: #a020f0;">for</span> (i = rowA; i &lt;= rowB; i++)
+        <span style="font-weight: bold;">for</span> (i = rowA; i &lt;= rowB; i++)
         {
-            <span style="color: #a020f0;">for</span> (j = 1; j &lt;= gridSize; j++)
+            <span style="font-weight: bold;">for</span> (j = 1; j &lt;= gridSize; j++)
                 grid2[i][j] = (grid1[i-1][j] + grid1[i][j] +
                                grid1[i+1][j] + grid1[i][j+1]) * 0.25;
         }
         Barrier();
-        <span style="color: #a020f0;">for</span> (i = rowA; i &lt;= rowB; i++)
+        <span style="font-weight: bold;">for</span> (i = rowA; i &lt;= rowB; i++)
         {
-            <span style="color: #a020f0;">for</span> (j = 1; j &lt;= gridSize; j++)
+            <span style="font-weight: bold;">for</span> (j = 1; j &lt;= gridSize; j++)
                 grid1[i][j] = (grid2[i-1][j] + grid2[i][j] +
                                grid2[i+1][j] + grid2[i][j+1]) * 0.25;
         }
@@ -376,27 +376,27 @@ This lecture will look at some examples written in C and Pthreads.
 </div>
 </div>
 </div>
-<div id="outline-container-org72f9339" class="outline-2">
-<h2 id="org72f9339"><span class="section-number-2">6</span> Reusable counter barrier</h2>
+<div id="outline-container-org18bd276" class="outline-2">
+<h2 id="org18bd276"><span class="section-number-2">6</span> Reusable counter barrier</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>We use a counter barrier.</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #228b22;">pthread_mutex_t</span> <span style="color: #a0522d;">barrier</span>;
-<span style="color: #228b22;">pthread_cond_t</span> <span style="color: #a0522d;">go</span>;
-<span style="color: #228b22;">int</span> <span style="color: #a0522d;">numArrived</span> = 0;
+<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">pthread_mutex_t</span> <span style="font-weight: bold; font-style: italic;">barrier</span>;
+<span style="font-weight: bold; text-decoration: underline;">pthread_cond_t</span> <span style="font-weight: bold; font-style: italic;">go</span>;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">numArrived</span> = 0;
 
-<span style="color: #228b22;">void</span> <span style="color: #0000ff;">Barrier</span>()
+<span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">Barrier</span>()
 {
     pthread_mutex_lock(&amp;barrier);
     numArrived++;
-    <span style="color: #a020f0;">if</span> (numArrived == numWorkers)
+    <span style="font-weight: bold;">if</span> (numArrived == numWorkers)
     {
         numArrived = 0;
-        pthread_condbroadcast(&amp;go); <span style="color: #b22222;">// </span><span style="color: #b22222;">tell all threads go to ready state</span>
+        pthread_condbroadcast(&amp;go); <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">tell all threads go to ready state</span>
     }
-    <span style="color: #a020f0;">else</span>
+    <span style="font-weight: bold;">else</span>
     {
         pthread_cond_wait(&amp;go, &amp;barrier);
     }
@@ -406,8 +406,8 @@ This lecture will look at some examples written in C and Pthreads.
 </div>
 </div>
 </div>
-<div id="outline-container-org69b6a2f" class="outline-2">
-<h2 id="org69b6a2f"><span class="section-number-2">7</span> Memory consistency p113</h2>
+<div id="outline-container-org9f53697" class="outline-2">
+<h2 id="org9f53697"><span class="section-number-2">7</span> Memory consistency p113</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li>Real architecture does not provide sequential consistency.</li>
@@ -419,8 +419,8 @@ This lecture will look at some examples written in C and Pthreads.
 </ul>
 </div>
 </div>
-<div id="outline-container-org60b96d8" class="outline-2">
-<h2 id="org60b96d8"><span class="section-number-2">8</span> Pragmatic issues</h2>
+<div id="outline-container-org99d819d" class="outline-2">
+<h2 id="org99d819d"><span class="section-number-2">8</span> Pragmatic issues</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li>be careful to use only thread-safe code, which works irrespective of how many threads are active.</li>
@@ -428,8 +428,8 @@ This lecture will look at some examples written in C and Pthreads.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf0113eb" class="outline-2">
-<h2 id="orgf0113eb"><span class="section-number-2">9</span> Exercise 2</h2>
+<div id="outline-container-orge4d1fb5" class="outline-2">
+<h2 id="orge4d1fb5"><span class="section-number-2">9</span> Exercise 2</h2>
 </div>
 </div>
 </body>
