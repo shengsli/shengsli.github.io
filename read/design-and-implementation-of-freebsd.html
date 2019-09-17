@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-09-06 Fri 16:31 -->
+<!-- 2019-09-17 Tue 16:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Design and Implementation of the FreeBSD Operating System</title>
@@ -234,7 +234,12 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb696ec3">1. 2.6 Memory Management</a></li>
+<li><a href="#orgb696ec3">1. 2.6 Memory Management</a>
+<ul>
+<li><a href="#org13040e3">1.1. BSD Memory-Management Design Decisions</a></li>
+<li><a href="#orgc49b7b1">1.2. Memory Management Inside the Kernel</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -254,8 +259,28 @@ for the JavaScript code in this tag.
 <li>if a modest amount of memory is available, the system evict resources not been used recently.</li>
 <li>if there be a severe resource shortage, swap the entire context of a process to secondary storage.</li>
 </ol></li>
-<li></li>
 </ul>
+</div>
+<div id="outline-container-org13040e3" class="outline-3">
+<h3 id="org13040e3"><span class="section-number-3">1.1</span> BSD Memory-Management Design Decisions</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Ways to transfer large quantities of data between processes/ ways of copying: 
+<ol class="org-ol">
+<li>read, write operations</li>
+<li>remap process memory into kernel</li>
+<li><code>mmap()</code> without copying (on the same machine)</li>
+</ol></li>
+<li>sending files across the network: 
+<ol class="org-ol">
+<li>historically, read a file into an application buffer, and then write buffer to a socket (ie. kernel -&gt; app buffer -&gt; back into kernel to send on socket)</li>
+<li><code>sendfile</code> sends data from a file down a socket without copying.</li>
+</ol></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc49b7b1" class="outline-3">
+<h3 id="orgc49b7b1"><span class="section-number-3">1.2</span> Memory Management Inside the Kernel</h3>
 </div>
 </div>
 </div>
