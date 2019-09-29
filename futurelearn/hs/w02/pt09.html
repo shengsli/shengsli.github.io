@@ -6,7 +6,7 @@
 <!-- 2019-09-29 Sun 08:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Miscellanies</title>
+<title>I/O and a First Encounter with Monads</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -229,17 +229,50 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Miscellanies</h1>
-<ul class="org-ul">
-<li><a href="audio.html">Audio</a></li>
-<li><a href="dan_macros.html">Dan Macros</a></li>
-<li><a href="links.html">Various Links</a></li>
-<li><a href="macros.html">Macronutrients</a></li>
-<li><a href="ming_macros.html">Ming Macros</a></li>
-<li><a href="moves.html">Moves I Like</a></li>
-<li><a href="movies.html">Movies</a></li>
-<li><a href="train.html">Training Programmes</a></li>
+<h1 class="title">I/O and a First Encounter with Monads</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge3429b2">1. Pure Functions</a></li>
+<li><a href="#org597a8ce">2. I/O is Impure</a></li>
+<li><a href="#org5e1bb3e">3. Sequencing Actions</a></li>
+<li><a href="#org41dc9ee">4. Monads are Hiding Below</a></li>
 </ul>
+</div>
+</div>
+<ul class="org-ul">
+<li><a href="https://www.futurelearn.com/courses/functional-programming-haskell/3/steps/333241">https://www.futurelearn.com/courses/functional-programming-haskell/3/steps/333241</a></li>
+</ul>
+<div id="outline-container-orge3429b2" class="outline-2">
+<h2 id="orge3429b2"><span class="section-number-2">1</span> Pure Functions</h2>
+</div>
+<div id="outline-container-org597a8ce" class="outline-2">
+<h2 id="org597a8ce"><span class="section-number-2">2</span> I/O is Impure</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-hs">getLine
+putStrLn
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5e1bb3e" class="outline-2">
+<h2 id="org5e1bb3e"><span class="section-number-2">3</span> Sequencing Actions</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Sequencing is vital for I/O actions. 
+</p>
+</div>
+</div>
+<div id="outline-container-org41dc9ee" class="outline-2">
+<h2 id="org41dc9ee"><span class="section-number-2">4</span> Monads are Hiding Below</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The <code>do</code> notation allows us to sequence actions. <code>do</code> is only syntactic sugar. Underneath, it is rewritten as a chain of function calls where the output of the first function becomes the input of the second function. The <code>bind</code> operator accomplishes this function sequencing. It is a key part of the IO monad.
+</p>
+</div>
+</div>
 </div>
 </body>
 </html>

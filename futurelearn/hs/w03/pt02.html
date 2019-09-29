@@ -6,7 +6,7 @@
 <!-- 2019-09-29 Sun 08:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Miscellanies</title>
+<title>Recursive Functions on Lists</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -226,20 +226,130 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
-<h1 class="title">Miscellanies</h1>
-<ul class="org-ul">
-<li><a href="audio.html">Audio</a></li>
-<li><a href="dan_macros.html">Dan Macros</a></li>
-<li><a href="links.html">Various Links</a></li>
-<li><a href="macros.html">Macronutrients</a></li>
-<li><a href="ming_macros.html">Ming Macros</a></li>
-<li><a href="moves.html">Moves I Like</a></li>
-<li><a href="movies.html">Movies</a></li>
-<li><a href="train.html">Training Programmes</a></li>
+<h1 class="title">Recursive Functions on Lists</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org21a18c5">1. <span class="todo TODO">TODO</span> 2 approaches to working with lists:</a></li>
+<li><a href="#org1aeb5fe">2. Recursion on lists</a></li>
+<li><a href="#org7a28a0c">3. Computations over lists</a></li>
+<li><a href="#orgcca198e">4. Function composition</a></li>
+<li><a href="#orgde1a19d">5. Folding a list (reduction)</a>
+<ul>
+<li><a href="#org2dacb8c">5.1. Relationship between foldr and list structure</a></li>
+<li><a href="#org1098395">5.2. Applications</a></li>
 </ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org21a18c5" class="outline-2">
+<h2 id="org21a18c5"><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> 2 approaches to working with lists:</h2>
+<div class="outline-text-2" id="text-1">
+<ol class="org-ol">
+<li>use recursive definitions that traverse the list structure
+<ul class="org-ul">
+<li>base case and recursive case</li>
+</ul></li>
+<li>use list processing strategies, higher-order functions like map and filter
+<ul class="org-ul">
+<li>These functions are sometimes referred to as list combinators.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org1aeb5fe" class="outline-2">
+<h2 id="org1aeb5fe"><span class="section-number-2">2</span> Recursion on lists</h2>
+</div>
+<div id="outline-container-org7a28a0c" class="outline-2">
+<h2 id="org7a28a0c"><span class="section-number-2">3</span> Computations over lists</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>for/while loops in imperative language are naturally expressed as list computations in a functional laguage.</li>
+<li>common cases: <code>map, foldl, foldr</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcca198e" class="outline-2">
+<h2 id="orgcca198e"><span class="section-number-2">4</span> Function composition</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>\(f \circ g\)</li>
+<li><code>.</code> is the function composition operator in Haskell. 
+<ul class="org-ul">
+<li><code>(f . g) x = f (g x)</code></li>
+</ul></li>
+<li>Example: map
+<ul class="org-ul">
+<li><code>map f (map g xs) = map (f . g) xs</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgde1a19d" class="outline-2">
+<h2 id="orgde1a19d"><span class="section-number-2">5</span> Folding a list (reduction)</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>An iteration over a list to produce a singleton value is called a fold.</li>
+</ul>
+</div>
+<div id="outline-container-org2dacb8c" class="outline-3">
+<h3 id="org2dacb8c"><span class="section-number-3">5.1</span> Relationship between foldr and list structure</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="font-weight: bold;">foldr</span> (<span style="font-weight: bold; text-decoration: underline;">:</span>)  <span style="font-weight: bold; text-decoration: underline;">[]</span> [x0,x1,x2]
+  <span style="font-weight: bold; font-style: italic;">-- </span><span style="font-weight: bold; font-style: italic;">&gt;</span>
+  x0 <span style="font-weight: bold; text-decoration: underline;">:</span>  x1 <span style="font-weight: bold; text-decoration: underline;">:</span> x2 <span style="font-weight: bold; text-decoration: underline;">:</span> <span style="font-weight: bold; text-decoration: underline;">[]</span>
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="font-weight: bold;">foldr</span> cons <span style="font-weight: bold; text-decoration: underline;">[]</span> xs <span style="font-weight: bold; font-style: italic;">=</span> xs
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1098395" class="outline-3">
+<h3 id="org1098395"><span class="section-number-3">5.2</span> Applications</h3>
+<div class="outline-text-3" id="text-5-2">
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="font-weight: bold;">sum</span> xs <span style="font-weight: bold; font-style: italic;">=</span> foldr (<span style="font-weight: bold; font-style: italic;">+</span>) 0 xs
+<span style="font-weight: bold;">product</span> xs <span style="font-weight: bold; font-style: italic;">=</span> foldr (<span style="font-weight: bold; font-style: italic;">*</span>) 1 xs
+<span style="font-weight: bold;">sum</span>      <span style="font-weight: bold; font-style: italic;">=</span> foldr (<span style="font-weight: bold; font-style: italic;">+</span>) 0
+<span style="font-weight: bold;">product</span>  <span style="font-weight: bold; font-style: italic;">=</span> foldr (<span style="font-weight: bold; font-style: italic;">*</span>) 1
+</pre>
+</div>
+<p>
+This is sometimes called "point free" style because you're programming solely with the functions; the data isn't mentioned directly.
+</p>
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>
