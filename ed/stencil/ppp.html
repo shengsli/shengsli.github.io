@@ -3,29 +3,22 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-09-06 Fri 16:32 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>progress-plans-problems</title>
-<meta name="generator" content="Org mode" />
+<!-- 2019-10-26 Sat 22:37 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
+  .title  { text-align: center; }
   .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
+  .done   { color: green; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -52,111 +45,27 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara { display: inline; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -176,7 +85,6 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" 						   type="text/css" 						   href="/css/style.css">
@@ -185,7 +93,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -235,752 +143,974 @@ for the JavaScript code in this tag.
 <caption class="t-above"><span class="table-number">Table 1:</span> Timeline</caption>
 
 <colgroup>
-<col  class="org-left" />
+<col  class="left" />
 
-<col  class="org-left" />
+<col  class="left" />
 </colgroup>
 <tbody>
 <tr>
-<td class="org-left">IPP submission</td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-04-15 Mon 10:00&gt; </span></span> w16</td>
+<td class="left">IPP submission</td>
+<td class="left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-04-15 Mon 10:00&gt;</span></span> w16</td>
 </tr>
 
 <tr>
-<td class="org-left">Project submission</td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-08-16 Fri 12:00&gt; </span></span> w33</td>
+<td class="left">Project submission</td>
+<td class="left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-08-16 Fri 12:00&gt;</span></span> w33</td>
 </tr>
 
 <tr>
-<td class="org-left">Weekly meeting</td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-02-28 Thu 15:00 +1w&gt;</span></span></td>
+<td class="left">Weekly meeting</td>
+<td class="left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-02-28 Thu 15:00 +1w&gt;</span></span></td>
 </tr>
 </tbody>
 </table>
 </center>
+<ul class="org-ul"><li><a id="sec-1" name="sec-1"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-08-13 Tue 10:00&gt;</span></span> w33<br  /><div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li><a id="org693eb29"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-08-13 Tue 10:00&gt; </span></span> w33<br />
-<div class="outline-text-2" id="text-org693eb29">
-<ul class="org-ul">
-<li>writing</li>
-<li>submission: code, report in electronic format, no need for hard copy</li>
+<li>writing
+</li>
+<li>submission: code, report in electronic format, no need for hard copy
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org89da3d5"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-08-06 Tue 10:00&gt; </span></span> w32<br />
-<div class="outline-text-2" id="text-org89da3d5">
+<li><a id="sec-2" name="sec-2"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-08-06 Tue 10:00&gt;</span></span> w32<br  /><div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li>experiments</li>
+<li>experiments
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org80386a2"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-30 Tue 10:00&gt; </span></span> w31<br />
-<div class="outline-text-2" id="text-org80386a2">
+<li><a id="sec-3" name="sec-3"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-30 Tue 10:00&gt;</span></span> w31<br  /><div class="outline-text-2" id="text-3">
 <ul class="org-ul">
-<li>loop tiling: tile size choice. data size (radius size), cache size</li>
-<li><code>g++ sum2D.cpp -std=c++11 -O2 -lpthread -DNTHREADS=4 -DNDATABLOCKS=100 -DRADIUS=10 -DNROWS=1000 -DNCOLS=1000 -DPADDING=0 -DNITERS=1 -DOUTPUT -DTILE=7 -o sum2D</code></li>
+<li>loop tiling: tile size choice. data size (radius size), cache size
+</li>
+<li><code>g++ sum2D.cpp -std=c++11 -O2 -lpthread -DNTHREADS=4 -DNDATABLOCKS=100 -DRADIUS=10 -DNROWS=1000 -DNCOLS=1000 -DPADDING=0 -DNITERS=1 -DOUTPUT -DTILE=7 -o sum2D</code>
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org238d1e4"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-22 Mon 14:00&gt; </span></span> w30<br />
-<div class="outline-text-2" id="text-org238d1e4">
+<li><a id="sec-4" name="sec-4"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-22 Mon 14:00&gt;</span></span> w30<br  /><div class="outline-text-2" id="text-4">
 <ul class="org-ul">
-<li>add #iterations, sum example overflow</li>
-<li>counter barrier, pthread barrier, c++ barrier</li>
-<li>jacobi == average?</li>
-<li>adding niters makes the type of input and output the same</li>
-<li>how to use lambda?</li>
-<li>matrix multiplication. e.g. convolution. user defined manually?</li>
-<li>loop coalescing slows down</li>
-<li>James AMD CPU can have 2 threads per core. Non-uniform Memory Access model, 8 cores connect to memory by bus.</li>
-<li>clang++ Reduce and Map skeleton, thread-pool?</li>
-<li><p>
-std::thread, threadStencil: 
-</p>
+<li>add #iterations, sum example overflow
+</li>
+<li>counter barrier, pthread barrier, c++ barrier
+</li>
+<li>jacobi == average?
+</li>
+<li>adding niters makes the type of input and output the same
+</li>
+<li>how to use lambda?
+</li>
+<li>matrix multiplication. e.g. convolution. user defined manually?
+</li>
+<li>loop coalescing slows down
+</li>
+<li>James AMD CPU can have 2 threads per core. Non-uniform Memory Access model, 8 cores connect to memory by bus. 
+</li>
+<li>clang++ Reduce and Map skeleton, thread-pool? 
+</li>
+<li>std::thread, threadStencil: 
 <pre class="example">
-  THREADS[t] = new std::thread(&amp;Stencil1DImplementation&lt;EL&gt;::threadStencil1D&lt;IN,OUT,ARGs...&gt;, this, threadArguments, radius, paddingOption, nIters, t, args...);
-</pre></li>
-<li class="on"><code>[X]</code> boundary decisions: constant, wrap around</li>
-<li class="on"><code>[X]</code> Gaussian blur 2d</li>
-<li class="on"><code>[X]</code> Jacobi</li>
-<li class="on"><code>[X]</code> heat transfer 2D</li>
-<li class="on"><code>[X]</code> test and plot, (bash script and R script)</li>
-<li class="on"><code>[X]</code> add #iterations to interface, not recreate threads</li>
-<li class="on"><code>[X]</code> stencil 3d, sum 3d</li>
-<li class="on"><code>[X]</code> median2d, sum2d pthread version</li>
+THREADS[t] = new std::thread(&amp;Stencil1DImplementation&lt;EL&gt;::threadStencil1D&lt;IN,OUT,ARGs...&gt;, this, threadArguments, radius, paddingOption, nIters, t, args...);
+</pre>
+</li>
+<li><code>[X]</code> boundary decisions: constant, wrap around
+</li>
+<li><code>[X]</code> Gaussian blur 2d
+</li>
+<li><code>[X]</code> Jacobi
+</li>
+<li><code>[X]</code> heat transfer 2D
+</li>
+<li><code>[X]</code> test and plot, (bash script and R script)
+</li>
+<li><code>[X]</code> add #iterations to interface, not recreate threads
+</li>
+<li><code>[X]</code> stencil 3d, sum 3d
+</li>
+<li><code>[X]</code> median2d, sum2d pthread version
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org151bdb6"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-01 Mon 09:00&gt; </span></span> w27<br />
-<div class="outline-text-2" id="text-org151bdb6">
+<li><a id="sec-5" name="sec-5"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-07-01 Mon 09:00&gt;</span></span> w27<br  /><div class="outline-text-2" id="text-5">
 <ul class="org-ul">
-<li class="on"><code>[X]</code> 2d examples: sum, median</li>
+<li><code>[X]</code> 2d examples: sum, median
+</li>
 </ul>
 </div>
 </li>
-<li><a id="orgb3b5006"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-06-26 Wed 11:00&gt; </span></span> w26<br />
-<div class="outline-text-2" id="text-orgb3b5006">
+<li><a id="sec-6" name="sec-6"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-06-26 Wed 11:00&gt;</span></span> w26<br  /><div class="outline-text-2" id="text-6">
 <ul class="org-ul">
-<li class="on"><code>[X]</code> 1d example: return input</li>
-<li class="on"><code>[X]</code> 1d example: sum</li>
-<li class="on"><code>[X]</code> 1d example: median
+<li><code>[X]</code> 1d example: return input
+</li>
+<li><code>[X]</code> 1d example: sum
+</li>
+<li><code>[X]</code> 1d example: median
 <ul class="org-ul">
-<li>sort, then find the element in the middle</li>
-<li>&lt;algorithm&gt; sort()</li>
-</ul></li>
+<li>sort, then find the element in the middle
+</li>
+<li>&lt;algorithm&gt; sort()
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org19b82b8"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-06-19 Wed 11:00&gt; </span></span> w25<br />
-<div class="outline-text-2" id="text-org19b82b8">
+<li><a id="sec-7" name="sec-7"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-06-19 Wed 11:00&gt;</span></span> w25<br  /><div class="outline-text-2" id="text-7">
 <ul class="org-ul">
-<li class="on"><code>[X]</code> 1d example: median filtering</li>
-<li class="off"><code>[&#xa0;]</code> 2d example: median filtering</li>
+<li><code>[X]</code> 1d example: median filtering
+</li>
+<li><code>[&#xa0;]</code> 2d example: median filtering
+</li>
 </ul>
 </div>
 </li>
-<li><a id="orgf8cf1e0"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-06-12 Wed 11:00&gt; </span></span> w24<br />
-<div class="outline-text-2" id="text-orgf8cf1e0">
+<li><a id="sec-8" name="sec-8"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-06-12 Wed 11:00&gt;</span></span> w24<br  /><div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li>examples: 
 <ul class="org-ul">
-<li>median filtering</li>
-<li>successive over relaxation</li>
-<li>heat transfer simulation</li>
-<li>Jacobi method</li>
-</ul></li>
+<li>median filtering
+</li>
+<li>successive over relaxation
+</li>
+<li>heat transfer simulation
+</li>
+<li>Jacobi method
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </li>
-<li><a id="orgdfa428a"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-04-04 Thu 14:00&gt; </span></span> w14<br />
+<li><a id="sec-9" name="sec-9"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-04-04 Thu 14:00&gt;</span></span> w14<br  /><ul class="org-ul"><li><a id="sec-9-1" name="sec-9-1"></a>progress last week<br  /></li>
+<li><a id="sec-9-2" name="sec-9-2"></a>plan next week<br  /></li>
+<li><a id="sec-9-3" name="sec-9-3"></a>prepared questions for meeting<br  /><div class="outline-text-3" id="text-9-3">
 <ul class="org-ul">
-<li><a id="org17e1794"></a>progress last week<br /></li>
-<li><a id="org32d4384"></a>plan next week<br /></li>
-<li><a id="org85d9652"></a>prepared questions for meeting<br />
-<div class="outline-text-3" id="text-org85d9652">
-<ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> vector intrinsics</li>
-<li class="off"><code>[&#xa0;]</code> did antonio use pthread? he mentioned pthread in his paper but i did not find &lt;pthread.h&gt;</li>
-<li class="on"><code>[X]</code> what is programme? plan</li>
+<li><code>[&#xa0;]</code> vector intrinsics
+</li>
+<li><code>[&#xa0;]</code> did antonio use pthread? he mentioned pthread in his paper but i did not find &lt;pthread.h&gt;
+</li>
+<li><code>[X]</code> what is programme? plan
+</li>
 </ul>
 </div>
 </li>
-<li><a id="orgf65dc1b"></a>meeting notes<br />
-<div class="outline-text-3" id="text-orgf65dc1b">
+<li><a id="sec-9-4" name="sec-9-4"></a>meeting notes<br  /><div class="outline-text-3" id="text-9-4">
 <ul class="org-ul">
-<li><a href="ipp/ipp_feedback.html">reorganized notes</a></li>
-</ul>
-</div>
-<ul class="org-ul">
-<li><a id="org10dbc9d"></a>what things are now<br />
-<div class="outline-text-4" id="text-org10dbc9d">
-<ul class="org-ul">
-<li>statement: parallelism is important  but hard</li>
-<li>skeleton tries to simplify</li>
-<li>3rd statement: good for students to learn about</li>
-<li>understandable code</li>
-<li>use skeleton and understand what works inside</li>
-</ul>
-</div>
+<li><a href="ipp/ipp_feedback.html">reorganized notes</a>
 </li>
-<li><a id="org571c496"></a>what to do to make it better<br /></li>
-<li><a id="org2e39b64"></a>novelty<br />
-<div class="outline-text-4" id="text-org2e39b64">
+</ul>
+</div>
+<ul class="org-ul"><li><a id="sec-9-4-1" name="sec-9-4-1"></a>what things are now<br  /><div class="outline-text-4" id="text-9-4-1">
 <ul class="org-ul">
-<li>usable</li>
-<li>open source</li>
-<li>non existing system help</li>
+<li>statement: parallelism is important  but hard
+</li>
+<li>skeleton tries to simplify
+</li>
+<li>3rd statement: good for students to learn about
+</li>
+<li>understandable code
+</li>
+<li>use skeleton and understand what works inside
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org349da35"></a>benefit<br />
-<div class="outline-text-4" id="text-org349da35">
+<li><a id="sec-9-4-2" name="sec-9-4-2"></a>what to do to make it better<br  /></li>
+<li><a id="sec-9-4-3" name="sec-9-4-3"></a>novelty<br  /><div class="outline-text-4" id="text-9-4-3">
 <ul class="org-ul">
-<li>students</li>
-<li>educator</li>
+<li>usable
+</li>
+<li>open source
+</li>
+<li>non existing system help
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org9a1a1ef"></a>deliverable<br />
-<div class="outline-text-4" id="text-org9a1a1ef">
+<li><a id="sec-9-4-4" name="sec-9-4-4"></a>benefit<br  /><div class="outline-text-4" id="text-9-4-4">
 <ul class="org-ul">
-<li>code</li>
-<li>performance testing</li>
-<li>subjective comments on example code</li>
+<li>students
+</li>
+<li>educator
+</li>
 </ul>
 </div>
 </li>
-<li><a id="orga210405"></a>evaluation<br />
-<div class="outline-text-4" id="text-orga210405">
+<li><a id="sec-9-4-5" name="sec-9-4-5"></a>deliverable<br  /><div class="outline-text-4" id="text-9-4-5">
 <ul class="org-ul">
-<li>a range of problem size</li>
-<li>number of cores</li>
-<li>a variety of stencil</li>
-<li>stencil with different computation</li>
+<li>code
+</li>
+<li>performance testing
+</li>
+<li>subjective comments on example code
+</li>
 </ul>
 </div>
 </li>
-</ul>
+<li><a id="sec-9-4-6" name="sec-9-4-6"></a>evaluation<br  /><div class="outline-text-4" id="text-9-4-6">
+<ul class="org-ul">
+<li>a range of problem size
+</li>
+<li>number of cores
+</li>
+<li>a variety of stencil
+</li>
+<li>stencil with different computation
 </li>
 </ul>
+</div>
+</li></ul>
+</li></ul>
 </li>
-<li><a id="org1b5641c"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-03-28 Thu 15:00&gt; </span></span> w13<br />
+<li><a id="sec-10" name="sec-10"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-03-28 Thu 15:00&gt;</span></span> w13<br  /><ul class="org-ul"><li><a id="sec-10-1" name="sec-10-1"></a>progress last week <code>[%]</code><br  /><div class="outline-text-3" id="text-10-1">
 <ul class="org-ul">
-<li><a id="orgf5e75cd"></a>progress last week <code>[%]</code><br />
-<div class="outline-text-3" id="text-orgf5e75cd">
-<ul class="org-ul">
-<li>continue writing ipp</li>
-<li>reading</li>
-<li>play fortran a bit, simply bc i ran into it in a Lamport paper, probably irrelevant</li>
+<li>continue writing ipp
+</li>
+<li>reading
+</li>
+<li>play fortran a bit, simply bc i ran into it in a Lamport paper, probably irrelevant
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org08187f0"></a>plan next week<br />
-<ul class="org-ul">
-<li><a id="org6d25718"></a><span class="todo TODO">TODO</span> hand over first ipp draft to Murray<br /></li>
-</ul>
+<li><a id="sec-10-2" name="sec-10-2"></a>plan next week<br  /><ul class="org-ul"><li><a id="sec-10-2-1" name="sec-10-2-1"></a><span class="todo TODO">TODO</span> hand over first ipp draft to Murray<br  /></li></ul>
 </li>
-<li><a id="orgf91c2a2"></a>prepared questions for meeting<br /></li>
-<li><a id="org0758df7"></a>meeting notes<br />
-<div class="outline-text-3" id="text-org0758df7">
+<li><a id="sec-10-3" name="sec-10-3"></a>prepared questions for meeting<br  /></li>
+<li><a id="sec-10-4" name="sec-10-4"></a>meeting notes<br  /><div class="outline-text-3" id="text-10-4">
 <ul class="org-ul">
 <li>motivation of skeleton in general
 <ul class="org-ul">
-<li>why skeleton is interesting.</li>
-<li><b>why opt is challenging</b></li>
-</ul></li>
+<li>why skeleton is interesting. 
+</li>
+<li><b>why opt is challenging</b>
+</li>
+</ul>
+</li>
 <li>in research objectives and plan, add more about how to evaluate performance
 <ul class="org-ul">
-<li>axes:</li>
+<li>axes: 
+</li>
 <li>input criteria:
 <ul class="org-ul">
-<li>problem size: stencil size</li>
-<li>how many threads</li>
-<li>generic programming</li>
-<li>scalability</li>
-</ul></li>
-</ul></li>
-<li>be specific about measurement</li>
-<li><b>before next week, finish the first draft <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-04-04 Thu 14:00&gt;</span></span></b></li>
-<li><b>murray will be away on april 5th <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-04-05 Fri&gt;</span></span></b></li>
+<li>problem size: stencil size
+</li>
+<li>how many threads
+</li>
+<li>generic programming
+</li>
+<li>scalability
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>be specific about measurement
+</li>
+<li><b>before next week, finish the first draft <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-04-04 Thu 14:00&gt;</span></span></b>
+</li>
+<li><b>murray will be away on april 5th <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-04-05 Fri&gt;</span></span></b>
+</li>
+</ul>
+</div>
+</li></ul>
+</li>
+<li><a id="sec-11" name="sec-11"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-03-21 Thu 15:00&gt;</span></span> w12 cancelled by sheng<br  /><ul class="org-ul"><li><a id="sec-11-1" name="sec-11-1"></a>progress last week <code>[75%]</code><br  /><div class="outline-text-3" id="text-11-1">
+<ul class="org-ul">
+<li><code>[X]</code> reading parallel book, other papers (see <a href="read_log.html">my reading log</a>)
+</li>
+<li><code>[X]</code> doxygen
+</li>
+<li><code>[X]</code> remove "code and data sharing"
+</li>
+<li><code>[&#xa0;]</code> add stencil applications to ipp
+</li>
 </ul>
 </div>
 </li>
-</ul>
+<li><a id="sec-11-2" name="sec-11-2"></a>plan next week<br  /><div class="outline-text-3" id="text-11-2">
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> look up strip mining
 </li>
-<li><a id="org755a20e"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-03-21 Thu 15:00&gt; </span></span> w12 cancelled by sheng<br />
-<ul class="org-ul">
-<li><a id="org201e418"></a>progress last week <code>[75%]</code><br />
-<div class="outline-text-3" id="text-org201e418">
-<ul class="org-ul">
-<li class="on"><code>[X]</code> reading parallel book, other papers (see <a href="read_log.html">my reading log</a>)</li>
-<li class="on"><code>[X]</code> doxygen</li>
-<li class="on"><code>[X]</code> remove "code and data sharing"</li>
-<li class="off"><code>[&#xa0;]</code> add stencil applications to ipp</li>
+<li><code>[&#xa0;]</code> continue coding stencil interface
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org4900f95"></a>plan next week<br />
-<div class="outline-text-3" id="text-org4900f95">
+<li><a id="sec-11-3" name="sec-11-3"></a>problems<br  /></li>
+<li><a id="sec-11-4" name="sec-11-4"></a>prepared questions for meeting<br  /><div class="outline-text-3" id="text-11-4">
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> look up strip mining</li>
-<li class="off"><code>[&#xa0;]</code> continue coding stencil interface</li>
-</ul>
-</div>
+<li><code>[&#xa0;]</code> document cpp? I use doxygen now. c-style doc.  
 </li>
-<li><a id="org5ff2a51"></a>problems<br /></li>
-<li><a id="orgaa10004"></a>prepared questions for meeting<br />
-<div class="outline-text-3" id="text-orgaa10004">
-<ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> document cpp? I use doxygen now. c-style doc.</li>
-<li class="off"><code>[&#xa0;]</code> optimizing stencil's communication
+<li><code>[&#xa0;]</code> optimizing stencil's communication
 <ul class="org-ul">
 <li>how to find the balance point between communication and computation?
 <ul class="org-ul">
-<li>redundant work &lt; overhead</li>
-<li>latency of send &lt; transmission time</li>
-</ul></li>
-</ul></li>
-<li class="off"><code>[&#xa0;]</code> avoid synchronization
+<li>redundant work &lt; overhead
+</li>
+<li>latency of send &lt; transmission time
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>[&#xa0;]</code> avoid synchronization
 <ul class="org-ul">
-<li>ghost cell pattern paper P13: MPI<sub>Send</sub> alike synchronous op "have to be performed in the order in which they are appeared in the code". Really?</li>
-</ul></li>
+<li>ghost cell pattern paper P13: MPI<sub>Send</sub> alike synchronous op "have to be performed in the order in which they are appeared in the code". Really?
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </li>
-<li><a id="orge55a9bc"></a>meeting notes<br /></li>
-</ul>
+<li><a id="sec-11-5" name="sec-11-5"></a>meeting notes<br  /></li></ul>
 </li>
-<li><a id="org6566a42"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-03-14 Thu 15:00&gt; </span></span> w11<br />
+<li><a id="sec-12" name="sec-12"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-03-14 Thu 15:00&gt;</span></span> w11<br  /><ul class="org-ul"><li><a id="sec-12-1" name="sec-12-1"></a>progress last week<br  /><div class="outline-text-3" id="text-12-1">
 <ul class="org-ul">
-<li><a id="org4758663"></a>progress last week<br />
-<div class="outline-text-3" id="text-org4758663">
-<ul class="org-ul">
-<li>did a tiny bit of coding for stencil skeleton</li>
-<li>keep reading  skeleton book and valias' thesis and parallel book</li>
-<li>refresh cpp a bit</li>
-<li>write ipp a bit</li>
+<li>did a tiny bit of coding for stencil skeleton
+</li>
+<li>keep reading  skeleton book and valias' thesis and parallel book
+</li>
+<li>refresh cpp a bit
+</li>
+<li>write ipp a bit
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org785fd98"></a>plan next week<br />
+<li><a id="sec-12-2" name="sec-12-2"></a>plan next week<br  /><ul class="org-ul"><li><a id="sec-12-2-1" name="sec-12-2-1"></a><span class="todo TODO">TODO</span> write problem statement<br  /></li>
+<li><a id="sec-12-2-2" name="sec-12-2-2"></a><span class="done DONE">DONE</span> create gantt chart based on objectives, i need to think about time and milestones<br  /><div class="outline-text-4" id="text-12-2-2">
 <ul class="org-ul">
-<li><a id="org9cfbba4"></a><span class="todo TODO">TODO</span> write problem statement<br /></li>
-<li><a id="orgc086b13"></a><span class="done DONE">DONE</span> create gantt chart based on objectives, i need to think about time and milestones<br />
-<div class="outline-text-4" id="text-orgc086b13">
-<ul class="org-ul">
-<li>likely that it will require adjustment</li>
+<li>likely that it will require adjustment
+</li>
 </ul>
 </div>
 </li>
-<li><a id="orgac5558d"></a><span class="todo TODO">TODO</span> how stencil use shifts to optimize it?<br /></li>
-<li><a id="org234ab76"></a><span class="todo TODO">TODO</span> how stencil use cache?<br />
-<div class="outline-text-4" id="text-org234ab76">
+<li><a id="sec-12-2-3" name="sec-12-2-3"></a><span class="todo TODO">TODO</span> how stencil use shifts to optimize it?<br  /></li>
+<li><a id="sec-12-2-4" name="sec-12-2-4"></a><span class="todo TODO">TODO</span> how stencil use cache?<br  /><div class="outline-text-4" id="text-12-2-4">
 <ul class="org-ul">
-<li><a href="http://ipcc.cs.uoregon.edu/lectures/lecture-8-stencil.pdf">http://ipcc.cs.uoregon.edu/lectures/lecture-8-stencil.pdf</a></li>
+<li><a href="http://ipcc.cs.uoregon.edu/lectures/lecture-8-stencil.pdf">http://ipcc.cs.uoregon.edu/lectures/lecture-8-stencil.pdf</a>
+</li>
 </ul>
 </div>
+</li></ul>
 </li>
-</ul>
-</li>
-<li><a id="orga362952"></a>problems<br /></li>
-<li><a id="org4aff5a9"></a>prepared questions for meeting <a id="org5ceef49"></a><br />
-<div class="outline-text-3" id="text-org4aff5a9">
+<li><a id="sec-12-3" name="sec-12-3"></a>problems<br  /></li>
+<li><a id="sec-12-4" name="sec-12-4"></a>prepared questions for meeting <a id="prepared-questions-for-meeting" name="prepared-questions-for-meeting"></a><br  /><div class="outline-text-3" id="text-12-4">
 <ol class="org-ol">
-<li class="on"><code>[X]</code> what is a research hypothesis? is it the possible outcome of my project? 
+<li><code>[X]</code> what is a research hypothesis? is it the possible outcome of my project? 
 <ul class="org-ul">
 <li>if it is, i can think of 2 ways to compose my research hypothesis
 <ol class="org-ol">
-<li>stencil skeleton is faster &#x2013; this one is meaningless. no need for me to prove this</li>
-<li>education purpose: help build up environment for teaching parallel computing</li>
-</ol></li>
+<li>stencil skeleton is faster &#x2013; this one is meaningless. no need for me to prove this
+</li>
+<li>education purpose: help build up environment for teaching parallel computing 
+</li>
+</ol>
+</li>
 <li>murray: 
 <ol class="org-ol">
-<li>abstract the stencil pattern</li>
-<li>hidden to the users</li>
-<li>better than the naive program</li>
-<li>beneficial to someone</li>
-<li>help optimize the program*</li>
-<li>good performance compared to sequential and simple parallel (e.g. pthread)</li>
-</ol></li>
-</ul></li>
-<li class="on"><code>[X]</code> coding style
+<li>abstract the stencil pattern
+</li>
+<li>hidden to the users
+</li>
+<li>better than the naive program
+</li>
+<li>beneficial to someone
+</li>
+<li>help optimize the program*
+</li>
+<li>good performance compared to sequential and simple parallel (e.g. pthread)
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><code>[X]</code> coding style
 <ul class="org-ul">
-<li>e.g. <code>impl::MapOverlap1D</code> or <code>MapOverlapSkeleton</code></li>
-<li>which one do you prefer? stencil or mapoverlap?</li>
-<li>murray: stencil. most systems use stencil. skepu uses mapoverlap.</li>
-<li>i will follow antonio's style, just to be consistent.</li>
-</ul></li>
-<li class="on"><code>[X]</code> is there any way to test a skeleton? do i have to test it with an example?
+<li>e.g. <code>impl::MapOverlap1D</code> or <code>MapOverlapSkeleton</code>
+</li>
+<li>which one do you prefer? stencil or mapoverlap?
+</li>
+<li>murray: stencil. most systems use stencil. skepu uses mapoverlap. 
+</li>
+<li>i will follow antonio's style, just to be consistent. 
+</li>
+</ul>
+</li>
+<li><code>[X]</code> is there any way to test a skeleton? do i have to test it with an example?
 <ul class="org-ul">
-<li>murray: test it using some simple examples like jacobi</li>
-</ul></li>
-<li class="on"><code>[X]</code> ipp
+<li>murray: test it using some simple examples like jacobi
+</li>
+</ul>
+</li>
+<li><code>[X]</code> ipp
 <ol class="org-ol">
-<li>problem statement:</li>
-<li>methodology:</li>
+<li>problem statement: 
+</li>
+<li>methodology: 
+</li>
 <li>should my proposal writing focus on explaining skeleton or stencil? 
 <ul class="org-ul">
-<li>background, motivation, problem statement more or less need some information about skeletons</li>
-<li>education purpose: help build a dice friendly parallel skeleton library</li>
-<li>industrial context: some twice-told stories, efficiency, cost, speed</li>
-</ul></li>
-</ol></li>
-<li class="on"><code>[X]</code> evaluation, description on template below: 
+<li>background, motivation, problem statement more or less need some information about skeletons
+</li>
+<li>education purpose: help build a dice friendly parallel skeleton library
+</li>
+<li>industrial context: some twice-told stories, efficiency, cost, speed
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><code>[X]</code> evaluation, description on template below: 
 <ul class="org-ul">
-<li>Describe the specific methods of data collection.</li>
-<li>Explain how you intent to analyse and interpret the results.</li>
+<li>Describe the specific methods of data collection.
+</li>
+<li>Explain how you intent to analyse and interpret the results.
+</li>
 <li>murray: 
 <ul class="org-ul">
-<li>test exmaples, fit eamples to my skeleton</li>
-<li>performance comparison with sequential and simple parallel program</li>
-</ul></li>
-</ul></li>
+<li>test exmaples, fit eamples to my skeleton
+</li>
+<li>performance comparison with sequential and simple parallel program
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
 </div>
 </li>
-<li><a id="org950219c"></a>meeting notes<br />
-<div class="outline-text-3" id="text-org950219c">
+<li><a id="sec-12-5" name="sec-12-5"></a>meeting notes<br  /><div class="outline-text-3" id="text-12-5">
 <ol class="org-ol">
-<li>some meeting notes are in <a href="#org5ceef49">prepared questions for meeting</a> above</li>
+<li>some meeting notes are in <a href="#prepared-questions-for-meeting">prepared questions for meeting</a> above
+</li>
 <li>ipp: # of pages for each section
 <ul class="org-ul">
-<li>2 pages background</li>
-<li>applications</li>
-<li>my plan will be the main body</li>
-<li>tasks 1 page</li>
-<li>talk a bit about skepu and other existing libraries</li>
-</ul></li>
+<li>2 pages background
+</li>
+<li>applications
+</li>
+<li>my plan will be the main body
+</li>
+<li>tasks 1 page
+</li>
+<li>talk a bit about skepu and other existing libraries
+</li>
+</ul>
+</li>
 <li>writing should focus more on stencil
 <ul class="org-ul">
-<li>i do need to mention skeltons, but within a few lines</li>
-</ul></li>
+<li>i do need to mention skeltons, but within a few lines
+</li>
+</ul>
+</li>
 <li>ipp methodology
 <ul class="org-ul">
 <li>how i will evaluate my research hypothesis?
 <ul class="org-ul">
-<li>implement it</li>
-<li>and test it: test it with some examples</li>
-</ul></li>
-</ul></li>
-<li class="on"><code>[X]</code> remove "code and data sharing"</li>
-<li class="on"><code>[X]</code> add stencil applications to ipp</li>
-<li>floating point number might leads to rounding error, consider this in later work</li>
+<li>implement it
+</li>
+<li>and test it: test it with some examples
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>[X]</code> remove "code and data sharing"
+</li>
+<li><code>[X]</code> add stencil applications to ipp
+</li>
+<li>floating point number might leads to rounding error, consider this in later work
+</li>
 </ol>
 </div>
+</li></ul>
 </li>
-</ul>
+<li><a id="sec-13" name="sec-13"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-03-07 Thu 15:00&gt;</span></span> w10 cancelled by sheng<br  /><ul class="org-ul"><li><a id="sec-13-1" name="sec-13-1"></a>progress last week <code>[100%]</code><br  /><div class="outline-text-3" id="text-13-1">
+<ul class="org-ul">
+<li><code>[X]</code> refresh namespace
 </li>
-<li><a id="orgf36f36b"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-03-07 Thu 15:00&gt; </span></span> w10 cancelled by sheng<br />
-<ul class="org-ul">
-<li><a id="orga64fb60"></a>progress last week <code>[100%]</code><br />
-<div class="outline-text-3" id="text-orga64fb60">
-<ul class="org-ul">
-<li class="on"><code>[X]</code> refresh namespace</li>
-<li class="on"><code>[X]</code> refresh lambda</li>
-<li class="on"><code>[X]</code> reading skeleton book</li>
-<li class="on"><code>[X]</code> did functional programming, probably irrelevant</li>
-<li class="on"><code>[X]</code> refresh operator overloading</li>
-<li class="on"><code>[X]</code> continue searching on design and implementation, especially design</li>
-<li class="on"><code>[X]</code> understand wrapper</li>
-<li class="on"><code>[X]</code> write ipp</li>
+<li><code>[X]</code> refresh lambda
+</li>
+<li><code>[X]</code> reading skeleton book
+</li>
+<li><code>[X]</code> did functional programming, probably irrelevant
+</li>
+<li><code>[X]</code> refresh operator overloading
+</li>
+<li><code>[X]</code> continue searching on design and implementation, especially design
+</li>
+<li><code>[X]</code> understand wrapper
+</li>
+<li><code>[X]</code> write ipp
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org53de95b"></a>plan next week<br /></li>
-<li><a id="org2ccad92"></a>problems<br /></li>
-<li><a id="org85ea00c"></a>prepared questions for meeting<br /></li>
-<li><a id="orga248000"></a>meeting notes<br /></li>
-</ul>
+<li><a id="sec-13-2" name="sec-13-2"></a>plan next week<br  /></li>
+<li><a id="sec-13-3" name="sec-13-3"></a>problems<br  /></li>
+<li><a id="sec-13-4" name="sec-13-4"></a>prepared questions for meeting<br  /></li>
+<li><a id="sec-13-5" name="sec-13-5"></a>meeting notes<br  /></li></ul>
 </li>
-<li><a id="org499ab16"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-02-28 Thu 16:00&gt; </span></span> w09<br />
+<li><a id="sec-14" name="sec-14"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-02-28 Thu 16:00&gt;</span></span> w09<br  /><ul class="org-ul"><li><a id="sec-14-1" name="sec-14-1"></a>progress last week<br  /><ul class="org-ul"><li><a id="sec-14-1-1" name="sec-14-1-1"></a><span class="todo TODO">TODO</span> draft a plan <code>[100%]</code><br  /><div class="outline-text-4" id="text-14-1-1">
 <ul class="org-ul">
-<li><a id="orgb48f3c0"></a>progress last week<br />
-<ul class="org-ul">
-<li><a id="orgb00a8d5"></a><span class="todo TODO">TODO</span> draft a plan <code>[100%]</code><br />
-<div class="outline-text-4" id="text-orgb00a8d5">
-<ul class="org-ul">
-<li class="on"><code>[X]</code> list objectives/tasks</li>
-<li class="on"><code>[X]</code> gantt chart</li>
-<li>next meeting will talk about proposal and project plan</li>
+<li><code>[X]</code> list objectives/tasks
+</li>
+<li><code>[X]</code> gantt chart
+</li>
+<li>next meeting will talk about proposal and project plan
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org7e03ac2"></a><span class="todo TODO">TODO</span> get familiar with stencil patterns <code>[100%]</code><br />
-<div class="outline-text-4" id="text-org7e03ac2">
+<li><a id="sec-14-1-2" name="sec-14-1-2"></a><span class="todo TODO">TODO</span> get familiar with stencil patterns <code>[100%]</code><br  /><div class="outline-text-4" id="text-14-1-2">
 <ul class="org-ul">
-<li class="on"><code>[X]</code> valias code
+<li><code>[X]</code> valias code
 <ul class="org-ul">
-<li>just ran it</li>
-</ul></li>
-<li class="on"><code>[X]</code> look up existing stencil interface: e.g. how input parameters are defined? what is output?
+<li>just ran it
+</li>
+</ul>
+</li>
+<li><code>[X]</code> look up existing stencil interface: e.g. how input parameters are defined? what is output?
 <ul class="org-ul">
-<li>sort of done but actually not. i had a look at skepu2 interface design.</li>
-<li>still not quite understand in detail, will review again</li>
-<li>read skepu2 manual: had a look at their interface designs and some terminologies</li>
-<li>took a peak at skepu2 source code</li>
-</ul></li>
-<li class="on"><code>[X]</code> look up interface design in literature
+<li>sort of done but actually not. i had a look at skepu2 interface design. 
+</li>
+<li>still not quite understand in detail, will review again
+</li>
+<li>read skepu2 manual: had a look at their interface designs and some terminologies
+</li>
+<li>took a peak at skepu2 source code
+</li>
+</ul>
+</li>
+<li><code>[X]</code> look up interface design in literature
 <ul class="org-ul">
-<li>i read skepu2 only, leave <a href="http://muesli.uni-muenster.de/">The Muenster Skeleton Library</a>, it's about message passing</li>
-</ul></li>
-<li class="on"><code>[X]</code> have a look at some stencil applications
+<li>i read skepu2 only, leave <a href="http://muesli.uni-muenster.de/">The Muenster Skeleton Library</a>, it's about message passing
+</li>
+</ul>
+</li>
+<li><code>[X]</code> have a look at some stencil applications
 <ul class="org-ul">
 <li>had a look at very high level
 <ul class="org-ul">
 <li>shadow in graphics, watched a couple of videos on youtube ,like <a href="https://www.youtube.com/watch?v=ViKpwY7R1O4">this one</a>.
 <ul class="org-ul">
-<li class="on"><code>[X]</code> mentions a term stencil buffer, what exactly is it, is it the same as stencil?</li>
-<li>i read a bit on <a href="https://docs.unity3d.com/Manual/SL-Stencil.html">unity's manual about stencil and stencil buffer</a>, very confusing</li>
-</ul></li>
-<li>stencil culling</li>
-<li>Jacobi</li>
-<li>cnn serialization</li>
-<li>image processing like smoothing etc. (didn't look into this, but i took a course before, fyi)</li>
-</ul></li>
-</ul></li>
-<li class="on"><code>[X]</code> writing proposal</li>
+<li><code>[X]</code> mentions a term stencil buffer, what exactly is it, is it the same as stencil?
+</li>
+<li>i read a bit on <a href="https://docs.unity3d.com/Manual/SL-Stencil.html">unity's manual about stencil and stencil buffer</a>, very confusing
+</li>
+</ul>
+</li>
+<li>stencil culling
+</li>
+<li>Jacobi
+</li>
+<li>cnn serialization 
+</li>
+<li>image processing like smoothing etc. (didn't look into this, but i took a course before, fyi)
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>[X]</code> writing proposal
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org830ac41"></a><span class="done DONE">DONE</span> complement<br />
-<div class="outline-text-4" id="text-org830ac41">
+<li><a id="sec-14-1-3" name="sec-14-1-3"></a><span class="done DONE">DONE</span> complement<br  /><div class="outline-text-4" id="text-14-1-3">
 <ul class="org-ul">
-<li>refresh templates, lambda, function pointers by online videos and coding.</li>
+<li>refresh templates, lambda, function pointers by online videos and coding.
+</li>
 </ul>
 </div>
+</li></ul>
 </li>
-</ul>
-</li>
-<li><a id="org09fbb9d"></a>plan next week<br />
-<div class="outline-text-3" id="text-org09fbb9d">
+<li><a id="sec-14-2" name="sec-14-2"></a>plan next week<br  /><div class="outline-text-3" id="text-14-2">
 <ul class="org-ul">
-<li>refresh operator overloading</li>
-<li>continue searching on design and implementation, especially design</li>
-<li>understand wrapper</li>
-<li>write ipp</li>
+<li>refresh operator overloading
+</li>
+<li>continue searching on design and implementation, especially design
+</li>
+<li>understand wrapper
+</li>
+<li>write ipp
+</li>
 </ul>
 </div>
 </li>
-<li><a id="org4d86595"></a>problems<br /></li>
-<li><a id="org6c92c91"></a>prepared questions for meeting <code>[100%]</code><br />
-<div class="outline-text-3" id="text-org6c92c91">
+<li><a id="sec-14-3" name="sec-14-3"></a>problems<br  /></li>
+<li><a id="sec-14-4" name="sec-14-4"></a>prepared questions for meeting <code>[100%]</code><br  /><div class="outline-text-3" id="text-14-4">
 <ol class="org-ol">
-<li class="on"><code>[X]</code> what compiler? what version?
+<li><code>[X]</code> what compiler? what version?
 <ul class="org-ul">
-<li>ans: gnu g++, c++11 and pthread library</li>
-</ul></li>
-<li class="on"><code>[X]</code> what is type-safe?
+<li>ans: gnu g++, c++11 and pthread library
+</li>
+</ul>
+</li>
+<li><code>[X]</code> what is type-safe?
 <ul class="org-ul">
-<li>what i know about type-safe is compiler check type at compile-time</li>
-<li>but i don't why these paper keep emphasizing it.</li>
-</ul></li>
-<li class="on"><code>[X]</code> when i read skepu2 manual, i find it a bit difficulty to really understand it. there are some trivial things still confuse me. but i think i will keep confused until i implement it. 
+<li>what i know about type-safe is compiler check type at compile-time
+</li>
+<li>but i don't why these paper keep emphasizing it. 
+</li>
+</ul>
+</li>
+<li><code>[X]</code> when i read skepu2 manual, i find it a bit difficulty to really understand it. there are some trivial things still confuse me. but i think i will keep confused until i implement it. 
 <ul class="org-ul">
 <li>some things like design patterns from software engineering, like factory methods
 <ul class="org-ul">
-<li>generally speaking, might be wrong, isn't parallel skeleton/pattern is special usage of design patterns in SE.</li>
-</ul></li>
+<li>generally speaking, might be wrong, isn't parallel skeleton/pattern is special usage of design patterns in SE.
+</li>
+</ul>
+</li>
 <li>some are about interface design, like understand the description of interface and terms in skepu2
 <ul class="org-ul">
-<li>i think i will get through it when i dive into the code</li>
-</ul></li>
-</ul></li>
-<li class="on"><code>[X]</code> some trivial things about compiler, just to prepare for coding coming soon
+<li>i think i will get through it when i dive into the code
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>[X]</code> some trivial things about compiler, just to prepare for coding coming soon
 <ul class="org-ul">
-<li>(a subtle thing that i don't know before)</li>
-<li>msvc: a template won't exist until we call it</li>
-<li>what about gnu? does gnu gcc check templates at compile-time?</li>
-</ul></li>
-<li class="on"><code>[X]</code> some basics about skeleton, just to make sure i understand the fundamentals correctly
+<li>(a subtle thing that i don't know before)
+</li>
+<li>msvc: a template won't exist until we call it
+</li>
+<li>what about gnu? does gnu gcc check templates at compile-time? 
+</li>
+</ul>
+</li>
+<li><code>[X]</code> some basics about skeleton, just to make sure i understand the fundamentals correctly
 <ul class="org-ul">
-<li>when i read paper or manual, i always try to match english descriptions with the actual implementation in code.</li>
-<li>at code-level, when i actually write code, can i say skeleton is specification/declaration and skeleton instance is definition?</li>
-<li>or is skeleton more than just an interface/specification/declaration?</li>
-<li>to my understanding, in opengl, specifications are just the function signatures.</li>
-</ul></li>
+<li>when i read paper or manual, i always try to match english descriptions with the actual implementation in code. 
+</li>
+<li>at code-level, when i actually write code, can i say skeleton is specification/declaration and skeleton instance is definition? 
+</li>
+<li>or is skeleton more than just an interface/specification/declaration?
+</li>
+<li>to my understanding, in opengl, specifications are just the function signatures.
+</li>
+</ul>
+</li>
 <li>proposal structure:
 <ol class="org-ol">
-<li>just to confirm: are deliverables deadlines of tasks that i set for this projects? or just deadlines for ipp, diss?</li>
+<li>just to confirm: are deliverables deadlines of tasks that i set for this projects? or just deadlines for ipp, diss?
+</li>
 <li>timeliness and novelty: 
 <ul class="org-ul">
 <li>apart from some twice-told stories and platitudes (mentioned in parallel book), like
 <ul class="org-ul">
-<li>limitations of hardware,</li>
-<li>moore's law, power wall,</li>
-<li>memory wall,</li>
-<li>instruction-level parallelism wall, ilp wall</li>
-</ul></li>
-<li>what else?</li>
-</ul></li>
+<li>limitations of hardware,
+</li>
+<li>moore's law, power wall,
+</li>
+<li>memory wall,
+</li>
+<li>instruction-level parallelism wall, ilp wall
+</li>
+</ul>
+</li>
+<li>what else?
+</li>
+</ul>
+</li>
 <li>objectives/tasks and gantt chart 
 <ul class="org-ul">
-<li>when i try to list some objectives for gantt chart, i find that i don't know how to expand the essential completion. it's just interface design and implementation. i suppose i will find more when i dig into the design and implementation. to today, i haven't finished valias paper yet. i only had a idea of big picture, haven't dive into design and implementation. next step i will look into specific design and implementation, starting from valias' design.</li>
-</ul></li>
-</ol></li>
+<li>when i try to list some objectives for gantt chart, i find that i don't know how to expand the essential completion. it's just interface design and implementation. i suppose i will find more when i dig into the design and implementation. to today, i haven't finished valias paper yet. i only had a idea of big picture, haven't dive into design and implementation. next step i will look into specific design and implementation, starting from valias' design. 
+</li>
+</ul>
+</li>
+</ol>
+</li>
 </ol>
 </div>
 </li>
-<li><a id="org73d71e2"></a>meeting notes<br />
-<div class="outline-text-3" id="text-org73d71e2">
+<li><a id="sec-14-5" name="sec-14-5"></a>meeting notes<br  /><div class="outline-text-3" id="text-14-5">
 <ul class="org-ul">
 <li>work stealing
 <ul class="org-ul">
-<li>flag indicate if this thread is working on the data block</li>
-<li>where the user defined function is called</li>
-</ul></li>
+<li>flag indicate if this thread is working on the data block
+</li>
+<li>where the user defined function is called
+</li>
+</ul>
+</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-C++">  <span style="font-weight: bold; font-style: italic;">//</span><span style="font-weight: bold; font-style: italic;">loop find next block to work on</span>
-    <span style="font-weight: bold; font-style: italic;">//</span><span style="font-weight: bold; font-style: italic;">for steal</span>
-      <span style="font-weight: bold; font-style: italic;">//</span><span style="font-weight: bold; font-style: italic;">for call user defined func</span>
+
+<pre class="src src-C++">  <span style="color: #b22222;">//</span><span style="color: #b22222;">loop find next block to work on</span>
+    <span style="color: #b22222;">//</span><span style="color: #b22222;">for steal</span>
+      <span style="color: #b22222;">//</span><span style="color: #b22222;">for call user defined func</span>
 </pre>
 </div>
 <ul class="org-ul">
-<li>design</li>
-<li>write up</li>
+<li>design
+</li>
+<li>write up
+</li>
 <li>interface implement
 <ul class="org-ul">
 <li></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</div>
+</li></ul>
+</li>
+<li><a id="sec-15" name="sec-15"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-02-22 Fri 11:00&gt;</span></span> w08<br  /><ul class="org-ul"><li><a id="sec-15-1" name="sec-15-1"></a>plan next week<br  /><ul class="org-ul"><li><a id="sec-15-1-1" name="sec-15-1-1"></a><span class="todo TODO">TODO</span> draft a plan <code>[0%]</code><br  /><div class="outline-text-4" id="text-15-1-1">
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> list objectives/tasks
+</li>
+<li><code>[&#xa0;]</code> gantt chart
+</li>
+<li>next meeting will talk about proposal and project plan
+</li>
 </ul>
 </div>
 </li>
+<li><a id="sec-15-1-2" name="sec-15-1-2"></a><span class="todo TODO">TODO</span> get familiar with stencil patterns <code>[80%]</code><br  /><div class="outline-text-4" id="text-15-1-2">
+<ul class="org-ul">
+<li><code>[X]</code> valias code
+</li>
+<li><code>[X]</code> look up existing stencil interface: e.g. how input parameters are defined? what is output?
+<ul class="org-ul">
+<li>sort of done but actually not. i had a look at skepu2 interface design. 
+</li>
 </ul>
 </li>
-<li><a id="org03de964"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-02-22 Fri 11:00&gt; </span></span> w08<br />
+<li><code>[X]</code> look up interface design in literature
 <ul class="org-ul">
-<li><a id="orgdf7d540"></a>plan next week<br />
-<ul class="org-ul">
-<li><a id="orgbc77628"></a><span class="todo TODO">TODO</span> draft a plan <code>[0%]</code><br />
-<div class="outline-text-4" id="text-orgbc77628">
-<ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> list objectives/tasks</li>
-<li class="off"><code>[&#xa0;]</code> gantt chart</li>
-<li>next meeting will talk about proposal and project plan</li>
-</ul>
-</div>
+<li>i read skepu2 only, will look up <a href="http://muesli.uni-muenster.de/">The Muenster Skeleton Library</a>
 </li>
-<li><a id="org98d9c25"></a><span class="todo TODO">TODO</span> get familiar with stencil patterns <code>[80%]</code><br />
-<div class="outline-text-4" id="text-org98d9c25">
-<ul class="org-ul">
-<li class="on"><code>[X]</code> valias code</li>
-<li class="on"><code>[X]</code> look up existing stencil interface: e.g. how input parameters are defined? what is output?
-<ul class="org-ul">
-<li>sort of done but actually not. i had a look at skepu2 interface design.</li>
-</ul></li>
-<li class="on"><code>[X]</code> look up interface design in literature
-<ul class="org-ul">
-<li>i read skepu2 only, will look up <a href="http://muesli.uni-muenster.de/">The Muenster Skeleton Library</a></li>
-</ul></li>
-<li class="on"><code>[X]</code> have a look at some stencil applications
+</ul>
+</li>
+<li><code>[X]</code> have a look at some stencil applications
 <ul class="org-ul">
 <li>had a look at very high level
 <ul class="org-ul">
 <li>shadow in graphics, watched a couple of videos on youtube ,like <a href="https://www.youtube.com/watch?v=ViKpwY7R1O4">this one</a>.
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> mentions a term stencil buffer, what exactly is it, is it the same as stencil?</li>
-<li>i read a bit on <a href="https://docs.unity3d.com/Manual/SL-Stencil.html">unity's manual about stencil and stencil buffer</a>, very confusing</li>
-</ul></li>
-<li>stencil culling</li>
+<li><code>[&#xa0;]</code> mentions a term stencil buffer, what exactly is it, is it the same as stencil?
+</li>
+<li>i read a bit on <a href="https://docs.unity3d.com/Manual/SL-Stencil.html">unity's manual about stencil and stencil buffer</a>, very confusing
+</li>
+</ul>
+</li>
+<li>stencil culling
+</li>
 <li>Jacobi (honestly, i first heard from ppls)
 <ul class="org-ul">
-<li>not sure what it is, what relation does it has with jacobian matrix</li>
-<li class="off"><code>[&#xa0;]</code> but will look up in detail</li>
-</ul></li>
-<li>cnn serialization</li>
-<li>image processing like smoothing etc. (didn't look into this, but i took a course before, fyi)</li>
-</ul></li>
-</ul></li>
-<li class="trans"><code>[-]</code> writing proposal
+<li>not sure what it is, what relation does it has with jacobian matrix
+</li>
+<li><code>[&#xa0;]</code> but will look up in detail
+</li>
+</ul>
+</li>
+<li>cnn serialization 
+</li>
+<li>image processing like smoothing etc. (didn't look into this, but i took a course before, fyi)
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>[-]</code> writing proposal
 <ul class="org-ul">
-<li class="on"><code>[X]</code> why doing skeleton? why doing stencil?</li>
-<li class="on"><code>[X]</code> background</li>
-<li class="on"><code>[X]</code> what my project is about</li>
-<li class="off"><code>[&#xa0;]</code> define input and output of the stencil</li>
-<li class="off"><code>[&#xa0;]</code> decide interface for stencil</li>
-<li class="on"><code>[X]</code> optimization</li>
-<li class="on"><code>[X]</code> evaluation</li>
-<li class="on"><code>[X]</code> talk about valias work, i will add stencil to library</li>
-</ul></li>
+<li><code>[X]</code> why doing skeleton? why doing stencil?
+</li>
+<li><code>[X]</code> background
+</li>
+<li><code>[X]</code> what my project is about
+</li>
+<li><code>[&#xa0;]</code> define input and output of the stencil
+</li>
+<li><code>[&#xa0;]</code> decide interface for stencil
+</li>
+<li><code>[X]</code> optimization
+</li>
+<li><code>[X]</code> evaluation
+</li>
+<li><code>[X]</code> talk about valias work, i will add stencil to library
+</li>
+</ul>
+</li>
 </ul>
 </div>
+</li></ul>
+</li>
+<li><a id="sec-15-2" name="sec-15-2"></a>prepared questions for meeting <code>[100%]</code><br  /><div class="outline-text-3" id="text-15-2">
+<ol class="org-ol">
+<li><code>[X]</code> where can i find Valais, A: A Parallel Skeleton Library for DICE?
+</li>
+<li><code>[X]</code> what is the completion of easy, moderate, hard and very hard?
+<ul class="org-ul">
+<li>for a difficult project, normally it requires a backup plan.
+</li>
+<li>for a easy project, it requires a extended plan.
+</li>
+<li>i suppose the easy completion is equivalent to such a backup plan and so is hard completion.
+</li>
+<li>can i have a big picture of your plan for this variable-difficulty project?
 </li>
 </ul>
 </li>
-<li><a id="org1b8b9f3"></a>prepared questions for meeting <code>[100%]</code><br />
-<div class="outline-text-3" id="text-org1b8b9f3">
-<ol class="org-ol">
-<li class="on"><code>[X]</code> where can i find Valais, A: A Parallel Skeleton Library for DICE?</li>
-<li class="on"><code>[X]</code> what is the completion of easy, moderate, hard and very hard?
-<ul class="org-ul">
-<li>for a difficult project, normally it requires a backup plan.</li>
-<li>for a easy project, it requires a extended plan.</li>
-<li>i suppose the easy completion is equivalent to such a backup plan and so is hard completion.</li>
-<li>can i have a big picture of your plan for this variable-difficulty project?</li>
-</ul></li>
-<li class="on"><code>[X]</code> check if supervisor has drop-in times or whether i need to make appointment for next meeting
+<li><code>[X]</code> check if supervisor has drop-in times or whether i need to make appointment for next meeting
 <ul class="org-ul">
 <li>option for future meetings: 
 <ul class="org-ul">
-<li>weekly meeting at a fixed time, or biweekly if progress slowly or if you are busy at some point</li>
-<li>email if one cannot make it,</li>
-<li>or adjust time for next meeting in this meeting.</li>
-</ul></li>
-</ul></li>
-<li class="on"><code>[X]</code> do you have a recommendation for tools like IDE?
+<li>weekly meeting at a fixed time, or biweekly if progress slowly or if you are busy at some point
+</li>
+<li>email if one cannot make it, 
+</li>
+<li>or adjust time for next meeting in this meeting.
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>[X]</code> do you have a recommendation for tools like IDE?
 <ul class="org-ul">
-<li>I used to program cpp in msvs and not very familiar with cpp environment on linux.</li>
-<li>but i get chance to use cmake lightly in adbs cw.</li>
-</ul></li>
-<li class="on"><code>[X]</code> do you have any advice for time management?
+<li>I used to program cpp in msvs and not very familiar with cpp environment on linux.
+</li>
+<li>but i get chance to use cmake lightly in adbs cw.
+</li>
+</ul>
+</li>
+<li><code>[X]</code> do you have any advice for time management?
 <ul class="org-ul">
-<li>the official date for starting project given by course convener is in June.</li>
-<li>but i don't see this as a suitable time for start, as it only leaves us roughly 2.5 months for both development and dissertation. as for UG final year project, we develop at first and leave the last 3-4 weeks for writing.</li>
-<li>what's your thought about the timeline of ipp and diss projection?</li>
-</ul></li>
-<li class="on"><code>[X]</code> valais's dissertation has 2 main parts: design and implementation, evaluation.
+<li>the official date for starting project given by course convener is in June.
+</li>
+<li>but i don't see this as a suitable time for start, as it only leaves us roughly 2.5 months for both development and dissertation. as for UG final year project, we develop at first and leave the last 3-4 weeks for writing.
+</li>
+<li>what's your thought about the timeline of ipp and diss projection?
+</li>
+</ul>
+</li>
+<li><code>[X]</code> valais's dissertation has 2 main parts: design and implementation, evaluation.
 <ul class="org-ul">
-<li>it's a standard structure for a software project, clear and easy to follow</li>
-<li>and i suppose i will have these 2 parts in my dissertation.</li>
-</ul></li>
-<li class="on"><code>[X]</code> for project planning, it would be really helpful if you could list some tasks to complete. 
+<li>it's a standard structure for a software project, clear and easy to follow
+</li>
+<li>and i suppose i will have these 2 parts in my dissertation. 
+</li>
+</ul>
+</li>
+<li><code>[X]</code> for project planning, it would be really helpful if you could list some tasks to complete. 
 <ul class="org-ul">
-<li>so i could set some deadlines to make track of the progress</li>
-<li>without this, it is likely that i would put off my plan and barely complete tasks.</li>
-</ul></li>
-<li class="on"><code>[X]</code> is there any practical issue happen to project before, and you would like to let me know?</li>
+<li>so i could set some deadlines to make track of the progress
+</li>
+<li>without this, it is likely that i would put off my plan and barely complete tasks.
+</li>
+</ul>
+</li>
+<li><code>[X]</code> is there any practical issue happen to project before, and you would like to let me know? 
+</li>
 </ol>
 </div>
 </li>
-<li><a id="org4c5faf2"></a>meeting notes<br />
-<div class="outline-text-3" id="text-org4c5faf2">
+<li><a id="sec-15-3" name="sec-15-3"></a>meeting notes<br  /><div class="outline-text-3" id="text-15-3">
 <ul class="org-ul">
 <li>difficulty:
 <ul class="org-ul">
-<li>so-called easy completion can be interface and implementation</li>
+<li>so-called easy completion can be interface and implementation
+</li>
 <li>extended plan can be optimisation, benchmark, example
 <ul class="org-ul">
-<li>examples are stencil applications like graphics simulation etc.</li>
-<li>examples can also be synthesized, essentially data crunching</li>
-<li class="on"><code>[X]</code> e.g. collatz 3 + 1</li>
-</ul></li>
-</ul></li>
+<li>examples are stencil applications like graphics simulation etc.
+</li>
+<li>examples can also be synthesized, essentially data crunching
+</li>
+<li><code>[X]</code> e.g. collatz 3 + 1
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>how murray describe this project? 
 <ul class="org-ul">
-<li>This project is to extend the skeleton library</li>
-<li>implement multi-dimensional stencil</li>
-<li>tip: start from sequential and move towards parallel</li>
-</ul></li>
-<li class="on"><code>[X]</code> share ipp on overleaf with murray</li>
+<li>This project is to extend the skeleton library
+</li>
+<li>implement multi-dimensional stencil
+</li>
+<li>tip: start from sequential and move towards parallel
+</li>
+</ul>
+</li>
+<li><code>[X]</code> share ipp on overleaf with murray
+</li>
 <li>what could be in my proposal and what can be in my plan?
 <ul class="org-ul">
-<li>get familiar with stencil patterns and build up plan</li>
-<li>why doing skeleton? why doing stencil?</li>
-<li>background</li>
-<li>what my project is about</li>
-<li>define input and output of the stencil</li>
-<li>decide interface for stencil</li>
-<li>optimization</li>
-<li>evaluation</li>
-<li>talk about valias work, i will add stencil to library</li>
-</ul></li>
+<li>get familiar with stencil patterns and build up plan
+</li>
+<li>why doing skeleton? why doing stencil?
+</li>
+<li>background
+</li>
+<li>what my project is about
+</li>
+<li>define input and output of the stencil
+</li>
+<li>decide interface for stencil
+</li>
+<li>optimization
+</li>
+<li>evaluation
+</li>
+<li>talk about valias work, i will add stencil to library
+</li>
+</ul>
+</li>
 <li><b>suggested tasks</b>:
 <ul class="org-ul">
 <li>design a interface, refer to existing interface and literature (leave interface design into dissertation)
 <ul class="org-ul">
-<li>generic interface for different applications</li>
-<li>definition of neighbours</li>
-<li>can be parameterized by only give inputs</li>
-<li>examine the problem first</li>
-</ul></li>
-<li>evaluate: speed, problem size,</li>
-<li>optimization: stencil literature</li>
-<li>load balancing</li>
-</ul></li>
+<li>generic interface for different applications
+</li>
+<li>definition of neighbours
+</li>
+<li>can be parameterized by only give inputs
+</li>
+<li>examine the problem first
+</li>
+</ul>
+</li>
+<li>evaluate: speed, problem size, 
+</li>
+<li>optimization: stencil literature
+</li>
+<li>load balancing
+</li>
+</ul>
+</li>
 <li>tip: start writing early
 <ul class="org-ul">
-<li>start writing ipp and diss early</li>
-<li>writing alongside the programming</li>
-</ul></li>
+<li>start writing ipp and diss early 
+</li>
+<li>writing alongside the programming
+</li>
+</ul>
+</li>
 <li><b>REMINDER</b>: always be aware of the <b>ultimate goal is report/dissertation</b> by asking myself: 
 <ul class="org-ul">
-<li>why am i doing this?</li>
-<li>is this helping me write a better report?</li>
-</ul></li>
+<li>why am i doing this? 
+</li>
+<li>is this helping me write a better report?
+</li>
+</ul>
+</li>
 </ul>
 </div>
+</li></ul>
 </li>
-</ul>
-</li>
-<li><a id="org0827447"></a>template<br />
-<ul class="org-ul">
-<li><a id="org5bccc0f"></a>progress last week <code>[%]</code><br /></li>
-<li><a id="org900ad1e"></a>plan next week<br /></li>
-<li><a id="org8b22272"></a>prepared questions for meeting<br /></li>
-<li><a id="org281c232"></a>meeting notes<br /></li>
-</ul>
-</li>
-</ul>
+<li><a id="sec-16" name="sec-16"></a>template<br  /><ul class="org-ul"><li><a id="sec-16-1" name="sec-16-1"></a>progress last week <code>[%]</code><br  /></li>
+<li><a id="sec-16-2" name="sec-16-2"></a>plan next week<br  /></li>
+<li><a id="sec-16-3" name="sec-16-3"></a>prepared questions for meeting<br  /></li>
+<li><a id="sec-16-4" name="sec-16-4"></a>meeting notes<br  /></li></ul>
+</li></ul>
 </div>
 </body>
 </html>

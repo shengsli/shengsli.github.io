@@ -3,29 +3,22 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-10-25 Fri 01:37 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Training Log</title>
-<meta name="generator" content="Org mode" />
+<!-- 2019-10-26 Sat 22:35 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
+  .title  { text-align: center; }
   .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
+  .done   { color: green; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -52,111 +45,27 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara { display: inline; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -176,7 +85,6 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" 						   type="text/css" 						   href="/css/style.css">
@@ -185,7 +93,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -230,339 +138,486 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <h1 class="title">Training Log</h1>
+<ul class="org-ul"><li><a id="sec-1" name="sec-1"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-24 Thu&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br  /><div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li><a id="org55bbd85"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-24 Thu&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br />
-<div class="outline-text-2" id="text-org55bbd85">
-<ul class="org-ul">
-<li>seated machine row</li>
-<li>seated cable lat pull down machine behind the neck</li>
-<li>seated cable row</li>
-<li>machine preacher bicep curl</li>
-<li>crunch</li>
+<li>seated machine row
+</li>
+<li>seated cable lat pull down machine behind the neck
+</li>
+<li>seated cable row
+</li>
+<li>machine preacher bicep curl
+</li>
+<li>crunch
+</li>
 </ul>
 </div>
 </li>
-<li><a id="orge58afa7"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-21 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br />
-<div class="outline-text-2" id="text-orge58afa7">
+<li><a id="sec-2" name="sec-2"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-21 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br  /><div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li>flat bench press</li>
-<li>angled smith incline bench press</li>
-<li>seated incline chest press</li>
-<li>push up</li>
-</ul>
-</div>
+<li>flat bench press
 </li>
-<li><a id="orgeeeb73a"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-09 Wed&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="legs">legs</span></span><br />
-<div class="outline-text-2" id="text-orgeeeb73a">
-<ol class="org-ol">
-<li>standing calf stretch</li>
-<li>front and side lunge hamstring stretch</li>
-<li>leg extension, 1 set</li>
-<li>leg curl, 1 set</li>
-<li>glute kickback machine, 1 set, lighter</li>
-<li>leg extension, 1 set, lighter</li>
-<li>leg curl, 1 set, lighter</li>
-<li>hip abduction, 1 set</li>
-<li>front squat machine, 6 sets, 0kg, 10kg, 20kg, 30kg, 40kg, 50kg</li>
-<li>leg extension, 4 sets</li>
-<li>leg curl, 4 sets</li>
-<li>high knees 20 reps (left and right count 1 reps) + lunge 20 reps (left and right count 2 reps)</li>
-<li>high knees 20 reps (left and right count 1 reps) + lunge 20 reps (left and right count 2 reps)</li>
-<li>high knees 20 reps (left and right count 1 reps) + lunge 20 reps (left and right count 2 reps)</li>
-<li>high knees 20 reps (left and right count 1 reps) + lunge 40 reps (left and right count 2 reps)</li>
-</ol>
-</div>
+<li>angled smith incline bench press
 </li>
-<li><a id="org3c4ed28"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-08 Tue&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="shoulders">shoulders</span></span><br />
-<div class="outline-text-2" id="text-org3c4ed28">
-<ol class="org-ol">
-<li>across the neck rear delt stretch</li>
-<li>seated machine shoulder press, 0kg, 2.5kg, 5kg, 7.5kg, 10kg</li>
-<li>seated angled smith behind the neck shoulder press</li>
-<li>stance dumbbell delt fly, 5kg, 10kg, 5kg, 2.5kg, 0kg manual resistence</li>
-<li>lu's rear delt smith shrugs, 4 sets</li>
-<li>machine rear delt fly, 4 sets</li>
-</ol>
-</div>
+<li>seated incline chest press
 </li>
-<li><a id="orge827061"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-07 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br />
-<div class="outline-text-2" id="text-orge827061">
-<ol class="org-ol">
-<li>stretch back</li>
-<li>seated cable lat pull down machine, 5 sets 0f 8-12 reps, increasing</li>
-<li>seated cable row, 4 sets of 10-12 reps</li>
-<li>kneeling one arm cable pull down, 2 sets + 1 incresting set of 3 sets</li>
-<li>seated machine row 1, 4 sets</li>
-<li>seated machine row 2, 4 sets</li>
-<li>machine preacher bicep curl, 3 sets + 1 increasing set of 3 sets + 1 free weight</li>
-<li>shuttle run, 4 rounds</li>
-<li>running, 3 rounds</li>
-</ol>
-</div>
-</li>
-<li><a id="org3650722"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-06 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br />
-<div class="outline-text-2" id="text-org3650722">
-<ol class="org-ol">
-<li>one arm doorway pec stretch</li>
-<li>flat bench press, free weight warm up</li>
-<li>flat bench press, 5 sets</li>
-<li>angled smith incline bench press, 5 sets</li>
-<li>high cable fly + low cable fly, 4 sets</li>
-<li>foot down tricep extension</li>
-</ol>
-</div>
-</li>
-<li><a id="orge9b7875"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-02 Wed&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="legs">legs</span></span><br />
-<div class="outline-text-2" id="text-orge9b7875">
-<ol class="org-ol">
-<li>front and side lunge hamstring stretch, 2 sets</li>
-<li>leg extension, 4 sets, 0kg, 5kg</li>
-<li>leg sled, 4 sets of 10-12 reps</li>
-<li>leg curls, 1 set of 12 reps</li>
-<li>romanian deadlift, 4 sets of 10 reps, 10kg, 15kg, 10kg, 10kg</li>
-<li>hip abduction, 4 sets of 10 reps</li>
-<li>high knees 30 reps (left and right count 1 reps) + lunge 40 reps</li>
-<li>high knees 30 reps (left and right count 1 reps) + lunge 20 reps</li>
-<li>high knees 30 reps (left and right count 1 reps) + lunge 20 reps</li>
-<li>high knees 30 reps (left and right count 1 reps) + lunge 40 reps</li>
-</ol>
-</div>
-</li>
-<li><a id="org3e56977"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-01 Tue&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="shoulders">shoulders</span></span><br />
-<div class="outline-text-2" id="text-org3e56977">
-<ol class="org-ol">
-<li>across the neck rear delt stretch</li>
-<li>seated straight smith shoulder press, 0kg, 5kg, 10kg, 15kg, 20kg, 15kg, 10kg ,5kg</li>
-<li>seated angled smith behind the neck shoulder press, 0kg, 5kg, 10kg, 15kg, 10kg, 5kg, 0kg</li>
-<li>machine rear delt fly, 4 sets of 10-12 reps</li>
-<li>stance dumbbell delt fly, 7 sets of 8-15 reps, 2.5kg, 5kg, 10kg, 12kg, 5kg, 2.5kg, 0kg manual resistence</li>
-</ol>
-</div>
-</li>
-<li><a id="org36ca64a"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-30 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br />
-<div class="outline-text-2" id="text-org36ca64a">
-<ol class="org-ol">
-<li>stretch back</li>
-<li>seated machine row, 4 sets of 12 reps</li>
-<li>seated cable lat pull down machine behind the neck, 4 sets of 12 reps</li>
-<li>seated cable lat pull down machine, 3 sets of 12 reps, light weight</li>
-<li>seated cable row, 3 sets of 10-12 reps</li>
-<li>standing lat push down, 3 sets of 10-12 reps</li>
-<li>machine preacher bicep curl, 2 sets of 12 reps, 1 descreasing set</li>
-<li>cable rope hammer bicep curl, 4 sets of 12 reps</li>
-<li>stretch back and biceps</li>
-</ol>
-</div>
-</li>
-<li><a id="orga1553e8"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-29 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br />
-<div class="outline-text-2" id="text-orga1553e8">
-<ol class="org-ol">
-<li>one arm doorway pec stretch, 5-10 sec each side</li>
-<li>angled smith flat bench press, 1 set of 12 reps, 0kg, warm up</li>
-<li>angled smith flat bench press, 6 sets of 8-12 reps, 15kg, 15kg, 20kg, 25kg, 20kg, 15kg</li>
-<li>angled smith incline bench press, 5 sets of 8-12 reps, 15kg, 15kg, 10kg, 10kg, 5kg</li>
-<li>plate load incline pec fly machine 8-12 reps, 2 sets, 0kg</li>
-<li>low cable fly, 2 sets of 8-10 reps</li>
-<li>foot down tricep extension, 5 sets of 8-10 reps, 2 plates, 2 plates, 1 plate, 1 plate, 1 plate</li>
-</ol>
-</div>
-</li>
-<li><a id="org0cb3038"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-25 Wed&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="legs">legs</span></span><br />
-<div class="outline-text-2" id="text-org0cb3038">
-<ol class="org-ol">
-<li>one leg standing quads stretch</li>
-<li>front and side lunge hamstring stretch, 2 sets</li>
-<li>leg extension 12 reps + leg curls 12 reps, 4 sets</li>
-<li>leg sled, 4 sets of 10 reps</li>
-<li>hip abduction, 3 sets of 10 reps</li>
-<li>glute kickback machine, 3 sets of 10 reps</li>
-<li>lunge, 2 sets of 20 reps</li>
-<li>bend over hamstring stretch</li>
-<li>front and side lunge hamstring stretch, 2 sets</li>
-</ol>
-</div>
-</li>
-<li><a id="org4080060"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-24 Tue&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="shoulders">shoulders</span></span><br />
-<div class="outline-text-2" id="text-org4080060">
-<ol class="org-ol">
-<li>stance dumbbell rotation</li>
-<li>cross body shoulder stretch</li>
-<li>seated angled smith shoulder press, warm up + 4 sets of 12 reps + drop set, 0kg, 5kg, 10kg, 15kg, 20kg, then descrease back to 0kg</li>
-<li>seated angled smith behind the neck shoulder press, 4 sets of 12 reps + drop set</li>
-<li>stance dumbbell delt fly, 3 sets of 20 reps, 2.5kg, 5kg, 2.5kg</li>
-<li>lu's rear delt smith shrugs, 4 sets of 12 reps, 0kg</li>
-<li>bent over delt fly machine</li>
-</ol>
-</div>
-</li>
-<li><a id="orgbfbb65b"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-23 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br />
-<div class="outline-text-2" id="text-orgbfbb65b">
-<ol class="org-ol">
-<li>stretch back</li>
-<li>assisted pull up machine 10 reps + seated machine row 1 12 reps, 4 sets</li>
-<li>seated cable lat pull down machine 10-12 reps + drop set 1 + drop set 2</li>
-<li>seated machine row 2, 4 sets of 12 reps, light weight</li>
-<li>kneeling one arm cable pull down, pyramid sets, start from and end to 9kg</li>
-<li>machine preacher bicep curl, 4 sets</li>
-<li>cable rope hammer bicep curl, 3 sets of 12 reps</li>
-</ol>
-</div>
-</li>
-<li><a id="orgb98e425"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-22 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br />
-<div class="outline-text-2" id="text-orgb98e425">
-<ol class="org-ol">
-<li>one arm doorway pec stretch, 5-10 sec each side</li>
-<li>foot down tricep extension, 1 set 12 reps, warm up</li>
-<li>flat bench press, 1 set 20 reps, barbell weight, warm up</li>
-<li>flat bench press, 5 sets of 8-12 reps, 10kg, 20kg, 25kg, 10kg, 5kg</li>
-<li>angled smith incline bench press, 5 sets of 12 reps, 10kg, 20kg, 25kg, 10kg, 5kg, 0kg</li>
-<li>plate load incline pec fly machine 8-12 erps + squeeze 8-10 reps, 4 sets, 0kg, 2.5kg</li>
-<li>high cable fly + low cable fly, 4 sets, 2 plates, 3 plates, 2 plates, 2 plates</li>
-<li>foot down tricep extension, 4 sets of 8-12 reps</li>
-<li>tricep dip with legs on bench, 3 sets of 3-5 reps</li>
-</ol>
-</div>
-</li>
-<li><a id="orgdb541b2"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-18 Wed&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="legs">legs</span></span><br />
-<div class="outline-text-2" id="text-orgdb541b2">
-<ol class="org-ol">
-<li>front and side lunge hamstring stretch, 2 sets</li>
-<li>front squat machine, 4 sets of 10 reps</li>
-<li>leg extension, 4 sets of 12 reps</li>
-<li>leg curl, 4 sets of 10 reps</li>
-<li>glute kickback machine, 3 sets of 10 reps</li>
-<li>lunge, 2 sets of 18 reps (left and right count 2 reps)</li>
-<li>one leg standing quads stretch</li>
-<li>bend over hamstring stretch</li>
-</ol>
-</div>
-</li>
-<li><a id="org9d4fdff"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-17 Tue&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="shoulders">shoulders</span></span><br />
-<div class="outline-text-2" id="text-org9d4fdff">
-<ol class="org-ol">
-<li>lying machine shoulder press</li>
-<li>lying on front machine shoulder press</li>
-<li>seated angled smith behind the neck shoulder press, pyramid sets</li>
-<li>machine rear delt fly, 4 sets</li>
-</ol>
-</div>
-</li>
-<li><a id="org3951bc4"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-16 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br />
-<div class="outline-text-2" id="text-org3951bc4">
-<ol class="org-ol">
-<li>seated machine row 1</li>
-<li>seated lat pull down plate loaded machine 1</li>
-<li>seated cable lat pull down machine</li>
-<li>seated cable lat pull down machine behind the neck</li>
-<li>kneeling one arm cable pull down</li>
-<li>seated machine row 2</li>
-<li>preacher chair reverse seated dumbbell bicep curl</li>
-<li>machine preacher bicep curl</li>
-</ol>
-</div>
-</li>
-<li><a id="orgbfe6dd4"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-15 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br />
-<div class="outline-text-2" id="text-orgbfe6dd4">
-<ol class="org-ol">
-<li>straight smith flat bench press</li>
-<li>angled smith incline bench press</li>
-<li>seated decline machine chest press</li>
-<li>foot down rope tricep extension</li>
-<li>bent over one arm dumbbell tricep extension</li>
-</ol>
-</div>
-</li>
-<li><a id="orgbb08960"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-12 Thu&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="legs">legs</span></span><br />
-<div class="outline-text-2" id="text-orgbb08960">
-<ol class="org-ol">
-<li>elliptical machine 8-10 min</li>
-<li>leg extension 15 reps + free weight lunge, 5 sets of 15 reps</li>
-<li>leg extension pause and rotate, light weight 3 sets of 10-12 reps</li>
-<li>leg curl, 5 sets of 12 reps</li>
-<li>hip abduction, 3 sets of 10 reps</li>
-<li>one leg standing quads stretch</li>
-<li>bend over hamstring stretch</li>
-</ol>
-</div>
-</li>
-<li><a id="org091b851"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-10 Tue&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="shoulders">shoulders</span></span><br />
-<div class="outline-text-2" id="text-org091b851">
-<ol class="org-ol">
-<li>seated angled smith shoulder press, barbell weight, 5kg, 10kg, 15kg, 5kg, barbell weight</li>
-<li>seated angled smith behind the neck shoulder press, pyramid sets</li>
-<li>machine rear delt fly, 3 sets</li>
-<li>machine lateral delt raise, 3 sets</li>
-</ol>
-</div>
-</li>
-<li><a id="orgfc78358"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-09 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br />
-<div class="outline-text-2" id="text-orgfc78358">
-<ol class="org-ol">
-<li>seated machine row, 4 sets of 12 reps</li>
-<li>seated lat pull down plate loaded machine 1, 4 sets of 12 reps</li>
-<li>seated lat pull down plate loaded machine 2, 4 sets of 12 reps</li>
-<li>bent over v bar row, 4 sets of 12 reps</li>
-</ol>
-</div>
-</li>
-<li><a id="org4ccca36"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-08 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br />
-<div class="outline-text-2" id="text-org4ccca36">
-<ol class="org-ol">
-<li>straight smith flat bench press, 4 sets of 12 reps + 1 drop set</li>
-<li>angled smith incline bench press, 4 sets of 12 reps + 1 drop set</li>
-<li>seated decline machine chest press, 4 sets of 12 reps + 1 drop set</li>
-</ol>
-</div>
-</li>
-<li><a id="orgc317a90"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-05 Thu&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="legs">legs</span></span><br />
-<div class="outline-text-2" id="text-orgc317a90">
-<ol class="org-ol">
-<li>leg extension, 40 reps</li>
-<li>leg curl, 40 reps</li>
-<li>front squat machine, 4 sets of 10 reps</li>
-<li>leg sled, 4 sets of 10 reps</li>
-<li>HYPOXIA. STOP training.</li>
-</ol>
-</div>
-</li>
-<li><a id="org1a72ae1"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-03 Tue&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="shoulders">shoulders</span></span><br />
-<div class="outline-text-2" id="text-org1a72ae1">
-<ol class="org-ol">
-<li>seated smith shoulder press</li>
-<li>seated smith behind the neck shoulder press</li>
-<li>dumbbell fly, 2 sets of 40-50 reps 2.5 kg + 1 set of 40-50 reps free weight</li>
-<li>lu's rear delt smith shrugs, 2 sets</li>
-<li>song's rear delt rope pull, 3 sets</li>
-<li>machine lateral delt raise, 1 set</li>
-</ol>
-</div>
-</li>
-<li><a id="org4a31463"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-02 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br />
-<div class="outline-text-2" id="text-org4a31463">
-<ol class="org-ol">
-<li>seated machine row</li>
-<li>seated lat pull down machine</li>
-<li>seated cable lat pull down machine</li>
-<li>seated cable row</li>
-<li>standing lat push down</li>
-<li>kneeling one arm cable pull down</li>
-<li>machine bicep curl</li>
-<li>machine preacher bicep curl</li>
-</ol>
-</div>
-</li>
-<li><a id="org0d73c30"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-01 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br />
-<div class="outline-text-2" id="text-org0d73c30">
-<ol class="org-ol">
-<li>straight smith flat bench press, 4 sets of 12 reps + 1 drop set</li>
-<li>angled smith incline bench press, 4 sets of 12 reps + 1 drop set</li>
-<li>seated decline machine chest press, 4 sets of 12 reps + 1 drop set</li>
-<li>foot down rope tricep extension</li>
-<li>overhead rope tricep extension</li>
-</ol>
-</div>
+<li>push up
 </li>
 </ul>
+</div>
+</li>
+<li><a id="sec-3" name="sec-3"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-09 Wed&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="legs">legs</span></span><br  /><div class="outline-text-2" id="text-3">
+<ol class="org-ol">
+<li>standing calf stretch
+</li>
+<li>front and side lunge hamstring stretch
+</li>
+<li>leg extension, 1 set
+</li>
+<li>leg curl, 1 set
+</li>
+<li>glute kickback machine, 1 set, lighter
+</li>
+<li>leg extension, 1 set, lighter
+</li>
+<li>leg curl, 1 set, lighter
+</li>
+<li>hip abduction, 1 set
+</li>
+<li>front squat machine, 6 sets, 0kg, 10kg, 20kg, 30kg, 40kg, 50kg
+</li>
+<li>leg extension, 4 sets
+</li>
+<li>leg curl, 4 sets
+</li>
+<li>high knees 20 reps (left and right count 1 reps) + lunge 20 reps (left and right count 2 reps)
+</li>
+<li>high knees 20 reps (left and right count 1 reps) + lunge 20 reps (left and right count 2 reps)
+</li>
+<li>high knees 20 reps (left and right count 1 reps) + lunge 20 reps (left and right count 2 reps)
+</li>
+<li>high knees 20 reps (left and right count 1 reps) + lunge 40 reps (left and right count 2 reps)
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-4" name="sec-4"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-08 Tue&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="shoulders">shoulders</span></span><br  /><div class="outline-text-2" id="text-4">
+<ol class="org-ol">
+<li>across the neck rear delt stretch
+</li>
+<li>seated machine shoulder press, 0kg, 2.5kg, 5kg, 7.5kg, 10kg
+</li>
+<li>seated angled smith behind the neck shoulder press
+</li>
+<li>stance dumbbell delt fly, 5kg, 10kg, 5kg, 2.5kg, 0kg manual resistence
+</li>
+<li>lu's rear delt smith shrugs, 4 sets
+</li>
+<li>machine rear delt fly, 4 sets
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-5" name="sec-5"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-07 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br  /><div class="outline-text-2" id="text-5">
+<ol class="org-ol">
+<li>stretch back
+</li>
+<li>seated cable lat pull down machine, 5 sets 0f 8-12 reps, increasing
+</li>
+<li>seated cable row, 4 sets of 10-12 reps
+</li>
+<li>kneeling one arm cable pull down, 2 sets + 1 incresting set of 3 sets
+</li>
+<li>seated machine row 1, 4 sets
+</li>
+<li>seated machine row 2, 4 sets
+</li>
+<li>machine preacher bicep curl, 3 sets + 1 increasing set of 3 sets + 1 free weight
+</li>
+<li>shuttle run, 4 rounds
+</li>
+<li>running, 3 rounds
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-6" name="sec-6"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-06 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br  /><div class="outline-text-2" id="text-6">
+<ol class="org-ol">
+<li>one arm doorway pec stretch
+</li>
+<li>flat bench press, free weight warm up
+</li>
+<li>flat bench press, 5 sets
+</li>
+<li>angled smith incline bench press, 5 sets
+</li>
+<li>high cable fly + low cable fly, 4 sets
+</li>
+<li>foot down tricep extension
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-7" name="sec-7"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-02 Wed&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="legs">legs</span></span><br  /><div class="outline-text-2" id="text-7">
+<ol class="org-ol">
+<li>front and side lunge hamstring stretch, 2 sets
+</li>
+<li>leg extension, 4 sets, 0kg, 5kg
+</li>
+<li>leg sled, 4 sets of 10-12 reps
+</li>
+<li>leg curls, 1 set of 12 reps
+</li>
+<li>romanian deadlift, 4 sets of 10 reps, 10kg, 15kg, 10kg, 10kg
+</li>
+<li>hip abduction, 4 sets of 10 reps
+</li>
+<li>high knees 30 reps (left and right count 1 reps) + lunge 40 reps
+</li>
+<li>high knees 30 reps (left and right count 1 reps) + lunge 20 reps
+</li>
+<li>high knees 30 reps (left and right count 1 reps) + lunge 20 reps
+</li>
+<li>high knees 30 reps (left and right count 1 reps) + lunge 40 reps
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-8" name="sec-8"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-10-01 Tue&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="shoulders">shoulders</span></span><br  /><div class="outline-text-2" id="text-8">
+<ol class="org-ol">
+<li>across the neck rear delt stretch
+</li>
+<li>seated straight smith shoulder press, 0kg, 5kg, 10kg, 15kg, 20kg, 15kg, 10kg ,5kg
+</li>
+<li>seated angled smith behind the neck shoulder press, 0kg, 5kg, 10kg, 15kg, 10kg, 5kg, 0kg
+</li>
+<li>machine rear delt fly, 4 sets of 10-12 reps
+</li>
+<li>stance dumbbell delt fly, 7 sets of 8-15 reps, 2.5kg, 5kg, 10kg, 12kg, 5kg, 2.5kg, 0kg manual resistence
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-9" name="sec-9"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-30 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br  /><div class="outline-text-2" id="text-9">
+<ol class="org-ol">
+<li>stretch back
+</li>
+<li>seated machine row, 4 sets of 12 reps
+</li>
+<li>seated cable lat pull down machine behind the neck, 4 sets of 12 reps
+</li>
+<li>seated cable lat pull down machine, 3 sets of 12 reps, light weight
+</li>
+<li>seated cable row, 3 sets of 10-12 reps
+</li>
+<li>standing lat push down, 3 sets of 10-12 reps
+</li>
+<li>machine preacher bicep curl, 2 sets of 12 reps, 1 descreasing set
+</li>
+<li>cable rope hammer bicep curl, 4 sets of 12 reps
+</li>
+<li>stretch back and biceps
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-10" name="sec-10"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-29 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br  /><div class="outline-text-2" id="text-10">
+<ol class="org-ol">
+<li>one arm doorway pec stretch, 5-10 sec each side
+</li>
+<li>angled smith flat bench press, 1 set of 12 reps, 0kg, warm up
+</li>
+<li>angled smith flat bench press, 6 sets of 8-12 reps, 15kg, 15kg, 20kg, 25kg, 20kg, 15kg
+</li>
+<li>angled smith incline bench press, 5 sets of 8-12 reps, 15kg, 15kg, 10kg, 10kg, 5kg
+</li>
+<li>plate load incline pec fly machine 8-12 reps, 2 sets, 0kg
+</li>
+<li>low cable fly, 2 sets of 8-10 reps
+</li>
+<li>foot down tricep extension, 5 sets of 8-10 reps, 2 plates, 2 plates, 1 plate, 1 plate, 1 plate
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-11" name="sec-11"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-25 Wed&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="legs">legs</span></span><br  /><div class="outline-text-2" id="text-11">
+<ol class="org-ol">
+<li>one leg standing quads stretch 
+</li>
+<li>front and side lunge hamstring stretch, 2 sets
+</li>
+<li>leg extension 12 reps + leg curls 12 reps, 4 sets
+</li>
+<li>leg sled, 4 sets of 10 reps
+</li>
+<li>hip abduction, 3 sets of 10 reps
+</li>
+<li>glute kickback machine, 3 sets of 10 reps
+</li>
+<li>lunge, 2 sets of 20 reps
+</li>
+<li>bend over hamstring stretch
+</li>
+<li>front and side lunge hamstring stretch, 2 sets
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-12" name="sec-12"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-24 Tue&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="shoulders">shoulders</span></span><br  /><div class="outline-text-2" id="text-12">
+<ol class="org-ol">
+<li>stance dumbbell rotation
+</li>
+<li>cross body shoulder stretch
+</li>
+<li>seated angled smith shoulder press, warm up + 4 sets of 12 reps + drop set, 0kg, 5kg, 10kg, 15kg, 20kg, then descrease back to 0kg
+</li>
+<li>seated angled smith behind the neck shoulder press, 4 sets of 12 reps + drop set
+</li>
+<li>stance dumbbell delt fly, 3 sets of 20 reps, 2.5kg, 5kg, 2.5kg
+</li>
+<li>lu's rear delt smith shrugs, 4 sets of 12 reps, 0kg
+</li>
+<li>bent over delt fly machine
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-13" name="sec-13"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-23 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br  /><div class="outline-text-2" id="text-13">
+<ol class="org-ol">
+<li>stretch back
+</li>
+<li>assisted pull up machine 10 reps + seated machine row 1 12 reps, 4 sets
+</li>
+<li>seated cable lat pull down machine 10-12 reps + drop set 1 + drop set 2
+</li>
+<li>seated machine row 2, 4 sets of 12 reps, light weight
+</li>
+<li>kneeling one arm cable pull down, pyramid sets, start from and end to 9kg
+</li>
+<li>machine preacher bicep curl, 4 sets
+</li>
+<li>cable rope hammer bicep curl, 3 sets of 12 reps
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-14" name="sec-14"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-22 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br  /><div class="outline-text-2" id="text-14">
+<ol class="org-ol">
+<li>one arm doorway pec stretch, 5-10 sec each side
+</li>
+<li>foot down tricep extension, 1 set 12 reps, warm up
+</li>
+<li>flat bench press, 1 set 20 reps, barbell weight, warm up
+</li>
+<li>flat bench press, 5 sets of 8-12 reps, 10kg, 20kg, 25kg, 10kg, 5kg
+</li>
+<li>angled smith incline bench press, 5 sets of 12 reps, 10kg, 20kg, 25kg, 10kg, 5kg, 0kg
+</li>
+<li>plate load incline pec fly machine 8-12 erps + squeeze 8-10 reps, 4 sets, 0kg, 2.5kg
+</li>
+<li>high cable fly + low cable fly, 4 sets, 2 plates, 3 plates, 2 plates, 2 plates
+</li>
+<li>foot down tricep extension, 4 sets of 8-12 reps
+</li>
+<li>tricep dip with legs on bench, 3 sets of 3-5 reps
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-15" name="sec-15"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-18 Wed&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="legs">legs</span></span><br  /><div class="outline-text-2" id="text-15">
+<ol class="org-ol">
+<li>front and side lunge hamstring stretch, 2 sets
+</li>
+<li>front squat machine, 4 sets of 10 reps
+</li>
+<li>leg extension, 4 sets of 12 reps
+</li>
+<li>leg curl, 4 sets of 10 reps
+</li>
+<li>glute kickback machine, 3 sets of 10 reps
+</li>
+<li>lunge, 2 sets of 18 reps (left and right count 2 reps)
+</li>
+<li>one leg standing quads stretch
+</li>
+<li>bend over hamstring stretch
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-16" name="sec-16"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-17 Tue&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="shoulders">shoulders</span></span><br  /><div class="outline-text-2" id="text-16">
+<ol class="org-ol">
+<li>lying machine shoulder press 
+</li>
+<li>lying on front machine shoulder press 
+</li>
+<li>seated angled smith behind the neck shoulder press, pyramid sets
+</li>
+<li>machine rear delt fly, 4 sets
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-17" name="sec-17"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-16 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br  /><div class="outline-text-2" id="text-17">
+<ol class="org-ol">
+<li>seated machine row 1
+</li>
+<li>seated lat pull down plate loaded machine 1
+</li>
+<li>seated cable lat pull down machine
+</li>
+<li>seated cable lat pull down machine behind the neck
+</li>
+<li>kneeling one arm cable pull down
+</li>
+<li>seated machine row 2
+</li>
+<li>preacher chair reverse seated dumbbell bicep curl
+</li>
+<li>machine preacher bicep curl
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-18" name="sec-18"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-15 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br  /><div class="outline-text-2" id="text-18">
+<ol class="org-ol">
+<li>straight smith flat bench press
+</li>
+<li>angled smith incline bench press
+</li>
+<li>seated decline machine chest press
+</li>
+<li>foot down rope tricep extension
+</li>
+<li>bent over one arm dumbbell tricep extension
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-19" name="sec-19"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-12 Thu&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="legs">legs</span></span><br  /><div class="outline-text-2" id="text-19">
+<ol class="org-ol">
+<li>elliptical machine 8-10 min
+</li>
+<li>leg extension 15 reps + free weight lunge, 5 sets of 15 reps
+</li>
+<li>leg extension pause and rotate, light weight 3 sets of 10-12 reps
+</li>
+<li>leg curl, 5 sets of 12 reps
+</li>
+<li>hip abduction, 3 sets of 10 reps
+</li>
+<li>one leg standing quads stretch
+</li>
+<li>bend over hamstring stretch
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-20" name="sec-20"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-10 Tue&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="shoulders">shoulders</span></span><br  /><div class="outline-text-2" id="text-20">
+<ol class="org-ol">
+<li>seated angled smith shoulder press, barbell weight, 5kg, 10kg, 15kg, 5kg, barbell weight
+</li>
+<li>seated angled smith behind the neck shoulder press, pyramid sets
+</li>
+<li>machine rear delt fly, 3 sets
+</li>
+<li>machine lateral delt raise, 3 sets
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-21" name="sec-21"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-09 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br  /><div class="outline-text-2" id="text-21">
+<ol class="org-ol">
+<li>seated machine row, 4 sets of 12 reps
+</li>
+<li>seated lat pull down plate loaded machine 1, 4 sets of 12 reps
+</li>
+<li>seated lat pull down plate loaded machine 2, 4 sets of 12 reps
+</li>
+<li>bent over v bar row, 4 sets of 12 reps
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-22" name="sec-22"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-08 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br  /><div class="outline-text-2" id="text-22">
+<ol class="org-ol">
+<li>straight smith flat bench press, 4 sets of 12 reps + 1 drop set
+</li>
+<li>angled smith incline bench press, 4 sets of 12 reps + 1 drop set
+</li>
+<li>seated decline machine chest press, 4 sets of 12 reps + 1 drop set
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-23" name="sec-23"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-05 Thu&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="legs">legs</span></span><br  /><div class="outline-text-2" id="text-23">
+<ol class="org-ol">
+<li>leg extension, 40 reps
+</li>
+<li>leg curl, 40 reps
+</li>
+<li>front squat machine, 4 sets of 10 reps
+</li>
+<li>leg sled, 4 sets of 10 reps
+</li>
+<li>HYPOXIA. STOP training. 
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-24" name="sec-24"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-03 Tue&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="shoulders">shoulders</span></span><br  /><div class="outline-text-2" id="text-24">
+<ol class="org-ol">
+<li>seated smith shoulder press
+</li>
+<li>seated smith behind the neck shoulder press
+</li>
+<li>dumbbell fly, 2 sets of 40-50 reps 2.5 kg + 1 set of 40-50 reps free weight
+</li>
+<li>lu's rear delt smith shrugs, 2 sets
+</li>
+<li>song's rear delt rope pull, 3 sets
+</li>
+<li>machine lateral delt raise, 1 set
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-25" name="sec-25"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-02 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="back">back</span></span><br  /><div class="outline-text-2" id="text-25">
+<ol class="org-ol">
+<li>seated machine row
+</li>
+<li>seated lat pull down machine
+</li>
+<li>seated cable lat pull down machine
+</li>
+<li>seated cable row
+</li>
+<li>standing lat push down
+</li>
+<li>kneeling one arm cable pull down
+</li>
+<li>machine bicep curl
+</li>
+<li>machine preacher bicep curl
+</li>
+</ol>
+</div>
+</li>
+<li><a id="sec-26" name="sec-26"></a><span class="timestamp-wrapper"><span class="timestamp">&lt;2019-09-01 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_ironforest">@ironforest</span>&#xa0;<span class="chest">chest</span></span><br  /><div class="outline-text-2" id="text-26">
+<ol class="org-ol">
+<li>straight smith flat bench press, 4 sets of 12 reps + 1 drop set
+</li>
+<li>angled smith incline bench press, 4 sets of 12 reps + 1 drop set
+</li>
+<li>seated decline machine chest press, 4 sets of 12 reps + 1 drop set
+</li>
+<li>foot down rope tricep extension
+</li>
+<li>overhead rope tricep extension 
+</li>
+</ol>
+</div>
+</li></ul>
 </div>
 </body>
 </html>
