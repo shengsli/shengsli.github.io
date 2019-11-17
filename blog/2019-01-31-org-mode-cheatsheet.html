@@ -3,22 +3,29 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2019-11-17 Sun 17:02 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org-mode Cheat Sheet</title>
-<!-- 2019-10-26 Sat 22:38 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -45,27 +52,111 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -85,6 +176,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" 						   type="text/css" 						   href="/css/style.css">
@@ -93,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -134,48 +226,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
+<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        // Only one of the two following lines, depending on user settings
-        // First allows browser-native MathML display, second forces HTML/CSS
-        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
-            jax: ["input/TeX", "output/HTML-CSS"],
-        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
-                     "TeX/noUndefined.js"],
-        tex2jax: {
-            inlineMath: [ ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
-            skipTags: ["script","noscript","style","textarea","pre","code"],
-            ignoreClass: "tex2jax_ignore",
-            processEscapes: false,
-            processEnvironments: true,
-            preview: "TeX"
-        },
-        showProcessingMessages: true,
         displayAlign: "center",
-        displayIndent: "2em",
+        displayIndent: "0em",
 
-        "HTML-CSS": {
-             scale: 100,
-             availableFonts: ["STIX","TeX"],
-             preferredFont: "TeX",
-             webFont: "TeX",
-             imageFont: "TeX",
-             showMathMenu: true,
-        },
-        MMLorHTML: {
-             prefer: {
-                 MSIE:    "MML",
-                 Firefox: "MML",
-                 Opera:   "HTML",
-                 other:   "HTML"
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
              }
-        }
-    });
-/*]]>*///-->
+});
 </script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -184,46 +256,46 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Section</a>
+<li><a href="#org08f920f">1. Section</a>
 <ul>
-<li><a href="#sec-1-1">1.1. Subsection</a></li>
-<li><a href="#sec-1-2">1.2. M-enter</a></li>
+<li><a href="#org85df379">1.1. Subsection</a></li>
+<li><a href="#org0d04a4d">1.2. M-enter</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">2. Markup</a></li>
-<li><a href="#sec-3">3. Tables</a>
+<li><a href="#orgbb160f1">2. Markup</a></li>
+<li><a href="#orgbc86173">3. Tables</a>
 <ul>
-<li><a href="#sec-3-1">3.1. hyphen-tab automatically generate Next row in table</a></li>
+<li><a href="#orgb2ccea6">3.1. hyphen-tab automatically generate Next row in table</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. Export to other formats</a></li>
-<li><a href="#sec-5">5. Source Code</a></li>
-<li><a href="#sec-6">6. LaTeX integration</a></li>
-<li><a href="#sec-7">7. Literate programming</a></li>
-<li><a href="#sec-8">8. Todo</a>
+<li><a href="#org5675a19">4. Export to other formats</a></li>
+<li><a href="#org6c54ae4">5. Source Code</a></li>
+<li><a href="#orge8b742e">6. LaTeX integration</a></li>
+<li><a href="#orgdf3ce03">7. Literate programming</a></li>
+<li><a href="#orgf65f83f">8. Todo</a>
 <ul>
-<li><a href="#sec-8-1">8.1. <span class="done DONE">DONE</span> explain todo lists</a></li>
-<li><a href="#sec-8-2">8.2. <span class="done DONE">DONE</span> cycle through states</a></li>
-<li><a href="#sec-8-3">8.3. <span class="todo TODO">TODO</span> C-C, C-D: deadline</a></li>
-<li><a href="#sec-8-4">8.4. <span class="todo TODO">TODO</span> M-Shift-Enter add another todo</a></li>
-<li><a href="#sec-8-5">8.5. <span class="todo TODO">TODO</span> agenda</a></li>
+<li><a href="#orgb8edcfb">8.1. <span class="done DONE">DONE</span> explain todo lists</a></li>
+<li><a href="#org9d16f1a">8.2. <span class="done DONE">DONE</span> cycle through states</a></li>
+<li><a href="#orge1c246e">8.3. <span class="todo TODO">TODO</span> C-C, C-D: deadline</a></li>
+<li><a href="#orgd76792c">8.4. <span class="todo TODO">TODO</span> M-Shift-Enter add another todo</a></li>
+<li><a href="#org03cf577">8.5. <span class="todo TODO">TODO</span> agenda</a></li>
 </ul>
 </li>
-<li><a href="#sec-9">9. Website/Blog</a></li>
-<li><a href="#sec-10">10. Twitter bootstrap</a></li>
-<li><a href="#sec-11">11. Diagram</a>
+<li><a href="#org61e023d">9. Website/Blog</a></li>
+<li><a href="#org254ebb4">10. Twitter bootstrap</a></li>
+<li><a href="#org80c98cd">11. Diagram</a>
 <ul>
-<li><a href="#sec-11-1">11.1. plantuml-mode</a>
+<li><a href="#org5753b25">11.1. plantuml-mode</a>
 <ul>
-<li><a href="#sec-11-1-1">11.1.1. exmaple 1</a></li>
-<li><a href="#sec-11-1-2">11.1.2. example 2</a></li>
+<li><a href="#org6ac57cd">11.1.1. exmaple 1</a></li>
+<li><a href="#org477f390">11.1.2. example 2</a></li>
 </ul>
 </li>
-<li><a href="#sec-11-2">11.2. ditaa</a></li>
+<li><a href="#orgf70f853">11.2. ditaa</a></li>
 </ul>
 </li>
-<li><a href="#sec-12">12. preview latex</a></li>
-<li><a href="#sec-13">13. frequently used shortcut</a></li>
+<li><a href="#org0cd0ad8">12. preview latex</a></li>
+<li><a href="#org1bbd005">13. frequently used shortcut</a></li>
 </ul>
 </div>
 </div>
@@ -236,92 +308,83 @@ Created on <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-3
 This html file is export from an org file.
 <code>C-u M-x org-reload</code>: fix #+ wrong argument
 </p>
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Section</h2>
+<div id="outline-container-org08f920f" class="outline-2">
+<h2 id="org08f920f"><span class="section-number-2">1</span> Section</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Subsection</h3>
 </div>
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> M-enter</h3>
+<div id="outline-container-org85df379" class="outline-3">
+<h3 id="org85df379"><span class="section-number-3">1.1</span> Subsection</h3>
+</div>
+<div id="outline-container-org0d04a4d" class="outline-3">
+<h3 id="org0d04a4d"><span class="section-number-3">1.2</span> M-enter</h3>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Markup</h2>
+<div id="outline-container-orgbb160f1" class="outline-2">
+<h2 id="orgbb160f1"><span class="section-number-2">2</span> Markup</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <b>Bold</b>, <i>italic</i>, <code>verbatim</code>, <del>strikethrough</del>
 </p>
 <ul class="org-ul">
-<li>bulleted
-</li>
-<li>list
-</li>
-<li>items
-</li>
-<li><code>C-C, C-L</code> <a href="https://shengsli.github.io">Sheng's Mess</a>
-</li>
-<li><code>C-C, C-O</code> to open link
-</li>
-<li>link to other files, need configuration
-</li>
+<li>bulleted</li>
+<li>list</li>
+<li>items</li>
+<li><code>C-C, C-L</code> <a href="https://shengsli.github.io">Sheng's Mess</a></li>
+<li><code>C-C, C-O</code> to open link</li>
+<li>link to other files, need configuration</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Tables</h2>
+<div id="outline-container-orgbc86173" class="outline-2">
+<h2 id="orgbc86173"><span class="section-number-2">3</span> Tables</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> hyphen-tab automatically generate Next row in table</h3>
+</div>
+<div id="outline-container-orgb2ccea6" class="outline-3">
+<h3 id="orgb2ccea6"><span class="section-number-3">3.1</span> hyphen-tab automatically generate Next row in table</h3>
 <div class="outline-text-3" id="text-3-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="right" />
+<col  class="org-right" />
 
-<col  class="right" />
+<col  class="org-right" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="right">1</th>
-<th scope="col" class="right">2</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="right">&#xa0;</td>
-<td class="right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Export to other formats</h2>
+<div id="outline-container-org5675a19" class="outline-2">
+<h2 id="org5675a19"><span class="section-number-2">4</span> Export to other formats</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
-<li><code>C-C, C-E</code>
-</li>
+<li><code>C-C, C-E</code></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Source Code</h2>
+<div id="outline-container-org6c54ae4" class="outline-2">
+<h2 id="org6c54ae4"><span class="section-number-2">5</span> Source Code</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li><code>&lt;-s-tab short cut</code>
 <ul class="org-ul">
-<li>~C-c C-,~ from emacs 9.2
-</li>
-</ul>
-</li>
-<li>~C-c, '~ start coding envirenment
-</li>
+<li><code>C-c C-,</code> from emacs 9.2</li>
+</ul></li>
+<li><code>C-c, '</code> start coding envirenment</li>
 </ul>
 <div class="org-src-container">
-
 <pre class="src src-C">  <span style="color: #228b22;">int</span> <span style="color: #0000ff;">add</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">a</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">b</span>)
   {
     <span style="color: #a020f0;">return</span> a+b;
@@ -332,19 +395,16 @@ This html file is export from an org file.
 </div>
 
 <ul class="org-ul">
-<li><code>C-C, C-C</code> to evaluate
-</li>
+<li><code>C-C, C-C</code> to evaluate</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> LaTeX integration</h2>
+<div id="outline-container-orge8b742e" class="outline-2">
+<h2 id="orge8b742e"><span class="section-number-2">6</span> LaTeX integration</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
-<li>Characters: &alpha; &rarr; &beta;
-</li>
-<li>\(O(n \log n)\)
-</li>
+<li>Characters: &alpha; &rarr; &beta;</li>
+<li>\(O(n \log n)\)</li>
 </ul>
 \begin{align*}
     A = 
@@ -367,96 +427,86 @@ This html file is export from an org file.
 \end{align*}
 </div>
 </div>
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7"><span class="section-number-2">7</span> Literate programming</h2>
+<div id="outline-container-orgdf3ce03" class="outline-2">
+<h2 id="orgdf3ce03"><span class="section-number-2">7</span> Literate programming</h2>
 </div>
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8"><span class="section-number-2">8</span> Todo</h2>
+<div id="outline-container-orgf65f83f" class="outline-2">
+<h2 id="orgf65f83f"><span class="section-number-2">8</span> Todo</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 Getting things done!
 </p>
 </div>
-<div id="outline-container-sec-8-1" class="outline-3">
-<h3 id="sec-8-1"><span class="section-number-3">8.1</span> <span class="done DONE">DONE</span> explain todo lists</h3>
+<div id="outline-container-orgb8edcfb" class="outline-3">
+<h3 id="orgb8edcfb"><span class="section-number-3">8.1</span> <span class="done DONE">DONE</span> explain todo lists</h3>
 <div class="outline-text-3" id="text-8-1">
 </div>
 </div>
-<div id="outline-container-sec-8-2" class="outline-3">
-<h3 id="sec-8-2"><span class="section-number-3">8.2</span> <span class="done DONE">DONE</span> cycle through states</h3>
+<div id="outline-container-org9d16f1a" class="outline-3">
+<h3 id="org9d16f1a"><span class="section-number-3">8.2</span> <span class="done DONE">DONE</span> cycle through states</h3>
 </div>
-<div id="outline-container-sec-8-3" class="outline-3">
-<h3 id="sec-8-3"><span class="section-number-3">8.3</span> <span class="todo TODO">TODO</span> C-C, C-D: deadline</h3>
+<div id="outline-container-orge1c246e" class="outline-3">
+<h3 id="orge1c246e"><span class="section-number-3">8.3</span> <span class="todo TODO">TODO</span> C-C, C-D: deadline</h3>
 <div class="outline-text-3" id="text-8-3">
 </div>
 </div>
-<div id="outline-container-sec-8-4" class="outline-3">
-<h3 id="sec-8-4"><span class="section-number-3">8.4</span> <span class="todo TODO">TODO</span> M-Shift-Enter add another todo</h3>
+<div id="outline-container-orgd76792c" class="outline-3">
+<h3 id="orgd76792c"><span class="section-number-3">8.4</span> <span class="todo TODO">TODO</span> M-Shift-Enter add another todo</h3>
 </div>
-<div id="outline-container-sec-8-5" class="outline-3">
-<h3 id="sec-8-5"><span class="section-number-3">8.5</span> <span class="todo TODO">TODO</span> agenda</h3>
+<div id="outline-container-org03cf577" class="outline-3">
+<h3 id="org03cf577"><span class="section-number-3">8.5</span> <span class="todo TODO">TODO</span> agenda</h3>
 <div class="outline-text-3" id="text-8-5">
 <ul class="org-ul">
-<li><code>f</code>
-</li>
-<li><code>b</code>
-</li>
+<li><code>f</code></li>
+<li><code>b</code></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9"><span class="section-number-2">9</span> Website/Blog</h2>
+<div id="outline-container-org61e023d" class="outline-2">
+<h2 id="org61e023d"><span class="section-number-2">9</span> Website/Blog</h2>
 <div class="outline-text-2" id="text-9">
 <ul class="org-ul">
-<li><code>org2blog</code> worldpress
-</li>
-<li><code>org-publish</code> website
-</li>
+<li><code>org2blog</code> worldpress</li>
+<li><code>org-publish</code> website</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-10" class="outline-2">
-<h2 id="sec-10"><span class="section-number-2">10</span> Twitter bootstrap</h2>
+<div id="outline-container-org254ebb4" class="outline-2">
+<h2 id="org254ebb4"><span class="section-number-2">10</span> Twitter bootstrap</h2>
 <div class="outline-text-2" id="text-10">
 <ul class="org-ul">
-<li><code>ox-twbs</code>
-</li>
-<li><code>ox-gfm</code> github flavored markdown
-</li>
+<li><code>ox-twbs</code></li>
+<li><code>ox-gfm</code> github flavored markdown</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-11" class="outline-2">
-<h2 id="sec-11"><span class="section-number-2">11</span> Diagram</h2>
+<div id="outline-container-org80c98cd" class="outline-2">
+<h2 id="org80c98cd"><span class="section-number-2">11</span> Diagram</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
-<li>artist-mode
-</li>
-<li>picture-mode
-</li>
+<li>artist-mode</li>
+<li>picture-mode</li>
 </ul>
 </div>
-<div id="outline-container-sec-11-1" class="outline-3">
-<h3 id="sec-11-1"><span class="section-number-3">11.1</span> plantuml-mode</h3>
+<div id="outline-container-org5753b25" class="outline-3">
+<h3 id="org5753b25"><span class="section-number-3">11.1</span> plantuml-mode</h3>
 <div class="outline-text-3" id="text-11-1">
 <ul class="org-ul">
-<li>plantuml has dependency on graphviz. 
-</li>
-<li><a href="http://www.alvinsim.com/diagrams-with-plantuml-and-emacs/">cannot render image? check here.</a>
-</li>
+<li>plantuml has dependency on graphviz.</li>
+<li><a href="http://www.alvinsim.com/diagrams-with-plantuml-and-emacs/">cannot render image? check here.</a></li>
 </ul>
 </div>
-<div id="outline-container-sec-11-1-1" class="outline-4">
-<h4 id="sec-11-1-1"><span class="section-number-4">11.1.1</span> exmaple 1</h4>
+<div id="outline-container-org6ac57cd" class="outline-4">
+<h4 id="org6ac57cd"><span class="section-number-4">11.1.1</span> exmaple 1</h4>
 <div class="outline-text-4" id="text-11-1-1">
 <p>
 <a href="my-diagram.txt">my-diagram.txt</a>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-11-1-2" class="outline-4">
-<h4 id="sec-11-1-2"><span class="section-number-4">11.1.2</span> example 2</h4>
+<div id="outline-container-org477f390" class="outline-4">
+<h4 id="org477f390"><span class="section-number-4">11.1.2</span> example 2</h4>
 <div class="outline-text-4" id="text-11-1-2">
 
 <div class="figure">
@@ -467,8 +517,8 @@ Getting things done!
 </div>
 </div>
 
-<div id="outline-container-sec-11-2" class="outline-3">
-<h3 id="sec-11-2"><span class="section-number-3">11.2</span> ditaa</h3>
+<div id="outline-container-orgf70f853" class="outline-3">
+<h3 id="orgf70f853"><span class="section-number-3">11.2</span> ditaa</h3>
 <div class="outline-text-3" id="text-11-2">
 
 <div class="figure">
@@ -478,25 +528,21 @@ Getting things done!
 </div>
 </div>
 </div>
-<div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12"><span class="section-number-2">12</span> preview latex</h2>
+<div id="outline-container-org0cd0ad8" class="outline-2">
+<h2 id="org0cd0ad8"><span class="section-number-2">12</span> preview latex</h2>
 <div class="outline-text-2" id="text-12">
 <ul class="org-ul">
-<li><code>C-u C-u C-c C-x C-l</code> preview all latex fragment in the subtree
-</li>
-<li><code>C-c C-c</code> un-preview
-</li>
+<li><code>C-u C-u C-c C-x C-l</code> preview all latex fragment in the subtree</li>
+<li><code>C-c C-c</code> un-preview</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-13" class="outline-2">
-<h2 id="sec-13"><span class="section-number-2">13</span> frequently used shortcut</h2>
+<div id="outline-container-org1bbd005" class="outline-2">
+<h2 id="org1bbd005"><span class="section-number-2">13</span> frequently used shortcut</h2>
 <div class="outline-text-2" id="text-13">
 <ul class="org-ul">
-<li>auto indent: C-M-\
-</li>
-<li>comment: M-;
-</li>
+<li>auto indent: C-M-\</li>
+<li>comment: M-;</li>
 </ul>
 </div>
 </div>

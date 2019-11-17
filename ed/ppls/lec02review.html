@@ -3,22 +3,29 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2019-11-17 Sun 17:03 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec02 w1b parallel architecture for dummies 2</title>
-<!-- 2019-10-26 Sat 22:37 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -45,27 +52,111 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -85,6 +176,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" 						   type="text/css" 						   href="/css/style.css">
@@ -93,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -134,48 +226,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
+<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        // Only one of the two following lines, depending on user settings
-        // First allows browser-native MathML display, second forces HTML/CSS
-        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
-            jax: ["input/TeX", "output/HTML-CSS"],
-        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
-                     "TeX/noUndefined.js"],
-        tex2jax: {
-            inlineMath: [ ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
-            skipTags: ["script","noscript","style","textarea","pre","code"],
-            ignoreClass: "tex2jax_ignore",
-            processEscapes: false,
-            processEnvironments: true,
-            preview: "TeX"
-        },
-        showProcessingMessages: true,
         displayAlign: "center",
-        displayIndent: "2em",
+        displayIndent: "0em",
 
-        "HTML-CSS": {
-             scale: 100,
-             availableFonts: ["STIX","TeX"],
-             preferredFont: "TeX",
-             webFont: "TeX",
-             imageFont: "TeX",
-             showMathMenu: true,
-        },
-        MMLorHTML: {
-             prefer: {
-                 MSIE:    "MML",
-                 Firefox: "MML",
-                 Opera:   "HTML",
-                 other:   "HTML"
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
              }
-        }
-    });
-/*]]>*///-->
+});
 </script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -184,109 +256,99 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. parallel applications and algorithms</a></li>
-<li><a href="#sec-2">2. <code>co</code> notation</a></li>
-<li><a href="#sec-3">3. sequential memory consistency model (SC)</a>
+<li><a href="#org39ef1e4">1. parallel applications and algorithms</a></li>
+<li><a href="#org9f677aa">2. <code>co</code> notation</a></li>
+<li><a href="#orga140ea6">3. sequential memory consistency model (SC)</a>
 <ul>
-<li><a href="#sec-3-1">3.1. rules:</a></li>
-<li><a href="#sec-3-2">3.2. model</a></li>
+<li><a href="#orgedc895c">3.1. rules:</a></li>
+<li><a href="#org12014b5">3.2. model</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. atomic actions</a></li>
-<li><a href="#sec-5">5. atomic actions and interleavings</a>
+<li><a href="#org0900297">4. atomic actions</a></li>
+<li><a href="#orgace7067">5. atomic actions and interleavings</a>
 <ul>
-<li><a href="#sec-5-1">5.1. example (error cases): This program is to reverse order by swapping.</a>
+<li><a href="#org27b6780">5.1. example (error cases): This program is to reverse order by swapping.</a>
 <ul>
-<li><a href="#sec-5-1-1">5.1.1. case 1</a></li>
-<li><a href="#sec-5-1-2">5.1.2. case 2</a></li>
+<li><a href="#org2c22fd8">5.1.1. case 1</a></li>
+<li><a href="#orgcec7887">5.1.2. case 2</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#sec-6">6. <code>await</code> notation</a></li>
-<li><a href="#sec-7">7. Next time, we will apply this notation in some cases.</a></li>
+<li><a href="#orge31cf8f">6. <code>await</code> notation</a></li>
+<li><a href="#orgc2242dc">7. Next time, we will apply this notation in some cases.</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> parallel applications and algorithms</h2>
+<div id="outline-container-org39ef1e4" class="outline-2">
+<h2 id="org39ef1e4"><span class="section-number-2">1</span> parallel applications and algorithms</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li>requirements of typical parallel algorithms
-</li>
+<li>requirements of typical parallel algorithms</li>
 <li>We will introduce 3 well-known <b>parallel patterns</b>:
 <ul class="org-ul">
-<li>bag of tasks
-</li>
-<li>pipeline
-</li>
-<li>interacting peers
-</li>
-</ul>
-</li>
+<li>bag of tasks</li>
+<li>pipeline</li>
+<li>interacting peers</li>
+</ul></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> <code>co</code> notation</h2>
+<div id="outline-container-org9f677aa" class="outline-2">
+<h2 id="org9f677aa"><span class="section-number-2">2</span> <code>co</code> notation</h2>
 <div class="outline-text-2" id="text-2">
 <ol class="org-ol">
-<li>creation
+<li><p>
+creation
+</p>
 <pre class="example">
-co
-	...//...//...    ## comments
-oc
+   co
+	   ...//...//...    ## comments
+   oc
 </pre>
 <pre class="example">
-co [i = 0 to n-1] {
-    a[i] = a[i] +1;  ## looks like a loop, but not. all at the same time
-}
-</pre>
-</li>
-<li>atomic action
-</li>
-<li>synchronisation <code>await</code>, sometimes called fork-join parallelism
-</li>
+   co [i = 0 to n-1] {
+       a[i] = a[i] +1;  ## looks like a loop, but not. all at the same time
+   }
+</pre></li>
+<li>atomic action</li>
+<li>synchronisation <code>await</code>, sometimes called fork-join parallelism</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> sequential memory consistency model (SC)</h2>
+<div id="outline-container-orga140ea6" class="outline-2">
+<h2 id="orga140ea6"><span class="section-number-2">3</span> sequential memory consistency model (SC)</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> rules:</h3>
+</div>
+<div id="outline-container-orgedc895c" class="outline-3">
+<h3 id="orgedc895c"><span class="section-number-3">3.1</span> rules:</h3>
 <div class="outline-text-3" id="text-3-1">
 <ol class="org-ol">
-<li>ordering of atomic actions (particularly <b>reads and writes to memory</b>) from any one thread have to occur in normal program order. 
-</li>
-<li>atomic actions from different threads are interleaved arbitrarily (i.e. in an unpredictable sequential order subject only to rule 1) with every thread seeing this same ordering. 
-</li>
+<li>ordering of atomic actions (particularly <b>reads and writes to memory</b>) from any one thread have to occur in normal program order.</li>
+<li>atomic actions from different threads are interleaved arbitrarily (i.e. in an unpredictable sequential order subject only to rule 1) with every thread seeing this same ordering.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> model</h3>
+<div id="outline-container-org12014b5" class="outline-3">
+<h3 id="org12014b5"><span class="section-number-3">3.2</span> model</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
-<li>analogy: think of SC execution as a random switch, allowing processes to access memory once at a time. 
-</li>
+<li>analogy: think of SC execution as a random switch, allowing processes to access memory once at a time.</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> atomic actions</h2>
+<div id="outline-container-org0900297" class="outline-2">
+<h2 id="org0900297"><span class="section-number-2">4</span> atomic actions</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
-<li>e.g. <code>b = a + a</code>. A sensible compiler would implement it with one read of <code>a</code>. 
-</li>
-<li>notation: <code>&lt;...&gt;</code> is atomic. 
-</li>
+<li>e.g. <code>b = a + a</code>. A sensible compiler would implement it with one read of <code>a</code>.</li>
+<li>notation: <code>&lt;...&gt;</code> is atomic.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> atomic actions and interleavings</h2>
+<div id="outline-container-orgace7067" class="outline-2">
+<h2 id="orgace7067"><span class="section-number-2">5</span> atomic actions and interleavings</h2>
 <div class="outline-text-2" id="text-5">
 <pre class="example">
 co
@@ -294,19 +356,18 @@ co
 oc
 </pre>
 <ul class="org-ul">
-<li>3 actions: read count; increment 1; write count;
-</li>
+<li>3 actions: read count; increment 1; write count;</li>
 <li>Question: How many permutations? 20
 <ul class="org-ul">
-<li>Some math: 
+<li><p>
+Some math: 
+</p>
 \begin{align}
 \frac{(N_a+N_b)!}{N_a!N_b!}
 &= \frac{(3+3)!}{3!3!}
 &= 20
-\end{align}
-</li>
-</ul>
-</li>
+\end{align}</li>
+</ul></li>
 </ul>
 <pre class="example">
 co
@@ -314,11 +375,12 @@ co
 oc
 </pre>
 </div>
-<div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> example (error cases): This program is to reverse order by swapping.</h3>
+<div id="outline-container-org27b6780" class="outline-3">
+<h3 id="org27b6780"><span class="section-number-3">5.1</span> example (error cases): This program is to reverse order by swapping.</h3>
 <div class="outline-text-3" id="text-5-1">
-</div><div id="outline-container-sec-5-1-1" class="outline-4">
-<h4 id="sec-5-1-1"><span class="section-number-4">5.1.1</span> case 1</h4>
+</div>
+<div id="outline-container-org2c22fd8" class="outline-4">
+<h4 id="org2c22fd8"><span class="section-number-4">5.1.1</span> case 1</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <pre class="example">
 co [i = 0 to n-1] {
@@ -326,13 +388,12 @@ co [i = 0 to n-1] {
 }
 </pre>
 <ul class="org-ul">
-<li>It has chance to be right. Both threads read first and then write to location. 
-</li>
+<li>It has chance to be right. Both threads read first and then write to location.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-5-1-2" class="outline-4">
-<h4 id="sec-5-1-2"><span class="section-number-4">5.1.2</span> case 2</h4>
+<div id="outline-container-orgcec7887" class="outline-4">
+<h4 id="orgcec7887"><span class="section-number-4">5.1.2</span> case 2</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <pre class="example">
 co [i = 0 to n-1] {
@@ -340,35 +401,26 @@ co [i = 0 to n-1] {
 }
 </pre>
 <ul class="org-ul">
-<li>It's worse. It's definitely not going to give the expected result. 
-</li>
-<li>It will lose target data after writing to target. It needs a temporary variable. 
-</li>
+<li>It's worse. It's definitely not going to give the expected result.</li>
+<li>It will lose target data after writing to target. It needs a temporary variable.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> <code>await</code> notation</h2>
+<div id="outline-container-orge31cf8f" class="outline-2">
+<h2 id="orge31cf8f"><span class="section-number-2">6</span> <code>await</code> notation</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
-<li>It captures the synchronization behaviour. 
-</li>
-<li>It is really hard to implement. 
-</li>
+<li>It captures the synchronization behaviour.</li>
+<li>It is really hard to implement.</li>
 <li><code>&lt; await (B) S &gt;</code>
 <ul class="org-ul">
-<li>B: Boolean/condition
-</li>
-<li>S: Statements/action
-</li>
-<li>S happens only if B is true. 
-</li>
-</ul>
-</li>
-<li>example 1:
-</li>
+<li>B: Boolean/condition</li>
+<li>S: Statements/action</li>
+<li>S happens only if B is true.</li>
+</ul></li>
+<li>example 1:</li>
 </ul>
 <pre class="example">
 a = 0; flag = 0;
@@ -379,8 +431,7 @@ co
 oc
 </pre>
 <ul class="org-ul">
-<li>example 2:
-</li>
+<li>example 2:</li>
 </ul>
 <pre class="example">
 a = 0; b = 0;
@@ -392,17 +443,14 @@ co
 <ul class="org-ul">
 <li>Possible results: 
 <ol class="org-ol">
-<li>a = 0; b =1;
-</li>
-<li>This program may hang (fail to terminate).
-</li>
-</ol>
-</li>
+<li>a = 0; b =1;</li>
+<li>This program may hang (fail to terminate).</li>
+</ol></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7"><span class="section-number-2">7</span> Next time, we will apply this notation in some cases.</h2>
+<div id="outline-container-orgc2242dc" class="outline-2">
+<h2 id="orgc2242dc"><span class="section-number-2">7</span> Next time, we will apply this notation in some cases.</h2>
 </div>
 </div>
 </body>
