@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-17 Sun 17:03 -->
+<!-- 2020-04-05 Sun 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec05 w3a Lamport's Bakery Algorithm</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,28 +234,28 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdcfbf0a">1. Today's lecture</a></li>
-<li><a href="#org52cd161">2. Lamport's Bakery Algorithm</a></li>
-<li><a href="#orgb28977b">3. version 1 (correct)</a></li>
-<li><a href="#orge839991">4. version 2 (wrong)</a></li>
-<li><a href="#orgb42d4df">5. version 3: fix 1st problem</a>
+<li><a href="#org81c9fd0">1. Today's lecture</a></li>
+<li><a href="#org4e7f7df">2. Lamport's Bakery Algorithm</a></li>
+<li><a href="#org33bf83d">3. version 1 (correct)</a></li>
+<li><a href="#orgfd2ec83">4. version 2 (wrong)</a></li>
+<li><a href="#org31e8ca8">5. version 3: fix 1st problem</a>
 <ul>
-<li><a href="#orgb4f5f2f">5.1. gist of it</a></li>
-<li><a href="#org6d4a0f6">5.2. fixed code</a></li>
-<li><a href="#orgad2081e">5.3. how version 3 behave? 62</a></li>
+<li><a href="#org99030a7">5.1. gist of it</a></li>
+<li><a href="#orge505250">5.2. fixed code</a></li>
+<li><a href="#org0c6eece">5.3. how version 3 behave? 62</a></li>
 </ul>
 </li>
-<li><a href="#org467592b">6. version 4: fix 2nd problem</a>
+<li><a href="#org9118d38">6. version 4: fix 2nd problem</a>
 <ul>
-<li><a href="#orgd815215">6.1. code</a></li>
+<li><a href="#org443ff94">6.1. code</a></li>
 </ul>
 </li>
-<li><a href="#org507be60">7. preview: barrier (next lecture)</a></li>
+<li><a href="#orgfa6a5b1">7. preview: barrier (next lecture)</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdcfbf0a" class="outline-2">
-<h2 id="orgdcfbf0a"><span class="section-number-2">1</span> Today's lecture</h2>
+<div id="outline-container-org81c9fd0" class="outline-2">
+<h2 id="org81c9fd0"><span class="section-number-2">1</span> Today's lecture</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>last lecture covers spin lock, test and set</li>
@@ -263,8 +263,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org52cd161" class="outline-2">
-<h2 id="org52cd161"><span class="section-number-2">2</span> Lamport's Bakery Algorithm</h2>
+<div id="outline-container-org4e7f7df" class="outline-2">
+<h2 id="org4e7f7df"><span class="section-number-2">2</span> Lamport's Bakery Algorithm</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>Lamport showed how to implement critical sections using only simple atomic read and simple atomic write (i.e. <b>no need for atomic read-modify-write</b>).</li>
@@ -283,8 +283,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb28977b" class="outline-2">
-<h2 id="orgb28977b"><span class="section-number-2">3</span> version 1 (correct)</h2>
+<div id="outline-container-org33bf83d" class="outline-2">
+<h2 id="org33bf83d"><span class="section-number-2">3</span> version 1 (correct)</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li><p>
@@ -309,8 +309,8 @@ co [i=1 to n]
 </ul>
 </div>
 </div>
-<div id="outline-container-orge839991" class="outline-2">
-<h2 id="orge839991"><span class="section-number-2">4</span> version 2 (wrong)</h2>
+<div id="outline-container-orgfd2ec83" class="outline-2">
+<h2 id="orgfd2ec83"><span class="section-number-2">4</span> version 2 (wrong)</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>throw away the big atomic c.s.</li>
@@ -337,16 +337,16 @@ co [i=1 to n] {
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb42d4df" class="outline-2">
-<h2 id="orgb42d4df"><span class="section-number-2">5</span> version 3: fix 1st problem</h2>
+<div id="outline-container-org31e8ca8" class="outline-2">
+<h2 id="org31e8ca8"><span class="section-number-2">5</span> version 3: fix 1st problem</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>1st problem arises from the overlapping of taking tickets and checking turns</li>
 <li>We will not properly prove it but will give you a convincing argument to it.</li>
 </ul>
 </div>
-<div id="outline-container-orgb4f5f2f" class="outline-3">
-<h3 id="orgb4f5f2f"><span class="section-number-3">5.1</span> gist of it</h3>
+<div id="outline-container-org99030a7" class="outline-3">
+<h3 id="org99030a7"><span class="section-number-3">5.1</span> gist of it</h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>1 is pseudo turn, artificially low turn. 1 indicates that a thread is in the process of setting its turn/is attempting to get a turn.</li>
@@ -354,8 +354,8 @@ co [i=1 to n] {
 </ul>
 </div>
 </div>
-<div id="outline-container-org6d4a0f6" class="outline-3">
-<h3 id="org6d4a0f6"><span class="section-number-3">5.2</span> fixed code</h3>
+<div id="outline-container-orge505250" class="outline-3">
+<h3 id="orge505250"><span class="section-number-3">5.2</span> fixed code</h3>
 <div class="outline-text-3" id="text-5-2">
 <pre class="example">
 int turn[n] = [0,0,...,0]
@@ -373,12 +373,12 @@ co [i=1 to n] {
 </pre>
 </div>
 </div>
-<div id="outline-container-orgad2081e" class="outline-3">
-<h3 id="orgad2081e"><span class="section-number-3">5.3</span> how version 3 behave? 62</h3>
+<div id="outline-container-org0c6eece" class="outline-3">
+<h3 id="org0c6eece"><span class="section-number-3">5.3</span> how version 3 behave? 62</h3>
 </div>
 </div>
-<div id="outline-container-org467592b" class="outline-2">
-<h2 id="org467592b"><span class="section-number-2">6</span> version 4: fix 2nd problem</h2>
+<div id="outline-container-org9118d38" class="outline-2">
+<h2 id="org9118d38"><span class="section-number-2">6</span> version 4: fix 2nd problem</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>2nd problem (duplicate turn) occurs when threads end up choosing the same turn (because choosing is no longer atomic).</li>
@@ -386,8 +386,8 @@ co [i=1 to n] {
 <li>We do this by using the thread ids (which are definitely distinct).</li>
 </ul>
 </div>
-<div id="outline-container-orgd815215" class="outline-3">
-<h3 id="orgd815215"><span class="section-number-3">6.1</span> code</h3>
+<div id="outline-container-org443ff94" class="outline-3">
+<h3 id="org443ff94"><span class="section-number-3">6.1</span> code</h3>
 <div class="outline-text-3" id="text-6-1">
 <pre class="example">
 int turn[n] = [0,0,...,0]
@@ -414,8 +414,8 @@ co [i=1 to n] {
 </div>
 </div>
 </div>
-<div id="outline-container-org507be60" class="outline-2">
-<h2 id="org507be60"><span class="section-number-2">7</span> preview: barrier (next lecture)</h2>
+<div id="outline-container-orgfa6a5b1" class="outline-2">
+<h2 id="orgfa6a5b1"><span class="section-number-2">7</span> preview: barrier (next lecture)</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li>We will see 3-4 implementations of barriers with different properties. 

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-17 Sun 17:03 -->
+<!-- 2020-04-05 Sun 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec09</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -256,45 +256,45 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb39c754">1. accidentally shared data</a></li>
-<li><a href="#org9d1ae05">2. p104</a></li>
-<li><a href="#org9ddf0b4">3. p105</a></li>
-<li><a href="#orgb753f06">4. monitors</a></li>
-<li><a href="#org9ffedc4">5. simple jacobi</a></li>
-<li><a href="#orgc3e52cd">6. barrier</a>
+<li><a href="#org2e7d2e1">1. accidentally shared data</a></li>
+<li><a href="#orgbb7bf79">2. p104</a></li>
+<li><a href="#org856999a">3. p105</a></li>
+<li><a href="#org0a1a273">4. monitors</a></li>
+<li><a href="#orga165912">5. simple jacobi</a></li>
+<li><a href="#orgd3e318e">6. barrier</a>
 <ul>
-<li><a href="#org09005e0">6.1. p110-112</a></li>
+<li><a href="#orgc1b0e23">6.1. p110-112</a></li>
 </ul>
 </li>
-<li><a href="#org3ba469c">7. memory consistency p113</a>
+<li><a href="#org9216532">7. memory consistency p113</a>
 <ul>
-<li><a href="#org563a21b">7.1. example</a></li>
+<li><a href="#org7aa9fb9">7.1. example</a></li>
 </ul>
 </li>
-<li><a href="#org23c1c87">8. pragmatic issues</a></li>
-<li><a href="#orgf1f1008">9. exercise 2</a></li>
-<li><a href="#orga7090d8">10. gpu</a></li>
+<li><a href="#org4954877">8. pragmatic issues</a></li>
+<li><a href="#org7361f19">9. exercise 2</a></li>
+<li><a href="#org56361ad">10. gpu</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb39c754" class="outline-2">
-<h2 id="orgb39c754"><span class="section-number-2">1</span> accidentally shared data</h2>
+<div id="outline-container-org2e7d2e1" class="outline-2">
+<h2 id="org2e7d2e1"><span class="section-number-2">1</span> accidentally shared data</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>e.g. bad counter</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9d1ae05" class="outline-2">
-<h2 id="org9d1ae05"><span class="section-number-2">2</span> p104</h2>
+<div id="outline-container-orgbb7bf79" class="outline-2">
+<h2 id="orgbb7bf79"><span class="section-number-2">2</span> p104</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>e.g. good counter</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9ddf0b4" class="outline-2">
-<h2 id="org9ddf0b4"><span class="section-number-2">3</span> p105</h2>
+<div id="outline-container-org856999a" class="outline-2">
+<h2 id="org856999a"><span class="section-number-2">3</span> p105</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>cf. buffer lecture</li>
@@ -309,8 +309,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb753f06" class="outline-2">
-<h2 id="orgb753f06"><span class="section-number-2">4</span> monitors</h2>
+<div id="outline-container-org0a1a273" class="outline-2">
+<h2 id="org0a1a273"><span class="section-number-2">4</span> monitors</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>state diagram
@@ -320,24 +320,24 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org9ffedc4" class="outline-2">
-<h2 id="org9ffedc4"><span class="section-number-2">5</span> simple jacobi</h2>
+<div id="outline-container-orga165912" class="outline-2">
+<h2 id="orga165912"><span class="section-number-2">5</span> simple jacobi</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>stencil pattern applies</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc3e52cd" class="outline-2">
-<h2 id="orgc3e52cd"><span class="section-number-2">6</span> barrier</h2>
+<div id="outline-container-orgd3e318e" class="outline-2">
+<h2 id="orgd3e318e"><span class="section-number-2">6</span> barrier</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>counter barrier</li>
 <li>instead of spinning</li>
 </ul>
 </div>
-<div id="outline-container-org09005e0" class="outline-3">
-<h3 id="org09005e0"><span class="section-number-3">6.1</span> p110-112</h3>
+<div id="outline-container-orgc1b0e23" class="outline-3">
+<h3 id="orgc1b0e23"><span class="section-number-3">6.1</span> p110-112</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li>broadcast to all threads</li>
@@ -351,8 +351,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org3ba469c" class="outline-2">
-<h2 id="org3ba469c"><span class="section-number-2">7</span> memory consistency p113</h2>
+<div id="outline-container-org9216532" class="outline-2">
+<h2 id="org9216532"><span class="section-number-2">7</span> memory consistency p113</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li>symmetric system</li>
@@ -366,8 +366,8 @@ for the JavaScript code in this tag.
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-org563a21b" class="outline-3">
-<h3 id="org563a21b"><span class="section-number-3">7.1</span> example</h3>
+<div id="outline-container-org7aa9fb9" class="outline-3">
+<h3 id="org7aa9fb9"><span class="section-number-3">7.1</span> example</h3>
 <div class="outline-text-3" id="text-7-1">
 <ul class="org-ul">
 <li>inside barrier, every thread lock and release, it does not allow B happens before A.</li>
@@ -376,8 +376,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org23c1c87" class="outline-2">
-<h2 id="org23c1c87"><span class="section-number-2">8</span> pragmatic issues</h2>
+<div id="outline-container-org4954877" class="outline-2">
+<h2 id="org4954877"><span class="section-number-2">8</span> pragmatic issues</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li>e.g. <code>malloc()</code> in C and <code>new</code> in Java, are not thread-safe
@@ -388,8 +388,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf1f1008" class="outline-2">
-<h2 id="orgf1f1008"><span class="section-number-2">9</span> exercise 2</h2>
+<div id="outline-container-org7361f19" class="outline-2">
+<h2 id="org7361f19"><span class="section-number-2">9</span> exercise 2</h2>
 <div class="outline-text-2" id="text-9">
 <ul class="org-ul">
 <li>to implement parallel prefix sum</li>
@@ -406,8 +406,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orga7090d8" class="outline-2">
-<h2 id="orga7090d8"><span class="section-number-2">10</span> gpu</h2>
+<div id="outline-container-org56361ad" class="outline-2">
+<h2 id="org56361ad"><span class="section-number-2">10</span> gpu</h2>
 <div class="outline-text-2" id="text-10">
 <ul class="org-ul">
 <li>specialized library other than pthread</li>

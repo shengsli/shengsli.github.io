@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-17 Sun 17:02 -->
+<!-- 2020-04-05 Sun 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>hs w01 pt08 Reduction, Functions and Lists</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,31 +234,31 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4199a55">1. A model of program execution</a></li>
-<li><a href="#orgc1d3fc2">2. Reduction</a></li>
-<li><a href="#orge8dda57">3. Functions</a>
+<li><a href="#orgb692321">1. A model of program execution</a></li>
+<li><a href="#org05362f6">2. Reduction</a></li>
+<li><a href="#org5e4b1c7">3. Functions</a>
 <ul>
-<li><a href="#org13eb9d9">3.1. Function definitions</a></li>
-<li><a href="#org7afcecc">3.2. Function application</a></li>
+<li><a href="#org2d01102">3.1. Function definitions</a></li>
+<li><a href="#orge11292a">3.2. Function application</a></li>
 </ul>
 </li>
-<li><a href="#orgdba27f6">4. Multiple arguments and results</a>
+<li><a href="#org998449d">4. Multiple arguments and results</a>
 <ul>
-<li><a href="#org1131ab3">4.1. Lists</a>
+<li><a href="#org58f2efe">4.1. Lists</a>
 <ul>
-<li><a href="#orgbe2fa5f">4.1.1. Sequences</a></li>
-<li><a href="#orgd4efd71">4.1.2. List comprehensions</a></li>
-<li><a href="#orgab44fe4">4.1.3. Operating on lists (Operations)</a></li>
+<li><a href="#org3b4320f">4.1.1. Sequences</a></li>
+<li><a href="#org847c84f">4.1.2. List comprehensions</a></li>
+<li><a href="#orgd7796b9">4.1.3. Operating on lists (Operations)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgee7c309">5. Summary/Recap what I learnt</a></li>
+<li><a href="#org8823343">5. Summary/Recap what I learnt</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4199a55" class="outline-2">
-<h2 id="org4199a55"><span class="section-number-2">1</span> A model of program execution</h2>
+<div id="outline-container-orgb692321" class="outline-2">
+<h2 id="orgb692321"><span class="section-number-2">1</span> A model of program execution</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>From a programmer's view, imperative programs' execution model is built upon memory and registers. It is executed statement by statement.</li>
@@ -266,8 +266,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc1d3fc2" class="outline-2">
-<h2 id="orgc1d3fc2"><span class="section-number-2">2</span> Reduction</h2>
+<div id="outline-container-org05362f6" class="outline-2">
+<h2 id="org05362f6"><span class="section-number-2">2</span> Reduction</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>Reduction is the process of converting an expression to a simpler form. Conceptually, an expression is reduced by simplifying one reducible expression (aka. redex) at a time. Each step is called reduction. If an expression contains only one redex, the computation has one unique reduction path. If a reduction has several redexes, the computation has multiple reduction paths. <span class="underline">The result doesn't depend on reduction path.</span></li>
@@ -279,16 +279,16 @@ Church-Rosser theorem: Every terminating reduction path gives the same result.
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orge8dda57" class="outline-2">
-<h2 id="orge8dda57"><span class="section-number-2">3</span> Functions</h2>
+<div id="outline-container-org5e4b1c7" class="outline-2">
+<h2 id="org5e4b1c7"><span class="section-number-2">3</span> Functions</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>Given the same arguments, the result will always be the same. This means that in Haskell there is no side-effects.</li>
 <li>There are 2 fundamental operations on functions: function definitions and function application.</li>
 </ul>
 </div>
-<div id="outline-container-org13eb9d9" class="outline-3">
-<h3 id="org13eb9d9"><span class="section-number-3">3.1</span> Function definitions</h3>
+<div id="outline-container-org2d01102" class="outline-3">
+<h3 id="org2d01102"><span class="section-number-3">3.1</span> Function definitions</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>In Haskell, many functions are predefined in a standard library called <code>prelude</code>.</li>
@@ -309,8 +309,8 @@ Alternatively,
 </ul>
 </div>
 </div>
-<div id="outline-container-org7afcecc" class="outline-3">
-<h3 id="org7afcecc"><span class="section-number-3">3.2</span> Function application</h3>
+<div id="outline-container-orge11292a" class="outline-3">
+<h3 id="orge11292a"><span class="section-number-3">3.2</span> Function application</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>An application is an expression like <code>f 31</code>.</li>
@@ -319,16 +319,16 @@ Alternatively,
 </div>
 </div>
 </div>
-<div id="outline-container-orgdba27f6" class="outline-2">
-<h2 id="orgdba27f6"><span class="section-number-2">4</span> Multiple arguments and results</h2>
+<div id="outline-container-org998449d" class="outline-2">
+<h2 id="org998449d"><span class="section-number-2">4</span> Multiple arguments and results</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-haskell"><span style="color: #0000ff;">add3nums</span> <span style="color: #a0522d;">=</span> <span style="color: #a0522d;">\</span>x y z <span style="color: #a0522d;">-&gt;</span> z<span style="color: #a0522d;">+</span>y<span style="color: #a0522d;">+</span>z
 </pre>
 </div>
 </div>
-<div id="outline-container-org1131ab3" class="outline-3">
-<h3 id="org1131ab3"><span class="section-number-3">4.1</span> Lists</h3>
+<div id="outline-container-org58f2efe" class="outline-3">
+<h3 id="org58f2efe"><span class="section-number-3">4.1</span> Lists</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>Lists allow use to package up several values into one object.</li>
@@ -343,8 +343,8 @@ Alternatively,
 <li>Laziness: Lists are lazy. Elements in a list are evaluated only when they are used.</li>
 </ul>
 </div>
-<div id="outline-container-orgbe2fa5f" class="outline-4">
-<h4 id="orgbe2fa5f"><span class="section-number-4">4.1.1</span> Sequences</h4>
+<div id="outline-container-org3b4320f" class="outline-4">
+<h4 id="org3b4320f"><span class="section-number-4">4.1.1</span> Sequences</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <ul class="org-ul">
 <li>Sequences are not limited to numbers.</li>
@@ -358,8 +358,8 @@ Alternatively,
 </div>
 </div>
 </div>
-<div id="outline-container-orgd4efd71" class="outline-4">
-<h4 id="orgd4efd71"><span class="section-number-4">4.1.2</span> List comprehensions</h4>
+<div id="outline-container-org847c84f" class="outline-4">
+<h4 id="org847c84f"><span class="section-number-4">4.1.2</span> List comprehensions</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <ul class="org-ul">
 <li>A list comprehension is a high level notation for specifying the computation of a list.</li>
@@ -373,8 +373,8 @@ Alternatively,
 </div>
 </div>
 </div>
-<div id="outline-container-orgab44fe4" class="outline-4">
-<h4 id="orgab44fe4"><span class="section-number-4">4.1.3</span> Operating on lists (Operations)</h4>
+<div id="outline-container-orgd7796b9" class="outline-4">
+<h4 id="orgd7796b9"><span class="section-number-4">4.1.3</span> Operating on lists (Operations)</h4>
 <div class="outline-text-4" id="text-4-1-3">
 <ul class="org-ul">
 <li>indexing <code>!!</code>
@@ -415,8 +415,8 @@ Alternatively,
 </div>
 </div>
 </div>
-<div id="outline-container-orgee7c309" class="outline-2">
-<h2 id="orgee7c309"><span class="section-number-2">5</span> Summary/Recap what I learnt</h2>
+<div id="outline-container-org8823343" class="outline-2">
+<h2 id="org8823343"><span class="section-number-2">5</span> Summary/Recap what I learnt</h2>
 <div class="outline-text-2" id="text-5">
 <ol class="org-ol">
 <li>Defining a function: a function defines an expression with variables</li>

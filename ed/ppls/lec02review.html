@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-17 Sun 17:03 -->
+<!-- 2020-04-05 Sun 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec02 w1b parallel architecture for dummies 2</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -256,32 +256,32 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org39ef1e4">1. parallel applications and algorithms</a></li>
-<li><a href="#org9f677aa">2. <code>co</code> notation</a></li>
-<li><a href="#orga140ea6">3. sequential memory consistency model (SC)</a>
+<li><a href="#orgb8fb56d">1. parallel applications and algorithms</a></li>
+<li><a href="#org7ca0d1d">2. <code>co</code> notation</a></li>
+<li><a href="#orgd130198">3. sequential memory consistency model (SC)</a>
 <ul>
-<li><a href="#orgedc895c">3.1. rules:</a></li>
-<li><a href="#org12014b5">3.2. model</a></li>
+<li><a href="#org3a06230">3.1. rules:</a></li>
+<li><a href="#orgd18a5c0">3.2. model</a></li>
 </ul>
 </li>
-<li><a href="#org0900297">4. atomic actions</a></li>
-<li><a href="#orgace7067">5. atomic actions and interleavings</a>
+<li><a href="#org07b6c51">4. atomic actions</a></li>
+<li><a href="#org3ddc53a">5. atomic actions and interleavings</a>
 <ul>
-<li><a href="#org27b6780">5.1. example (error cases): This program is to reverse order by swapping.</a>
+<li><a href="#org2be65ea">5.1. example (error cases): This program is to reverse order by swapping.</a>
 <ul>
-<li><a href="#org2c22fd8">5.1.1. case 1</a></li>
-<li><a href="#orgcec7887">5.1.2. case 2</a></li>
+<li><a href="#org18f397f">5.1.1. case 1</a></li>
+<li><a href="#org3007caa">5.1.2. case 2</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge31cf8f">6. <code>await</code> notation</a></li>
-<li><a href="#orgc2242dc">7. Next time, we will apply this notation in some cases.</a></li>
+<li><a href="#org316f283">6. <code>await</code> notation</a></li>
+<li><a href="#org7e36cf0">7. Next time, we will apply this notation in some cases.</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org39ef1e4" class="outline-2">
-<h2 id="org39ef1e4"><span class="section-number-2">1</span> parallel applications and algorithms</h2>
+<div id="outline-container-orgb8fb56d" class="outline-2">
+<h2 id="orgb8fb56d"><span class="section-number-2">1</span> parallel applications and algorithms</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>requirements of typical parallel algorithms</li>
@@ -294,8 +294,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org9f677aa" class="outline-2">
-<h2 id="org9f677aa"><span class="section-number-2">2</span> <code>co</code> notation</h2>
+<div id="outline-container-org7ca0d1d" class="outline-2">
+<h2 id="org7ca0d1d"><span class="section-number-2">2</span> <code>co</code> notation</h2>
 <div class="outline-text-2" id="text-2">
 <ol class="org-ol">
 <li><p>
@@ -316,12 +316,12 @@ creation
 </ol>
 </div>
 </div>
-<div id="outline-container-orga140ea6" class="outline-2">
-<h2 id="orga140ea6"><span class="section-number-2">3</span> sequential memory consistency model (SC)</h2>
+<div id="outline-container-orgd130198" class="outline-2">
+<h2 id="orgd130198"><span class="section-number-2">3</span> sequential memory consistency model (SC)</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgedc895c" class="outline-3">
-<h3 id="orgedc895c"><span class="section-number-3">3.1</span> rules:</h3>
+<div id="outline-container-org3a06230" class="outline-3">
+<h3 id="org3a06230"><span class="section-number-3">3.1</span> rules:</h3>
 <div class="outline-text-3" id="text-3-1">
 <ol class="org-ol">
 <li>ordering of atomic actions (particularly <b>reads and writes to memory</b>) from any one thread have to occur in normal program order.</li>
@@ -329,8 +329,8 @@ creation
 </ol>
 </div>
 </div>
-<div id="outline-container-org12014b5" class="outline-3">
-<h3 id="org12014b5"><span class="section-number-3">3.2</span> model</h3>
+<div id="outline-container-orgd18a5c0" class="outline-3">
+<h3 id="orgd18a5c0"><span class="section-number-3">3.2</span> model</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>analogy: think of SC execution as a random switch, allowing processes to access memory once at a time.</li>
@@ -338,8 +338,8 @@ creation
 </div>
 </div>
 </div>
-<div id="outline-container-org0900297" class="outline-2">
-<h2 id="org0900297"><span class="section-number-2">4</span> atomic actions</h2>
+<div id="outline-container-org07b6c51" class="outline-2">
+<h2 id="org07b6c51"><span class="section-number-2">4</span> atomic actions</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>e.g. <code>b = a + a</code>. A sensible compiler would implement it with one read of <code>a</code>.</li>
@@ -347,8 +347,8 @@ creation
 </ul>
 </div>
 </div>
-<div id="outline-container-orgace7067" class="outline-2">
-<h2 id="orgace7067"><span class="section-number-2">5</span> atomic actions and interleavings</h2>
+<div id="outline-container-org3ddc53a" class="outline-2">
+<h2 id="org3ddc53a"><span class="section-number-2">5</span> atomic actions and interleavings</h2>
 <div class="outline-text-2" id="text-5">
 <pre class="example">
 co
@@ -375,12 +375,12 @@ co
 oc
 </pre>
 </div>
-<div id="outline-container-org27b6780" class="outline-3">
-<h3 id="org27b6780"><span class="section-number-3">5.1</span> example (error cases): This program is to reverse order by swapping.</h3>
+<div id="outline-container-org2be65ea" class="outline-3">
+<h3 id="org2be65ea"><span class="section-number-3">5.1</span> example (error cases): This program is to reverse order by swapping.</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-org2c22fd8" class="outline-4">
-<h4 id="org2c22fd8"><span class="section-number-4">5.1.1</span> case 1</h4>
+<div id="outline-container-org18f397f" class="outline-4">
+<h4 id="org18f397f"><span class="section-number-4">5.1.1</span> case 1</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <pre class="example">
 co [i = 0 to n-1] {
@@ -392,8 +392,8 @@ co [i = 0 to n-1] {
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcec7887" class="outline-4">
-<h4 id="orgcec7887"><span class="section-number-4">5.1.2</span> case 2</h4>
+<div id="outline-container-org3007caa" class="outline-4">
+<h4 id="org3007caa"><span class="section-number-4">5.1.2</span> case 2</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <pre class="example">
 co [i = 0 to n-1] {
@@ -408,8 +408,8 @@ co [i = 0 to n-1] {
 </div>
 </div>
 </div>
-<div id="outline-container-orge31cf8f" class="outline-2">
-<h2 id="orge31cf8f"><span class="section-number-2">6</span> <code>await</code> notation</h2>
+<div id="outline-container-org316f283" class="outline-2">
+<h2 id="org316f283"><span class="section-number-2">6</span> <code>await</code> notation</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>It captures the synchronization behaviour.</li>
@@ -449,8 +449,8 @@ co
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc2242dc" class="outline-2">
-<h2 id="orgc2242dc"><span class="section-number-2">7</span> Next time, we will apply this notation in some cases.</h2>
+<div id="outline-container-org7e36cf0" class="outline-2">
+<h2 id="org7e36cf0"><span class="section-number-2">7</span> Next time, we will apply this notation in some cases.</h2>
 </div>
 </div>
 </body>

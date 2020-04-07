@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-17 Sun 17:02 -->
+<!-- 2020-04-05 Sun 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>I/O and a First Encounter with Monads</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,21 +234,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge319f8e">1. Pure Functions</a></li>
-<li><a href="#org64d1fc5">2. I/O is Impure</a></li>
-<li><a href="#orgc49f522">3. Sequencing Actions</a></li>
-<li><a href="#orga4e8e01">4. Monads are Hiding Below</a></li>
+<li><a href="#org08e2361">1. Pure Functions</a></li>
+<li><a href="#orgb30ba5f">2. I/O is Impure</a></li>
+<li><a href="#org0b27965">3. Sequencing Actions</a></li>
+<li><a href="#org482dacc">4. Monads are Hiding Below</a></li>
 </ul>
 </div>
 </div>
 <ul class="org-ul">
 <li><a href="https://www.futurelearn.com/courses/functional-programming-haskell/3/steps/333241">https://www.futurelearn.com/courses/functional-programming-haskell/3/steps/333241</a></li>
 </ul>
-<div id="outline-container-orge319f8e" class="outline-2">
-<h2 id="orge319f8e"><span class="section-number-2">1</span> Pure Functions</h2>
+<div id="outline-container-org08e2361" class="outline-2">
+<h2 id="org08e2361"><span class="section-number-2">1</span> Pure Functions</h2>
 </div>
-<div id="outline-container-org64d1fc5" class="outline-2">
-<h2 id="org64d1fc5"><span class="section-number-2">2</span> I/O is Impure</h2>
+<div id="outline-container-orgb30ba5f" class="outline-2">
+<h2 id="orgb30ba5f"><span class="section-number-2">2</span> I/O is Impure</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-hs">getLine
@@ -257,16 +257,16 @@ putStrLn
 </div>
 </div>
 </div>
-<div id="outline-container-orgc49f522" class="outline-2">
-<h2 id="orgc49f522"><span class="section-number-2">3</span> Sequencing Actions</h2>
+<div id="outline-container-org0b27965" class="outline-2">
+<h2 id="org0b27965"><span class="section-number-2">3</span> Sequencing Actions</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Sequencing is vital for I/O actions. 
 </p>
 </div>
 </div>
-<div id="outline-container-orga4e8e01" class="outline-2">
-<h2 id="orga4e8e01"><span class="section-number-2">4</span> Monads are Hiding Below</h2>
+<div id="outline-container-org482dacc" class="outline-2">
+<h2 id="org482dacc"><span class="section-number-2">4</span> Monads are Hiding Below</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 The <code>do</code> notation allows us to sequence actions. <code>do</code> is only syntactic sugar. Underneath, it is rewritten as a chain of function calls where the output of the first function becomes the input of the second function. The <code>bind</code> operator accomplishes this function sequencing. It is a key part of the IO monad.

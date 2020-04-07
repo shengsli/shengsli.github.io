@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-17 Sun 17:03 -->
+<!-- 2020-04-05 Sun 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec07 w5a</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,15 +234,15 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org601be0d">1. recap</a></li>
-<li><a href="#orgc9e282e">2. structural primitives</a></li>
-<li><a href="#orgbb120fc">3. semaphores</a>
+<li><a href="#org9aa8087">1. recap</a></li>
+<li><a href="#orgb5e04ec">2. structural primitives</a></li>
+<li><a href="#org3c29b00">3. semaphores</a>
 <ul>
-<li><a href="#orgeb657b9">3.1. using semaphores</a>
+<li><a href="#org5b8e12a">3.1. using semaphores</a>
 <ul>
-<li><a href="#org2fb5bc5">3.1.1. critical section</a></li>
-<li><a href="#orgacb6a25">3.1.2. barrier</a></li>
-<li><a href="#orgb9c2ee7">3.1.3. producer-consumer/bounded buffer</a></li>
+<li><a href="#org4d9d64e">3.1.1. critical section</a></li>
+<li><a href="#org0158ed6">3.1.2. barrier</a></li>
+<li><a href="#org3f81c73">3.1.3. producer-consumer/bounded buffer</a></li>
 </ul>
 </li>
 </ul>
@@ -250,8 +250,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org601be0d" class="outline-2">
-<h2 id="org601be0d"><span class="section-number-2">1</span> recap</h2>
+<div id="outline-container-org9aa8087" class="outline-2">
+<h2 id="org9aa8087"><span class="section-number-2">1</span> recap</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>locks and barriers</li>
@@ -261,8 +261,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc9e282e" class="outline-2">
-<h2 id="orgc9e282e"><span class="section-number-2">2</span> structural primitives</h2>
+<div id="outline-container-orgb5e04ec" class="outline-2">
+<h2 id="orgb5e04ec"><span class="section-number-2">2</span> structural primitives</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>implemented with assistance of OS
@@ -274,8 +274,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbb120fc" class="outline-2">
-<h2 id="orgbb120fc"><span class="section-number-2">3</span> semaphores</h2>
+<div id="outline-container-org3c29b00" class="outline-2">
+<h2 id="org3c29b00"><span class="section-number-2">3</span> semaphores</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>A semaphore is &#x2026;</li>
@@ -288,22 +288,22 @@ for the JavaScript code in this tag.
 <li>binary semaphore</li>
 </ul>
 </div>
-<div id="outline-container-orgeb657b9" class="outline-3">
-<h3 id="orgeb657b9"><span class="section-number-3">3.1</span> using semaphores</h3>
+<div id="outline-container-org5b8e12a" class="outline-3">
+<h3 id="org5b8e12a"><span class="section-number-3">3.1</span> using semaphores</h3>
 <div class="outline-text-3" id="text-3-1">
 </div>
-<div id="outline-container-org2fb5bc5" class="outline-4">
-<h4 id="org2fb5bc5"><span class="section-number-4">3.1.1</span> critical section</h4>
+<div id="outline-container-org4d9d64e" class="outline-4">
+<h4 id="org4d9d64e"><span class="section-number-4">3.1.1</span> critical section</h4>
 </div>
-<div id="outline-container-orgacb6a25" class="outline-4">
-<h4 id="orgacb6a25"><span class="section-number-4">3.1.2</span> barrier</h4>
+<div id="outline-container-org0158ed6" class="outline-4">
+<h4 id="org0158ed6"><span class="section-number-4">3.1.2</span> barrier</h4>
 </div>
-<div id="outline-container-orgb9c2ee7" class="outline-4">
-<h4 id="orgb9c2ee7"><span class="section-number-4">3.1.3</span> producer-consumer/bounded buffer</h4>
+<div id="outline-container-org3f81c73" class="outline-4">
+<h4 id="org3f81c73"><span class="section-number-4">3.1.3</span> producer-consumer/bounded buffer</h4>
 <div class="outline-text-4" id="text-3-1-3">
 </div>
 <ol class="org-ol">
-<li><a id="orgda275e5"></a>version 1: one producer one consumer<br />
+<li><a id="org6aba2c0"></a>version 1: one producer one consumer<br />
 <div class="outline-text-5" id="text-3-1-3-1">
 <ul class="org-ul">
 <li>producer: <code>P(empty) V(full)</code> how many empty space</li>
@@ -314,7 +314,7 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </li>
-<li><a id="orge1e0fbd"></a>version 2: multi-space buffer<br />
+<li><a id="org8d29cee"></a>version 2: multi-space buffer<br />
 <div class="outline-text-5" id="text-3-1-3-2">
 <ul class="org-ul">
 <li>relax constraints</li>
@@ -342,14 +342,14 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </li>
-<li><a id="org5247556"></a>version 3:<br />
+<li><a id="orgbc30baf"></a>version 3:<br />
 <div class="outline-text-5" id="text-3-1-3-3">
 <ul class="org-ul">
 <li>add critical sections</li>
 </ul>
 </div>
 </li>
-<li><a id="orgb6b2ecf"></a>version 4:<br />
+<li><a id="org7ab1a50"></a>version 4:<br />
 <div class="outline-text-5" id="text-3-1-3-4">
 <ul class="org-ul">
 <li>further relax constraints</li>
@@ -364,7 +364,7 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </li>
-<li><a id="orgbb73416"></a>version 5:<br />
+<li><a id="org44b7ed9"></a>version 5:<br />
 <div class="outline-text-5" id="text-3-1-3-5">
 <ul class="org-ul">
 <li>independent lock semaphore for each space</li>

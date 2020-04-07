@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-17 Sun 17:03 -->
+<!-- 2020-04-05 Sun 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec16 w10b Linda</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,35 +234,35 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdb7cc50">1. Linda</a></li>
-<li><a href="#org274f6b0">2. Linda ops</a>
+<li><a href="#orgc796853">1. Linda</a></li>
+<li><a href="#org9873928">2. Linda ops</a>
 <ul>
-<li><a href="#orgfc2562e">2.1. create a new tuple: <code>out(...)</code></a></li>
-<li><a href="#org503dc07">2.2. take a tuple out from tuple: <code>in(...)</code></a></li>
-<li><a href="#orgb3d8bfc">2.3. read</a></li>
-<li><a href="#orgd993249">2.4. eval</a></li>
-<li><a href="#org94fd96a">2.5. non-blocking read: <code>inp</code>, <code>rdp</code></a></li>
+<li><a href="#org1dd0141">2.1. create a new tuple: <code>out(...)</code></a></li>
+<li><a href="#orgab44dfd">2.2. take a tuple out from tuple: <code>in(...)</code></a></li>
+<li><a href="#org00bd425">2.3. read</a></li>
+<li><a href="#orgcd7cdf5">2.4. eval</a></li>
+<li><a href="#orge7d49d6">2.5. non-blocking read: <code>inp</code>, <code>rdp</code></a></li>
 </ul>
 </li>
-<li><a href="#orga1d8ba3">3. example: bag of tasks pattern, cf. p29</a>
+<li><a href="#org56e7268">3. example: bag of tasks pattern, cf. p29</a>
 <ul>
-<li><a href="#orgf80ef26">3.1. main p208</a></li>
-<li><a href="#org1fa5c90">3.2. worker</a></li>
+<li><a href="#orgfb8af76">3.1. main p208</a></li>
+<li><a href="#org1d81517">3.2. worker</a></li>
 </ul>
 </li>
-<li><a href="#orgb7d1766">4. example: prime sieve pipeline</a>
+<li><a href="#org9f1e56a">4. example: prime sieve pipeline</a>
 <ul>
-<li><a href="#orgfa97253">4.1. main p211</a></li>
-<li><a href="#orgdd3cca5">4.2. sieve p212</a></li>
+<li><a href="#org4c223f3">4.1. main p211</a></li>
+<li><a href="#org90dbef8">4.2. sieve p212</a></li>
 </ul>
 </li>
-<li><a href="#org076fad2">5. implementing tuple space</a></li>
-<li><a href="#org2b2b941">6. review</a></li>
+<li><a href="#org57a66f3">5. implementing tuple space</a></li>
+<li><a href="#org135d5d1">6. review</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdb7cc50" class="outline-2">
-<h2 id="orgdb7cc50"><span class="section-number-2">1</span> Linda</h2>
+<div id="outline-container-orgc796853" class="outline-2">
+<h2 id="orgc796853"><span class="section-number-2">1</span> Linda</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Linda is an alternative parallelism model.</li>
@@ -287,12 +287,12 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org274f6b0" class="outline-2">
-<h2 id="org274f6b0"><span class="section-number-2">2</span> Linda ops</h2>
+<div id="outline-container-org9873928" class="outline-2">
+<h2 id="org9873928"><span class="section-number-2">2</span> Linda ops</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgfc2562e" class="outline-3">
-<h3 id="orgfc2562e"><span class="section-number-3">2.1</span> create a new tuple: <code>out(...)</code></h3>
+<div id="outline-container-org1dd0141" class="outline-3">
+<h3 id="org1dd0141"><span class="section-number-3">2.1</span> create a new tuple: <code>out(...)</code></h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>possible implementations:
@@ -304,8 +304,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org503dc07" class="outline-3">
-<h3 id="org503dc07"><span class="section-number-3">2.2</span> take a tuple out from tuple: <code>in(...)</code></h3>
+<div id="outline-container-orgab44dfd" class="outline-3">
+<h3 id="orgab44dfd"><span class="section-number-3">2.2</span> take a tuple out from tuple: <code>in(...)</code></h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>tuple template</li>
@@ -322,16 +322,16 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb3d8bfc" class="outline-3">
-<h3 id="orgb3d8bfc"><span class="section-number-3">2.3</span> read</h3>
+<div id="outline-container-org00bd425" class="outline-3">
+<h3 id="org00bd425"><span class="section-number-3">2.3</span> read</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li><code>rd(...)</code></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd993249" class="outline-3">
-<h3 id="orgd993249"><span class="section-number-3">2.4</span> eval</h3>
+<div id="outline-container-orgcd7cdf5" class="outline-3">
+<h3 id="orgcd7cdf5"><span class="section-number-3">2.4</span> eval</h3>
 <div class="outline-text-3" id="text-2-4">
 <ul class="org-ul">
 <li>dynamically create new processes</li>
@@ -343,12 +343,12 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org94fd96a" class="outline-3">
-<h3 id="org94fd96a"><span class="section-number-3">2.5</span> non-blocking read: <code>inp</code>, <code>rdp</code></h3>
+<div id="outline-container-orge7d49d6" class="outline-3">
+<h3 id="orge7d49d6"><span class="section-number-3">2.5</span> non-blocking read: <code>inp</code>, <code>rdp</code></h3>
 </div>
 </div>
-<div id="outline-container-orga1d8ba3" class="outline-2">
-<h2 id="orga1d8ba3"><span class="section-number-2">3</span> example: bag of tasks pattern, cf. p29</h2>
+<div id="outline-container-org56e7268" class="outline-2">
+<h2 id="org56e7268"><span class="section-number-2">3</span> example: bag of tasks pattern, cf. p29</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>worker processes</li>
@@ -398,8 +398,8 @@ for the JavaScript code in this tag.
 </tbody>
 </table>
 </div>
-<div id="outline-container-orgf80ef26" class="outline-3">
-<h3 id="orgf80ef26"><span class="section-number-3">3.1</span> main p208</h3>
+<div id="outline-container-orgfb8af76" class="outline-3">
+<h3 id="orgfb8af76"><span class="section-number-3">3.1</span> main p208</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>total</li>
@@ -409,8 +409,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org1fa5c90" class="outline-3">
-<h3 id="org1fa5c90"><span class="section-number-3">3.2</span> worker</h3>
+<div id="outline-container-org1d81517" class="outline-3">
+<h3 id="org1d81517"><span class="section-number-3">3.2</span> worker</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>tuple space cf. database, possible implementations:
@@ -422,8 +422,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgb7d1766" class="outline-2">
-<h2 id="orgb7d1766"><span class="section-number-2">4</span> example: prime sieve pipeline</h2>
+<div id="outline-container-org9f1e56a" class="outline-2">
+<h2 id="org9f1e56a"><span class="section-number-2">4</span> example: prime sieve pipeline</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>tuples represent messages
@@ -432,8 +432,8 @@ for the JavaScript code in this tag.
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-orgfa97253" class="outline-3">
-<h3 id="orgfa97253"><span class="section-number-3">4.1</span> main p211</h3>
+<div id="outline-container-org4c223f3" class="outline-3">
+<h3 id="org4c223f3"><span class="section-number-3">4.1</span> main p211</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>create a process <code>eval ... sieve(1)</code></li>
@@ -441,8 +441,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdd3cca5" class="outline-3">
-<h3 id="orgdd3cca5"><span class="section-number-3">4.2</span> sieve p212</h3>
+<div id="outline-container-org90dbef8" class="outline-3">
+<h3 id="org90dbef8"><span class="section-number-3">4.2</span> sieve p212</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>special value indicate the end of sequence</li>
@@ -450,8 +450,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org076fad2" class="outline-2">
-<h2 id="org076fad2"><span class="section-number-2">5</span> implementing tuple space</h2>
+<div id="outline-container-org57a66f3" class="outline-2">
+<h2 id="org57a66f3"><span class="section-number-2">5</span> implementing tuple space</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>cf. database</li>
@@ -463,8 +463,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org2b2b941" class="outline-2">
-<h2 id="org2b2b941"><span class="section-number-2">6</span> review</h2>
+<div id="outline-container-org135d5d1" class="outline-2">
+<h2 id="org135d5d1"><span class="section-number-2">6</span> review</h2>
 </div>
 </div>
 </body>

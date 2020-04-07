@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-17 Sun 17:03 -->
+<!-- 2020-04-05 Sun 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec12 w8b review</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,27 +234,27 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc129362">1. Example: MPI Task Farm</a>
+<li><a href="#org21f8010">1. Example: MPI Task Farm</a>
 <ul>
-<li><a href="#org1b89ed2">1.1. Gist of task farm</a></li>
+<li><a href="#org53db7d1">1.1. Gist of task farm</a></li>
 </ul>
 </li>
-<li><a href="#org2aa913d">2. Send in standard mode</a></li>
-<li><a href="#org16e0f38">3. Receive in standard mode</a></li>
-<li><a href="#orgb487b22">4. Code</a></li>
-<li><a href="#org6374e5b">5. Synchronization in MPI</a>
+<li><a href="#orgac9ef52">2. Send in standard mode</a></li>
+<li><a href="#orgb003e87">3. Receive in standard mode</a></li>
+<li><a href="#org0f11747">4. Code</a></li>
+<li><a href="#org5a9344b">5. Synchronization in MPI</a>
 <ul>
-<li><a href="#org97f22fd">5.1. blocking send and non-blocking send/receive</a>
+<li><a href="#orgb4a83fa">5.1. blocking send and non-blocking send/receive</a>
 <ul>
-<li><a href="#org9b7328a">5.1.1. send</a></li>
-<li><a href="#orga4d4002">5.1.2. receive</a></li>
-<li><a href="#orgf3ba880">5.1.3. Remarks</a></li>
+<li><a href="#org92455d4">5.1.1. send</a></li>
+<li><a href="#org37c71c0">5.1.2. receive</a></li>
+<li><a href="#org335802f">5.1.3. Remarks</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgc8f7e3f">6. Is it possible to be non-blocking and synchronous?</a></li>
-<li><a href="#org3c9d25e">7. Blocking communication semantics in MPI</a></li>
+<li><a href="#orge5b965a">6. Is it possible to be non-blocking and synchronous?</a></li>
+<li><a href="#org7c5525b">7. Blocking communication semantics in MPI</a></li>
 </ul>
 </div>
 </div>
@@ -264,8 +264,8 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 <ul class="org-ul">
 <li>We will focus on MPI synchronization.</li>
 </ul>
-<div id="outline-container-orgc129362" class="outline-2">
-<h2 id="orgc129362"><span class="section-number-2">1</span> Example: MPI Task Farm</h2>
+<div id="outline-container-org21f8010" class="outline-2">
+<h2 id="org21f8010"><span class="section-number-2">1</span> Example: MPI Task Farm</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>A task farm is bag-of-tasks in which all the tasks are known from the start.</li>
@@ -274,8 +274,8 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 <li>Tags are used to identify tasks and results. A special tag is used to indicate an "end of tasks" message.</li>
 </ul>
 </div>
-<div id="outline-container-org1b89ed2" class="outline-3">
-<h3 id="org1b89ed2"><span class="section-number-3">1.1</span> Gist of task farm</h3>
+<div id="outline-container-org53db7d1" class="outline-3">
+<h3 id="org53db7d1"><span class="section-number-3">1.1</span> Gist of task farm</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>With the assumption above, we can have 3 phases: 
@@ -288,8 +288,8 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 </div>
 </div>
 </div>
-<div id="outline-container-org2aa913d" class="outline-2">
-<h2 id="org2aa913d"><span class="section-number-2">2</span> Send in standard mode</h2>
+<div id="outline-container-orgac9ef52" class="outline-2">
+<h2 id="orgac9ef52"><span class="section-number-2">2</span> Send in standard mode</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #228b22;">int</span> <span style="color: #0000ff;">MPI_Send</span>(<span style="color: #228b22;">void</span> *<span style="color: #a0522d;">buf</span>,             <span style="color: #b22222;">// </span><span style="color: #b22222;">pointer</span>
@@ -302,8 +302,8 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 </div>
 </div>
 </div>
-<div id="outline-container-org16e0f38" class="outline-2">
-<h2 id="org16e0f38"><span class="section-number-2">3</span> Receive in standard mode</h2>
+<div id="outline-container-orgb003e87" class="outline-2">
+<h2 id="orgb003e87"><span class="section-number-2">3</span> Receive in standard mode</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #228b22;">int</span> <span style="color: #0000ff;">MPI_Recv</span>(<span style="color: #228b22;">void</span> *<span style="color: #a0522d;">buf</span>,
@@ -320,8 +320,8 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb487b22" class="outline-2">
-<h2 id="orgb487b22"><span class="section-number-2">4</span> Code</h2>
+<div id="outline-container-org0f11747" class="outline-2">
+<h2 id="org0f11747"><span class="section-number-2">4</span> Code</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #483d8b;">#define</span> <span style="color: #a0522d;">MAX_TASKS</span> 100
@@ -393,8 +393,8 @@ We talked about MPI primitives last time. We will look at how MPI primitives are
 </div>
 </div>
 </div>
-<div id="outline-container-org6374e5b" class="outline-2">
-<h2 id="org6374e5b"><span class="section-number-2">5</span> Synchronization in MPI</h2>
+<div id="outline-container-org5a9344b" class="outline-2">
+<h2 id="org5a9344b"><span class="section-number-2">5</span> Synchronization in MPI</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 MPI uses the term blocking and synchronization in a lightly unconventional way. 
@@ -405,12 +405,12 @@ MPI uses the term blocking and synchronization in a lightly unconventional way.
 <li>MPI runtime is basically a matching process between send and receive. It's a complex implementation challenge.</li>
 </ul>
 </div>
-<div id="outline-container-org97f22fd" class="outline-3">
-<h3 id="org97f22fd"><span class="section-number-3">5.1</span> blocking send and non-blocking send/receive</h3>
+<div id="outline-container-orgb4a83fa" class="outline-3">
+<h3 id="orgb4a83fa"><span class="section-number-3">5.1</span> blocking send and non-blocking send/receive</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-org9b7328a" class="outline-4">
-<h4 id="org9b7328a"><span class="section-number-4">5.1.1</span> send</h4>
+<div id="outline-container-org92455d4" class="outline-4">
+<h4 id="org92455d4"><span class="section-number-4">5.1.1</span> send</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <ul class="org-ul">
 <li>A blocking send completes only when it is safe to reuse the specified output buffer (because the data has been copied some where sage by the system).</li>
@@ -422,16 +422,16 @@ MPI uses the term blocking and synchronization in a lightly unconventional way.
 </ul>
 </div>
 </div>
-<div id="outline-container-orga4d4002" class="outline-4">
-<h4 id="orga4d4002"><span class="section-number-4">5.1.2</span> receive</h4>
+<div id="outline-container-org37c71c0" class="outline-4">
+<h4 id="org37c71c0"><span class="section-number-4">5.1.2</span> receive</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <ul class="org-ul">
 <li>Similarly, non-blocking receive allows calling process to continue immediately with similar issues concerning the values which appear tin the buffer.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf3ba880" class="outline-4">
-<h4 id="orgf3ba880"><span class="section-number-4">5.1.3</span> Remarks</h4>
+<div id="outline-container-org335802f" class="outline-4">
+<h4 id="org335802f"><span class="section-number-4">5.1.3</span> Remarks</h4>
 <div class="outline-text-4" id="text-5-1-3">
 <p>
 To manage these effects, there are MPI operations for monitoring the progress of non-blocking communications. (effectively, to ask, "is it OK to use this variable now?")
@@ -444,16 +444,16 @@ The idea is that with careful use these can allow the process to get on with oth
 </div>
 </div>
 </div>
-<div id="outline-container-orgc8f7e3f" class="outline-2">
-<h2 id="orgc8f7e3f"><span class="section-number-2">6</span> Is it possible to be non-blocking and synchronous?</h2>
+<div id="outline-container-orge5b965a" class="outline-2">
+<h2 id="orge5b965a"><span class="section-number-2">6</span> Is it possible to be non-blocking and synchronous?</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 It is possible in the sense that a process can ask/check/test if the transfer of buffer is complete. 
 </p>
 </div>
 </div>
-<div id="outline-container-org3c9d25e" class="outline-2">
-<h2 id="org3c9d25e"><span class="section-number-2">7</span> Blocking communication semantics in MPI</h2>
+<div id="outline-container-org7c5525b" class="outline-2">
+<h2 id="org7c5525b"><span class="section-number-2">7</span> Blocking communication semantics in MPI</h2>
 <div class="outline-text-2" id="text-7">
 <ol class="org-ol">
 <li><p>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-17 Sun 17:02 -->
+<!-- 2020-04-05 Sun 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Recursive Functions on Lists</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -256,21 +256,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3980119">1. <span class="todo TODO">TODO</span> 2 approaches to working with lists:</a></li>
-<li><a href="#org0aed0c6">2. Recursion on lists</a></li>
-<li><a href="#org4a5bbf1">3. Computations over lists</a></li>
-<li><a href="#org75051ed">4. Function composition</a></li>
-<li><a href="#org13c95c9">5. Folding a list (reduction)</a>
+<li><a href="#orgb5ee0de">1. <span class="todo TODO">TODO</span> 2 approaches to working with lists:</a></li>
+<li><a href="#org27c3c7f">2. Recursion on lists</a></li>
+<li><a href="#orgdec151c">3. Computations over lists</a></li>
+<li><a href="#org2ef9c3e">4. Function composition</a></li>
+<li><a href="#orgeb28f2e">5. Folding a list (reduction)</a>
 <ul>
-<li><a href="#org9f79976">5.1. Relationship between foldr and list structure</a></li>
-<li><a href="#org9531be9">5.2. Applications</a></li>
+<li><a href="#org20200c0">5.1. Relationship between foldr and list structure</a></li>
+<li><a href="#org0f86ac1">5.2. Applications</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3980119" class="outline-2">
-<h2 id="org3980119"><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> 2 approaches to working with lists:</h2>
+<div id="outline-container-orgb5ee0de" class="outline-2">
+<h2 id="orgb5ee0de"><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> 2 approaches to working with lists:</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
 <li>use recursive definitions that traverse the list structure
@@ -284,11 +284,11 @@ for the JavaScript code in this tag.
 </ol>
 </div>
 </div>
-<div id="outline-container-org0aed0c6" class="outline-2">
-<h2 id="org0aed0c6"><span class="section-number-2">2</span> Recursion on lists</h2>
+<div id="outline-container-org27c3c7f" class="outline-2">
+<h2 id="org27c3c7f"><span class="section-number-2">2</span> Recursion on lists</h2>
 </div>
-<div id="outline-container-org4a5bbf1" class="outline-2">
-<h2 id="org4a5bbf1"><span class="section-number-2">3</span> Computations over lists</h2>
+<div id="outline-container-orgdec151c" class="outline-2">
+<h2 id="orgdec151c"><span class="section-number-2">3</span> Computations over lists</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>for/while loops in imperative language are naturally expressed as list computations in a functional laguage.</li>
@@ -296,8 +296,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org75051ed" class="outline-2">
-<h2 id="org75051ed"><span class="section-number-2">4</span> Function composition</h2>
+<div id="outline-container-org2ef9c3e" class="outline-2">
+<h2 id="org2ef9c3e"><span class="section-number-2">4</span> Function composition</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>\(f \circ g\)</li>
@@ -312,15 +312,15 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org13c95c9" class="outline-2">
-<h2 id="org13c95c9"><span class="section-number-2">5</span> Folding a list (reduction)</h2>
+<div id="outline-container-orgeb28f2e" class="outline-2">
+<h2 id="orgeb28f2e"><span class="section-number-2">5</span> Folding a list (reduction)</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>An iteration over a list to produce a singleton value is called a fold.</li>
 </ul>
 </div>
-<div id="outline-container-org9f79976" class="outline-3">
-<h3 id="org9f79976"><span class="section-number-3">5.1</span> Relationship between foldr and list structure</h3>
+<div id="outline-container-org20200c0" class="outline-3">
+<h3 id="org20200c0"><span class="section-number-3">5.1</span> Relationship between foldr and list structure</h3>
 <div class="outline-text-3" id="text-5-1">
 <div class="org-src-container">
 <pre class="src src-haskell"><span style="color: #0000ff;">foldr</span> (<span style="color: #228b22;">:</span>)  <span style="color: #228b22;">[]</span> [x0,x1,x2]
@@ -334,8 +334,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org9531be9" class="outline-3">
-<h3 id="org9531be9"><span class="section-number-3">5.2</span> Applications</h3>
+<div id="outline-container-org0f86ac1" class="outline-3">
+<h3 id="org0f86ac1"><span class="section-number-3">5.2</span> Applications</h3>
 <div class="outline-text-3" id="text-5-2">
 <div class="org-src-container">
 <pre class="src src-haskell"><span style="color: #0000ff;">sum</span> xs <span style="color: #a0522d;">=</span> foldr (<span style="color: #a0522d;">+</span>) 0 xs

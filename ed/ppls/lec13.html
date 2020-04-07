@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-17 Sun 17:03 -->
+<!-- 2020-04-05 Sun 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec13 w9a</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,26 +234,26 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org14f38e3">1. probing</a></li>
-<li><a href="#orgddb3abc">2. collective operations</a>
+<li><a href="#orgc08fc48">1. probing</a></li>
+<li><a href="#org52a2094">2. collective operations</a>
 <ul>
-<li><a href="#orga4018f6">2.1. broadcast</a></li>
-<li><a href="#orgaf5af13">2.2. scatter</a></li>
-<li><a href="#org6dbd4ee">2.3. all<sub>reduce</sub> (more special op)</a></li>
+<li><a href="#orgbf45f47">2.1. broadcast</a></li>
+<li><a href="#org435eb0d">2.2. scatter</a></li>
+<li><a href="#orgf0da1d2">2.3. all<sub>reduce</sub> (more special op)</a></li>
 </ul>
 </li>
-<li><a href="#org4fab0e2">3. Jacobi (1D wrapped)</a>
+<li><a href="#orgb1de343">3. Jacobi (1D wrapped)</a>
 <ul>
-<li><a href="#org2813bbd">3.1. code p166</a></li>
+<li><a href="#org5940557">3.1. code p166</a></li>
 </ul>
 </li>
-<li><a href="#org6c48d23">4. <span class="todo TODO">TODO</span> prime sieve</a></li>
-<li><a href="#org2b09d16">5. next communicator</a></li>
+<li><a href="#org37c07c5">4. <span class="todo TODO">TODO</span> prime sieve</a></li>
+<li><a href="#org4d35f87">5. next communicator</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org14f38e3" class="outline-2">
-<h2 id="org14f38e3"><span class="section-number-2">1</span> probing</h2>
+<div id="outline-container-orgc08fc48" class="outline-2">
+<h2 id="orgc08fc48"><span class="section-number-2">1</span> probing</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><code>MPI_Probe</code></li>
@@ -265,12 +265,12 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgddb3abc" class="outline-2">
-<h2 id="orgddb3abc"><span class="section-number-2">2</span> collective operations</h2>
+<div id="outline-container-org52a2094" class="outline-2">
+<h2 id="org52a2094"><span class="section-number-2">2</span> collective operations</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orga4018f6" class="outline-3">
-<h3 id="orga4018f6"><span class="section-number-3">2.1</span> broadcast</h3>
+<div id="outline-container-orgbf45f47" class="outline-3">
+<h3 id="orgbf45f47"><span class="section-number-3">2.1</span> broadcast</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>src</li>
@@ -282,8 +282,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgaf5af13" class="outline-3">
-<h3 id="orgaf5af13"><span class="section-number-3">2.2</span> scatter</h3>
+<div id="outline-container-org435eb0d" class="outline-3">
+<h3 id="org435eb0d"><span class="section-number-3">2.2</span> scatter</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>root assists</li>
@@ -294,8 +294,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org6dbd4ee" class="outline-3">
-<h3 id="org6dbd4ee"><span class="section-number-3">2.3</span> all<sub>reduce</sub> (more special op)</h3>
+<div id="outline-container-orgf0da1d2" class="outline-3">
+<h3 id="orgf0da1d2"><span class="section-number-3">2.3</span> all<sub>reduce</sub> (more special op)</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>used in Jacobi</li>
@@ -304,8 +304,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org4fab0e2" class="outline-2">
-<h2 id="org4fab0e2"><span class="section-number-2">3</span> Jacobi (1D wrapped)</h2>
+<div id="outline-container-orgb1de343" class="outline-2">
+<h2 id="orgb1de343"><span class="section-number-2">3</span> Jacobi (1D wrapped)</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li></li>
@@ -319,8 +319,8 @@ for the JavaScript code in this tag.
 <li>update</li>
 </ul>
 </div>
-<div id="outline-container-org2813bbd" class="outline-3">
-<h3 id="org2813bbd"><span class="section-number-3">3.1</span> code p166</h3>
+<div id="outline-container-org5940557" class="outline-3">
+<h3 id="org5940557"><span class="section-number-3">3.1</span> code p166</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>fidely</li>
@@ -328,16 +328,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org6c48d23" class="outline-2">
-<h2 id="org6c48d23"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> prime sieve</h2>
+<div id="outline-container-org37c07c5" class="outline-2">
+<h2 id="org37c07c5"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> prime sieve</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>spawn</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2b09d16" class="outline-2">
-<h2 id="org2b09d16"><span class="section-number-2">5</span> next communicator</h2>
+<div id="outline-container-org4d35f87" class="outline-2">
+<h2 id="org4d35f87"><span class="section-number-2">5</span> next communicator</h2>
 </div>
 </div>
 </body>

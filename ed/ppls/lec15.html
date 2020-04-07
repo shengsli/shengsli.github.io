@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-17 Sun 17:03 -->
+<!-- 2020-04-05 Sun 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec15 w10a more TBB templates</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,29 +234,29 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgce4cacd">1. recall: parallel<sub>for</sub></a></li>
-<li><a href="#orgc8d1bf9">2. TBB parallel<sub>reduce</sub> template</a>
+<li><a href="#org25e5780">1. recall: parallel<sub>for</sub></a></li>
+<li><a href="#org31adafd">2. TBB parallel<sub>reduce</sub> template</a>
 <ul>
-<li><a href="#org01acd11">2.1. example: pi p189-194</a></li>
-<li><a href="#org433bf7c">2.2. example: fibonnaci p197</a>
+<li><a href="#org55aec2c">2.1. example: pi p189-194</a></li>
+<li><a href="#orgb4bb29b">2.2. example: fibonnaci p197</a>
 <ul>
-<li><a href="#org05401fb">2.2.1. <code>FibRange</code> p195</a></li>
+<li><a href="#org8949025">2.2.1. <code>FibRange</code> p195</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org01aa7f8">3. inside TBB: manipulating tasks directly</a>
+<li><a href="#org090a0a1">3. inside TBB: manipulating tasks directly</a>
 <ul>
-<li><a href="#org6f0fb73">3.1. fibonacci - task spawning solution</a></li>
+<li><a href="#org84cf191">3.1. fibonacci - task spawning solution</a></li>
 </ul>
 </li>
-<li><a href="#org9a2b957">4. what happens at the lowest level?</a></li>
-<li><a href="#org37324cb">5. how to code individual components?</a></li>
+<li><a href="#orgd954e7d">4. what happens at the lowest level?</a></li>
+<li><a href="#org8647739">5. how to code individual components?</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgce4cacd" class="outline-2">
-<h2 id="orgce4cacd"><span class="section-number-2">1</span> recall: parallel<sub>for</sub></h2>
+<div id="outline-container-org25e5780" class="outline-2">
+<h2 id="org25e5780"><span class="section-number-2">1</span> recall: parallel<sub>for</sub></h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>range</li>
@@ -268,39 +268,39 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc8d1bf9" class="outline-2">
-<h2 id="orgc8d1bf9"><span class="section-number-2">2</span> TBB parallel<sub>reduce</sub> template</h2>
+<div id="outline-container-org31adafd" class="outline-2">
+<h2 id="org31adafd"><span class="section-number-2">2</span> TBB parallel<sub>reduce</sub> template</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>add a second phase to <code>parallel_for</code>, complete divide and conquer</li>
 <li><code>join()</code></li>
 </ul>
 </div>
-<div id="outline-container-org01acd11" class="outline-3">
-<h3 id="org01acd11"><span class="section-number-3">2.1</span> example: pi p189-194</h3>
+<div id="outline-container-org55aec2c" class="outline-3">
+<h3 id="org55aec2c"><span class="section-number-3">2.1</span> example: pi p189-194</h3>
 </div>
-<div id="outline-container-org433bf7c" class="outline-3">
-<h3 id="org433bf7c"><span class="section-number-3">2.2</span> example: fibonnaci p197</h3>
+<div id="outline-container-orgb4bb29b" class="outline-3">
+<h3 id="orgb4bb29b"><span class="section-number-3">2.2</span> example: fibonnaci p197</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li><code>parallel_reduce</code> is not efficient way to implement fibonnaci, demo only</li>
 </ul>
 </div>
-<div id="outline-container-org05401fb" class="outline-4">
-<h4 id="org05401fb"><span class="section-number-4">2.2.1</span> <code>FibRange</code> p195</h4>
+<div id="outline-container-org8949025" class="outline-4">
+<h4 id="org8949025"><span class="section-number-4">2.2.1</span> <code>FibRange</code> p195</h4>
 </div>
 </div>
 </div>
-<div id="outline-container-org01aa7f8" class="outline-2">
-<h2 id="org01aa7f8"><span class="section-number-2">3</span> inside TBB: manipulating tasks directly</h2>
+<div id="outline-container-org090a0a1" class="outline-2">
+<h2 id="org090a0a1"><span class="section-number-2">3</span> inside TBB: manipulating tasks directly</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>task scheduler behind the scene</li>
 <li>implement own fibonacci p200-ish</li>
 </ul>
 </div>
-<div id="outline-container-org6f0fb73" class="outline-3">
-<h3 id="org6f0fb73"><span class="section-number-3">3.1</span> fibonacci - task spawning solution</h3>
+<div id="outline-container-org84cf191" class="outline-3">
+<h3 id="org84cf191"><span class="section-number-3">3.1</span> fibonacci - task spawning solution</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li><code>FibTask</code></li>
@@ -313,8 +313,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org9a2b957" class="outline-2">
-<h2 id="org9a2b957"><span class="section-number-2">4</span> what happens at the lowest level?</h2>
+<div id="outline-container-orgd954e7d" class="outline-2">
+<h2 id="orgd954e7d"><span class="section-number-2">4</span> what happens at the lowest level?</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>task scheduler</li>
@@ -332,8 +332,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org37324cb" class="outline-2">
-<h2 id="org37324cb"><span class="section-number-2">5</span> how to code individual components?</h2>
+<div id="outline-container-org8647739" class="outline-2">
+<h2 id="org8647739"><span class="section-number-2">5</span> how to code individual components?</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>code graph</li>

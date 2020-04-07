@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-17 Sun 17:03 -->
+<!-- 2020-04-05 Sun 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec11 w8a programming without shared memory</title>
@@ -185,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -234,43 +234,43 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org57d7549">1. recap: multicomputer architectures p10</a></li>
-<li><a href="#orgf926540">2. message passing p131</a></li>
-<li><a href="#orgfb2ad81">3. spmd compare-exchange</a>
+<li><a href="#org2b275be">1. recap: multicomputer architectures p10</a></li>
+<li><a href="#org82f6616">2. message passing p131</a></li>
+<li><a href="#org9833553">3. spmd compare-exchange</a>
 <ul>
-<li><a href="#org3919e4c">3.1. example: sorting p132</a></li>
+<li><a href="#org552b0d6">3.1. example: sorting p132</a></li>
 </ul>
 </li>
-<li><a href="#org3d499e1">4. message</a>
+<li><a href="#orga0a6c10">4. message</a>
 <ul>
-<li><a href="#org4e9ae01">4.1. synchronization: synchronous/asynchronous</a></li>
-<li><a href="#orge85d150">4.2. addressing</a></li>
-<li><a href="#orgea4c703">4.3. collective operations</a></li>
+<li><a href="#orgb06ee65">4.1. synchronization: synchronous/asynchronous</a></li>
+<li><a href="#org0752dd4">4.2. addressing</a></li>
+<li><a href="#org604af6a">4.3. collective operations</a></li>
 </ul>
 </li>
-<li><a href="#org9541421">5. mpi key ideas/concepts p139</a></li>
-<li><a href="#orge8ab36c">6. 6 operations</a>
+<li><a href="#org9d8ee7c">5. mpi key ideas/concepts p139</a></li>
+<li><a href="#org1704490">6. 6 operations</a>
 <ul>
-<li><a href="#orgfff75b5">6.1. example: hello world p140</a></li>
-<li><a href="#orgb0aecdc">6.2. example: primitive</a></li>
-<li><a href="#orgd3c55db">6.3. example: task farm</a>
+<li><a href="#org6dc76cd">6.1. example: hello world p140</a></li>
+<li><a href="#orgaef3502">6.2. example: primitive</a></li>
+<li><a href="#org5265184">6.3. example: task farm</a>
 <ul>
-<li><a href="#orga8938f6">6.3.1. 3 phases:</a></li>
-<li><a href="#org6d8c188">6.3.2. </a></li>
+<li><a href="#orgf61c42f">6.3.1. 3 phases:</a></li>
+<li><a href="#org8829a12">6.3.2. </a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org15f668c">7. <span class="todo TODO">TODO</span> look up send and recv params</a></li>
-<li><a href="#org9125ea3">8. <span class="todo TODO">TODO</span> look up code</a></li>
+<li><a href="#org7c7b0a3">7. <span class="todo TODO">TODO</span> look up send and recv params</a></li>
+<li><a href="#org748c5a5">8. <span class="todo TODO">TODO</span> look up code</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org57d7549" class="outline-2">
-<h2 id="org57d7549"><span class="section-number-2">1</span> recap: multicomputer architectures p10</h2>
+<div id="outline-container-org2b275be" class="outline-2">
+<h2 id="org2b275be"><span class="section-number-2">1</span> recap: multicomputer architectures p10</h2>
 </div>
-<div id="outline-container-orgf926540" class="outline-2">
-<h2 id="orgf926540"><span class="section-number-2">2</span> message passing p131</h2>
+<div id="outline-container-org82f6616" class="outline-2">
+<h2 id="org82f6616"><span class="section-number-2">2</span> message passing p131</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>spmd: single program multiple data</li>
@@ -278,8 +278,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfb2ad81" class="outline-2">
-<h2 id="orgfb2ad81"><span class="section-number-2">3</span> spmd compare-exchange</h2>
+<div id="outline-container-org9833553" class="outline-2">
+<h2 id="org9833553"><span class="section-number-2">3</span> spmd compare-exchange</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>operations:
@@ -289,8 +289,8 @@ for the JavaScript code in this tag.
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-org3919e4c" class="outline-3">
-<h3 id="org3919e4c"><span class="section-number-3">3.1</span> example: sorting p132</h3>
+<div id="outline-container-org552b0d6" class="outline-3">
+<h3 id="org552b0d6"><span class="section-number-3">3.1</span> example: sorting p132</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>some data is scatter across the process</li>
@@ -299,28 +299,28 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org3d499e1" class="outline-2">
-<h2 id="org3d499e1"><span class="section-number-2">4</span> message</h2>
+<div id="outline-container-orga0a6c10" class="outline-2">
+<h2 id="orga0a6c10"><span class="section-number-2">4</span> message</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org4e9ae01" class="outline-3">
-<h3 id="org4e9ae01"><span class="section-number-3">4.1</span> synchronization: synchronous/asynchronous</h3>
+<div id="outline-container-orgb06ee65" class="outline-3">
+<h3 id="orgb06ee65"><span class="section-number-3">4.1</span> synchronization: synchronous/asynchronous</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>send and recv -&gt; deadlock</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge85d150" class="outline-3">
-<h3 id="orge85d150"><span class="section-number-3">4.2</span> addressing</h3>
+<div id="outline-container-org0752dd4" class="outline-3">
+<h3 id="org0752dd4"><span class="section-number-3">4.2</span> addressing</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>do we need to specify source and destination  in send and recv?</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgea4c703" class="outline-3">
-<h3 id="orgea4c703"><span class="section-number-3">4.3</span> collective operations</h3>
+<div id="outline-container-org604af6a" class="outline-3">
+<h3 id="org604af6a"><span class="section-number-3">4.3</span> collective operations</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
 <li>communication patterns</li>
@@ -333,8 +333,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org9541421" class="outline-2">
-<h2 id="org9541421"><span class="section-number-2">5</span> mpi key ideas/concepts p139</h2>
+<div id="outline-container-org9d8ee7c" class="outline-2">
+<h2 id="org9d8ee7c"><span class="section-number-2">5</span> mpi key ideas/concepts p139</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>write one program in spmd style</li>
@@ -350,12 +350,12 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orge8ab36c" class="outline-2">
-<h2 id="orge8ab36c"><span class="section-number-2">6</span> 6 operations</h2>
+<div id="outline-container-org1704490" class="outline-2">
+<h2 id="org1704490"><span class="section-number-2">6</span> 6 operations</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgfff75b5" class="outline-3">
-<h3 id="orgfff75b5"><span class="section-number-3">6.1</span> example: hello world p140</h3>
+<div id="outline-container-org6dc76cd" class="outline-3">
+<h3 id="org6dc76cd"><span class="section-number-3">6.1</span> example: hello world p140</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li><code>MPI_Comm_rank()</code>: rank: tells who am i, which group am i in</li>
@@ -365,19 +365,19 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb0aecdc" class="outline-3">
-<h3 id="orgb0aecdc"><span class="section-number-3">6.2</span> example: primitive</h3>
+<div id="outline-container-orgaef3502" class="outline-3">
+<h3 id="orgaef3502"><span class="section-number-3">6.2</span> example: primitive</h3>
 </div>
-<div id="outline-container-orgd3c55db" class="outline-3">
-<h3 id="orgd3c55db"><span class="section-number-3">6.3</span> example: task farm</h3>
+<div id="outline-container-org5265184" class="outline-3">
+<h3 id="org5265184"><span class="section-number-3">6.3</span> example: task farm</h3>
 <div class="outline-text-3" id="text-6-3">
 <ul class="org-ul">
 <li>bag: full of tasks</li>
 <li>assumption: more tasks than workers</li>
 </ul>
 </div>
-<div id="outline-container-orga8938f6" class="outline-4">
-<h4 id="orga8938f6"><span class="section-number-4">6.3.1</span> 3 phases:</h4>
+<div id="outline-container-orgf61c42f" class="outline-4">
+<h4 id="orgf61c42f"><span class="section-number-4">6.3.1</span> 3 phases:</h4>
 <div class="outline-text-4" id="text-6-3-1">
 <ul class="org-ul">
 <li>phase 1: everyone get one task</li>
@@ -386,8 +386,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org6d8c188" class="outline-4">
-<h4 id="org6d8c188"><span class="section-number-4">6.3.2</span> </h4>
+<div id="outline-container-org8829a12" class="outline-4">
+<h4 id="org8829a12"><span class="section-number-4">6.3.2</span> </h4>
 <div class="outline-text-4" id="text-6-3-2">
 <ul class="org-ul">
 <li>worker only care getting a task and process</li>
@@ -397,11 +397,11 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org15f668c" class="outline-2">
-<h2 id="org15f668c"><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> look up send and recv params</h2>
+<div id="outline-container-org7c7b0a3" class="outline-2">
+<h2 id="org7c7b0a3"><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> look up send and recv params</h2>
 </div>
-<div id="outline-container-org9125ea3" class="outline-2">
-<h2 id="org9125ea3"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> look up code</h2>
+<div id="outline-container-org748c5a5" class="outline-2">
+<h2 id="org748c5a5"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> look up code</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li><code>MPI_Send()</code></li>
