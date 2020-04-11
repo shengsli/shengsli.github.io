@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-05 Sun 08:44 -->
+<!-- 2020-04-11 Sat 17:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec14 w9b task and pattern based models</title>
@@ -234,40 +234,40 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9a17504">1. communicators</a>
+<li><a href="#orgf718339">1. communicators</a>
 <ul>
-<li><a href="#org675c0f5">1.1. divide and conquer communicators p170</a></li>
+<li><a href="#org48f9b11">1.1. divide and conquer communicators p170</a></li>
 </ul>
 </li>
-<li><a href="#org0823af3">2. task and pattern based models 16:00-20:40</a>
+<li><a href="#orgb65e49a">2. task and pattern based models 16:00-20:40</a>
 <ul>
-<li><a href="#org621f3a8">2.1. so far</a></li>
-<li><a href="#org219c974">2.2. idea</a></li>
+<li><a href="#orgf8e540f">2.1. so far</a></li>
+<li><a href="#org0692cf3">2.2. idea</a></li>
 </ul>
 </li>
-<li><a href="#org7fc50a1">3. TBB</a>
+<li><a href="#orgf6af5c7">3. TBB</a>
 <ul>
-<li><a href="#orgf436bab">3.1. generic programming</a></li>
-<li><a href="#orgd20422a">3.2. example:</a></li>
-<li><a href="#orgd7fbcf0">3.3. code: <code>parallel_for</code></a></li>
-<li><a href="#org333a255">3.4. evolution of a parallel<sub>for</sub> exection p177</a></li>
-<li><a href="#org8f80ffd">3.5. range is generic</a></li>
-<li><a href="#org7cd33b9">3.6. body class p181</a></li>
-<li><a href="#orgf16df8d">3.7. partitioner</a>
+<li><a href="#org8ea40c8">3.1. generic programming</a></li>
+<li><a href="#org19ccf0e">3.2. example:</a></li>
+<li><a href="#orgcb3e1f0">3.3. code: <code>parallel_for</code></a></li>
+<li><a href="#org9422ad3">3.4. evolution of a parallel<sub>for</sub> exection p177</a></li>
+<li><a href="#org90d8f7a">3.5. range is generic</a></li>
+<li><a href="#orgd9a80ba">3.6. body class p181</a></li>
+<li><a href="#org5d74b3f">3.7. partitioner</a>
 <ul>
-<li><a href="#org71a05d3">3.7.1. simple partitioner</a></li>
-<li><a href="#orgd17f0f2">3.7.2. auto partitioner (default)</a></li>
-<li><a href="#org72030a7">3.7.3. affinity partitioner</a></li>
+<li><a href="#org347a65d">3.7.1. simple partitioner</a></li>
+<li><a href="#org30b04f4">3.7.2. auto partitioner (default)</a></li>
+<li><a href="#org2f36fa4">3.7.3. affinity partitioner</a></li>
 </ul>
 </li>
-<li><a href="#org17e2534">3.8. c++ lambda function</a></li>
+<li><a href="#orgfaaceaa">3.8. c++ lambda function</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9a17504" class="outline-2">
-<h2 id="org9a17504"><span class="section-number-2">1</span> communicators</h2>
+<div id="outline-container-orgf718339" class="outline-2">
+<h2 id="orgf718339"><span class="section-number-2">1</span> communicators</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>communicator allows to define new groups dynamically</li>
@@ -297,8 +297,8 @@ for the JavaScript code in this tag.
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-org675c0f5" class="outline-3">
-<h3 id="org675c0f5"><span class="section-number-3">1.1</span> divide and conquer communicators p170</h3>
+<div id="outline-container-org48f9b11" class="outline-3">
+<h3 id="org48f9b11"><span class="section-number-3">1.1</span> divide and conquer communicators p170</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>divide and then unwind back</li>
@@ -313,12 +313,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org0823af3" class="outline-2">
-<h2 id="org0823af3"><span class="section-number-2">2</span> task and pattern based models 16:00-20:40</h2>
+<div id="outline-container-orgb65e49a" class="outline-2">
+<h2 id="orgb65e49a"><span class="section-number-2">2</span> task and pattern based models 16:00-20:40</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org621f3a8" class="outline-3">
-<h3 id="org621f3a8"><span class="section-number-3">2.1</span> so far</h3>
+<div id="outline-container-orgf8e540f" class="outline-3">
+<h3 id="orgf8e540f"><span class="section-number-3">2.1</span> so far</h3>
 <div class="outline-text-3" id="text-2-1">
 <ol class="org-ol">
 <li>various shared memory models
@@ -352,8 +352,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org219c974" class="outline-3">
-<h3 id="org219c974"><span class="section-number-3">2.2</span> idea</h3>
+<div id="outline-container-org0692cf3" class="outline-3">
+<h3 id="org0692cf3"><span class="section-number-3">2.2</span> idea</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>raise the abstraction a little bit</li>
@@ -372,15 +372,15 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org7fc50a1" class="outline-2">
-<h2 id="org7fc50a1"><span class="section-number-2">3</span> TBB</h2>
+<div id="outline-container-orgf6af5c7" class="outline-2">
+<h2 id="orgf6af5c7"><span class="section-number-2">3</span> TBB</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>a collection of parallel patterns</li>
 </ul>
 </div>
-<div id="outline-container-orgf436bab" class="outline-3">
-<h3 id="orgf436bab"><span class="section-number-3">3.1</span> generic programming</h3>
+<div id="outline-container-org8ea40c8" class="outline-3">
+<h3 id="org8ea40c8"><span class="section-number-3">3.1</span> generic programming</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>java: generic</li>
@@ -388,8 +388,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd20422a" class="outline-3">
-<h3 id="orgd20422a"><span class="section-number-3">3.2</span> example:</h3>
+<div id="outline-container-org19ccf0e" class="outline-3">
+<h3 id="org19ccf0e"><span class="section-number-3">3.2</span> example:</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>2 loops over row and column</li>
@@ -408,8 +408,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd7fbcf0" class="outline-3">
-<h3 id="orgd7fbcf0"><span class="section-number-3">3.3</span> code: <code>parallel_for</code></h3>
+<div id="outline-container-orgcb3e1f0" class="outline-3">
+<h3 id="orgcb3e1f0"><span class="section-number-3">3.3</span> code: <code>parallel_for</code></h3>
 <div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li>divide and conquer</li>
@@ -425,8 +425,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org333a255" class="outline-3">
-<h3 id="org333a255"><span class="section-number-3">3.4</span> evolution of a parallel<sub>for</sub> exection p177</h3>
+<div id="outline-container-org9422ad3" class="outline-3">
+<h3 id="org9422ad3"><span class="section-number-3">3.4</span> evolution of a parallel<sub>for</sub> exection p177</h3>
 <div class="outline-text-3" id="text-3-4">
 <ul class="org-ul">
 <li>no copy is going on here</li>
@@ -434,11 +434,11 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org8f80ffd" class="outline-3">
-<h3 id="org8f80ffd"><span class="section-number-3">3.5</span> range is generic</h3>
+<div id="outline-container-org90d8f7a" class="outline-3">
+<h3 id="org90d8f7a"><span class="section-number-3">3.5</span> range is generic</h3>
 </div>
-<div id="outline-container-org7cd33b9" class="outline-3">
-<h3 id="org7cd33b9"><span class="section-number-3">3.6</span> body class p181</h3>
+<div id="outline-container-orgd9a80ba" class="outline-3">
+<h3 id="orgd9a80ba"><span class="section-number-3">3.6</span> body class p181</h3>
 <div class="outline-text-3" id="text-3-6">
 <ul class="org-ul">
 <li>overloaded function operator</li>
@@ -452,8 +452,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf16df8d" class="outline-3">
-<h3 id="orgf16df8d"><span class="section-number-3">3.7</span> partitioner</h3>
+<div id="outline-container-org5d74b3f" class="outline-3">
+<h3 id="org5d74b3f"><span class="section-number-3">3.7</span> partitioner</h3>
 <div class="outline-text-3" id="text-3-7">
 <ul class="org-ul">
 <li>how it might like to control two things
@@ -463,16 +463,16 @@ for the JavaScript code in this tag.
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-org71a05d3" class="outline-4">
-<h4 id="org71a05d3"><span class="section-number-4">3.7.1</span> simple partitioner</h4>
+<div id="outline-container-org347a65d" class="outline-4">
+<h4 id="org347a65d"><span class="section-number-4">3.7.1</span> simple partitioner</h4>
 <div class="outline-text-4" id="text-3-7-1">
 <ul class="org-ul">
 <li>complete division, no flexibility</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd17f0f2" class="outline-4">
-<h4 id="orgd17f0f2"><span class="section-number-4">3.7.2</span> auto partitioner (default)</h4>
+<div id="outline-container-org30b04f4" class="outline-4">
+<h4 id="org30b04f4"><span class="section-number-4">3.7.2</span> auto partitioner (default)</h4>
 <div class="outline-text-4" id="text-3-7-2">
 <ul class="org-ul">
 <li>slightly relaxed</li>
@@ -484,8 +484,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org72030a7" class="outline-4">
-<h4 id="org72030a7"><span class="section-number-4">3.7.3</span> affinity partitioner</h4>
+<div id="outline-container-org2f36fa4" class="outline-4">
+<h4 id="org2f36fa4"><span class="section-number-4">3.7.3</span> affinity partitioner</h4>
 <div class="outline-text-4" id="text-3-7-3">
 <ul class="org-ul">
 <li>auto + one other feature, which is: 
@@ -496,8 +496,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org17e2534" class="outline-3">
-<h3 id="org17e2534"><span class="section-number-3">3.8</span> c++ lambda function</h3>
+<div id="outline-container-orgfaaceaa" class="outline-3">
+<h3 id="orgfaaceaa"><span class="section-number-3">3.8</span> c++ lambda function</h3>
 <div class="outline-text-3" id="text-3-8">
 <ul class="org-ul">
 <li>more generic programming in c++</li>

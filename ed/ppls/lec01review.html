@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-05 Sun 08:44 -->
+<!-- 2020-04-11 Sat 17:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ppls lec01 w1a parallel architecture for dummies 1</title>
@@ -234,28 +234,28 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdcb0f0c">1. What is this course about?</a></li>
-<li><a href="#org20ca918">2. Why do we care about/ is it interesting?/motivations</a></li>
-<li><a href="#org9077f12">3. How are we going to address?/structure of this course/roadmap</a></li>
-<li><a href="#org9d1e97b">4. Parallel architecture for dummies</a>
+<li><a href="#orga072647">1. What is this course about?</a></li>
+<li><a href="#org7930482">2. Why do we care about/ is it interesting?/motivations</a></li>
+<li><a href="#org511a236">3. How are we going to address?/structure of this course/roadmap</a></li>
+<li><a href="#org1277dc4">4. Parallel architecture for dummies</a>
 <ul>
-<li><a href="#orgacfce00">4.1. shared memory architectures</a>
+<li><a href="#org2d5341d">4.1. shared memory architectures</a>
 <ul>
-<li><a href="#org6a470b1">4.1.1. low-level perspective: when it become complicated and problematic</a></li>
+<li><a href="#org0b1b09d">4.1.1. low-level perspective: when it become complicated and problematic</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org3b3bc8a">5. multicomputer architectures</a>
+<li><a href="#orgca7cf7f">5. multicomputer architectures</a>
 <ul>
-<li><a href="#orgbf27c11">5.1. low-level perspective: hardware and software</a></li>
+<li><a href="#orgdce4bfb">5.1. low-level perspective: hardware and software</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdcb0f0c" class="outline-2">
-<h2 id="orgdcb0f0c"><span class="section-number-2">1</span> What is this course about?</h2>
+<div id="outline-container-orga072647" class="outline-2">
+<h2 id="orga072647"><span class="section-number-2">1</span> What is this course about?</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>This course is about programming languages and libraries. Programming mechanism in general.</li>
@@ -269,8 +269,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org20ca918" class="outline-2">
-<h2 id="org20ca918"><span class="section-number-2">2</span> Why do we care about/ is it interesting?/motivations</h2>
+<div id="outline-container-org7930482" class="outline-2">
+<h2 id="org7930482"><span class="section-number-2">2</span> Why do we care about/ is it interesting?/motivations</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>Performance: Clock speed stops getting faster. increase cores and get most out of them</li>
@@ -279,8 +279,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org9077f12" class="outline-2">
-<h2 id="org9077f12"><span class="section-number-2">3</span> How are we going to address?/structure of this course/roadmap</h2>
+<div id="outline-container-org511a236" class="outline-2">
+<h2 id="org511a236"><span class="section-number-2">3</span> How are we going to address?/structure of this course/roadmap</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>programming is a bridge, two sides of the bridges: 
@@ -302,8 +302,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org9d1e97b" class="outline-2">
-<h2 id="org9d1e97b"><span class="section-number-2">4</span> Parallel architecture for dummies</h2>
+<div id="outline-container-org1277dc4" class="outline-2">
+<h2 id="org1277dc4"><span class="section-number-2">4</span> Parallel architecture for dummies</h2>
 <div class="outline-text-2" id="text-4">
 <ol class="org-ol">
 <li>shared memory architectures in which all processors can physically address the whole memory.</li>
@@ -314,8 +314,8 @@ for the JavaScript code in this tag.
 <li>Increasingly, systems will span both classes (e.g. Intel SCC) and incorporate other specialized constrained parallel hardware such as GPUs.</li>
 </ul>
 </div>
-<div id="outline-container-orgacfce00" class="outline-3">
-<h3 id="orgacfce00"><span class="section-number-3">4.1</span> shared memory architectures</h3>
+<div id="outline-container-org2d5341d" class="outline-3">
+<h3 id="org2d5341d"><span class="section-number-3">4.1</span> shared memory architectures</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>one address space shared by all CPUs.</li>
@@ -331,12 +331,12 @@ for the JavaScript code in this tag.
 </ol></li>
 </ul>
 </div>
-<div id="outline-container-org6a470b1" class="outline-4">
-<h4 id="org6a470b1"><span class="section-number-4">4.1.1</span> low-level perspective: when it become complicated and problematic</h4>
+<div id="outline-container-org0b1b09d" class="outline-4">
+<h4 id="org0b1b09d"><span class="section-number-4">4.1.1</span> low-level perspective: when it become complicated and problematic</h4>
 <div class="outline-text-4" id="text-4-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="orge763203"></a>example, error case:<br />
+<li><a id="org60a7134"></a>example, error case:<br />
 <div class="outline-text-5" id="text-4-1-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -366,7 +366,7 @@ for the JavaScript code in this tag.
 </table>
 </div>
 </li>
-<li><a id="org27ea54f"></a>cache<br />
+<li><a id="org031bcf4"></a>cache<br />
 <div class="outline-text-5" id="text-4-1-1-2">
 <pre class="example">
 x = 2;      LD R1,#2
@@ -387,7 +387,7 @@ This program above is broken unless you program in the sequentially consistent a
 </p>
 </div>
 </li>
-<li><a id="org19409a0"></a>consistency model<br />
+<li><a id="org3fa652f"></a>consistency model<br />
 <div class="outline-text-5" id="text-4-1-1-3">
 <ol class="org-ol">
 <li><b>Sequential consistency</b>: every processors sees the <b>same sequential interleaving of the basic reads and writes</b>. Intuitive but expensive to implement.</li>
@@ -395,7 +395,7 @@ This program above is broken unless you program in the sequentially consistent a
 </ol>
 </div>
 </li>
-<li><a id="org9b9e3e2"></a>tricky performance issues<br />
+<li><a id="org36953b0"></a>tricky performance issues<br />
 <div class="outline-text-5" id="text-4-1-1-4">
 <ul class="org-ul">
 <li>The <b>unit of transfer</b> between memory and cache is a cache-line or block, containing several words.</li>
@@ -425,15 +425,15 @@ for 1000000 iterations {
 </div>
 </div>
 </div>
-<div id="outline-container-org3b3bc8a" class="outline-2">
-<h2 id="org3b3bc8a"><span class="section-number-2">5</span> multicomputer architectures</h2>
+<div id="outline-container-orgca7cf7f" class="outline-2">
+<h2 id="orgca7cf7f"><span class="section-number-2">5</span> multicomputer architectures</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>The difference is <b>the lack of any hardware integration between cache/memory system and the interconnect</b>. Each processor only accesses its <b>own</b> physical address space. Information is shared by explicit, co-operative message passing.</li>
 </ul>
 </div>
-<div id="outline-container-orgbf27c11" class="outline-3">
-<h3 id="orgbf27c11"><span class="section-number-3">5.1</span> low-level perspective: hardware and software</h3>
+<div id="outline-container-orgdce4bfb" class="outline-3">
+<h3 id="orgdce4bfb"><span class="section-number-3">5.1</span> low-level perspective: hardware and software</h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>Performance/correctness issues include the semantics of synchronization and constraints on message ordering.</li>
