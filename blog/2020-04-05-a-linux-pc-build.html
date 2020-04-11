@@ -6,7 +6,7 @@
 <!-- 2020-04-11 Sat 15:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Org-mode: Custom CSS on Html Exports</title>
+<title>A Linux PC Build</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Sheng Li" />
 <style type="text/css">
@@ -230,37 +230,170 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Org-mode: Custom CSS on Html Exports</h1>
+<h1 class="title">A Linux PC Build</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc402e39">1. <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-05 Sun 08:00&gt; </span></span> update: I built my PC today.</a></li>
+<li><a href="#org20aa995">2. <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-05 Sun 08:22&gt; </span></span> update</a>
+<ul>
+<li><a href="#org0f874e7">2.1. The first time I booted from USB, I did the following steps:</a></li>
+<li><a href="#orgc1cc14d">2.2. Then I ran into the driver issue. The issue is it reboots to black screen. I did the following:</a></li>
+</ul>
+</li>
+<li><a href="#org49edf2c">3. <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-05 Sun 19:22&gt; </span></span> update: chinese input on ubuntu</a></li>
+<li><a href="#org051ec5b">4. Related Blog</a></li>
+</ul>
+</div>
+</div>
 <div class="post-info">
 <p>
-Created by Sheng Li on <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-02-15 Fri 01:44&gt;</span></span>.
+Created by Sheng Li on <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-05 Sun 08:00&gt;</span></span>.
 </p>
 </div>
-<p>
-I wanna export html with custom css. The directory hierarchy looks like below. 
-</p>
-<pre class="example">
-public_html/
-|-- blog
-`-- ed
-    |-- ppls
-    `-- stencil
-</pre>
-<p>
-I wrote a very simple css file and put it under <code>public_html</code>. html files inside project folders can access css by either relaive path or absolute path. I wanna access css file from home directory by absolute path, because my html files might be in directories with different depth. But absolute path has to use <code>file://</code> protocol. Different platforms, even different machines, can have different absolute path. Painful. 
-</p>
+<div id="outline-container-orgc402e39" class="outline-2">
+<h2 id="orgc402e39"><span class="section-number-2">1</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-05 Sun 08:00&gt; </span></span> update: I built my PC today.</h2>
+<div class="outline-text-2" id="text-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Specifications</caption>
 
-<p>
-Instead, I upload a css file to my gihub pages. html files can then access the css file host on my github pages. Well, as long as I have Internet connection. This is a rather clumsy fix. At least it works. 
-</p>
+<colgroup>
+<col  class="org-left" />
 
-<p>
-Emcas is cool but addictive. productivity or nuisance? Start from <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-02-14 Thu 09:00&gt;</span></span>, til now <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-02-15 Fri 01:35&gt;</span></span>, I have been doing nothing but sitting in lab and messing around with emacs. Gotta go home. 
-</p>
+<col  class="org-left" />
 
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Component</th>
+<th scope="col" class="org-left">Selection</th>
+<th scope="col" class="org-right">Price/cny</th>
+<th scope="col" class="org-left">Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">CPU</td>
+<td class="org-left">Intel Core i5-9600KF 3.7GHz 6-core</td>
+<td class="org-right">1399</td>
+<td class="org-left">jd.com</td>
+</tr>
+
+<tr>
+<td class="org-left">CPU Cooler</td>
+<td class="org-left">be quiet! Pure Rock Slim</td>
+<td class="org-right">199</td>
+<td class="org-left">jd.com</td>
+</tr>
+
+<tr>
+<td class="org-left">Motherboard</td>
+<td class="org-left">MSI Z390M S01</td>
+<td class="org-right">849</td>
+<td class="org-left">jd.com</td>
+</tr>
+
+<tr>
+<td class="org-left">Memory</td>
+<td class="org-left">Kingston DDR4 2666 8G×2</td>
+<td class="org-right">599</td>
+<td class="org-left">jd.com</td>
+</tr>
+
+<tr>
+<td class="org-left">Storage</td>
+<td class="org-left">Western Digital M.2 NVMe 1TB</td>
+<td class="org-right">959</td>
+<td class="org-left">jd.com</td>
+</tr>
+
+<tr>
+<td class="org-left">Video Card</td>
+<td class="org-left">ZOTAC GTX1660 Super</td>
+<td class="org-right">1699</td>
+<td class="org-left">jd.com</td>
+</tr>
+
+<tr>
+<td class="org-left">Case</td>
+<td class="org-left">CoolerMaster Silencio S400</td>
+<td class="org-right">498</td>
+<td class="org-left">jd.com</td>
+</tr>
+
+<tr>
+<td class="org-left">Power Supply</td>
+<td class="org-left">CoolerMaster 500W MWE500 80Plus Bronze</td>
+<td class="org-right">299</td>
+<td class="org-left">jd.com</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">6501</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org20aa995" class="outline-2">
+<h2 id="org20aa995"><span class="section-number-2">2</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-05 Sun 08:22&gt; </span></span> update</h2>
+<div class="outline-text-2" id="text-2">
 <p>
-Update: Or simply use <code>/css/style.css</code> instead. 
+I finally find a way around Nvidia driver issue and installed Ubuntu on this machine. I am so excited. A quick note of the solution: 
 </p>
+</div>
+<div id="outline-container-org0f874e7" class="outline-3">
+<h3 id="org0f874e7"><span class="section-number-3">2.1</span> The first time I booted from USB, I did the following steps:</h3>
+<div class="outline-text-3" id="text-2-1">
+<ol class="org-ol">
+<li>Boot to safe graphics mode (a mode in case of graphics card driver is not available)</li>
+<li>Go to Additional drivers. Change to a closer server. (Ubuntu recommend me sohu's server after a speed test but their server gave me an error. I used Tsinghua's server then.)</li>
+<li>Open a terminal. <code>sudo apt-add-repository ppa:graphics-drivers/ppa &amp;&amp; sudo apt update</code>. I selected Nvidia package under additional drivers. Then install as normal and reboot.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgc1cc14d" class="outline-3">
+<h3 id="orgc1cc14d"><span class="section-number-3">2.2</span> Then I ran into the driver issue. The issue is it reboots to black screen. I did the following:</h3>
+<div class="outline-text-3" id="text-2-2">
+<ol class="org-ol">
+<li>Press Esc key to grub interface when rebooting.</li>
+<li>Clt+Alt+F6 to open a terminal</li>
+<li><code>sudo apt pure nvidia</code></li>
+<li><code>ubuntu-drivers devices</code> check info. It gives me recommended driver name ("nvidia-driver-440").</li>
+<li><code>nvidia-smi</code> check info. it is used as a measure of whether Nvidia driver is installed successfully.</li>
+<li><code>sudo reboot</code></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org49edf2c" class="outline-2">
+<h2 id="org49edf2c"><span class="section-number-2">3</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-05 Sun 19:22&gt; </span></span> update: chinese input on ubuntu</h2>
+<div class="outline-text-2" id="text-3">
+<ol class="org-ol">
+<li>install chinese input on ubuntu store</li>
+<li>open input method</li>
+<li>run <code>ibus-setup</code> and add chinese input method called intelligence pinyin</li>
+<li>run <code>ibus restart</code> if chinese input is not available under input method tab</li>
+<li>open settings-&gt;region&amp;languages, add input source named intelligence pinyin</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org051ec5b" class="outline-2">
+<h2 id="org051ec5b"><span class="section-number-2">4</span> Related Blog</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><a href="2019-08-16-my-second-pc-build.html">My Second PC Build</a></li>
+</ul>
+</div>
+</div>
 </div>
 </body>
 </html>
