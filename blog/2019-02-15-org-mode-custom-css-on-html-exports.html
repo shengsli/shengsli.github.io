@@ -6,9 +6,8 @@
 <!-- 2020-04-11 Sat 14:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Tag: msc</title>
+<title>Org-mode: Custom CSS on Html Exports</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Sheng Li" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -230,10 +229,37 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Tag: msc</h1>
-<ul class="org-ul">
-<li><a href="../2019-08-13-last-meeting-with-mic.html">&lt;2019-08-13 Tue 22:23&gt; Last Meeting with mic</a></li>
-</ul>
+<h1 class="title">Org-mode: Custom CSS on Html Exports</h1>
+<div class="post-info">
+<p>
+Created on <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-02-15 Fri 01:44&gt;</span></span>.
+</p>
+</div>
+<p>
+I wanna export html with custom css. The directory hierarchy looks like below. 
+</p>
+<pre class="example">
+public_html/
+|-- blog
+`-- ed
+    |-- ppls
+    `-- stencil
+</pre>
+<p>
+I wrote a very simple css file and put it under <code>public_html</code>. html files inside project folders can access css by either relaive path or absolute path. I wanna access css file from home directory by absolute path, because my html files might be in directories with different depth. But absolute path has to use <code>file://</code> protocol. Different platforms, even different machines, can have different absolute path. Painful. 
+</p>
+
+<p>
+Instead, I upload a css file to my gihub pages. html files can then access the css file host on my github pages. Well, as long as I have Internet connection. This is a rather clumsy fix. At least it works. 
+</p>
+
+<p>
+Emcas is cool but addictive. productivity or nuisance? Start from <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-02-14 Thu 09:00&gt;</span></span>, til now <span class="timestamp-wrapper"><span class="timestamp">&lt;2019-02-15 Fri 01:35&gt;</span></span>, I have been doing nothing but sitting in lab and messing around with emacs. Gotta go home. 
+</p>
+
+<p>
+Update: Or simply use <code>/css/style.css</code> instead. 
+</p>
 </div>
 </body>
 </html>
