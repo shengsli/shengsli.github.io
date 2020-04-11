@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-05 Sun 08:44 -->
+<!-- 2020-04-11 Sat 13:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org-mode Cheat Sheet</title>
@@ -297,6 +297,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgad409bf">12. preview latex</a></li>
 <li><a href="#org83e761e">13. frequently used shortcut</a></li>
 <li><a href="#org9c2243e">14. <code>M-x toggle-truncated-line</code></a></li>
+<li><a href="#org960cd6f">15. View PDF in dark mode</a></li>
 </ul>
 </div>
 </div>
@@ -333,8 +334,8 @@ This html file is export from an org file.
 <li><code>C-C, C-L</code> <a href="https://shengsli.github.io">Sheng's Mess</a></li>
 <li><code>C-C, C-O</code> to open link</li>
 <li>link to other files, need configuration</li>
-<li><a id="orgebb3b69"></a></li>
-<li><a href="#orgebb3b69">7</a> goes to <a id="org219e66a"></a></li>
+<li><a id="org219e66a"></a></li>
+<li><a href="#org219e66a">7</a> goes to <a id="orgaf3a820"></a></li>
 </ul>
 </div>
 </div>
@@ -388,12 +389,12 @@ This html file is export from an org file.
 <li><code>C-c, '</code> start coding envirenment</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-C">  <span style="color: #228b22;">int</span> <span style="color: #0000ff;">add</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">a</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">b</span>)
+<pre class="src src-C">  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">add</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">a</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">b</span>)
   {
-    <span style="color: #a020f0;">return</span> a+b;
+    <span style="font-weight: bold;">return</span> a+b;
   }
-  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">ans</span> = add(1,1);
-  printf(<span style="color: #8b2252;">"%d"</span>, ans);
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">ans</span> = add(1,1);
+  printf(<span style="font-style: italic;">"%d"</span>, ans);
 </pre>
 </div>
 
@@ -551,6 +552,16 @@ Getting things done!
 </div>
 <div id="outline-container-org9c2243e" class="outline-2">
 <h2 id="org9c2243e"><span class="section-number-2">14</span> <code>M-x toggle-truncated-line</code></h2>
+</div>
+<div id="outline-container-org960cd6f" class="outline-2">
+<h2 id="org960cd6f"><span class="section-number-2">15</span> View PDF in dark mode</h2>
+<div class="outline-text-2" id="text-15">
+<ul class="org-ul">
+<li>pdf-tools</li>
+<li>run <code>pdf-tools-install</code> after install package from elpa</li>
+<li><code>(add-hook 'pdf-tools-enabled-hook 'pdf-view-midnight-minor-mode)</code></li>
+</ul>
+</div>
 </div>
 </div>
 </body>
