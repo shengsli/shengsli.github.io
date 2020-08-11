@@ -6,7 +6,7 @@
 <!-- 2020-08-11 Tue 16:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Install FreeBSD with GNOME on VirtualBox</title>
+<title>Tag: xbox</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Sheng Li" />
 <style type="text/css">
@@ -230,66 +230,10 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Install FreeBSD with GNOME on VirtualBox</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org0e864a6">1. GNOME installation instructions</a></li>
-<li><a href="#org3b7f2a2">2. Trooubleshooting</a></li>
-</ul>
-</div>
-</div>
-<div class="post-info">
-<p>
-Created by Sheng Li on <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-03-29 Sun 21:21&gt;</span></span>.
-</p>
-</div>
-<p>
-Finally, a workable FreeBSD GUI installation guide, <a href="https://www.youtube.com/watch?v=Gr2JCq5AZ5Q">https://www.youtube.com/watch?v=Gr2JCq5AZ5Q</a>. I haven't try it on a physical host. 
-</p>
-<div id="outline-container-org0e864a6" class="outline-2">
-<h2 id="org0e864a6"><span class="section-number-2">1</span> GNOME installation instructions</h2>
-<div class="outline-text-2" id="text-1">
-<ol class="org-ol">
-<li><code>pkg install sudo vim emacs</code></li>
-<li><code>vim /usr/local/etc/sudoers</code>, uncomment <code>%wheel ALL=(ALL) ALL</code></li>
-<li><code>pw group mod wheel -m sheng</code></li>
-<li><code>exit</code> and log in as sheng</li>
-<li><code>sudo pkg install xorg</code></li>
-<li><code>sudo pw groupmod video -m sheng || pw groupmod wheel -m sheng</code></li>
-<li><code>sudo vim /boot/loader.conf</code>, write <code>kern.vty=vt</code></li>
-<li><code>sudo pkg install gnome3</code></li>
-<li>add <code>proc    /proc    procfs    rw    0    0</code> to <code>/etc/fstab</code></li>
-<li><p>
-add the following to <code>/etc/rc.conf</code>
-</p>
-<pre class="example">
-   dbus_enable="YES"
-   hald_enable="YES"
-   gdm_enable="YES"
-   gnome_enable="YES"
-</pre></li>
-<li><code>sudo pkg install virtualbox-ose-additions</code></li>
-<li><p>
-add the following to <code>/etc/rc.conf</code>
-</p>
-<pre class="example">
-   vboxguest_enable="YES"
-   vboxservice_enable="YES"
-</pre></li>
-<li><code>sudo reboot</code></li>
-</ol>
-</div>
-</div>
-<div id="outline-container-org3b7f2a2" class="outline-2">
-<h2 id="org3b7f2a2"><span class="section-number-2">2</span> Trooubleshooting</h2>
-<div class="outline-text-2" id="text-2">
+<h1 class="title">Tag: xbox</h1>
 <ul class="org-ul">
-<li>fill window, insert virtualbox  <a href="https://nanxiao.me/en/install-virtualbox-guest-additions/">https://nanxiao.me/en/install-virtualbox-guest-additions/</a>, and I never made it work.</li>
+<li><a href="../2020-04-24-解锁国行Xbox-One和PS4-Pro.html">&lt;2020-04-24 Fri 21:52&gt; 解锁国行Xbox One和PS4 Pro</a></li>
 </ul>
-</div>
-</div>
 </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-17 Fri 01:16 -->
+<!-- 2020-08-11 Tue 16:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>A Linux PC Build</title>
@@ -244,7 +244,12 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#org1920f51">3. <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-05 Sun 19:22&gt; </span></span> update: chinese input on ubuntu</a></li>
 <li><a href="#org8d5df82">4. <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-15 Wed 05:41&gt; </span></span> update: split screen into four</a></li>
-<li><a href="#org2b5ef83">5. Related Blog</a></li>
+<li><a href="#orgba08a98">5. <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-05-02 Sat 20:56&gt; </span></span> update: Bluetooth</a>
+<ul>
+<li><a href="#orgd266861">5.1. troubleshooting</a></li>
+</ul>
+</li>
+<li><a href="#org2b5ef83">6. Related Blog</a></li>
 </ul>
 </div>
 </div>
@@ -400,9 +405,31 @@ I finally find a way around Nvidia driver issue and installed Ubuntu on this mac
 </ul>
 </div>
 </div>
-<div id="outline-container-org2b5ef83" class="outline-2">
-<h2 id="org2b5ef83"><span class="section-number-2">5</span> Related Blog</h2>
+<div id="outline-container-orgba08a98" class="outline-2">
+<h2 id="orgba08a98"><span class="section-number-2">5</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-05-02 Sat 20:56&gt; </span></span> update: Bluetooth</h2>
 <div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li><code>sudo apt install bluetooth bluez bluez-tools rfkill</code></li>
+<li><code>sudo rfkill list</code> check if Bluetooth service are blocked
+<ul class="org-ul">
+<li><code>sudo rfkill unblock bluetooth</code> unblock if Bluetooth service is blocked</li>
+</ul></li>
+<li><code>sudo service bluetooth start</code></li>
+<li><code>sudo apt-get install blueman</code></li>
+</ul>
+</div>
+<div id="outline-container-orgd266861" class="outline-3">
+<h3 id="orgd266861"><span class="section-number-3">5.1</span> troubleshooting</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li><code>sudo systemctl restart bluetooth</code> if crashed</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org2b5ef83" class="outline-2">
+<h2 id="org2b5ef83"><span class="section-number-2">6</span> Related Blog</h2>
+<div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li><a href="2019-08-16-my-second-pc-build.html">My Second PC Build</a></li>
 </ul>

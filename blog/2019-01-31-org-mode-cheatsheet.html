@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-11 Sat 17:15 -->
+<!-- 2020-08-11 Tue 16:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org-mode Cheat Sheet</title>
@@ -300,6 +300,9 @@ for the JavaScript code in this tag.
 <li><a href="#org14ed6c5">14. <code>M-x toggle-truncated-line</code></a></li>
 <li><a href="#org66429f0">15. View PDF in dark mode</a></li>
 <li><a href="#orgab7f1d7">16. mu4e: error in process sentinel: Database is locked by another process</a></li>
+<li><a href="#org5b1cd14">17. org-publish with ox-twbs</a></li>
+<li><a href="#orgc7d9d57">18. M-x set-input-method chinese-py-punct</a></li>
+<li><a href="#org439d363">19. Chinese latex</a></li>
 </ul>
 </div>
 </div>
@@ -336,8 +339,8 @@ This html file is export from an org file.
 <li><code>C-C, C-L</code> <a href="https://shengsli.github.io">Sheng's Mess</a></li>
 <li><code>C-C, C-O</code> to open link</li>
 <li>link to other files, need configuration</li>
-<li><a id="org3c4bd78"></a></li>
-<li><a href="#org3c4bd78">7</a> goes to <a id="org8394659"></a></li>
+<li><a id="org8394659"></a></li>
+<li><a href="#org8394659">7</a> goes to <a id="orgff0e8b6"></a></li>
 </ul>
 </div>
 </div>
@@ -391,12 +394,12 @@ This html file is export from an org file.
 <li><code>C-c, '</code> start coding envirenment</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-C">  <span style="color: #228b22;">int</span> <span style="color: #0000ff;">add</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">a</span>, <span style="color: #228b22;">int</span> <span style="color: #a0522d;">b</span>)
+<pre class="src src-C">  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">add</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">a</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">b</span>)
   {
-    <span style="color: #a020f0;">return</span> a+b;
+    <span style="font-weight: bold;">return</span> a+b;
   }
-  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">ans</span> = add(1,1);
-  printf(<span style="color: #8b2252;">"%d"</span>, ans);
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">ans</span> = add(1,1);
+  printf(<span style="font-style: italic;">"%d"</span>, ans);
 </pre>
 </div>
 
@@ -569,11 +572,37 @@ Getting things done!
 <h2 id="orgab7f1d7"><span class="section-number-2">16</span> mu4e: error in process sentinel: Database is locked by another process</h2>
 <div class="outline-text-2" id="text-16">
 <div class="org-src-container">
-<pre class="src src-sh">pkill -2 -u $<span style="color: #a0522d;">UID</span> mu
+<pre class="src src-sh">pkill -2 -u $<span style="font-weight: bold; font-style: italic;">UID</span> mu
 sleep 1
 mu index
 </pre>
 </div>
+</div>
+</div>
+<div id="outline-container-org5b1cd14" class="outline-2">
+<h2 id="org5b1cd14"><span class="section-number-2">17</span> org-publish with ox-twbs</h2>
+<div class="outline-text-2" id="text-17">
+<ul class="org-ul">
+<li>tried it successfully.</li>
+<li>kept receiving an error backend nil something. restart emacs and it worked.</li>
+<li>will not use it because it uses external resources like css</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc7d9d57" class="outline-2">
+<h2 id="orgc7d9d57"><span class="section-number-2">18</span> M-x set-input-method chinese-py-punct</h2>
+<div class="outline-text-2" id="text-18">
+<ul class="org-ul">
+<li>C-\ toggle input method</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org439d363" class="outline-2">
+<h2 id="org439d363"><span class="section-number-2">19</span> Chinese latex</h2>
+<div class="outline-text-2" id="text-19">
+<ul class="org-ul">
+<li>xelatex</li>
+</ul>
 </div>
 </div>
 </div>
