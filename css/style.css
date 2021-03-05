@@ -5,7 +5,7 @@ a:hover {background-color: #415160;}
 a:active {background-color: #ffff00;}
 b {color:#ff0000;}
 #content, #postamble, #preamble {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 #preamble {
